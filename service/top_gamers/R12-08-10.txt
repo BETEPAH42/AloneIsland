@@ -1,0 +1,2 @@
+var list=new Array(
+'MrBUG|5|none||0|||','stalker61|0|none||0|||','maksikus|0|none||0|||','Areff|2|none||0|||','vanya|0|none||0|||','bomber|5|none||0|||','MixFDEN|4|none||0|||','DeviLMan|1|none||0|||','SAM26|0|none||0|||','Андрей|1|none||0|||');show_list ('0+');

@@ -1,0 +1,52 @@
+
+	<table border="0" width="600" id="table1" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		побед</span></td>
+		<td align="center" class="items">122</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('MrBUG')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('MrBUG')"> MrBUG</font></td><td>[<font class=lvl>6</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=MrBUG','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		поражений</span></td>
+		<td align="center" class="items">84</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('MrBUG')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('MrBUG')"> MrBUG</font></td><td>[<font class=lvl>6</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=MrBUG','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		умений &quot;Охота&quot;</span></td>
+		<td align="center" class="items">625</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('MrBUG')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('MrBUG')"> MrBUG</font></td><td>[<font class=lvl>6</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=MrBUG','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		Игровой Валюты</span></td>
+		<td align="center" class="items">17833.63</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('BETEPAH')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('BETEPAH')"> BETEPAH</font></td><td>[<font class=lvl>5</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=BETEPAH','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		боёв</span></td>
+		<td align="center" class="items">206</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('MrBUG')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('MrBUG')"> MrBUG</font></td><td>[<font class=lvl>6</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=MrBUG','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		опыта</span></td>
+		<td align="center" class="items">23104</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('MrBUG')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('MrBUG')"> MrBUG</font></td><td>[<font class=lvl>6</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=MrBUG','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		</span><font class=hp>HP</font></td>
+		<td align="center" class="items">264</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('BETEPAH')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('BETEPAH')"> BETEPAH</font></td><td>[<font class=lvl>5</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=BETEPAH','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		</span><font class=ma>MA</font></td>
+		<td align="center" class="items">90</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('vanya')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('vanya')"> vanya</font></td><td>[<font class=lvl>0</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=vanya','_blank')" style="cursor:hand"></font></td>
+	</tr>
+</table>
+	
