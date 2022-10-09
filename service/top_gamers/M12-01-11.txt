@@ -1,0 +1,2 @@
+var list=new Array(
+'Francuz|16|c1|Солдат|775|||','rooa|11|none||522|||','Pere|12|none||394|||','Masta|15|none||353|||','Areff|16|none||243|||','IgoreK|17|c2|Кадровик|242|||','malypuska|8|none||235|||','Fox|13|none||200|||','Urkagan|11|none||200|||','P0larBeer|10|none||185|||','Zema415|14|none||140|||','Luna|9|none||120|||','DieSeL81|10|none||42|||','xtazz|12|c3|Глава клана|40|||','MixFDEN|5|none||20|||','kikoz|10|none||20|||','ALEX|6|none||20|||','defo|6|none||20|||','Brauberg|10|none||20|||','stalker61|0|none||0|||');show_list ('0+');

@@ -1,0 +1,2 @@
+var list=new Array(
+'MrBUG|16|c2||216|||');show_list ('0+');

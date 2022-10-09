@@ -1,0 +1,63 @@
+.tabset_tabs	{ 
+	margin:0; 
+	padding:0; 
+	position:relative; 
+	z-index:2; 
+	white-space:normal 
+}
+.tabset_tabs li	{ 
+	margin-left:15px; 
+	padding:0; 
+	display:inline 
+}
+
+.tabset_tabs a	{ 
+	color:#339 ! important; 
+	background-color:#def ! important; 
+	border:1px solid #99c; 
+	text-decoration:none; 
+	padding:0 0.6em; 
+	border-left-width:0; 
+	border-bottom:none	
+}
+.tabset_tabs a:hover	{ 
+	color:#00c ! important; 
+	background-color:#eff ! important;	
+}
+.tabset_tabs a.active	{ 
+	color:black ! important; 
+	background-color:white ! important; 
+	border-color:black; 
+	border-left-width:1px; 
+	cursor:default; 
+	border-bottom:white; 
+	padding-top:1px; 
+	padding-bottom:1px 
+}
+
+.tabset_tabs li.firstchild a	{ 
+	border-left-width:1px 
+}
+
+.tabset_content	{ 
+	background-color:white; 
+	border:1px solid black; 
+	position:relative; 
+	height:400px; 
+	overflow:auto; 
+	z-index:1; 
+	padding:0.5em 1em; 
+	display:none 
+}
+.tabset_label	{ 
+	display:block 
+}
+
+.tabset_content_active	{ 
+	background-color:white ! important; 
+	display:block 
+}
+
+@media aural{
+	.tabset_content	{ display:block }
+}

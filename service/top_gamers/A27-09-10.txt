@@ -1,0 +1,2 @@
+var list=new Array(
+'BETEPAH42|6|c1|лох|17799|||');show_list ('0+');

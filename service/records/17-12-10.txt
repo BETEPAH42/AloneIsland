@@ -1,0 +1,52 @@
+
+	<table border="0" width="600" id="table1" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		побед</span></td>
+		<td align="center" class="items">5748</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('Dark')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('Dark')"> Dark</font></td><td>[<font class=lvl>19</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=Dark','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		поражений</span></td>
+		<td align="center" class="items">258</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('Maksimok')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('Maksimok')"> Maksimok</font></td><td>[<font class=lvl>12</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=Maksimok','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		умений &quot;Охота&quot;</span></td>
+		<td align="center" class="items">5847</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('BETEPAH')" style=cursor:hand> </td><td> <img src=images/signs/c2.gif><font class=user onclick="javascript:top.say_private('BETEPAH')"> BETEPAH</font></td><td>[<font class=lvl>15</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=BETEPAH','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		Игровой Валюты</span></td>
+		<td align="center" class="items">17997.78</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('BETEPAH')" style=cursor:hand> </td><td> <img src=images/signs/c2.gif><font class=user onclick="javascript:top.say_private('BETEPAH')"> BETEPAH</font></td><td>[<font class=lvl>15</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=BETEPAH','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		боёв</span></td>
+		<td align="center" class="items">5930</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('Dark')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('Dark')"> Dark</font></td><td>[<font class=lvl>19</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=Dark','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		опыта</span></td>
+		<td align="center" class="items">20222514</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('Dark')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('Dark')"> Dark</font></td><td>[<font class=lvl>19</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=Dark','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		</span><font class=hp>HP</font></td>
+		<td align="center" class="items">1568</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('BETEPAH')" style=cursor:hand> </td><td> <img src=images/signs/c2.gif><font class=user onclick="javascript:top.say_private('BETEPAH')"> BETEPAH</font></td><td>[<font class=lvl>15</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=BETEPAH','_blank')" style="cursor:hand"></font></td>
+	</tr>
+	<tr>
+		<td width="294" class="items"><span lang="ru">Самое большое количество
+		</span><font class=ma>MA</font></td>
+		<td align="center" class="items">1172</td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('Dark')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('Dark')"> Dark</font></td><td>[<font class=lvl>19</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=Dark','_blank')" style="cursor:hand"></font></td>
+	</tr>
+</table>
+	
