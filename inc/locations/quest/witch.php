@@ -59,7 +59,7 @@ if (@$_GET["gW"] && !$qWitch["finished"] && $qWitch["time"] > tme()) {
 		$pers["y"] == $qWitch["zParam"]
 	) {
 		echo "<script>console.log('witch')</script>";
-		$_RETURN .= '<table><tr><td><img src="../images/witch.png"></td><td><center class=but>Вы нашли Ведьму Алису!</center><i class=user>Она всё ещё нуждается в <b>«' . $qWitch["sParam"] . '»</b></i></td></tr></table>';
+		$_RETURN .= '<table><tr><td><img src="images/witch.png"></td><td><center class=but>Вы нашли Ведьму Алису!</center><i class=user>Она всё ещё нуждается в <b>«' . $qWitch["sParam"] . '»</b></i></td></tr></table>';
 		$yourWp = sql::q1("SELECT * FROM wp WHERE uidp=" . UID . " and weared=0 and name='" . $qWitch["sParam"] . "'");
 		if ($yourWp) {
 			$vesh = $yourWp;

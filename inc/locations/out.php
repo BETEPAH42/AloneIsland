@@ -29,7 +29,7 @@ define("GAIN_COST", 50);
 			</td>
 		</tr>
 	</table>
-	<div style="background-image: url('../images/DS/main_topline.jpg'); height:17px; width:100%;"></div>
+	<div style="background-image: url('images/DS/main_topline.jpg'); height:17px; width:100%;"></div>
 </div>
 
 <div id="outer" style="display:none;background: grey; position:absolute;z-index:356;top:60px;top: 85px;width: 50%;left: 25%;border-radius:6px;">

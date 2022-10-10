@@ -1,8 +1,8 @@
 ﻿<?php
 header("Cache-Control: no-cache, must-revalidate");
-header("Cache-Control: post-check=0, pre-check=0", false);
+// header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
-header("Content-type: text/html; charset=utf-8");
+// header("Content-type: text/html; charset=utf-8");
 $opt = explode("|", $_COOKIE["options"]);
 include_once "classes/sql.php";
 include_once 'inc/functions.php';
@@ -23,7 +23,9 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 <script src='js/newch_list.js?2'></script>
 <script>
 	<?php
-	$pers = SQL::q1("SELECT x,y,location,block,pass,rank,sign,user,uid,diler,priveleged,level FROM `users` WHERE `uid` = '" . addslashes($_COOKIE["uid"]) . "'");
+	$pers = SQL::q1("SELECT `x`,`y`,`location`,`block`,`pass`,`rank`,
+	`sign`,`user`,`uid`,`diler`,`priveleged`,`level` FROM `users` WHERE `uid` = '" . (int)$_COOKIE["uid"] . "'");
+
 	if ($pers["block"] or $pers["pass"] <> $_COOKIE["hashcode"]) die("Exit : 0");
 	$place = $pers["location"];
 	if (@$_GET["ignore"]) {
@@ -37,7 +39,7 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 	}
 	$t = time();
 	$t1 = time() - 360 + microtime();
-	sql::q("UPDATE `users` SET `online`='0', timeonline = timeonline+lastom-lastvisits, gain_time=0 WHERE `lasto`<{$t1} and `lastom`<{$t1} and online=1;");
+	SQL::q("UPDATE `users` SET `online`='0', timeonline = timeonline+lastom-lastvisits, gain_time=0 WHERE `lasto`<{$t1} and `lastom`<{$t1} and online=1;");
 	$vsego = SQL::q1("SELECT COUNT(uid) as count FROM `users` WHERE `online`='1'");
 	$_max = SQL::q1("SELECT max_online,time_max_online FROM `configs` LIMIT 0,1");
 	$max = $_max["max_online"];
@@ -76,7 +78,7 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 		else
 			$res = sql::q("SELECT sign,user,level,state,diler,clan_name,uid,priveleged,silence,invisible,clan_state FROM `users` WHERE `online`=1 and `location`='out' and x=" . $pers["x"] . " and y=" . $pers["y"]);
 	} else
-		$res = sql::q("SELECT sign,user,level,state,diler,clan_name,uid,priveleged,silence,invisible,clan_state FROM `users` WHERE `online`=1");
+		$res = sql::q("SELECT sign, user, level, state, diler, clan_name, uid, priveleged, silence, invisible, clan_state FROM `users` WHERE `online` = 1;");
 	$i = 0;
 	$s = '';
 	$tyt = 0;
@@ -84,12 +86,12 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 
 	$r = '';
 	if ($place <> 'out')
-		$rsds = sql::q("SELECT * FROM residents WHERE location='" . $place . "'");
+		$rsds = SQL::q("SELECT * FROM residents WHERE location='" . $place . "'");
 	else
-		$rsds = sql::q("SELECT * FROM residents WHERE x=" . $pers["x"] . " and y=" . $pers["y"] . " and location='out'");
+		$rsds = SQL::q("SELECT * FROM residents WHERE x=" . $pers["x"] . " and y=" . $pers["y"] . " and location='out'");
 	if (count($rsds) > 0) {
 		foreach ($rsds as $rs) {
-			$b = sql::q1("SELECT level FROM bots WHERE id=" . $rs["id_bot"])['level'];
+			$b = SQL::q1("SELECT level FROM bots WHERE id=" . $rs["id_bot"])['level'];
 			$r .= "'" . $rs["name"] . "|" . $b . "|" . $rs["id"] . "|" . $rs["id_bot"] . "'";
 			$r .= ",";
 			$tyt++;
@@ -105,7 +107,7 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 		$tyt++;
 		$i++;
 		$tr = '';
-		$trs = sql::q("SELECT special FROM p_auras WHERE uid=" . $row["uid"] . " and special>2 and special<6 and esttime>" . time());
+		$trs = SQL::q("SELECT special FROM p_auras WHERE uid=" . $row["uid"] . " and special>2 and special<6 and esttime>" . time());
 		foreach ($trs as $ttt) {
 			if ($ttt["special"] == 3) $tr .= "Легкая травма.";
 			if ($ttt["special"] == 4) $tr .= "Средняя травма.";
@@ -116,7 +118,7 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 			if (!$pers["clan_name"])
 				$clan = SQL::q1("SELECT name,level FROM clans WHERE sign='" . $row["sign"] . "'");
 			$row["clan_name"] = $clan["name"];
-			sql::q("UPDATE users SET clan_name='" . $row["clan_name"] . "' WHERE uid=" . $row["uid"] . "");
+			SQL::q("UPDATE users SET clan_name='" . $row["clan_name"] . "' WHERE uid=" . $row["uid"] . "");
 		}
 		$row["state"] = $row["clan_name"] . "[" . $clan["level"] . "] " . _StateByIndex($row["clan_state"]) . "[" . str_replace("|", "!", $row["state"]) . "]";
 		if ($row["invisible"] <= time() or $row["user"] == $pers["user"] or $pers["sign"] == 'c2' or substr_count($pers["rank"], "<pv>"))	$inv = 1;

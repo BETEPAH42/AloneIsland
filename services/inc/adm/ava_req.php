@@ -4,7 +4,7 @@ if (@$_GET["deny"]) {
 	$id = intval($_GET["deny"]);
 	$r = sql::q1("SELECT * FROM avatar_request WHERE uid=" . $id);
 	if ($r) {
-		//echo dirname("../../../images/tmp/");
+		//echo dirname("../.././images/tmp/");
 		unlink("images/tmp/ava_" . $r["uid"] . ".gif");
 		sql::q("DELETE FROM avatar_request WHERE uid=" . $id);
 		set_vars("dmoney=dmoney+30", $r["uid"]);
@@ -15,7 +15,7 @@ if (@$_GET["accept"]) {
 	$r = sql::q1("SELECT * FROM avatar_request WHERE uid=" . $id);
 	if ($r) {
 		$p = sql::q1("SELECT user,level,pol FROM users WHERE uid=" . $r["uid"]);
-		//echo dirname("../../../images/tmp/");
+		//echo dirname("../.././images/tmp/");
 		rename("images/tmp/ava_" . $r["uid"] . ".gif", "images/persons/" . $p["pol"] . "_-" . $r["uid"] . ".gif");
 		sql::q("DELETE FROM avatar_request WHERE uid=" . $id);
 		set_vars("obr='-" . $r["uid"] . "'", $r["uid"]);

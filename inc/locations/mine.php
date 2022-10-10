@@ -273,7 +273,7 @@ $resources .= '</table>';
 			?>
 			<hr><?= $help; ?>
 		</td>
-		<td align=center class=but width=300 valign=top style="background-image:url('../images/locations/mine<?php echo (date("i") % 5 + 1); ?>.jpg');background-repeat:no-repeat;">
+		<td align=center class=but width=300 valign=top style="background-image:url('images/locations/mine<?php echo (date("i") % 5 + 1); ?>.jpg');background-repeat:no-repeat;">
 			<div style="z-index:2;position:relative;width:100%;text-align:center;" class=alt id=mainbox>
 				<form method="POST" action=main.php><input type="submit" value="Обновить" class="login" style="width:96%"></form>
 			</div>

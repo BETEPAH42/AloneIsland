@@ -236,7 +236,7 @@
 					$ch_site = ' | <a href="javascript:ch_site(\'' . $clan['sait'] . '\')" class=timef>Сменить</a>';
 				}
 				echo "<center><table class=combofight width=400 cellspacing=0 cellspadding=0><tr><td align=center>Вы состоите в клане <img src='images/signs/" . $clan['sign'] . ".gif'> <b class=user>" . $clan['name'] . "[" . $clan['level'] . "]</b></div></td></tr>
-<tr><td class=but>Глава Клана <font class=user>" . $clan['glav'] . "</font><img src='../images/info.gif' 
+<tr><td class=but>Глава Клана <font class=user>" . $clan['glav'] . "</font><img src='images/info.gif' 
 onclick=\"javascript:window.open('info.php?p=" . $clan['glav'] . "','_blank')\" style='cursor:pointer'> | 
 <a href='http://" . $clan['sait'] . "' target=_blank class=bold>" . $clan['sait'] . "</a>" . $ch_site . "</td></tr>
 </table></center>";

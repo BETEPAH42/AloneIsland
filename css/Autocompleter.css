@@ -2,7 +2,7 @@ div.autocompleter-loading
 {
 	float:					left;
 	clear:					right;
-	background:				#fff url(../images/spinner.gif) no-repeat center;
+	background:				#fff url(images/spinner.gif) no-repeat center;
 	width:					20px;
 	height:					16px;
 }

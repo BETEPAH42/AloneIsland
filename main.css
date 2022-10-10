@@ -784,7 +784,7 @@ img.m
 }
 
 .content {
-	background: url(../images/bg.png);
+	background: url(/images/bg.png);
 	text-align: center;
 }
 /* РЎС‚РёР»Рё, РѕС‚РЅРѕСЃСЏС‰РёРµСЃСЏ Рє РїРѕСЃС‚СЂРѕРµРЅРёСЋ РїСЂРѕР·СЂР°С‡РЅС‹С… СѓРіРѕР»РєРѕРІ */
@@ -793,7 +793,7 @@ img.m
 	padding:1px 18px;
 	margin:18px 0;		
 	height: expression( this.parentNode.clientHeight - 36 + 'px' );  
-	background:url("../images/left.png") 0 0 repeat-y;
+	background:url("/images/left.png") 0 0 repeat-y;
 }
 .corners .inner {
 	position:relative;
@@ -801,14 +801,14 @@ img.m
 	padding:1px 0;
 	padding-right:18px;
 	margin-right:-18px;
-	background:url("../images/right.png") 100% 0 repeat-y;
+	background:url("/images/right.png") 100% 0 repeat-y;
 	
 }
 .corners:before {
 	display:block;
 	height:18px;
-	content:url("../images/left_top.png");
-	background:url("../images/right_top.png") 100% 0 no-repeat;
+	content:url("/images/left_top.png");
+	background:url("/images/right_top.png") 100% 0 no-repeat;
 	margin:-19px -18px 0 -18px;
 	font-size:0;
 }
@@ -816,15 +816,15 @@ img.m
 	display:block;
 	height:18px;
 	content:"";
-	background:url("../images/top.png") repeat-x;
+	background:url("/images/top.png") repeat-x;
 	margin:-19px 0 0 0;
 	font-size:0;
 }
 .corners:after {
 	display:block;
 	height:18px;
-	content:url("../images/left_bottom.png");
-	background:url("../images/right_bottom.png") 100% 100% no-repeat;
+	content:url("/images/left_bottom.png");
+	background:url("/images/right_bottom.png") 100% 100% no-repeat;
 	margin:0 -18px -19px -18px;
 	font-size:0;
 }
@@ -832,7 +832,7 @@ img.m
 	display:block;
 	height:18px;
 	content:"";
-	background:url("../images/bottom.png") repeat-x;
+	background:url("/images/bottom.png") repeat-x;
 	margin:0 0 -19px 0;
 	font-size:0;
 }

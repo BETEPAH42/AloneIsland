@@ -131,24 +131,24 @@ function sells(sales, tr) {
 		if (lines[i] != '') {
 			s = lines[i].split('|');
 			if (s[1] == 0)
-				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Передано денег <b>' + s[2] + ' LN</b> для ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[3] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Передано денег <b>' + s[2] + ' LN</b> для ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[3] + '\',\'_blank\')" src=images/info.gif></td>');
 			if (s[1] == 3)
-				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Принято денег <b>' + s[2] + ' LN</b> от ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[3] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Принято денег <b>' + s[2] + ' LN</b> от ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[3] + '\',\'_blank\')" src=images/info.gif></td>');
 			if (s[1] == 1)
-				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Передано <b>' + s[2] + '</b>(гос ' + s[3] + ') для ' + s[4] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Передано <b>' + s[2] + '</b>(гос ' + s[3] + ') для ' + s[4] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=images/info.gif></td>');
 			if (s[1] == 2)
-				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Принято <b>' + s[2] + '</b>(гос ' + s[3] + ') от ' + s[4] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Принято <b>' + s[2] + '</b>(гос ' + s[3] + ') от ' + s[4] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=images/info.gif></td>');
 			if (s[1] == 4) {
 				if (s[2] == 20) var travm = 'лёгкой';
 				if (s[2] == 50) var travm = 'средней';
 				if (s[2] == 80) var travm = 'тяжёлой';
-				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Излечение ' + travm + '   травмы для ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Излечение ' + travm + '   травмы для ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=images/info.gif></td>');
 			}
 			if (s[1] == 5) {
 				if (s[2] == 20) var travm = 'лёгкой';
 				if (s[2] == 50) var travm = 'средней';
 				if (s[2] == 80) var travm = 'тяжёлой';
-				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Излечение ' + travm + '   травмы от ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Излечение ' + travm + '   травмы от ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=images/info.gif></td>');
 			}
 
 		}

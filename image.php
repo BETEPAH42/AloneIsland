@@ -1,4 +1,4 @@
-﻿<?	
+﻿<?php
 	error_reporting(0);
 	$i=0;
 	$im = imagecreatefromjpeg("http://localhost/images/map_new.jpg");

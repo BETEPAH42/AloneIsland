@@ -104,7 +104,7 @@ function show_magic(point) {
     document.getElementById('menu').innerHTML = menu;
 }
 function show_m(img, id, namem, point) {
-    menu += '<img style="cursor:hand;" src="../images/zakl/' + img + '" title="' + namem + '" onclick="set_bit(\'' + point + '\',\'' + id + '\',\'' + namem + '\');">';
+    menu += '<img style="cursor:hand;" src="images/zakl/' + img + '" title="' + namem + '" onclick="set_bit(\'' + point + '\',\'' + id + '\',\'' + namem + '\');">';
 }
 function set_bit(point, id, name) {
     document.getElementById('menu').innerHTML = '';

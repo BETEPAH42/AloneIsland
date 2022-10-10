@@ -34,7 +34,7 @@ if($r)
         echo "<META HTTP-EQUIV=Refresh Content='3; URL=\"".$tmpdir.$file[0]."/".$fname."\"'>";
         echo "</head>";
         echo "<body style=\"background-color: transparent;background-image: url('images/v1.jpg')\">";
-        echo "<center style=\"background-image: url('images/bg.png');\"><div>Ждите 3 сек</div>Файл: ".$file[5]."</div>".$author."<div>Размер: ".$file[3]."(байт)</div><div>Загружено: ".$file[2]."</div>".$descr."<div>Прямая ссылка: <a href='".$tmpdir.$file[0]."/".$fname."' class=but>Скачать</a></div></div></center>";
+        echo "<center style=\"background-image: url('/images/bg.png');\"><div>Ждите 3 сек</div>Файл: ".$file[5]."</div>".$author."<div>Размер: ".$file[3]."(байт)</div><div>Загружено: ".$file[2]."</div>".$descr."<div>Прямая ссылка: <a href='".$tmpdir.$file[0]."/".$fname."' class=but>Скачать</a></div></div></center>";
         echo "</body>";
         //header("Location: ".$tmpdir.$file[0]."/".$file[5]);
     }

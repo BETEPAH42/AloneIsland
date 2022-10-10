@@ -21,7 +21,7 @@ class SQL
                 include $_SERVER['DOCUMENT_ROOT'] . '/db.cfg.php';
                 $dbConnection = new PDO('mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';charset=utf8', DB_USER, DB_PASS);
             } else {
-                $dbConnection = new PDO('mysql:dbname=game;host=localhost;charset=utf8', 'root', '');
+                $dbConnection = new PDO('mysql:dbname=aloneisland;host=localhost;charset=utf8', 'LaravelUser', 'Bb359722');
             }
         }
 
@@ -45,18 +45,18 @@ class SQL
 
             return $result;
         } catch (Exception $e) {
-            if (in_array($_SERVER['SERVER_NAME'], ['hotcard.alef.dev', 'localhost'])) {
-                echo '<pre>';
+            if (in_array($_SERVER['SERVER_NAME'], ['aloneisland.test', 'localhost'])) {
+                // echo '<pre>';
 
-                echo $sql;
-                echo "\n\n\n------- \n\n\n";
-                print_r($params);
+                // echo $sql;
+                // echo "\n\n\n------- \n\n\n";
+                // print_r($params);
                 die();
             } else {
-                echo '<pre>';
-                print_r($e);
-                echo "\n\n\n------- \n\n\n";
-                echo $sql;
+                // echo '<pre>';
+                // print_r($e);
+                // echo "\n\n\n------- \n\n\n";
+                // echo $sql;
                 die("Q - Произошла ошибка в SQL-запросе. Обратитесь к Вашему менеджеру. <br /> <a href='engine/exit.php'>Выход</a>");
             }
         }
@@ -73,20 +73,20 @@ class SQL
 
             return $result;
         } catch (Exception $e) {
-            if (in_array($_SERVER['SERVER_NAME'], ['hotcard.alef.dev', 'localhost'])) {
-                echo '<pre>';
-                print_r($e);
-                echo "\n\n\n------- \n\n\n";
-                echo $sql;
-                echo "\n\n\n------- \n\n\n";
-                print_r($params);
+            if (in_array($_SERVER['SERVER_NAME'], ['aloneisland.test', 'localhost'])) {
+                // echo '<pre>';
+                // print_r($e);
+                // echo "\n\n\n------- \n\n\n";
+                // echo $sql;
+                // echo "\n\n\n------- \n\n\n";
+                // print_r($params);
                 die();
             } else {
-                echo '<pre>';
-                print_r($e);
-                echo "\n\n\n------- \n\n\n";
-                echo $sql;
-                echo "\n\n\n------- \n\n\n";
+                // echo '<pre>';
+                // print_r($e);
+                // echo "\n\n\n------- \n\n\n";
+                // echo $sql;
+                // echo "\n\n\n------- \n\n\n";
                 die("Q1 - Произошла ошибка в SQL-запросе. Обратитесь к Вашему менеджеру.<br /> <a href='engine/exit.php'>Выход</a>");
             }
         }
@@ -107,13 +107,13 @@ class SQL
             if ($ignore_exceptions) {
                 return;
             }
-            if (in_array($_SERVER['SERVER_NAME'], ['hotcard.alef.dev', 'localhost'])) {
-                echo '<pre>';
-                print_r($e);
-                echo "\n\n\n------- \n\n\n";
-                echo $sql;
-                echo "\n\n\n------- \n\n\n";
-                print_r($params);
+            if (in_array($_SERVER['SERVER_NAME'], ['aloneisland.test', 'localhost'])) {
+                // echo '<pre>';
+                // print_r($e);
+                // echo "\n\n\n------- \n\n\n";
+                // echo $sql;
+                // echo "\n\n\n------- \n\n\n";
+                // print_r($params);
                 die();
             } else {
                 die("Qi - Произошла ошибка в SQL-запросе. Обратитесь к Вашему менеджеру.<br /> <a href='engine/exit.php'>Выход</a>");

@@ -24,7 +24,7 @@ if ($cell["last_bots_change"] < (time() - 7200)) {
 		$bot_id = sql::q1("SELECT id,user,level FROM bots WHERE user='" . $user["user"] . "' and level='" . rand($cell["blvlmin"], $cell["blvlmax"]) . "'");
 		if ($bot_id) {
 			$count = rand(1, 1);
-			sql::q("INSERT INTO `bots_cell` ( `id` , `name` , `time` , `xy` , `count`,`id_skin`) VALUES ('" . $bot_id["id"] . "', '<font class=user>" . $bot_id["user"] . "</font>[<font class=lvl>" . $bot_id["level"] . "</font>]<img src=../images/info.gif onclick=\"javascript:window.open(\'binfo.php?" . $bot_id["id"] . "\',\'_blank\')\" style=\"cursor:pointer\">', '" . time() . "', '" . $cell["x"] . "_" . $cell["y"] . "'," . $count . ",0);");
+			sql::q("INSERT INTO `bots_cell` ( `id` , `name` , `time` , `xy` , `count`,`id_skin`) VALUES ('" . $bot_id["id"] . "', '<font class=user>" . $bot_id["user"] . "</font>[<font class=lvl>" . $bot_id["level"] . "</font>]<img src=images/info.gif onclick=\"javascript:window.open(\'binfo.php?" . $bot_id["id"] . "\',\'_blank\')\" style=\"cursor:pointer\">', '" . time() . "', '" . $cell["x"] . "_" . $cell["y"] . "'," . $count . ",0);");
 		}
 		sql::q("UPDATE nature SET last_bots_change=" . time() . " WHERE x='" . $cell["x"] . "' and y='" . $cell["y"] . "'");
 	}
@@ -40,7 +40,7 @@ foreach ($bots as $b) {
 	$TXT .= "<tr>";
 	if ($b["id_skin"]) $b["name"] = "<font class=user>" . $b["name"] . "</font>[<font class=lvl>" . ($pers["level"]) . "</font>]";
 	if ($b["time"] <= time()) {
-		$TXT .= "<td><center><input type=image class=login onclick=\"{if(confirm('Вы действительно хотите напасть?')) location='main.php?out_action=battle&bid=" . $b["bid"] . "'}\" src=../images/rp_logo.png></center></td>";
+		$TXT .= "<td><center><input type=image class=login onclick=\"{if(confirm('Вы действительно хотите напасть?')) location='main.php?out_action=battle&bid=" . $b["bid"] . "'}\" src=images/rp_logo.png></center></td>";
 		$TXT .= "<td class=user nowrap>" . $b["name"] . "</td>";
 		// удаляет всех ботов одного уровня
 		if (@$_GET["out_action"] == "battle" and $_GET["bid"] == $b["bid"]) {

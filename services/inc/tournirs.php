@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 ##### турниры рыбаков
 $ww12 = SQL::q1("SELECT * FROM quest WHERE `id`=6");
 ### начало турнира
@@ -20,7 +20,7 @@ if ($_GET["tournir_fish"] == "yes" and $ww12["finished"] == '0' and  time() < ($
 ?>
 
 <div class=wer>
-	<?
+	<?php
 	if ($ww12["wParam"] == '1' and $ww12["finished"] == '0') {
 
 		$maxf = "SELECT MAX(weight) AS weight, id, uidp, user FROM wp WHERE `image`='fish_new/" . $ww12['lParam'] . "' GROUP by user ORDER BY weight DESC LIMIT 10";

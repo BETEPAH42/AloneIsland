@@ -1,5 +1,5 @@
-﻿<?
-error_reporting(E_ALL);
+﻿<?php
+// error_reporting(E_ALL);
 require_once 'classes/sql.php';
 include_once 'inc/functions.php';
 include_once 'inc/connect.php';
@@ -160,7 +160,7 @@ $t = time() + intval(microtime() * 1000) / 1000 - $timer;
 
 
 if ($_COOKIE["uid"] == 1) {
-    echo "<script>function sysdown(){  jQuery(\"#sysinf\").slideDown(300); }</script>";
+    // echo "<script>function sysdown(){  jQuery(\"#sysinf\").slideDown(300); }</script>";
     echo "<a href='#dialog' name='modal' class=bga>Системная информация[" . $t . " | " . $sql_queries_timer . "]</a>";
     echo "<div id='boxes'>  
 <div id='dialog' class='window'> 

@@ -88,7 +88,7 @@ if (isset($_REQUEST["store_act"]) && !empty($_REQUEST["store_act"]) && isset($_R
 				endif;
 			?>
 				<tr>
-					<td align="center" valign="middle"><img src="../images/weapons/<? echo $b['resource_image']; ?>.gif" border="0" /></td>
+					<td align="center" valign="middle"><img src="images/weapons/<? echo $b['resource_image']; ?>.gif" border="0" /></td>
 					<td align="center" valign="middle">&laquo;<? echo $resources['resource_name']; ?>&raquo;</td>
 					<td align="center" valign="middle"><? echo $b['resource_is']; ?>/<? echo $b['resource_max']; ?></td>
 					<td align="center" valign="middle"><?= $price_total ?> LN</td>

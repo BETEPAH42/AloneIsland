@@ -15,7 +15,7 @@ function show_speech($sp, $def = 0)
 		$rs = sql::q1("SELECT * FROM residents WHERE speechid=" . $sp["id"]);
 		if ($rs["id_bot"]) {
 			$b = sql::q1("SELECT * FROM bots WHERE id=" . $rs["id_bot"]);
-			$text .= "<td><b class=user>" . $rs["name"] . "</b><b class=lvl>[" . $b["level"] . "]</b><img src=../images/info.gif onclick=\"javascript:window.open('binfo.php?" . $rs["id_bot"] . "','_blank')\" style=\"cursor:point\"></td>";
+			$text .= "<td><b class=user>" . $rs["name"] . "</b><b class=lvl>[" . $b["level"] . "]</b><img src=images/info.gif onclick=\"javascript:window.open('binfo.php?" . $rs["id_bot"] . "','_blank')\" style=\"cursor:point\"></td>";
 			$text .= "<td><img src='images/persons/" . $rs["image"] . ".gif' height=50></td>";
 		}
 	}
@@ -155,7 +155,7 @@ if ($priv["equests"]) {
 
 		sql::q("INSERT INTO `bots` (`id`,`user`,`s1`,`s2`,`s3`,`s4`,`s5`,`s6`,`mf1`,`mf2`,`mf3`,`mf4`,`mf5`,`kb`,`hp`,`ma`,`udmin`,`udmax`,`level`,`obr`,`sm4`,`pol`,`id_skin`,`droptype`,`dropvalue`,`dropfrequency`,`magic_resistance`) VALUES ('" . ($botlastid + $i - intval($p["lvl"])) . "','" . $p["user"] . "','" . $params["s1"] . "','" . $params["s2"] . "','" . $params["s3"] . "','" . $params["s4"] . "',1,1,'" . $params["mf1"] . "','" . $params["mf2"] . "','" . $params["mf3"] . "','" . $params["mf4"] . "','" . $params["mf5"] . "','" . $params["kb"] . "','" . $params["hp"] . "','9','" . ($params["udmin"] + 1) . "','" . ($params["udmax"] + 1) . "','" . $i . "','" . $obr . "','2','" . $pol . "'," . intval($p["skin_id"]) . "," . intval($p["droptype"]) . "," . intval($p["dropvalue"]) . "," . intval($p["dropfrequency"]) . "," . intval($p["magic_resistance"]) . ");");
 
-		echo "<br><font class=user>" . $p["user"] . "</font>[<font class=lvl>" . $i . "</font>]<img src=../images/info.gif onclick=\"javascript:window.open('binfo.php?" . ($botlastid + $i - intval($p["minlvl"])) . "','_blank')\" style=\"cursor:point\">";
+		echo "<br><font class=user>" . $p["user"] . "</font>[<font class=lvl>" . $i . "</font>]<img src=images/info.gif onclick=\"javascript:window.open('binfo.php?" . ($botlastid + $i - intval($p["minlvl"])) . "','_blank')\" style=\"cursor:point\">";
 
 		sql::q("INSERT INTO `residents` (`name`, `id_bot`, `image`, `location`, `x`, `y`, `kindness`, `description`, `speechid`) VALUES ('" . $p["user"] . "', " . ($botlastid + $i - intval($p["lvl"])) . ", '" . $p["image"] . "', '" . $p["location"] . "', '" . $p["x"] . "', '" . $p["y"] . "', '" . $p["kindness"] . "', '" . $p["description"] . "', 0);");
 	}

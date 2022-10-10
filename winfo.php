@@ -70,9 +70,9 @@
 				<table cellspacing='0' border='0' width='500' height='300' align='center' background='/images/weapons/bg_weap.png'>
 					<tr height=20>
 						<td rowspan=2 width=100>
-							<center><img src='images/weapons/<? echo "" . $weap['image'] . ""; ?>'></center>
+							<center><img src='images/weapons/<?php echo "" . $weap['image'] . ""; ?>'></center>
 						</td>
-						<td><b><i>Название:</b> <? echo "" . $weap['name'] . ""; ?></i></td>
+						<td><b><i>Название:</b> <?php echo "" . $weap['name'] . ""; ?></i></td>
 					</tr>
 					<tr height='75'>
 						<td valign='top'><b>Тип:</b> <i><?

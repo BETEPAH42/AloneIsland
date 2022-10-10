@@ -67,7 +67,7 @@ $newt .= '<a href=index.php?next_news='.($page+1).' class=timef> >> </a>';
 <div style="position:absolute;visibility:hidden; display:block; height:0; top:0;" id="mnews"><center style="width:80%;text-align:left;"><?= $newt; ?></center></div>
 <div style="position:absolute;visibility:hidden; display:block; height:0; top:0;" id="mlegend"><font class=timef>Мир, который не похож на наш...<br><i>Добро пожаловать!</i></font></div>
 <script>
-<? echo  "index('".$_GET['error']."',0,'".$t."');"; ?>
+<?php echo  "index('".$_GET['error']."',0,'".$t."');"; ?>
 </script>
 </body>
 </html>

@@ -325,11 +325,11 @@ function show_apps_3() {
 }
 
 function info_icon(nick) {
-	return '<img src="../images/info.gif" onclick="window.open(\'info.php?p=' + nick + '\',\'\',\'width=800,height=600,left=10,top=10,toolbar=no,scrollbars=yes,resizable=yes,status=no\');" style="cursor:pointer">';
+	return '<img src="images/info.gif" onclick="window.open(\'info.php?p=' + nick + '\',\'\',\'width=800,height=600,left=10,top=10,toolbar=no,scrollbars=yes,resizable=yes,status=no\');" style="cursor:pointer">';
 }
 
 function binfo_icon(nick) {
-	return '<img src="../images/info.gif" onclick="window.open(\'binfo.php?' + Math.abs(nick) + '\',\'\',\'width=800,height=600,left=10,top=10,toolbar=no,scrollbars=yes,resizable=yes,status=no\');" style="cursor:pointer">';
+	return '<img src="images/info.gif" onclick="window.open(\'binfo.php?' + Math.abs(nick) + '\',\'\',\'width=800,height=600,left=10,top=10,toolbar=no,scrollbars=yes,resizable=yes,status=no\');" style="cursor:pointer">';
 }
 
 function show_apps_4() {

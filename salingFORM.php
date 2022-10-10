@@ -21,7 +21,7 @@
 		echo "<center><div style='width:80%' class=weapons_box>";
 		include('inc/inc/weapon.php');
 		echo "</div></center>";
-		echo "<p class=gray>Персонаж <b class=user>" . $persto["user"] . "</b>[<font class=lvl>" . $persto["level"] . "</font>]<img src='../images/info.gif' onclick=\"javascript:window.open('info.php?p=" . $persto["user"] . "','_blank')\" style=cursor:pointer> предлогает вам сделку.<br>
+		echo "<p class=gray>Персонаж <b class=user>" . $persto["user"] . "</b>[<font class=lvl>" . $persto["level"] . "</font>]<img src='/images/info.gif' onclick=\"javascript:window.open('info.php?p=" . $persto["user"] . "','_blank')\" style=cursor:pointer> предлогает вам сделку.<br>
 Цена предложения <b>" . $sale["price"] . " LN</b><br><center>";
 		if ($pers["money"] >= $sale["price"]) echo "<input type=button class=but2 value=Принять onclick=\"top.frames['main_top'].location = 'main.php?sell=yes&hash=" . $sale["id"] . "';top.FuncyOff();\">";
 		else echo "<input type=button class=but2 value='Не хватает средств' DISABLED><font class=hp></font>";
