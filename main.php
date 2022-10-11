@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // error_reporting(E_ALL);
 require_once 'classes/sql.php';
 include_once 'inc/functions.php';
