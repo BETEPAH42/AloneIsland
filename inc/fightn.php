@@ -1,4 +1,4 @@
-﻿<?
+<?
 mod_st_start("Вывод боя", 0);
 $cans = sql::q("SELECT uid2 FROM turns_f WHERE uid1=" . $pers["uid"] . "");
 $uids = '';

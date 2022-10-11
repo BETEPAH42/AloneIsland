@@ -1,4 +1,4 @@
-﻿<script>
+<script>
 	<?
 	if (empty($_GET["gopers"]))
 		echo "var _SHOW_EXP = 1;";

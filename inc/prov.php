@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include_once '../classes/sql.php';
 function make_seed()
 {

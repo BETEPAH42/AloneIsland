@@ -1,4 +1,4 @@
-﻿<?
+<?
 $options = explode("|", $_COOKIE["options"]);
 
 if (isset($_COOKIE["filter1"]))

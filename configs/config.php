@@ -1,4 +1,4 @@
-﻿<?
+<?
 $mysqlihost = "localhost";
 $mysqliuser = "LaravelUser";
 $mysqlipass = "Bb359722";
