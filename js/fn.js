@@ -1,4 +1,4 @@
-﻿$().ready(function() {
+$().ready(function() {
 	$('.dv1').Drags({
 		handler: '.handler',
 		onMove: function(e) {

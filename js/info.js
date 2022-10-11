@@ -1,4 +1,4 @@
-﻿var d = document;
+var d = document;
 var rep_text = '';
 d.write('<META Http-Equiv=Content-Type Content="text/html; charset=windows-1251"><META Http-Equiv=Cache-Control Content=No-Cache><META Http-Equiv=Pragma Content=No-Cache><META Http-Equiv=Expires Content=0><LINK href=main.css rel=STYLESHEET type=text/css><SCRIPT src="js/jquery.js"></SCRIPT><script language=javascript src=js/_pers.js></script><script language=javascript src=js/statsup.js></script><link rel=\'shortcut icon\' href=\'images/icon.ico\'><body class=fightlong><form method=post name=del><input type=hidden value="" name=deleterep id=deleterep></form>');
 

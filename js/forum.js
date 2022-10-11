@@ -1,4 +1,4 @@
-﻿function dw(a)
+function dw(a)
 {
 	return document.write(a);
 }

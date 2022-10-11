@@ -1,4 +1,4 @@
-﻿document.write('<div style="position:absolute; left:0px; top:-500px; z-index: 2; width:300 ; height:400; visibility:visible;" id="ml" class=inv>&nbsp;</div>');
+document.write('<div style="position:absolute; left:0px; top:-500px; z-index: 2; width:300 ; height:400; visibility:visible;" id="ml" class=inv>&nbsp;</div>');
 var ml = document.getElementById('ml');
 $(ml).fadeOut(1);
 var mx, my;

@@ -1,4 +1,4 @@
-﻿d = document;
+d = document;
 s = screen;
 d.title = 'Alone Islands - Вселенная в твоих руках!';
 var user_cl = 0;

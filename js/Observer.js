@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Observer - Observe formelements for changes
  *
  * @version		1.0rc1

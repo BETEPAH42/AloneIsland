@@ -1,4 +1,4 @@
-﻿var countries = [
+var countries = [
 "Россия",
 "Китай",
 "Индия",

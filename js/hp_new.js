@@ -1,4 +1,4 @@
-﻿function showmaxhp() {
+function showmaxhp() {
     document.getElementById("hips").innerHTML = '<font onmouseout="showcurhp();">' + Math.round(maxHP) + '</font>';
 }
 function showcurhp() {

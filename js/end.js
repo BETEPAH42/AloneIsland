@@ -1,4 +1,4 @@
-﻿function DecToHex(n){return Number(n).toString(16);} function HexToDec (hex){return parseInt(hex,16);} 
+function DecToHex(n){return Number(n).toString(16);} function HexToDec (hex){return parseInt(hex,16);} 
 function plusColor(dest,plus,k)
 {
 	dest = dest.toUpperCase();

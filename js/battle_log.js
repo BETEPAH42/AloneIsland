@@ -1,4 +1,4 @@
-﻿var d=document;
+var d=document;
 var upSc = '12';
 d.write ('<SCRIPT src="js/jquery.js?'+upSc+'"></SCRIPT><LINK href=css/main.css?'+upSc+' rel=STYLESHEET type=text/css>');
 

@@ -1,4 +1,4 @@
-﻿document.write('<LINK href=css/ch_buttons.css rel=STYLESHEET type=text/css><body topmargin="0" style="word-spacing: 0; margin-left: 0; margin-right: 0" leftmargin=0 bgcolor=#333333><form action="msg.php" target="ChatRefresh" method=POST name=mess onsubmit="return top.mess();">');
+document.write('<LINK href=css/ch_buttons.css rel=STYLESHEET type=text/css><body topmargin="0" style="word-spacing: 0; margin-left: 0; margin-right: 0" leftmargin=0 bgcolor=#333333><form action="msg.php" target="ChatRefresh" method=POST name=mess onsubmit="return top.mess();">');
 function cler() {
 	document.mess.message.value = "";
 }

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * SqueezeBox - Expandable Lightbox
  * 
  * Allows to open various content as modal,

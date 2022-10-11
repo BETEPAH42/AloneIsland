@@ -1,4 +1,4 @@
-﻿var el = document.getElementById("menu");
+var el = document.getElementById("menu");
 var interv = -1;
 el.onmouseout = function () { interv = setTimeout("ch_hmenu()", 500); }
 el.onmouseover = function () { clearTimeout(interv); }

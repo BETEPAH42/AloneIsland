@@ -1,4 +1,4 @@
-﻿var attack_ident = 0;
+var attack_ident = 0;
 var zz1 = '', zz2 = '';
 var a = '';
 var fs = 0;

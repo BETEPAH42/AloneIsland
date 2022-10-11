@@ -1,4 +1,4 @@
-﻿function show_trans(input, type){
+function show_trans(input, type){
 
   var tmp = new Array();
   var trans = new Array();
