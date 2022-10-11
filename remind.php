@@ -1,4 +1,4 @@
-﻿<head>
+<head>
 	<meta http-equiv="Content-Language" content="en-us">
 	<LINK href=main.css rel=STYLESHEET type=text/css>
 	<title>Восстановление персонажа</title>

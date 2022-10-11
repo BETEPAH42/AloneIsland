@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // include_once "configs/config.php";
 require_once 'classes/sql.php';
 include_once 'inc/functions.php';

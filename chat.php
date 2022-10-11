@@ -1,4 +1,4 @@
-﻿<META Content="text/html; Charset=utf-8" Http-Equiv=Content-type>
+<META Content="text/html; Charset=utf-8" Http-Equiv=Content-type>
 <LINK href=ch_main.css rel=STYLESHEET type=text/css>
 
 <script type="text/javascript" src="js/jquery.js"></script>

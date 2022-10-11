@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (empty($pass)) exit;
 include("configs/config.php");
 $_POST['db_backup'] = $mysqlibase;

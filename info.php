@@ -1,4 +1,4 @@
-﻿<?
+<?
 error_reporting(E_ALL);
 if (@$_GET["do_w"]) {
 	include("watchers.php");
