@@ -1,4 +1,4 @@
-﻿<?
+<?
 if ($yapp["atime"] <= time() and $yapp["type"] == 1) {
 	$pers["apps_id"] = 0;
 	sql::q("DELETE FROM app_for_fight WHERE id=" . $yapp["id"] . "");

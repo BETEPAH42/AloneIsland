@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (@$_POST["comment"]) $_POST["comment"] = str_replace(":", ";", $_POST["comment"]);
 #ADD apps duel::
 if (@$_POST["travm"] and $cat == 1 and !$pers["apps_id"]) {

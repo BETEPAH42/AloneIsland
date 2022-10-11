@@ -1,4 +1,3 @@
-123456
 <?
 ####// Главная таблица
 echo "<table border=0 style='width:100%;background-image:url(\"images/bg.png\");' cellspacing=0 cellpadding=0><tr><td valign=top align=center style='width:250px;background-color:#EEEEEE;'>";
@@ -55,10 +54,10 @@ else
 $go_no_p = '|'; // -  Переменная определяющая клетки куда ходить нельзя.
 
 //////////////// Командs
-$p_t1 = sql::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,invisible FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=1 and chp>0");
-$b_t1 = sql::q("SELECT user,chp,level,hp,id,xf,yf,cma,ma FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=1 and chp>0");
-$p_t2 = sql::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,invisible FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2 and chp>0");
-$b_t2 = sql::q("SELECT user,chp,level,hp,id,xf,yf,cma,ma FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=2 and chp>0");
+$p_t1 = SQL::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,invisible FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=1 and chp>0");
+$b_t1 = SQL::q("SELECT user,chp,level,hp,id,xf,yf,cma,ma FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=1 and chp>0");
+$p_t2 = SQL::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,invisible FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2 and chp>0");
+$b_t2 = SQL::q("SELECT user,chp,level,hp,id,xf,yf,cma,ma FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=2 and chp>0");
 $LIFE1 = 0; // - Кол-во живых игроков в команде 1 включая ботов
 $LIFE2 = 0; // - Кол-во живых игроков в команде 2 влючая ботов
 $BOTS1 = 0; // Боты в 1ой команде
