@@ -1,4 +1,4 @@
-﻿<?
+<?
 include("auras.php");
 if (@$_GET["gopers"] == "obnyl" and ($pers["zeroing"] > 0 or $pers["action"] == -10)) {
     sql::q("UPDATE p_auras SET esttime=0, turn_esttime=0 WHERE `uid`='" . $pers["uid"] . "'");

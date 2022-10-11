@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $this->SET = array(
 'last_action' => '0',
 'last_db_backup' => 'game',

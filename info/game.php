@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // debag($pers);
 $INFO_TEXT = '';
 //rank_i
