@@ -1,4 +1,4 @@
-﻿<?
+<?
 echo "<script>var REF_COMP = 0;</script>";
 if ($_GET["gopers"] == 'ref_competition') {
     $dn = "19.01.2022";

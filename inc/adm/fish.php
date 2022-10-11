@@ -1,4 +1,4 @@
-﻿<script type="text/javascript" src="js/fish_edit.js"></script>
+<script type="text/javascript" src="js/fish_edit.js"></script>
 <?
 
 

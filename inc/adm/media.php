@@ -1,4 +1,4 @@
-﻿<?
+<?
 echo "<table width=10%><tr><td><a class=bga href=main.php?go=administration>Назад в меню</a></td></tr></table>";
 if (@$_POST["name"] and $_FILES["sign"]["type"] == "image/gif") {
 	$idl = sql::q1("SELECT MAX(id) as max FROM clans");

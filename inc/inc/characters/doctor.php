@@ -1,4 +1,4 @@
-﻿<?
+<?
 echo '<form method="POST" action="main.php"><div id=doctor><input type=button value="Лечить" class=submit onclick="lecher();"></div></form>';
 if (strpos(" |".$pers["aura"],"doctor_l")>0) $l = '<option value="l">Легкая</option>';
 if (strpos(" |".$pers["aura"],"doctor_s")>0) $l = '<option value="l">Легкая</option><option value="s">Средняя</option>';

@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (isset($_GET["fishing"])) {
 	$skill_p = 0;
 	if (WEATHER == 3) $skill_p = 50;

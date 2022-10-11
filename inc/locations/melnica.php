@@ -1,4 +1,4 @@
-﻿<?
+<?
 echo "<center>ПРоверка мельницы!!</center>";
 $n = 0;
 $q_skin1 = SQL::q("SELECT `id_in_w` FROM `wp` WHERE user='" . $pers['user'] . "'");

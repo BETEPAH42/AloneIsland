@@ -1,4 +1,4 @@
-﻿<?
+<?
 $lb = sql::q1("SELECT b_frequency FROM configs");
 if (empty($_GET["id"])) {
 	$bts = sql::q("SELECT id,user,level FROM bots WHERE level>" . ($pers["level"] - 2) . " and level<" . ($pers["level"] + 2) . " ORDER BY RAND() LIMIT 0,3");

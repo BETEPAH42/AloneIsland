@@ -1,4 +1,4 @@
-﻿<?
+<?
 $z = sql::q1("SELECT COUNT(*) as count FROM `users` WHERE referal_uid=" . UID . "")['count'];
 echo "Вы привели в игру <b>" . $z . "</b> персонажа.<hr>";
 if ($pers["refc"] != $z) {

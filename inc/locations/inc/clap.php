@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (substr_count($pers["rank"], "<glav>")) {
 	if (empty($_POST) and empty($_GET["buy"])) {
 		echo '<div class=weapons_box><form action=main.php?c=clap method=post>Выберите вещь: <select size="1" name="id" class="return_win"> ';

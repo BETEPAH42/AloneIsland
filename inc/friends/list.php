@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (@$_POST["friend_nick"]) {
 	$p = sql::q1("SELECT uid,user FROM users WHERE user='" . $_POST["friend_nick"] . "'");
 	if ($p) {

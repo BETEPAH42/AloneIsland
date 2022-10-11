@@ -1,4 +1,4 @@
-﻿<?
+<?
 
 $qWitch = sql::q1("SELECT * FROM quest WHERE id = " . Q_WITCH . "");
 if (!$qWitch) {

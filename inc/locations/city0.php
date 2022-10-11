@@ -1,4 +1,4 @@
-﻿<?
+<?
 echo "<br><br><br><center>В будущем здесь будет картинка <br>
 <input type=button class=loc ".build_go_string('out',$lastom_new)." value='Выйти из города'>
 <input type=button class=loc ".build_go_string('lavka',$lastom_new)." value='Войти в лавку'>
