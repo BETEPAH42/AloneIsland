@@ -447,10 +447,10 @@ function view_frames(a) {
 	dw('<table height=100% width=100%><tr><td align=center valign=center id=TIME style="color:#FFFFFF;cursor:pointer;" onclick="top.frames[\'main_top\'].location=\'main.php\'" title="Часы показывают серверное время(Россия>Москва), при нажатии обновит игровое окно.">Загрузка...</td></tr></table>');
 	dw('</div>');
 
-	dw('<div id=title style="background-image: url(\'images/DS/title_bg.jpg\'); background-positin: center top; position: absolute; width: ' + (DWidth - 36) + 'px; height: 50px; z-index: 1; left: -1000px; top: 18px"></div>');
-	dw('<div id=logo style="background-image: url(\'images/DS/logo_bg.gif\'); background-position: bottom; background-repeat:repeat-x; position: absolute; width: ' + (DWidth - 36) + 'px; height: 90px; z-index: 1; left: -1000px; top: -20px; text-align: center; cursor:pointer;" onclick="main_top_update();"><img border="0" src="images/DS/logo.png" width="924" height="92"></div>');
+	dw('<div id=title style="background-image: url(\'images/DS/title_bg.jpg\'); background-positin: center top; position: absolute; width: ' + (DWidth - 36) + 'px; height: 50px; z-index: 1; left: 58px; top: 18px"></div>');
+	dw('<div id=logo style="background-image: url(\'images/DS/logo_bg.gif\'); background-position: bottom; background-repeat:repeat-x; position: absolute; width: ' + (DWidth - 36) + 'px; height: 90px; z-index: 1; left: 58px; top: -20px; text-align: center; cursor:pointer;" onclick="main_top_update();"><img border="0" src="images/DS/logo.png" width="924" height="92"></div>');
 	dw('<div id=logo_down style="position: absolute; width: 206px; height: 29px; z-index: 1; left: -1000px; top: 72px"><img border="0" src="images/DS/logo_down.png" width="206" height="29"  onclick="main_top_update();"></div>');
-	dw('<div id=title_buttons style="position: absolute; width: ' + (DWidth - 36) + 'pxpx; height: 42px; z-index: 1; left: -1000px; top: 18px"></div>');
+	dw('<div id=title_buttons style="position: absolute; width: ' + (DWidth - 36) + 'pxpx; height: 42px; z-index: 1; left: 58px; top: 18px"></div>');
 
 	dw('<table border="0" cellspacing="0" cellpadding="0" style="width:' + DWidth + 'px; height:100%;">');
 	dw('<tr>');

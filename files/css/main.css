@@ -18,7 +18,7 @@
 a.But:hover{
 	display: block;
 	background-color: transparent;
-	background-image: url('images/a_button_bg_hover.png');
+	background-image: url('/images/a_button_bg_hover.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;

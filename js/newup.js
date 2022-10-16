@@ -129,8 +129,8 @@ function show_head(curstate, fourthname, code, apps, trvm, help) {
 		$buttons += ('</table>');
 		top.document.getElementById('title_buttons').innerHTML = $buttons;
 
-		d.write("<div style='height:3%;'></div>");
-		d.write("<div id=_top style='width:100%; height:18px; background-image:url(\"images/DS/main_topline.jpg\"); margin-top:2px;'></div>");
+		d.write("<div style='height:7%;'></div>");
+		d.write("<div id=_top style='width:100%; height:18px; background-image:url(\"/images/DS/main_topline.jpg\"); margin-top:17px;'></div>");
 
 
 		document.onscroll = function () {

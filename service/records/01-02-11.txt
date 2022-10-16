@@ -1,49 +1,49 @@
 
 	<table border="0" width="600" id="table1" cellspacing="0" cellpadding="0">
 	<tr>
-		<td width="294" class="items"><span lang="ru">Самое большое количество
-		побед</span></td>
+		<td width="294" class="items"><span lang="ru">РЎР°РјРѕРµ Р±РѕР»СЊС€РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ
+		РїРѕР±РµРґ</span></td>
 		<td align="center" class="items">6243</td>
 		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('Dark')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('Dark')"> Dark</font></td><td>[<font class=lvl>19</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=Dark','_blank')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
-		<td width="294" class="items"><span lang="ru">Самое большое количество
-		поражений</span></td>
+		<td width="294" class="items"><span lang="ru">РЎР°РјРѕРµ Р±РѕР»СЊС€РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ
+		РїРѕСЂР°Р¶РµРЅРёР№</span></td>
 		<td align="center" class="items">804</td>
 		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('Maksimok')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('Maksimok')"> Maksimok</font></td><td>[<font class=lvl>15</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=Maksimok','_blank')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
-		<td width="294" class="items"><span lang="ru">Самое большое количество
-		умений &quot;Охота&quot;</span></td>
+		<td width="294" class="items"><span lang="ru">РЎР°РјРѕРµ Р±РѕР»СЊС€РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ
+		СѓРјРµРЅРёР№ &quot;РћС…РѕС‚Р°&quot;</span></td>
 		<td align="center" class="items">5858</td>
 		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('BETEPAH')" style=cursor:hand> </td><td> <img src=images/signs/c2.gif><font class=user onclick="javascript:top.say_private('BETEPAH')"> BETEPAH</font></td><td>[<font class=lvl>16</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=BETEPAH','_blank')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
-		<td width="294" class="items"><span lang="ru">Самое большое количество
-		Игровой Валюты</span></td>
+		<td width="294" class="items"><span lang="ru">РЎР°РјРѕРµ Р±РѕР»СЊС€РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ
+		РРіСЂРѕРІРѕР№ Р’Р°Р»СЋС‚С‹</span></td>
 		<td align="center" class="items">46395.76</td>
 		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('BETEPAH')" style=cursor:hand> </td><td> <img src=images/signs/c2.gif><font class=user onclick="javascript:top.say_private('BETEPAH')"> BETEPAH</font></td><td>[<font class=lvl>16</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=BETEPAH','_blank')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
-		<td width="294" class="items"><span lang="ru">Самое большое количество
-		боёв</span></td>
+		<td width="294" class="items"><span lang="ru">РЎР°РјРѕРµ Р±РѕР»СЊС€РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ
+		Р±РѕС‘РІ</span></td>
 		<td align="center" class="items">6440</td>
 		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('Den')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('Den')"> Den</font></td><td>[<font class=lvl>18</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=Den','_blank')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
-		<td width="294" class="items"><span lang="ru">Самое большое количество
-		опыта</span></td>
+		<td width="294" class="items"><span lang="ru">РЎР°РјРѕРµ Р±РѕР»СЊС€РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ
+		РѕРїС‹С‚Р°</span></td>
 		<td align="center" class="items">22652393</td>
 		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('Dark')" style=cursor:hand> </td><td> <img src=images/signs/none.gif><font class=user onclick="javascript:top.say_private('Dark')"> Dark</font></td><td>[<font class=lvl>19</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=Dark','_blank')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
-		<td width="294" class="items"><span lang="ru">Самое большое количество
+		<td width="294" class="items"><span lang="ru">РЎР°РјРѕРµ Р±РѕР»СЊС€РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ
 		</span><font class=hp>HP</font></td>
 		<td align="center" class="items">2122</td>
 		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('BETEPAH')" style=cursor:hand> </td><td> <img src=images/signs/c2.gif><font class=user onclick="javascript:top.say_private('BETEPAH')"> BETEPAH</font></td><td>[<font class=lvl>16</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=BETEPAH','_blank')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
-		<td width="294" class="items"><span lang="ru">Самое большое количество
+		<td width="294" class="items"><span lang="ru">РЎР°РјРѕРµ Р±РѕР»СЊС€РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ
 		</span><font class=ma>MA</font></td>
 		<td align="center" class="items">1492</td>
 		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private('BETEPAH')" style=cursor:hand> </td><td> <img src=images/signs/c2.gif><font class=user onclick="javascript:top.say_private('BETEPAH')"> BETEPAH</font></td><td>[<font class=lvl>16</font>]</td><td><img src=images/info.gif onclick="javascript:window.open('info.php?p=BETEPAH','_blank')" style="cursor:hand"></font></td>

@@ -21,7 +21,7 @@ define("GAIN_COST", 50);
 ?>
 <script type="text/javascript" src="js/naturen.js?1"></script>
 <div id=mainouter>
-	<table border="0" width="100%" cellspacing="0" cellpadding="0" style="background-image: url('images/DS/main_bg.png')">
+	<table border="0" width="100%" cellspacing="0" cellpadding="0" style="background-image: url('/images/DS/main_bg.png')">
 		<tr>
 			<td align=center width=640 id=map valign=top>
 			</td>
