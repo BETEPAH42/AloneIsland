@@ -207,7 +207,7 @@ a.Button:hover{
 	border:1px solid #C0C0C0; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('images/login.gif');
+	background-image: url('/images/login.gif');
 	color: #111;
 }
 .login2 {
@@ -223,14 +223,14 @@ a.Button:hover{
 	border:1px solid #C0C0C0; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('images/login.gif');
+	background-image: url('/images/login.gif');
 	color: #888888;
 }
 .login:hover {
 	border:1px solid #AAAAAA; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('images/login.gif');
+	background-image: url('/images/login.gif');
 }
 .pass {
 	font-family: Tahoma, Verdana, sans-serif;

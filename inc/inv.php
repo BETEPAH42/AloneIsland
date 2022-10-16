@@ -1,4 +1,4 @@
-<div id=inf_from_php style='margin-top:25px;padding: 0 15px;'>
+<div id=inf_from_php style='padding: 0 15px;'>
 	<table border='0' class='lightblock' width='100%'>
 		<?
 		// $c_on_pers = SQL::q("SELECT * FROM `wp` WHERE uidp='".$pers["uid"]."' and weared=1;");

@@ -63,12 +63,10 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 	else
 		echo "let vsg=0;";
 
-
 	if (substr_count($pers["rank"], "<molch>") or $pers["diler"] == '1' or $pers["priveleged"] or 1)
 		echo "let priveleged=1;";
 	else
 		echo "let priveleged=0;";
-
 
 	if ($place == 'arena') $dQ = 'or sign=\'c2\'';
 
@@ -82,7 +80,6 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 	$i = 0;
 	$s = '';
 	$tyt = 0;
-
 
 	$r = '';
 	if ($place <> 'out')

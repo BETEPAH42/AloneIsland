@@ -36,7 +36,12 @@ function show_list(sort_type, hr) {
 	text = '<table border="0" width="100%" cellspadding=0 cellspacing="0">';
 	if (zds == 0 && vsg == 0) text = '<center class=locname>' + locname + '</center>';
 	var i;
-	for (var i = residents.length - 1; i >= 0; i--) text += resident_string(residents[i], hr);
+	console.log(residents);
+	for (var i = residents.length - 1; i >= 0; i--) 
+		{
+			if(residents[i])
+				text += resident_string(residents[i], hr);
+		}
 	if (sort_type == 4 || sort_type == 3) list.sort();
 	else sortnum(list);
 	if (sort_type == 3)

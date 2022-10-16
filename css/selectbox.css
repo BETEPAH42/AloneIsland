@@ -8,7 +8,7 @@
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	color: #000000;
 	padding: 0;
-	background-image: url('images/login.gif');
+	background-image: url('/images/login.gif');
 	font-weight: bold;
 	cursor:pointer;
 }
@@ -28,7 +28,7 @@
 }
 a.moreButton {
 	float: right;
-	background: url("images/login/sb.gif");
+	background: url("/images/login/sb.gif");
 	width: 16px;
 	height: 16px;
 	cursor: pointer;

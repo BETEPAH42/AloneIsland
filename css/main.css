@@ -59,16 +59,7 @@ BODY
 	FONT-SIZE: 12px;
 	COLOR: #222222;
 	MARGIN: 0px;
-	scrollbar-3dlight-color: #DDDDDD;
-	scrollbar-arrow-color: #C6C6C6;
-	scrollbar-base-color: #EEEEEE;
-	scrollbar-darkshadow-color: #EEEEEE;
-	scrollbar-face-color: #EEEEEE;
-	scrollbar-highlight-color: #C6C6C6;
-	scrollbar-shadow-color: #C6C6C6;
-	scrollbar-track-color: #EEEEEE;
 	font-family: Trebuchet , "Trebuchet MS" , Tahoma , Verdana , Arial;
-	SCROLLING:  none;
 	background-image: url('/images/DS/main_bg.png');
 	padding: 0px;
 	background-color: transparent;
@@ -258,7 +249,7 @@ a.gBut:hover{
 	border:1px solid #C0C0C0; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('images/login.gif');
+	background-image: url('/images/login.gif');
 	color: #111;
 }
 .login2 {
@@ -274,14 +265,14 @@ a.gBut:hover{
 	border:1px solid #C0C0C0; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('images/login.gif');
+	background-image: url('/images/login.gif');
 	color: #888888;
 }
 .login:hover {
 	border:1px solid #AAAAAA; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('images/login.gif');
+	background-image: url('/images/login.gif');
 }
 .white {
 	font-family: Tahoma;
