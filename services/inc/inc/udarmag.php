@@ -1,4 +1,4 @@
-﻿<?
+<?
 if ($zid and substr_count("19|" . $_pers["zakl"], $zid)) {
 	$zakl = sql::q1("SELECT * FROM `zakl` WHERE `id`='" . $zid . "'");
 	if ($_pers["cma"] >= $zakl["mana"]) {

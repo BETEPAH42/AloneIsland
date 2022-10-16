@@ -1,4 +1,4 @@
-﻿<?
+<?
 #Photo upload
 if (@$_FILES) {
 	if ($_FILES['photofile']['type'] == 'image/gif') {

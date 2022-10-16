@@ -6,6 +6,7 @@ if (@$_GET["do_w"]) {
 }
 require_once 'classes/sql.php';
 include_once 'inc/functions.php';
+$UNAME = '';
 
 if (isset($_GET["p"])) {
 	$UNAME = $_GET["p"];
@@ -14,10 +15,12 @@ if (isset($_GET["p"])) {
 
 if (@$_GET["id"])
 	$pers = SQL::q1("SELECT * FROM `users` WHERE `uid`=" . intval($_GET["id"]) . "");
-else
-	$pers = SQL::q1("SELECT * FROM `users` WHERE `smuser`='" . strtolower($UNAME) . "'");
-$locname = SQL::q1("SELECT * FROM `locations` WHERE `id`='" . $pers["location"] . "' ;");
+else {
 
+	$pers = SQL::q1("SELECT * FROM `users` WHERE `smuser`='" . strtolower($UNAME) . "'");
+}
+
+$locname = SQL::q1("SELECT * FROM `locations` WHERE `id`='" . $pers["location"] . "' ;");
 #### Призраки для битвы на арене:
 if ($pers["ctip"] == -1) {
 	$pers["block"] = '';
@@ -70,9 +73,9 @@ if ((substr_count($you["rank"], "<pv>") or $you["sign"] == 'c2')) {
 } else echo '<script type="text/javascript" src="js/info.js?4"></script>';
 
 if (empty($_GET["self"])) {
-	// debag($pers['user']);
+	//debag($pers['user']);
 	include('info/game.php');
 } else {
-	// debag($pers['user']);
+	//var_dump($pers);
 	include('info/self.php');
 }

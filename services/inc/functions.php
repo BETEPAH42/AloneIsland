@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include_once 'classes/sql.php';
 
 $sql_queries_counter = 0;

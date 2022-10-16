@@ -1,4 +1,4 @@
-﻿<?
+<?
 	echo "<a class=timef href=info.php?id=".$pers["uid"]."&do_w=battles&last=day>За последний день</a> | <a class=timef href=info.php?id=".$pers["uid"]."&do_w=battles&last=3day>За последние 3 дня</a> | <a class=timef href=info.php?id=".$pers["uid"]."&do_w=battles&last=week>За последнюю неделю</a> | <a class=timef href=info.php?id=".$pers["uid"]."&do_w=battles&last=all>Все</a>";
 	if (empty($_GET["last"]) or $_GET["last"]=='day') $last = " and time>".(tme()-86400);
 	if ($_GET["last"]=='3day') $last = " and time>".(tme()-3*86400);

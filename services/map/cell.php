@@ -1,4 +1,4 @@
-﻿<?
+<?
 
 $cell = sql::q1("SELECT * FROM nature WHERE x=" . $x . " and y=" . $y . "");
 // информация о ботах

@@ -1,4 +1,4 @@
-﻿<?
+<?
 $lts = date("H:i");
 
 $zakname = '';

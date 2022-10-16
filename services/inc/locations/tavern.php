@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (@$_GET["quest_get"] == 1) :
 	SQL::q("UPDATE users SET  quest1=1 where uid='" . $pers["uid"] . "'");
 	say_to_chat("s", 'Квест <b>&laquo;Потерянные Орехи Судьбы&raquo;</b> начался!', "1", $pers["user"], $pers["location"], date("H:i:s"));

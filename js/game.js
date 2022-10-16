@@ -461,7 +461,7 @@ function view_frames(a) {
 	dw('</tr>');
 	dw('<tr>');
 	dw('<td width="18" background="images/DS/left_border.gif" style="width:18px;"></td>');
-	dw(`<td valign=top align=center background="/mages/DS/main_bg.png" style="width:${DWidth - 36}px;">`);
+	dw(`<td valign=top align=center background="/images/DS/main_bg.png" style="width:${DWidth - 36}px;">`);
 	dw("<iframe src='main.php' id=main_top name=main_top class=iframe scrolling=auto noResize frameborder=0 border=0 framespacing=0 marginwidth=0 marginheight=0 style='width:100%;height:100%;background-color:transparent;' allowtransparency=\"true\">Обновите браузер.</iframe>");
 	dw('</td>');
 	dw('<td width="18" background="images/DS/right_border.gif" style="width:18px;"></td>');

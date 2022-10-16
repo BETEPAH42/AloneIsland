@@ -1,4 +1,4 @@
-﻿<?
+<?
 if ($_POST["pupil"]) {
 	$pname = $_POST["pupil"];
 	$p = sql::q1("SELECT uid,user FROM users WHERE user = '" . $pname . "' and level<5 and instructor=0");

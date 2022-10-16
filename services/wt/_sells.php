@@ -1,4 +1,4 @@
-﻿<?
+<?
 if ($_POST["C1"] . $_POST["C2"] . $_POST["C3"]) {
 	$c1 = intval($_POST["C1"]);
 	$c2 = intval($_POST["C2"]);

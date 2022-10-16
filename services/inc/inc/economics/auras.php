@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (isset($_POST["zakl"]) and isset($_POST["fornickname"])) {
 	$v = sql::q1("SELECT `id`,`index`,p_type FROM wp WHERE uidp=" . $pers["uid"] . " and weared=0 and type='zakl' and id=" . intval($_POST["zakl"]) . "");
 	$persto = sql::q1("SELECT uid,user,location FROM `users` WHERE `user` = '" . $_POST["fornickname"] . "'");

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 echo "<table width=10%><tr><td><a class=bga href=main.php?go=administration>Назад в меню</a></td></tr></table>";
 if (@$_GET["deny"]) {
 	$id = intval($_GET["deny"]);

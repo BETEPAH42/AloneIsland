@@ -1,4 +1,4 @@
-﻿<center width=100% class=but><b>Возможности министра</b>
+<center width=100% class=but><b>Возможности министра</b>
 	<?
 	/*
 $ssss=0;

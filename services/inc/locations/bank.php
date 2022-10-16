@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 def_page();
 switch ($_GET['act']) {
   case 'state':

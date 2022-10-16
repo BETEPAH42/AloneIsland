@@ -1,4 +1,4 @@
-﻿<script type="text/javascript" src="../aloneisland/js/clan.js?8"></script>
+<script type="text/javascript" src="../aloneisland/js/clan.js?8"></script>
 
 
 <div class=inv>

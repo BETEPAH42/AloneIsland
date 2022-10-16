@@ -1,5 +1,5 @@
 <?php
-// debag($pers);
+
 $INFO_TEXT = '';
 //rank_i
 $rank_i = ($pers["s1"] + $pers["s2"] + $pers["s3"] + $pers["s4"] + $pers["s5"] + $pers["s6"] + $pers["kb"]) * 0.3 + ($pers["mf1"] + $pers["mf2"] + $pers["mf3"] + $pers["mf4"]) * 0.03 + ($pers["hp"] + $pers["ma"]) * 0.04 + ($pers["udmin"] + $pers["udmax"]) * 0.3;

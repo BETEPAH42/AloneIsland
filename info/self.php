@@ -1,5 +1,5 @@
 <?
-// debag($pers);
+debag($pers);
 if ($pers["invisible"] > tme()) {
 	$_INV = 1;
 	$pers["cfight"] = 0;

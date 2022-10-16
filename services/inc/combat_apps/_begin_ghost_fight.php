@@ -1,4 +1,4 @@
-﻿<?
+<?
 
 function begin_ghost_fight($uid, $namesvs, $type, $travm, $timeout, $oruj, $loc, $battle_type = 0)
 {

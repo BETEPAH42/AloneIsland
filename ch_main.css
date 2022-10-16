@@ -1,17 +1,8 @@
 body {
-	FONT: 13px Trebuchet, "Trebuchet MS", Tahoma, Verdana, Helvetica;
-        scrollbar-3dlight-color: #DDDDDD;
-        scrollbar-arrow-color: #C6C6C6;
-        scrollbar-base-color: #EEEEEE;
-        scrollbar-darkshadow-color: #EEEEEE;
-        scrollbar-face-color: #EEEEEE;
-        scrollbar-highlight-color: #C6C6C6;
-        scrollbar-shadow-color: #C6C6C6;
-        scrollbar-track-color: #F5F5F5;
-        color: #000000;
+	font: 13px Trebuchet, "Trebuchet MS", Tahoma, Verdana, Helvetica;
+    color: #000000;
 }
-HR
-{
+hr{
 	padding: 2px;
 	margin: 2px;
 	color: #DDDDDD;

@@ -1,4 +1,4 @@
-﻿<?
+<?
 function molch($persto, $perswho, $duration, $reason)
 {
 	if ($reason == '') $reason = ' отсутствует';

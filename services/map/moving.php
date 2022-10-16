@@ -1,4 +1,4 @@
-﻿<?
+<?
 
 if (!isset($sphp)) $sphp = 5000;
 if (!isset($spma)) $spma = 5000;

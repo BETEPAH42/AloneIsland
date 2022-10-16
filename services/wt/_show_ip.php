@@ -1,4 +1,4 @@
-﻿<?
+<?
 $b = (substr_count($you["rank"], "<block>")) ? 1 : 0;
 $ips = sql::q("SELECT * FROM ips_in WHERE uid=" . $pers["uid"] . "");
 if (empty($_POST["mlt"])) {

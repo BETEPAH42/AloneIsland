@@ -1,4 +1,4 @@
-﻿<center>
+<center>
 	<div style="width:500px" class=but>
 		<div id=report align=center><a href="javascript:report();" class=bg>Написать отзыв</a></div>
 		<div id=mainpers></div>

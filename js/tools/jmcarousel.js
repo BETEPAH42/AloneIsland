@@ -1,4 +1,4 @@
-﻿/* 
+/* 
  * 
  * Copyright (c) 2007 e-nova technologies pvt. ltd. (kevin.muller@enova-tech.net || http://www.enova-tech.net)
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)

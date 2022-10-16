@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (isset($_GET["herbal"]) and $pers["waiter"] < tme()) {
 	if ($cell["last_herbal_change"] < (time() - HERBAL_CHANGE)) {
 		$w = sql::q1("SELECT COUNT(image) as count FROM `herbals_cell` WHERE x_y='" . $cell["x"] . "_" . $cell["y"] . "'");

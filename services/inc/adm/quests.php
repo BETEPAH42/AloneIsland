@@ -1,4 +1,4 @@
-﻿<?
+<?
 include_once "inc/balance.php";
 echo '<script type="text/javascript" src="js/adm_bots.js?3"></script>';
 echo '<script type="text/javascript" src="js/adm_quests.js?3"></script>';

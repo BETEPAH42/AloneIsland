@@ -1,4 +1,4 @@
-﻿<?
+<?
 // error_reporting(E_ALL);
 $TXT = '';
 if ($cell["last_bots_change"] < (time() - 7200)) {

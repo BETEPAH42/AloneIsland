@@ -1,4 +1,4 @@
-﻿<center class=timef> Приветствую вас, <b><?= $pers["user"]; ?></b>!
+<center class=timef> Приветствую вас, <b><?= $pers["user"]; ?></b>!
 	<hr> Какую подсказку вы хотели бы добавить?
 </center>
 <?

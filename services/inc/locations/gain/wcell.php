@@ -1,4 +1,4 @@
-﻿<?
+<?
 if ($_GET["wcell"] == 'start') {
 	$have_cells = sql::q1("SELECT COUNT(*) as count FROM nature WHERE belong=" . $pers["uid"] . "")['count'];
 	if ($have_cells)
