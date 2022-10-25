@@ -43,7 +43,6 @@ function show_fight_head(oruj, travm, timeout) {
 		freq[2] = 0;
 		freq[3] = 1;
 	}
-
 	var f_f = document.getElementById('fight');
 	var vs_link;
 	p = new Array();

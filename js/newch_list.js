@@ -1,5 +1,4 @@
 var lines_count = 0;
-console.log('hf,jnftn');
 document.write('<LINK href=css/chlist.css rel=STYLESHEET type=text/css><script type="text/javascript" language="javascript" src="js/jquery.js"></script><body style="background-image: url(\'images/DS/chlist_bg.jpg\');" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0"><div style=" background-image: url(\'images/DS/r.png\'); height:100%; width:100%; "><DIV id="smiles" style="visibility: hidden; top:0; position:absolute;"></DIV><center id="head" style="visibility: visible;"></center><div id="ch" style="text-align:center;width:100%;"></div><div style="position:absolute; left:0px; top:0px; z-index: 2; width:80 ; height:40; display:none;" class="menu" id="description"></div><div id=menu class="menu"></div></div><SCRIPT LANGUAGE="JavaScript" src="js/ch_msg.js"></script><script src="js/jquery.js"></script><TEXTAREA id=cpnick style="display:none;"></TEXTAREA>');
 
 function show_head() {
@@ -36,7 +35,6 @@ function show_list(sort_type, hr) {
 	text = '<table border="0" width="100%" cellspadding=0 cellspacing="0">';
 	if (zds == 0 && vsg == 0) text = '<center class=locname>' + locname + '</center>';
 	var i;
-	console.log(residents);
 	for (var i = residents.length - 1; i >= 0; i--) 
 		{
 			if(residents[i])

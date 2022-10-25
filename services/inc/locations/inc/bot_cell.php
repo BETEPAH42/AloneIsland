@@ -1,5 +1,5 @@
 <?
-// error_reporting(E_ALL);
+error_reporting(E_ALL);
 $TXT = '';
 if ($cell["last_bots_change"] < (time() - 7200)) {
 	if ($cell["blvlmax"] > rand(0, 100)) {

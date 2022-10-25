@@ -1670,7 +1670,8 @@ function dress_weapon($id_of_weapon, $checker)
 {
 	global $pers;
 	$i = 5;
-	$v = SQL::q1("SELECT * FROM `wp` WHERE `id`= " . $id_of_weapon . " and uidp=" . $pers["uid"] . " and weared=0");
+	$v = SQL::q1("SELECT * FROM `wp` WHERE `id`= " . $id_of_weapon . " and uidp=" . $pers["uid"] . " and weared = 0");
+	// file_put_contents('wear.txt', "Начинаем ".print_r($v)."",FILE_APPEND);
 	if (@$v["id"]) {
 		$z = 1;
 		if ($pers["level"] < $v["tlevel"])
@@ -1683,7 +1684,7 @@ function dress_weapon($id_of_weapon, $checker)
 				if ($z == 0)
 					break;
 			}
-
+			var_dump($z);
 		if ($z == 1) {
 			$r = all_params();
 			foreach ($r as $a)
@@ -1695,6 +1696,7 @@ function dress_weapon($id_of_weapon, $checker)
 			if ($v["type"] == 'orujie') {
 
 				$tmp = SQL::q1("SELECT COUNT(id) as count FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie';");
+				var_dump($tmp);
 				if ($tmp['count'] >= 2) {
 					if ($v["stype"] == 'noji' or $v["stype"] == 'shit') {
 						$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie' and (stype='noji' or stype='shit')");
@@ -1720,7 +1722,7 @@ function dress_weapon($id_of_weapon, $checker)
 			} elseif ($v["type"] == 'kam') {
 				$tmp = SQL::q1("SELECT COUNT(id) as count FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kam'");
 				if ($tmp['count'] == 4) {
-					$w_for_remove = sql::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kam'");
+					$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kam'");
 					if (@$w_for_remove["id"])
 						remove_weapon($w_for_remove["id"], $w_for_remove);
 				}
@@ -1731,7 +1733,7 @@ function dress_weapon($id_of_weapon, $checker)
 			}
 			SQL::q("UPDATE wp SET weared=1 WHERE id=" . $v["id"] . "");
 			if ($aq = aq($pers))
-				SQL::q("UPDATE `users` SET " . $aq . " WHERE `uid` = " . $pers["uid"] . " ;");
+				SQL::q("UPDATE users SET " . $aq . " WHERE uid = " . $pers["uid"] . " ;");
 		}
 	}
 }

@@ -1,6 +1,6 @@
 var d = document;
 var rep_text = '';
-d.write('<META Http-Equiv=Content-Type Content="text/html; charset=windows-1251"><META Http-Equiv=Cache-Control Content=No-Cache><META Http-Equiv=Pragma Content=No-Cache><META Http-Equiv=Expires Content=0><LINK href=main.css rel=STYLESHEET type=text/css><SCRIPT src="js/jquery.js"></SCRIPT><script language=javascript src=js/_pers.js></script><script language=javascript src=js/statsup.js></script><link rel=\'shortcut icon\' href=\'images/icon.ico\'><body class=fightlong><form method=post name=del><input type=hidden value="" name=deleterep id=deleterep></form>');
+d.write('<META Http-Equiv=Content-Type Content="text/html; charset=utf-8"><META Http-Equiv=Cache-Control Content=No-Cache><META Http-Equiv=Pragma Content=No-Cache><META Http-Equiv=Expires Content=0><LINK href=main.css rel=STYLESHEET type=text/css><SCRIPT src="js/jquery.js"></SCRIPT><script language=javascript src=js/_pers.js></script><script language=javascript src=js/statsup.js></script><link rel=\'shortcut icon\' href=\'images/icon.ico\'><body class=fightlong><form method=post name=del><input type=hidden value="" name=deleterep id=deleterep></form>');
 
 function sbox2(t, c) {
 	return sbox2b(c) + t + sbox2e();
@@ -8,7 +8,7 @@ function sbox2(t, c) {
 
 function sbox2b(c) {
 	if (c) c = 'text-align:center;';
-	return '<table style="width: 100%" cellspacing="0" cellpadding="0"> <tr> <td style="width: 18px; height: 18px"> <img src="images/left_top.png" width="18" height="18"></td><td style="height: 18px;background-image: url(\'images/top.png\');"></td><td style="width: 18px; height: 18px"><img src="images/right_top.png" width="18" height="18"></td></tr><tr><td style="width: 18px;background-image: url(\'images/left.png\');"></td> <td style="background-image: url(\'images/bg.png\');' + c + '">';
+	return '<table style="width: 100%" cellspacing="0" cellpadding="0"> <tr> <td style="width: 18px; height: 18px"> <img src="images/left_top.png" width="18" height="18"></td><td style="height: 18px;background-image: url(\'/images/top.png\');"></td><td style="width: 18px; height: 18px"><img src="images/right_top.png" width="18" height="18"></td></tr><tr><td style="width: 18px;background-image: url(\'images/left.png\');"></td> <td style="background-image: url(\'images/bg.png\');' + c + '">';
 }
 
 function sbox2e() {

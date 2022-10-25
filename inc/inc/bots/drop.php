@@ -1,5 +1,4 @@
-<?
-
+<?php
 if (!$_persvs["id"]) $_persvs  =  $persvs;
 
 if ($_persvs["bid"] > 0 and mtrunc($_persvs["level"] - $_pers["level"] + 8) and $fight["travm"] > 0) {

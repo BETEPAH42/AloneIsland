@@ -1,4 +1,4 @@
-<META Content="text/html; Charset=windows-1251" Http-Equiv=Content-type>
+<META Content="text/html; Charset=utf-8" Http-Equiv=Content-type>
 <META Http-Equiv=Cache-Control Content=No-Cache>
 <META Http-Equiv=Pragma Content=No-Cache>
 <META Http-Equiv=Expires Content=0>

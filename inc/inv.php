@@ -409,8 +409,12 @@
 							$koef_cur = 1;
 						$counter++;
 						$buttons = '';
-
-						if ($z == 1 and $napad == '' and ($v["type"] == 'shlem' or $v["type"] == 'orujie' or $v["type"] == 'kolco' or $v["type"] == 'bronya' or $v["type"] == 'naruchi' or $v["type"] == 'perchatki' or $v["type"] == 'ojerelie' or $v["type"] == 'sapogi' or $v["type"] == 'poyas' or $v["type"] == 'kam') and ($pers["sign"] == $v["tsign"] or $v["tsign"] == 'none')) $buttons .= "<td><img title='Надеть' src=images/icons/upload.png onclick=\"location='main.php?wear=" . $vesh["id"] . "'\" style='cursor:pointer'></td>";
+						if ($z == 1 and $napad == 0 and ($v["type"] == 'shlem' or $v["type"] == 'orujie' 
+							or $v["type"] == 'kolco' or $v["type"] == 'bronya' or $v["type"] == 'naruchi' 
+							or $v["type"] == 'perchatki' or $v["type"] == 'ojerelie' 
+							or $v["type"] == 'sapogi' or $v["type"] == 'poyas' or $v["type"] == 'kam') 
+							and ($pers["sign"] == $v["tsign"] or $v["tsign"] == 'none')) 
+								$buttons .= "<td><img title='Надеть' src=images/icons/upload.png onclick=\"location='main.php?wear=" . $vesh["id"] . "'\" style='cursor:pointer'></td>";
 
 						if ($v["arrows_max"] <> $v["arrows"]) $buttons .= "<td><input type=button class=inv_but value='Зарядить[" . ($v["arrows_max"] - $v["arrows"]) . " > " . (($v["arrows_max"] - $v["arrows"]) * $v["arrow_price"]) . " LN]' onclick=\"location='main.php?zzz=" . $vesh["id"] . "'\"></td>";
 

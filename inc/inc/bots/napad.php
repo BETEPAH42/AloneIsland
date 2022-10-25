@@ -1,4 +1,4 @@
-<?
+<?php
 $lb = SQL::q1("SELECT b_frequency FROM configs");
 if (($pers["lb_attack"] + 2 * $lb["b_frequency"]) < tme() and $pers["cfight"] == 0 and $pers["apps_id"] == 0 and $pers["curstate"] < 5) {
 	$cell = SQL::q1("SELECT bot,blvlmin,blvlmax,type FROM `nature` WHERE `x`='" . $pers["x"] . "' and `y`='" . $pers["y"] . "'");

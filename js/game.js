@@ -349,7 +349,7 @@ function add_msg(msg, ttt, add) {
 }
 
 function helpwin(page) {
-	url = 'http://localhost/AloneIsland/help/' + page;
+	url = 'help/' + page;
 	viewwin = open(url, "helpWindow", "width=420, height=400, status=no, toolbar=no, menubar=no, resizable=no, scrollbars=yes");
 }
 
@@ -375,7 +375,6 @@ function show_smiles() {
 	ch2.style.visibility = 'hidden';
 	Smiles_OPENED = true;;
 }
-
 
 function hide_smiles() {
 	var sm = top.frames['ch_list'].document.getElementById('smiles');

@@ -3,8 +3,8 @@ var HELP = 0;
 var upSc = '112';
 var resize_f = 0;
 
-d.write('<SCRIPT src="js/jquery.js?' + upSc + '"></SCRIPT>');
-d.write('<script type="text/javascript" src="js/yourpers.js?1' + upSc + '"></script><LINK href=css/main.css?' + upSc + ' rel=STYLESHEET type=text/css><LINK href=css/selectbox.css?' + upSc + ' rel=STYLESHEET type=text/css><script language=javascript src=js/pers.js?' + upSc + '></script><script language=javascript src=js/statsup.js?' + upSc + '></script><SCRIPT language=javascript src="js/sell.js?' + upSc + '"></SCRIPT><SCRIPT  language=javascript SRC="js/w.js?' + upSc + '"></SCRIPT><SCRIPT src="js/fightn.js?' + upSc + '"></SCRIPT><SCRIPT src="js/tools/scrollto.js"></SCRIPT>');
+d.write('<script src="js/jquery.js?' + upSc + '"></script>');
+d.write('<script type="text/javascript" src="js/yourpers.js?1' + upSc + '"></script><LINK href=css/main.css?' + upSc + ' rel=STYLESHEET type=text/css><LINK href=css/selectbox.css?' + upSc + ' rel=STYLESHEET type=text/css><script language=javascript src=js/pers.js?' + upSc + '></script><script language=javascript src=js/statsup.js?' + upSc + '></script><script language=javascript src="js/sell.js?' + upSc + '"></script><script  language=javascript SRC="js/w.js?' + upSc + '"></script><script src="js/fightn.js"></script><script src="js/tools/scrollto.js"></script>');
 
 
 function BodyScroll() {

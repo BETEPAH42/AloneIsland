@@ -1,4 +1,5 @@
 <?
+error_reporting(E_ALL);
 #### Считаем ОД на удар
 $_W = Weared_Weapons($pers["uid"]);
 $OD_UDAR = $_W["OD"];
@@ -64,7 +65,7 @@ if (@$_POST["attack"] and @$_POST["defence"]) {
 
 if ($persvs["uid"])
 	$can = sql::q1("SELECT * FROM turns_f WHERE uid2=" . $pers["uid"] . " and uid1=" . $persvs["uid"] . "");
-// ^ Если противник человек , то загружаем его действия в данный ход против нас. $go - показывает, можно ходить (1) или нельзя если противник не сходил против нас(0).
+// Если противник человек , то загружаем его действия в данный ход против нас. $go - показывает, можно ходить (1) или нельзя если противник не сходил против нас(0).
 unset($go);
 if (!$persvs["uid"] or $can["idf"]) $go = 1;
 else $go = 0;
@@ -249,13 +250,13 @@ if ($action) # Основной блок действий
 
 
 // Действие выполнено с человеком:
-if ($can["idf"] and $action) sql::q("DELETE FROM turns_f WHERE uid1=" . $can["uid1"] . " and uid2=" . $can["uid2"] . "");
-if ($action and $can["idf"]) sql::q("UPDATE users SET bg=0,bn=0,bj=0 WHERE uid=" . intval($pers["uid"]) . " or uid=" . intval($persvs["uid"]) . "");
+if ($can["idf"] and $action) SQL::q("DELETE FROM turns_f WHERE uid1=" . $can["uid1"] . " and uid2=" . $can["uid2"] . "");
+if ($action and $can["idf"]) SQL::q("UPDATE users SET bg=0,bn=0,bj=0 WHERE uid=" . intval($pers["uid"]) . " or uid=" . intval($persvs["uid"]) . "");
 //Итоговые преобразования:
 if ($action) {
-	sql::q("UPDATE `users` SET  f_turn='" . (++$pers["f_turn"]) . "'   WHERE `uid`='" . $pers["uid"] . "';");
+	SQL::q("UPDATE `users` SET  f_turn='" . (++$pers["f_turn"]) . "'   WHERE `uid`='" . $pers["uid"] . "';");
 	$fight["ltime"] = time();
-	sql::q("UPDATE `fights` SET ltime=" . $fight["ltime"] . " WHERE `id`=" . $pers["cfight"] . "");
+	SQL::q("UPDATE `fights` SET ltime=" . $fight["ltime"] . " WHERE `id`=" . $pers["cfight"] . "");
 	if ($persvs["uid"])
 		SQL::q("UPDATE `users` SET `refr`=1 WHERE `uid`='" . $persvs["uid"] . "';");
 }

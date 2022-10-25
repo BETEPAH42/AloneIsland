@@ -1,4 +1,4 @@
-<?
+<?php
 $perstemp = $pers;
 $pers = $persvs;
 $persvs = $perstemp;
@@ -16,7 +16,7 @@ if ($r > 1) // Если мы стоим далеко - стоит подойти
 		if ($shagi > $r) $shagi = $r; // - не даём лишака в шагах
 		$x = $pers["xf"];
 		$y = $pers["yf"];
-		$chk = sql::q("SELECT uid,xf,yf FROM users WHERE cfight=" . $pers["cfight"] . " and (xf>=" . ($x - 1) . " and xf<=" . ($x + 1) . ") and (yf>=" . ($y - 1) . " and yf<=" . ($y + 1) . ") and chp>0");
+		$chk = SQL::q("SELECT uid,xf,yf FROM users WHERE cfight=" . $pers["cfight"] . " and (xf>=" . ($x - 1) . " and xf<=" . ($x + 1) . ") and (yf>=" . ($y - 1) . " and yf<=" . ($y + 1) . ") and chp>0");
 		foreach ($chk as $c)
 			if ($c[0])
 				$bplace["xy"] .= $c[1] . '_' . $c[2] . '|';
@@ -81,10 +81,7 @@ else {
 	$text .= newbot_udar("un", $botU);
 	$text .= '%';
 }
-
-
 $perstemp = $pers;
 $pers = $persvs;
 $persvs = $perstemp;
-
 $bplace = $bplaceT;

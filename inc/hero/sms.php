@@ -44,7 +44,7 @@ Form;
 	$order_id     = $pers["uid"];           // operation id       идентификатор операции
 	$amount       = 1;            // transaction sum    сумма транзакции
 	$clear_amount = 1;              // billing algorithm  алгоритм подсчета стоимости
-	$description  = iconv("windows-1251" ,"utf8", "Пополнение счёта для ".$pers["user"]); // operation desc     описание операции
+	$description  = iconv("utf-8" ,"utf8", "Пополнение счёта для ".$pers["user"]); // operation desc     описание операции
 	$submit       = "Пополнить [на 1.5 Бр.]";    // submit label       надпись на кнопке submit
 	
 	// printing the form

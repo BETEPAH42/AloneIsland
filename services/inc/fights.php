@@ -17,7 +17,7 @@
 				if ($pers["chp"] < $pers["hp"] / 2 and $pers["cfight"] = 10) echo "Вы слишком слабы для поединков.";
 				if ($_SESSION["a_type"] == "") $_SESSION["a_type"] = "duel";
 				if (@$_GET["goarena"]) $_SESSION["a_type"] = $_GET["goarena"];
-				if (($wears = sql::q1("SELECT id FROM wp WHERE weared=1 and uidp='" . $pers["uid"] . "'")) and $wears['id'] <> 0)
+				if (($wears = SQL::q1("SELECT id FROM wp WHERE weared=1 and uidp='" . $pers["uid"] . "'")) and $wears['id'] <> 0)
 					$pers["wears"] = '123';
 				else
 					$pers["wears"] = '';
@@ -31,7 +31,7 @@
 					if (str_replace("none|", "", $pers["wears"]) <> "") $_POST["oruj"] = 1;
 					if ($_POST["oruj"] <> 1 and $_POST["oruj"] <> 0) $_POST["oruj"] = 1;
 					if ($_POST["timeout"] <> 120 and $_POST["timeout"] <> 180 and $_POST["timeout"] <> 300) $_POST["timeout"] = 120;
-					if (sql::q("INSERT INTO `zayavki` ( `name` , `travm` , `oruj` , `type` ,`timeout`,`time`) VALUES ('" . $pers["user"] . "','" . $_POST["travm"] . "','" . $_POST["oruj"] . "','duel','" . $_POST["timeout"] . "','" . time() . "'); ") and sql::q("UPDATE `users` SET cfight=1 WHERE uid='" . $pers["uid"] . "';")) {
+					if (SQL::q("INSERT INTO `zayavki` ( `name` , `travm` , `oruj` , `type` ,`timeout`,`time`) VALUES ('" . $pers["user"] . "','" . $_POST["travm"] . "','" . $_POST["oruj"] . "','duel','" . $_POST["timeout"] . "','" . time() . "'); ") and SQL::q("UPDATE `users` SET cfight=1 WHERE uid='" . $pers["uid"] . "';")) {
 						echo "Заявка удачно подана";
 						$pers["cfight"] = 1;
 					} else
@@ -58,7 +58,7 @@
 					if ($_POST["t2_k"] < 1) $_POST["t2_k"] = 1;
 					if ($_POST["t1_l2"] < $pers["level"]) $_POST["t1_l2"] = $pers["level"];
 					if ($_POST["t1_l1"] > $pers["level"]) $_POST["t1_l1"] = $pers["level"];
-					if (sql::q("INSERT INTO `zayavki` (`name`,`travm`,`oruj`,`type`,`timeout`,`time`,`mpl1`,`minlvl1`,`maxlvl1`,`mpl2`,`minlvl2`,`maxlvl2`,`wait`) VALUES ('" . $pers["user"] . "|','" . $_POST["travm"] . "','" . $_POST["oruj"] . "','group','" . $_POST["timeout"] . "','" . (time() + microtime()) . "','" . $_POST["t1_k"] . "','" . $_POST["t1_l1"] . "','" . $_POST["t1_l2"] . "','" . $_POST["t2_k"] . "','" . $_POST["t2_l1"] . "','" . $_POST["t2_l2"] . "','" . $_POST["wait"] . "');") and sql::q("UPDATE `users` SET cfight=3 WHERE uid='" . $pers["uid"] . "';")) {
+					if (SQL::q("INSERT INTO `zayavki` (`name`,`travm`,`oruj`,`type`,`timeout`,`time`,`mpl1`,`minlvl1`,`maxlvl1`,`mpl2`,`minlvl2`,`maxlvl2`,`wait`) VALUES ('" . $pers["user"] . "|','" . $_POST["travm"] . "','" . $_POST["oruj"] . "','group','" . $_POST["timeout"] . "','" . (time() + microtime()) . "','" . $_POST["t1_k"] . "','" . $_POST["t1_l1"] . "','" . $_POST["t1_l2"] . "','" . $_POST["t2_k"] . "','" . $_POST["t2_l1"] . "','" . $_POST["t2_l2"] . "','" . $_POST["wait"] . "');") and SQL::q("UPDATE `users` SET cfight=3 WHERE uid='" . $pers["uid"] . "';")) {
 						echo "Заявка удачно подана";
 						$pers["cfight"] = 3;
 					} else
@@ -66,14 +66,14 @@
 				}
 
 				if (@$_GET["z"] == "otkaza" and $pers["cfight"] == 2) {
-					if (sql::q("UPDATE zayavki SET `vsname`='' WHERE `vsname`='" . $pers["user"] . "'"))
-						sql::q("UPDATE `users` SET cfight=0 WHERE uid='" . $pers["uid"] . "';");
+					if (SQL::q("UPDATE zayavki SET `vsname`='' WHERE `vsname`='" . $pers["user"] . "'"))
+						SQL::q("UPDATE `users` SET cfight=0 WHERE uid='" . $pers["uid"] . "';");
 					$pers["cfight"] = 0;
 				}
 
 				if (@$_GET["z"] == "otkaz" and $pers["cfight"] == 1) {
-					$z = sql::q1("SELECT vsname FROM zayavki WHERE `name`='" . $pers["user"] . "'");
-					if (sql::q("UPDATE zayavki SET `vsname`='' WHERE `name`='" . $pers["user"] . "'"))
+					$z = SQL::q1("SELECT vsname FROM zayavki WHERE `name`='" . $pers["user"] . "'");
+					if (SQL::q("UPDATE zayavki SET `vsname`='' WHERE `name`='" . $pers["user"] . "'"))
 						sql::q("UPDATE `users` SET cfight=0 WHERE user='" . $z["vsname"] . "';");
 				}
 

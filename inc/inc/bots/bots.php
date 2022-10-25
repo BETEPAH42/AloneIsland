@@ -1,4 +1,4 @@
-<?
+<?php
 $bot = sql::q1("SELECT * FROM `bots` WHERE `id`='" . $p[1] . "'");
 $bot["chp"] = $p[2];
 $bot["cma"] = $p[3];
@@ -61,11 +61,11 @@ while ($persvs["chp"] == 0 and $ran <= ($c + 1)) {
 $PVS_NICK = $persvs["user"];
 
 if (strpos(" " . $temppvs, 'bot=') == 0)
-	$persvs = sql::q1('SELECT * FROM `users` WHERE `user`="' . $temppvs . '"');
+	$persvs = SQL::q1('SELECT * FROM `users` WHERE `user`="' . $temppvs . '"');
 if (strpos(" " . $temppvs, 'bot=') > 0) {
 	$botlib = $temppvs;
 	$temp = explode('=', $temppvs);
-	$persvs = sql::q1('SELECT * FROM `bots` WHERE `id`=' . $temp[1] . '');
+	$persvs = SQL::q1('SELECT * FROM `bots` WHERE `id`=' . $temp[1] . '');
 	$persvs['cfight'] = $cfight;
 	$persvs["posfight"] = $temp[4];
 	$persvs["chp"] = $temp[2];

@@ -1,11 +1,20 @@
-<?
+<?php
+error_reporting(E_ALL);
 ####// Главная таблица
-echo "<table border=0 style='width:100%;background-image:url(\"images/bg.png\");' cellspacing=0 cellpadding=0><tr><td valign=top align=center style='width:250px;background-color:#EEEEEE;'>";
+echo "<table border=0 style='width:100%;background-image:url(\"images/bg.png\");' cellspacing=0 cellpadding=0>
+<tr><td valign=top align=center style='width:250px;background-color:#EEEEEE;'>";
 ####//
 echo show_pers_in_f($pers, 3);
 ####//
-echo "</td><td id=fight valign=top style='background-color:#EEEEEE;'></td><td valign=top align=right style='width:250px;background-color:#EEEEEE;'>";
+echo "</td><td id=fight valign=top style='background-color:#EEEEEE;'>".$pers['cfight']."</td>
+<td valign=top align=right style='width:250px;background-color:#EEEEEE;'>";
+
 ####//
+function endBattle($id) {
+	global $pers;
+	SQL::q1("UPDATE fights SET type='f', turn='finish' WHERE id=".$id);
+	SQL::q1("UPDATE users SET cfight=0 WHERE id=".$pers['id']);
+}
 if ($pers["chp"] > 0 and $persvs["chp"] > 0)
 	echo show_pers_in_f($persvs, 1);
 else
@@ -16,7 +25,7 @@ echo "</td></tr></table>";
 
 #######################################################################################
 ### - JS\ON - ##
-echo "<SCRIPT>";
+echo "<script>";echo "console.log(document.getElementById('fight'));\n";
 if ($options[7] <> "no") echo "top.flog_set();";
 ############
 #/#/# Parameters:::
@@ -31,7 +40,8 @@ echo "\n var _closed = " . intval($fight["closed"]) . ";\n";
 echo "var whatteam=" . $pers["fteam"] . ";\n";
 echo "var level=" . $pers["level"] . ";\n";
 echo "var logid = '" . $pers["cfight"] . "';\n";
-echo "var arrow_name='" . ARROW_NAME . "';\n";
+//echo "var arrow_name='" . ARROW_NAME . "';\n";
+echo "var arrow_name='test';\n";
 echo "var x=" . intval($pers["xf"]) . ";var y=" . intval($pers["yf"]) . ";\n";
 echo "var mid='" . intval($fight["bplace"]) . "';\n";
 echo "var maxx=" . intval($fight["maxx"]) . ";\n";
@@ -61,7 +71,7 @@ $b_t2 = SQL::q("SELECT user,chp,level,hp,id,xf,yf,cma,ma FROM bots_battle WHERE 
 $LIFE1 = 0; // - Кол-во живых игроков в команде 1 включая ботов
 $LIFE2 = 0; // - Кол-во живых игроков в команде 2 влючая ботов
 $BOTS1 = 0; // Боты в 1ой команде
-$BOTS2 = 0; // боты во 2о1 команде
+$BOTS2 = 0; // боты во 2ой команде
 $_CAN_TURN = 0; // - Можно ли сходить
 #################################################################
 $cans = sql::q("SELECT uid2 FROM turns_f WHERE uid1=" . $pers["uid"] . "");
