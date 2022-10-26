@@ -36,7 +36,7 @@ class SQL
 
     public static function q($sql, $params = [])
     {
-        file_put_contents("sql.txt", "Q:". $sql,FILE_APPEND);
+        // file_put_contents("sql.txt", "Q:". $sql."\n",FILE_APPEND);
         $dbConnection = self::init();
 
         try {
@@ -65,7 +65,7 @@ class SQL
 
     public static function q1($sql, $params = [])
     {
-        file_put_contents("sql.txt",  "Q1:".$sql,FILE_APPEND);
+        // file_put_contents("sql.txt",  "Q1:".$sql."\n",FILE_APPEND);
         $dbConnection = self::init();
 
         try {

@@ -1684,7 +1684,7 @@ function dress_weapon($id_of_weapon, $checker)
 				if ($z == 0)
 					break;
 			}
-			var_dump($z);
+			// var_dump($z);
 		if ($z == 1) {
 			$r = all_params();
 			foreach ($r as $a)
@@ -1700,36 +1700,47 @@ function dress_weapon($id_of_weapon, $checker)
 				if ($tmp['count'] >= 2) {
 					if ($v["stype"] == 'noji' or $v["stype"] == 'shit') {
 						$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie' and (stype='noji' or stype='shit')");
-						if (@$w_for_remove["id"])
-							remove_weapon($w_for_remove["id"], $w_for_remove);
+						if (@$w_for_remove["id"]) {
+							// file_put_contents("weaponts.txt","oruj function tmp[count]>=2\n",FILE_APPEND);
+							remove_weapon($w_for_remove["id"], $w_for_remove);}
 					} else {
 						$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie' and stype<>'noji' and stype<>'shit'");
-						if (@$w_for_remove["id"])
-							remove_weapon($w_for_remove["id"], $w_for_remove);
+						if (@$w_for_remove["id"]) 
+							{
+								// file_put_contents("weaponts.txt","oruj function else 1\n",FILE_APPEND);
+							remove_weapon($w_for_remove["id"], $w_for_remove);}
 					}
 				} elseif ($tmp == 1) {
 					$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie'");
 					if ($v["stype"] <> 'noji' and $v["stype"] <> 'shit' and $w_for_remove["stype"] <> 'noji' and $w_for_remove["stype"] <> 'shit')
-						remove_weapon($w_for_remove["id"], $w_for_remove);
+						{
+							// file_put_contents("weaponts.txt","oruj function tmp==1\n",FILE_APPEND);	
+						remove_weapon($w_for_remove["id"], $w_for_remove);}
 				}
 			} elseif ($v["type"] == 'kolco') {
 				$tmp = SQL::q1("SELECT COUNT(id) as count FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kolco'");
 				if ($tmp['count'] >= 2) {
 					$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kolco'");
 					if (@$w_for_remove["id"])
-						remove_weapon($w_for_remove["id"], $w_for_remove);
+					{
+						// file_put_contents("weaponts.txt","kolco function tmp[count]>=2\n",FILE_APPEND);
+						remove_weapon($w_for_remove["id"], $w_for_remove);}
 				}
 			} elseif ($v["type"] == 'kam') {
 				$tmp = SQL::q1("SELECT COUNT(id) as count FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kam'");
 				if ($tmp['count'] == 4) {
 					$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kam'");
 					if (@$w_for_remove["id"])
-						remove_weapon($w_for_remove["id"], $w_for_remove);
+					{
+						// file_put_contents("weaponts.txt","kam function tmp[count]==4\n",FILE_APPEND);
+						remove_weapon($w_for_remove["id"], $w_for_remove);}
 				}
 			} else {
 				$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='" . $v["type"] . "'");
 				if (@$w_for_remove["id"])
-					remove_weapon($w_for_remove["id"], $w_for_remove);
+				{
+					// file_put_contents("weaponts.txt","last function \n",FILE_APPEND);
+					remove_weapon($w_for_remove["id"], $w_for_remove);}
 			}
 			SQL::q("UPDATE wp SET weared=1 WHERE id=" . $v["id"] . "");
 			if ($aq = aq($pers))
