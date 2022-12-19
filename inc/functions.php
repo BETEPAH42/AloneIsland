@@ -2010,23 +2010,26 @@ function Weared_Weapons($uid = 0)
 		global $pers;
 		$uid = $pers["uid"];
 	}
-	$array = "SELECT stype,udmin,udmax,kb FROM wp WHERE uidp=" . intval($uid) . " and weared=1 and type='orujie';";
-	$_W["noji"] = 0;
-	$_W["mech"] = 0;
-	$_W["topo"] = 0;
-	$_W["drob"] = 0;
-	$_W["shit"] = 0;
-	foreach (SQL::q($array) as $a) {
-		$_W[$a["stype"]] += 1;
-		$_W[$a["stype"]]["udmin"] = $a["udmin"];
-		$_W[$a["stype"]]["udmax"] = $a["udmax"];
-		$_W[$a["stype"]]["kb"] = $a["kb"];
+	$array = "SELECT stype,udmin,udmax,kb FROM wp WHERE uidp = ? and weared=1 and type='orujie';";
+	$or = ["noji","mech","topo","drob","shit"];
+	$_W["noji"]['od'] = 0;
+	$_W["mech"]['od'] = 0;
+	$_W["topo"]['od'] = 0;
+	$_W["drob"]['od'] = 0;
+	$_W["shit"]['od'] = 0;
+	$arr = SQL::q($array,[intval($uid)]);
+	foreach ($arr as $a) {
+		if (!in_array($a["stype"],$or))
+			continue;
+
+		$_W [$a["stype"]] = [
+			'od' => $_W[$a["stype"]]['od']+1,
+			"udmin" => $a["udmin"],
+			"udmax" => $a["udmax"],
+			"kb" => $a["kb"]
+			];
 	}
-	$_W["OD"] = $_W["noji"] * 1 +
-		$_W["mech"] * 2 +
-		$_W["topo"] * 3 +
-		$_W["drob"] * 4 +
-		$_W["shit"] * 1;
+	$_W["OD"] = (int)$_W["noji"]['od'] * 1 + $_W["mech"]['od'] * 2 + (int)$_W["topo"]['od'] * 3 + (int)$_W["drob"]['od'] * 4 + (int)$_W["shit"]['od'] * 1;
 	return $_W;
 }
 

@@ -29,7 +29,7 @@ if ($_GET["fstate"] == 4 and $pers["fstate"] <> 4 and $pers["fstate"] = 4)
 	else echo "var whatteam=2;";
 	if ($fight["bplace"]) $bplace = sql::q1("SELECT * FROM battle_places WHERE id=" . $fight["bplace"]);
 	if ($_GET["no"])
-		sql::q("UPDATE battle_places SET xy='" . $bplace["xy"] . $pers["xf"] . "_" . $pers["yf"] . "|' WHERE id=" . $bplace["id"] . "");
+		SQL::q("UPDATE battle_places SET xy='" . $bplace["xy"] . $pers["xf"] . "_" . $pers["yf"] . "|' WHERE id=" . $bplace["id"] . "");
 
 	echo "var logid = '" . $pers["cfight"] . "';\nvar arrow_name='" . ARROW_NAME . "';\n";
 	echo "var x=" . $pers["xf"] . ";var y=" . $pers["yf"] . ";\nvar mid='" . $fight["bplace"] . "';\n";
@@ -157,7 +157,7 @@ if ($_GET["fstate"] == 4 and $pers["fstate"] <> 4 and $pers["fstate"] = 4)
 		}
 
 		if ($_GET["boytime"] == 'nicya') {
-			sql::q("UPDATE `fights` SET `turn`='nicya'  WHERE `id`='" . $pers["cfight"] . "'");
+			SQL::q("UPDATE `fights` SET `turn`='nicya'  WHERE `id`='" . $pers["cfight"] . "'");
 			$fight["turn"] = 'nicya';
 		}
 	}

@@ -17,31 +17,31 @@ if ($_GET["tournir_fish"] == "yes" and $ww12["finished"] == '0' and  time() < ($
 	//$_GET["tournir_fish"]="no";
 
 }
-	if ($ww12["wParam"] == '1' and $ww12["finished"] == '0') {?>
-		<div class=wer>
-		<?
-		$maxf = "SELECT MAX(weight) AS weight, id, uidp, user FROM wp WHERE `image`='fish_new/" . $ww12['lParam'] . "' GROUP by user ORDER BY weight DESC LIMIT 10";
-		$i = 1;
-		foreach (SQL::q($maxf) as $max_tf) {
-			if (!tournirer($max_tf["uidp"])) {
-				//сначало написать функцию в functions.php после раскидать
-				if (($ww12["time"] - 1) == time()) {
-					tournir_fisher($max_tf["uidp"], $i);
-					say_to_chat('ft', 'Поздравляю Вас с ' . $i . ' местом.', 1, $pers["user"], '*', 0);
+	if ($ww12["wParam"] == '1' and $ww12["finished"] == '0') :?>
+		<div class="wer">
+			<?
+			$maxf = "SELECT MAX(weight) AS weight, id, uidp, user FROM wp WHERE `image`='fish_new/" . $ww12['lParam'] . "' GROUP by user ORDER BY weight DESC LIMIT 10";
+			$i = 1;
+			foreach (SQL::q($maxf) as $max_tf) {
+				if (!tournirer($max_tf["uidp"])) {
+					//сначало написать функцию в functions.php после раскидать
+					if (($ww12["time"] - 1) == time()) {
+						tournir_fisher($max_tf["uidp"], $i);
+						say_to_chat('ft', 'Поздравляю Вас с ' . $i . ' местом.', 1, $pers["user"], '*', 0);
+					}
 				}
+				$i++;
 			}
-			$i++;
-		}
 
-		if ((proverka_fish($ww12['lParam'], UID) == '0') and ($ww12["time"]) == time()) {
-			tournir_fisher($pers["uid"]);
-			say_to_chat('ft', 'К сожалению вы не попали в турнирную таблицу. Спасибо за участие.', 1, $pers["user"], '*', 0);
-		}
-	}
-	if ($ww12["finished"] == '0' and $ww12["time"] <= time()) {
-		say_to_chat('ft', "Турнир по ловле рыбы закончен, результаты узнавайте у рыбака на <b>Маяке</b>.", 0, '', '*', 0);
-		SQL::q("UPDATE quest SET `time`='" . (time() + 14400) . "', `finished`='1' WHERE id=6");
-	?>
-	</div><?
-	}
-	?>
+			if ((proverka_fish($ww12['lParam'], UID) == '0') and ($ww12["time"]) == time()) {
+				tournir_fisher($pers["uid"]);
+				say_to_chat('ft', 'К сожалению вы не попали в турнирную таблицу. Спасибо за участие.', 1, $pers["user"], '*', 0);
+			}
+		echo "</div>";	
+		endif;
+		if ($ww12["finished"] == '0' and $ww12["time"] <= time()) :
+			say_to_chat('ft', "Турнир по ловле рыбы закончен, результаты узнавайте у рыбака на <b>Маяке</b>.", 0, '', '*', 0);
+			SQL::q("UPDATE quest SET `time`='" . (time() + 14400) . "', `finished`='1' WHERE id=6");
+		?>
+		
+		<?php endif; ?>

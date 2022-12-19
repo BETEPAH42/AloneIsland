@@ -1,5 +1,4 @@
 <?php
-var_dump($pers["id"]);
 error_reporting(E_ALL);
 $t = tme();
 

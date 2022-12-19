@@ -1,10 +1,14 @@
 <?
 ####// Главная таблица
-echo "<table border=0 style='width:100%;background-image:url(\"images/bg.png\");' cellspacing=0 cellpadding=0><tr><td valign=top align=center style='width:250px;background-color:#EEEEEE;'>";
+echo "<table border=0 style='width:100%;background-image:url(\"images/bg.png\");' 
+	cellspacing=0 cellpadding=0><tr><td valign=top align=center style='width:250px;
+	background-color:#EEEEEE;'>";
 ####//
 echo show_pers_in_f($pers, 3);
 ####//
-echo "</td><td id=fight valign=top style='background-color:#EEEEEE;'></td><td valign=top align=right style='width:250px;background-color:#EEEEEE;'>";
+echo "</td>
+	<td id='fight' valign=top style='background-color:#EEEEEE;'></td>
+	<td valign=top align=right style='width:250px;background-color:#EEEEEE;'>";
 ####//
 if ($pers["chp"] > 0 and $persvs["chp"] > 0)
 	echo show_pers_in_f($persvs, 1);
@@ -304,13 +308,13 @@ kidid[' . $i . ']="' . $kidid[$i] . '";';
 		$s = $nyou . " голосует за ничью! Ещё " . mtrunc(floor($fight["players"] / 2) - $fight["nowhom"] + 1) . " голосов до ничьи.";
 		$fight["nowhomvote"] .= "<" . $pers["user"] . ">";
 		$fight["all"] = '<font class=timef>' . date("H:i") . "</font>" . $s . ";" . $fight["all"];
-		sql::q("UPDATE `fights` SET `all`='" . addslashes($fight["all"]) . "' , `ltime`='" . time() . "' , nowhom=nowhom+1, nowhomvote='" . $fight["nowhomvote"] . "' WHERE `id`='" . $fight["id"] . "' ;");
+		SQL::q("UPDATE `fights` SET `all`='" . addslashes($fight["all"]) . "' , `ltime`='" . time() . "' , nowhom=nowhom+1, nowhomvote='" . $fight["nowhomvote"] . "' WHERE `id`='" . $fight["id"] . "' ;");
 		if (mtrunc(floor($fight["players"] / 2) - $fight["nowhom"] + 1) == 0) {
 			$s = "Бой закончен голосованием. Ничья.";
-			sql::q("UPDATE users SET chp=0 WHERE cfight=" . $pers["cfight"]);
+			SQL::q("UPDATE users SET chp=0 WHERE cfight=" . $pers["cfight"]);
 			add_flog($s, $pers["cfight"]);
 			$fight["all"] = '<font class=timef>' . date("H:i") . "</font>" . $s . ";" . $fight["all"];
-			sql::q("UPDATE `fights` SET `all`='" . addslashes($fight["all"]) . "' , `ltime`='" . time() . "' WHERE `id`='" . $fight["id"] . "' ;");
+			SQL::q("UPDATE `fights` SET `all`='" . addslashes($fight["all"]) . "' , `ltime`='" . time() . "' WHERE `id`='" . $fight["id"] . "' ;");
 			include('inc/inc/fights/finish.php');
 			$fight["type"] = 'f';
 			echo "location = 'main.php';";
@@ -326,10 +330,10 @@ if ($timeout == 0 and @$_GET["battle"] == "nowhom" and $CAN_TURN == 0 and $pers[
 	$s = "Бой закончен по таймауту. Ничья (" . $nyou . ").";
 	add_flog($s, $pers["cfight"]);
 	$fight["all"] = '<font class=timef>' . date("H:i") . "</font>" . $s . ";" . $fight["all"];
-	sql::q("UPDATE `fights` SET `all`='" . addslashes($fight["all"]) . "' , `ltime`='" . time() . "' WHERE `id`='" . $fight["id"] . "' ;");
+	SQL::q("UPDATE `fights` SET `all`='" . addslashes($fight["all"]) . "' , `ltime`='" . time() . "' WHERE `id`='" . $fight["id"] . "' ;");
 	include('inc/inc/fights/finish.php');
 } elseif ($timeout == 0 and @$_GET["battle"] == "finish" and $CAN_TURN == 0 and $pers["chp"] > 0) {
-	$not_turned = sql::q1("SELECT COUNT(*) as count FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=" . $pers["fteam"] . " and chp>0 and can_turn=1")['count']; //Кол-во не сходивших в вашей команде
+	$not_turned = SQL::q1("SELECT COUNT(*) as count FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=" . $pers["fteam"] . " and chp>0 and can_turn=1")['count']; //Кол-во не сходивших в вашей команде
 	if (!$not_turned) {
 		if ($pers["invisible"] <= tme())
 			$nyou = "<font class=bnick color=" . $colors[$pers["fteam"]] . ">" . $pers["user"] . "</font>[" . $pers["level"] . "]";
@@ -365,7 +369,7 @@ if ($timeout == 0 and @$_GET["battle"] == "nowhom" and $CAN_TURN == 0 and $pers[
 
 set_vars("can_turn=" . intval($_CAN_TURN) . "", $pers["uid"]);
 
-$log = sql::q("SELECT time,log FROM fight_log WHERE cfight=" . $pers["cfight"] . " ORDER BY turn DESC LIMIT 0,3");
+$log = SQL::q("SELECT time,log FROM fight_log WHERE cfight=" . $pers["cfight"] . " ORDER BY turn DESC LIMIT 0,3");
 $_LOG = '';
 $i = 0;
 foreach ($log as $l) {

@@ -89,7 +89,17 @@ if ($drday == date("d") and $drmonth == date("m") and ($pers["DR_congratulate"] 
 }
 //if ($pers["DR_congratulate"]<>$DR_congratulate) set_vars("DR_congratulate=".$pers["DR_congratulate"]."");
 
-echo "<!DOCTYPE html><html><head><title>Одинокие земли[" . $pers["user"] . "]</title><meta content='text/html; charset=utf-8' Http-Equiv=Content-type><link rel='favicon' href='images/icon.ico'><link rel='shortcut icon' href='images/pict.png'><link href='main.css' rel=stylesheet type=text/css></head><body scroll=no style='overflow:hidden;'><script src='js/cookie.js'></script><script SRC='js/jquery.js'></script><script src='js/game.js?2'></script><script>";
+echo "<!DOCTYPE html><html><head><title>Одинокие земли[" . $pers["user"] . "]</title>
+<meta content='text/html; charset=utf-8' Http-Equiv=Content-type>
+<link rel='favicon' href='images/icon.ico'>
+<link rel='shortcut icon' href='images/pict.png'>
+<link href='main.css' rel=stylesheet type=text/css></head>
+<body scroll=no style='overflow:hidden;'>
+<script src='js/cookie.js'></script>
+<script SRC='js/jquery.js'></script>
+<script src='js/game.js?2'></script>
+<script src='js/fight.js'></script>
+<script src='js/pers.js'></script><script>";
 $today = getdate();
 echo "let ctip = " . $pers["ctip"] . ";";
 

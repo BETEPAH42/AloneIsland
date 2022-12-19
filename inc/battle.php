@@ -5,8 +5,9 @@ echo "<table border=0 style='width:100%;background-image:url(\"images/bg.png\");
 <tr><td valign=top align=center style='width:250px;background-color:#EEEEEE;'>";
 ####//
 echo show_pers_in_f($pers, 3);
+
 ####//
-echo "</td><td id=fight valign=top style='background-color:#EEEEEE;'>".$pers['cfight']."</td>
+echo "</td><td id='fight' valign=top style='background-color:#EEEEEE;'></td>
 <td valign=top align=right style='width:250px;background-color:#EEEEEE;'>";
 
 ####//
@@ -21,121 +22,123 @@ else
 	echo "<img src='images/battle_art/" . ($fight["id"] % 12 + 1) . ".jpg'>";
 ####//
 echo "</td></tr></table>";
-####// Finished.
-
-#######################################################################################
-### - JS\ON - ##
-echo "<script>";echo "console.log(document.getElementById('fight'));\n";
-if ($options[7] <> "no") echo "top.flog_set();";
-############
-#/#/# Parameters:::
 $radius = SQL::q1("SELECT MAX(radius) as max FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie'")['max'];
+
 if ($radius < 1) $radius = 1;
-if ($pers["fstate"] < 2 and $radius < (floor(sqrt(sqr($pers["xf"] - $persvs["xf"]) + sqr($pers["yf"] - $persvs["yf"])))) and intval($fight["bplace"]))
-	echo "var NEAR = 0;";
-else
-	echo "var NEAR = 1;";
+$NEAR = ($pers["fstate"] < 2 and $radius < (floor(sqrt(sqr($pers["xf"] - $persvs["xf"]) + sqr($pers["yf"] - $persvs["yf"])))) and intval($fight["bplace"])) ? 0 : 1 ;
+####// Finished.
+### - JS\ON - ##
 
-echo "\n var _closed = " . intval($fight["closed"]) . ";\n";
-echo "var whatteam=" . $pers["fteam"] . ";\n";
-echo "var level=" . $pers["level"] . ";\n";
-echo "var logid = '" . $pers["cfight"] . "';\n";
-//echo "var arrow_name='" . ARROW_NAME . "';\n";
-echo "var arrow_name='test';\n";
-echo "var x=" . intval($pers["xf"]) . ";var y=" . intval($pers["yf"]) . ";\n";
-echo "var mid='" . intval($fight["bplace"]) . "';\n";
-echo "var maxx=" . intval($fight["maxx"]) . ";\n";
-echo "var maxy=" . intval($fight["maxy"]) . ";\n";
-echo "var damage_get=" . intval($pers["damage_get"] - $pers["chp"]) . ";\n";
-echo "var damage_give=" . intval($pers["damage_give"]) . ";\n";
-echo "var persvs_id='" . base64_encode($persvs["id"] . $persvs["uid"]) . "';\n";
-echo "var ffreq = '" . $pers["fight_request"] . "';\n";
-echo "var your_img = '" . $pers["pol"] . "_" . $pers["obr"] . "';\n";
-if ($persvs["invisible"] > tme())
-	echo "var vs_img = 'male_invisible';\n";
-else
-	echo "var vs_img = '" . $persvs["pol"] . "_" . $persvs["obr"] . "';\n";
-if ($pers["hp"] > $pers["chp"] and (($pers["hp"] - $pers["chp"]) <= $pers["cma"]))
-	echo "var up_health=" . ($pers["hp"] - $pers["chp"]) . ";";
-else
-	echo "var up_health=0;";
-#/#/#// Finished;
+echo "<script>
+	console.log('fight');";
+	// if ($options[7] <> "no")
+ 	echo "top.flog_set(); </script><script>";
 
-$go_no_p = '|'; // -  Переменная определяющая клетки куда ходить нельзя.
+	############
+	#/#/# Parameters:::
+	echo "<script>
+	var NEAR = ".$NEAR.";
+	console.log('test');
+	var _closed = " . intval($fight["closed"]) . ";
+	var whatteam=" . $pers["fteam"] . ";
+	var level=" . $pers["level"] . ";
+	var logid = '" . $pers["cfight"] . "';";
+	// echo "var arrow_name='" . ARROW_NAME . "';\n";
+	echo "var arrow_name='test';
+	var x=" . intval($pers["xf"]) . ";var y=" . intval($pers["yf"]) . ";
+	var mid='" . intval($fight["bplace"]) . "';
+	var maxx=" . intval($fight["maxx"]) . ";
+	var maxy=" . intval($fight["maxy"]) . ";
+	var damage_get=" . intval($pers["damage_get"] - $pers["chp"]) . ";
+	var damage_give=" . intval($pers["damage_give"]) . ";
+	var persvs_id='" . base64_encode($persvs["id"] . $persvs["uid"]) . "';
+	var ffreq = '" . $pers["fight_request"] . "';
+	var your_img = '" . $pers["pol"] . "_" . $pers["obr"] . "';\n";
+	if ($persvs["invisible"] > tme())
+		echo "var vs_img = 'male_invisible';\n";
+	else
+		echo "var vs_img = '" . $persvs["pol"] . "_" . $persvs["obr"] . "';\n";
+	if ($pers["hp"] > $pers["chp"] and (($pers["hp"] - $pers["chp"]) <= $pers["cma"]))
+		echo "var up_health=" . ($pers["hp"] - $pers["chp"]) . ";";
+	else
+		echo "var up_health=0;";
+	#/#/#// Finished;
 
-//////////////// Командs
-$p_t1 = SQL::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,invisible FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=1 and chp>0");
-$b_t1 = SQL::q("SELECT user,chp,level,hp,id,xf,yf,cma,ma FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=1 and chp>0");
-$p_t2 = SQL::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,invisible FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2 and chp>0");
-$b_t2 = SQL::q("SELECT user,chp,level,hp,id,xf,yf,cma,ma FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=2 and chp>0");
-$LIFE1 = 0; // - Кол-во живых игроков в команде 1 включая ботов
-$LIFE2 = 0; // - Кол-во живых игроков в команде 2 влючая ботов
-$BOTS1 = 0; // Боты в 1ой команде
-$BOTS2 = 0; // боты во 2ой команде
-$_CAN_TURN = 0; // - Можно ли сходить
-#################################################################
-$cans = sql::q("SELECT uid2 FROM turns_f WHERE uid1=" . $pers["uid"] . "");
-$uids = '';
-foreach ($cans as $c)
-	$uids .= '<' . $c["uid2"] . '>';
-#################################################################
-$CAN_TURN = 0;
-/*
-	Верхний блок нужен для получения строчки ИД персонажей кого ударил текущий персонаж. И если при переборе персонажей противоположной команды найдётся хотябы один чей ИД отсутствует в этой строке значит текущий персонаж может сходить.
-	$CAN_TURN - отвечает за то может ли персонаж сходить. 0-нет 1-да.
-*/
+	$go_no_p = '|'; // -  Переменная определяющая клетки куда ходить нельзя.
 
-################# - Вывод команд  - ##################################################################################### 
-echo "var team1 = '";
-// Выводит всех людей в первой команде:
-foreach ($p_t1 as $tmp) {
-	$LIFE1++;
-	if ($tmp["invisible"] > tme() and $tmp["uid"] <> $pers["uid"]) {
-		$tmp["user"] = 'невидимка';
-		$tmp["sign"] = 'none';
-		$tmp["level"] = '??';
-		$tmp["chp"] = 1;
-		$tmp["hp"] = 1;
-		$tmp["cma"] = 1;
-		$tmp["ma"] = 1;
+	//////////////// Командs
+	$p_t1 = SQL::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,invisible FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=1 and chp>0");
+	$b_t1 = SQL::q("SELECT user,chp,level,hp,id,xf,yf,cma,ma FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=1 and chp>0");
+	$p_t2 = SQL::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,invisible FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2 and chp>0");
+	$b_t2 = SQL::q("SELECT user,chp,level,hp,id,xf,yf,cma,ma FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=2 and chp>0");
+	$LIFE1 = 0; // - Кол-во живых игроков в команде 1 включая ботов
+	$LIFE2 = 0; // - Кол-во живых игроков в команде 2 влючая ботов
+	$BOTS1 = 0; // Боты в 1ой команде
+	$BOTS2 = 0; // боты во 2ой команде
+	$_CAN_TURN = 0; // - Можно ли сходить
+	#################################################################
+	$cans = SQL::q("SELECT uid2 FROM turns_f WHERE uid1=" . $pers["uid"] . "");
+	$uids = '';
+	foreach ($cans as $c)
+		$uids .= '<' . $c["uid2"] . '>';
+	#################################################################
+	$CAN_TURN = 0;
+	/*
+		Верхний блок нужен для получения строчки ИД персонажей кого ударил текущий персонаж. И если при переборе персонажей противоположной команды найдётся хотябы один чей ИД отсутствует в этой строке значит текущий персонаж может сходить.
+		$CAN_TURN - отвечает за то может ли персонаж сходить. 0-нет 1-да.
+	*/
+
+	################# - Вывод команд  - ##################################################################################### 
+	echo "var team1 = '";
+	// Выводит всех людей в первой команде:
+	foreach ($p_t1 as $tmp) {
+		$LIFE1++;
+		if ($tmp["invisible"] > tme() and $tmp["uid"] <> $pers["uid"]) {
+			$tmp["user"] = 'невидимка';
+			$tmp["sign"] = 'none';
+			$tmp["level"] = '??';
+			$tmp["chp"] = 1;
+			$tmp["hp"] = 1;
+			$tmp["cma"] = 1;
+			$tmp["ma"] = 1;
+		}
+		echo $tmp["sign"] . "|" . $tmp["user"] . "|" . $tmp["level"] . "|" . $tmp["chp"] . "|" . $tmp["hp"] . "|" . $tmp["cma"] . "|" . $tmp["ma"] . "|" . $tmp["xf"] . "|" . $tmp["yf"] . "|" . base64_encode($tmp["uid"]) . "|@";
+		$go_no_p .= $tmp["xf"] . "_" . $tmp["yf"] . "|";
+		#####
+		if ($pers["fteam"] <> 1 and !substr_count($uids, "<" . $tmp["uid"] . ">")) $CAN_TURN = 1;
+		#####
 	}
-	echo $tmp["sign"] . "|" . $tmp["user"] . "|" . $tmp["level"] . "|" . $tmp["chp"] . "|" . $tmp["hp"] . "|" . $tmp["cma"] . "|" . $tmp["ma"] . "|" . $tmp["xf"] . "|" . $tmp["yf"] . "|" . base64_encode($tmp["uid"]) . "|@";
-	$go_no_p .= $tmp["xf"] . "_" . $tmp["yf"] . "|";
-	#####
-	if ($pers["fteam"] <> 1 and !substr_count($uids, "<" . $tmp["uid"] . ">")) $CAN_TURN = 1;
-	#####
-}
-///////////// Выводит всех ботов в первой  команде::
-foreach ($b_t1 as $tmp) {
-	$LIFE1++;
-	$BOTS1++;
-	echo "none|" . $tmp["user"] . "|" . $tmp["level"] . "|" . $tmp["chp"] . "|" . $tmp["hp"] . "|" . $tmp["cma"] . "|" . $tmp["ma"] . "|" . $tmp["xf"] . "|" . $tmp["yf"] . "|" . base64_encode($tmp["id"]) . "|@";
-	$go_no_p .= $tmp["xf"] . "_" . $tmp["yf"] . "|";
-	#####
-	if ($pers["fteam"] <> 1) $CAN_TURN = 1;
-	#####
-}
-echo "';\n";
-###########################################################################################################
-echo "var team2 = '";
-// Выводит всех людей в первой команде:
-foreach ($p_t2 as $tmp) {
-	$LIFE2++;
-	if ($tmp["invisible"] > tme() and $tmp["uid"] <> $pers["uid"]) {
-		$tmp["user"] = 'невидимка';
-		$tmp["sign"] = 'none';
-		$tmp["level"] = '??';
-		$tmp["chp"] = 1;
-		$tmp["hp"] = 1;
-		$tmp["cma"] = 1;
-		$tmp["ma"] = 1;
+	///////////// Выводит всех ботов в первой  команде::
+	foreach ($b_t1 as $tmp) {
+		$LIFE1++;
+		$BOTS1++;
+		echo "none|" . $tmp["user"] . "|" . $tmp["level"] . "|" . $tmp["chp"] . "|" . $tmp["hp"] . "|" . $tmp["cma"] . "|" . $tmp["ma"] . "|" . $tmp["xf"] . "|" . $tmp["yf"] . "|" . base64_encode($tmp["id"]) . "|@";
+		$go_no_p .= $tmp["xf"] . "_" . $tmp["yf"] . "|";
+		#####
+		if ($pers["fteam"] <> 1) $CAN_TURN = 1;
+		#####
 	}
-	echo $tmp["sign"] . "|" . $tmp["user"] . "|" . $tmp["level"] . "|" . $tmp["chp"] . "|" . $tmp["hp"] . "|" . $tmp["cma"] . "|" . $tmp["ma"] . "|" . $tmp["xf"] . "|" . $tmp["yf"] . "|" . base64_encode($tmp["uid"]) . "|@";
-	$go_no_p .= $tmp["xf"] . "_" . $tmp["yf"] . "|";
+	echo "';\n";
+	###########################################################################################################
+	echo "var team2 = '";
+	// Выводит всех людей в первой команде:
+	foreach ($p_t2 as $tmp) {
+		$LIFE2++;
+		if ($tmp["invisible"] > tme() and $tmp["uid"] <> $pers["uid"]) {
+			$tmp["user"] = 'невидимка';
+			$tmp["sign"] = 'none';
+			$tmp["level"] = '??';
+			$tmp["chp"] = 1;
+			$tmp["hp"] = 1;
+			$tmp["cma"] = 1;
+			$tmp["ma"] = 1;
+		}
+		echo $tmp["sign"] . "|" . $tmp["user"] . "|" . $tmp["level"] . "|" . $tmp["chp"] . "|" . $tmp["hp"] . "|" . $tmp["cma"] . "|" . $tmp["ma"] . "|" . $tmp["xf"] . "|" . $tmp["yf"] . "|" . base64_encode($tmp["uid"]) . "|@";
+		$go_no_p .= $tmp["xf"] . "_" . $tmp["yf"] . "|";
 	#####
-	if ($pers["fteam"] <> 2 and !substr_count($uids, "<" . $tmp["uid"] . ">")) $CAN_TURN = 1;
-	#####
-}
+		if ($pers["fteam"] <> 2 and !substr_count($uids, "<" . $tmp["uid"] . ">")) $CAN_TURN = 1;
+		#####
+	}
 ///////////// Выводит всех ботов в первой  команде::
 foreach ($b_t2 as $tmp) {
 	$LIFE2++;
@@ -247,28 +250,28 @@ elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 		}
 	}
 	echo '
-var can_turn = ' . intval($CAN_TURN) . ';
-var n = ' . $kblast . ';
-img = new Array();
-id = new Array();
-nam = new Array();
+	var can_turn = ' . intval($CAN_TURN) . ';
+	var n = ' . $kblast . ';
+	img = new Array();
+	id = new Array();
+	nam = new Array();
 
-var auras = \'' . $txt . '\';
+	var auras = \'' . $txt . '\';
 
-var nk = ' . $kkid . ';
-arimg = new Array();
-arid = new Array();
-arnam = new Array();';
+	var nk = ' . $kkid . ';
+	arimg = new Array();
+	arid = new Array();
+	arnam = new Array();';
 
-	for ($i = 1; $i <= $kblast; $i++) echo '
-img[' . $i . ']="' . $img[$i] . '";
-nam[' . $i . ']="' . $name[$i] . '";
-id[' . $i . ']="' . $idc[$i] . '";';
+		for ($i = 1; $i <= $kblast; $i++) echo '
+	img[' . $i . ']="' . $img[$i] . '";
+	nam[' . $i . ']="' . $name[$i] . '";
+	id[' . $i . ']="' . $idc[$i] . '";';
 
-	for ($i = 1; $i <= $kkid; $i++) echo '
-kidimg[' . $i . ']="' . $kidimg[$i] . '";
-kidnam[' . $i . ']="' . $kidname[$i] . '";
-kidid[' . $i . ']="' . $kidid[$i] . '";';
+		for ($i = 1; $i <= $kkid; $i++) echo '
+	kidimg[' . $i . ']="' . $kidimg[$i] . '";
+	kidnam[' . $i . ']="' . $kidname[$i] . '";
+	kidid[' . $i . ']="' . $kidid[$i] . '";';
 	##########################################################################
 	$bliz = '';
 	$bliz_od = '';
@@ -347,8 +350,10 @@ if ($timeout == 0 and @$_GET["battle"] == "nowhom" and $CAN_TURN == 0 and $pers[
 			$nyou = "<font class=bnick color=" . $colors[$pers["fteam"]] . "><i>невидимка</i></font>[??]";
 		$s = "Бой закончен по таймауту. Победа. (" . $nyou . ").";
 		$fight['travm'] = 100;
-		if ($pers["fteam"] == 1) $LIFE2 = 0;
-		else $LIFE1 = 0;
+		if ($pers["fteam"] == 1) 
+			$LIFE2 = 0;
+		else 
+			$LIFE1 = 0;
 		$pt = sql::q("SELECT * FROM users WHERE cfight=" . $pers["cfight"] . " and fteam<>" . $pers["fteam"] . " and chp>0");
 		sql::q("UPDATE users SET chp=0 WHERE cfight=" . $pers["cfight"] . " and fteam<>" . $pers["fteam"] . " and chp>0");
 		foreach ($pt as $_persvs) {
@@ -393,5 +398,9 @@ echo "show_message_in_f('<div class=but>" . $_LOG . "</div>');";
 if (!$_FINISHED)
 	echo "show_finish(" . $pers["fexp"] . "," . $pers["exp_in_f"] . "," . $pers["f_turn"] . ");";
 ## - JS\OFF - ##
-echo "</SCRIPT>";
+echo "</script>";
 ###########
+$arr = get_included_files();
+echo "<pre>";
+	var_dump($arr);
+	echo "</pre>";
