@@ -30,7 +30,7 @@ if ($radius < 1)
 $NEAR = ($pers["fstate"] < 2 and $radius < (floor(sqrt(sqr($pers["xf"] - $persvs["xf"]) + sqr($pers["yf"] - $persvs["yf"])))) and intval($fight["bplace"])) ? 0 : 1 ;
 ####// Finished.
 	### - JS\ON - ##
-	$arr = get_included_files();
+	// $arr = get_included_files();
 	// echo "<pre>";
 				// var_dump($persvs);
 	// 	echo "</pre>";
@@ -52,7 +52,6 @@ $NEAR = ($pers["fstate"] < 2 and $radius < (floor(sqrt(sqr($pers["xf"] - $persvs
 		var damage_give=" . intval($pers["damage_give"]) . ";
 		var persvs_id='" . base64_encode($persvs["id"] . $persvs["uid"]) . "';
 		var ffreq = '" . $pers["fight_request"] . "';
-		console.log(ffreq);
 		var your_img = '" . $pers["pol"] . "_" . $pers["obr"] . "';
 		</script>";
 		if ($persvs["invisible"])
@@ -65,9 +64,10 @@ $NEAR = ($pers["fstate"] < 2 and $radius < (floor(sqrt(sqr($pers["xf"] - $persvs
 			echo "var up_health=" . ($pers["hp"] - $pers["chp"]) . ";
 			</script>";
 		}
-		else {}
+		else {
 			echo "var up_health=0;
-			</script>";
+			</script>";}
+
 	$go_no_p = '|'; // -  Переменная определяющая клетки куда ходить нельзя.
 	//////////////// Командs
 	$p_t1 = SQL::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,invisible FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=1 and chp>0");
@@ -116,7 +116,6 @@ $NEAR = ($pers["fstate"] < 2 and $radius < (floor(sqrt(sqr($pers["xf"] - $persvs
 		if ($pers["fteam"] <> 1) $CAN_TURN = 1;
 		#####
 	}
-	// var_dump($str_p_1);
 	$team2 = "";
 	foreach ($p_t2 as $tmp) {
 		$LIFE2++;
@@ -146,8 +145,8 @@ foreach ($b_t2 as $tmp) {
 	if ($pers["fteam"] <> 2) $CAN_TURN = 1;
 	#####
 }
-// var_dump($str_p_1);
 	echo "<script>
+
 	var team1 = '".$str_p_1."';";
 
 	// Выводит всех людей в первой команде:
@@ -158,14 +157,15 @@ foreach ($b_t2 as $tmp) {
 	
 	// Выводит всех людей в первой команде:
 
-echo "var team2 = '".$team2."';";
+echo "var team2 = '".$team2."';</script>";
 #######################################################################################
 
 if (($LIFE1 - $BOTS1) == 0 and ($LIFE2 - $BOTS2) == 0 and $LIFE1 and $LIFE2 and $fight["type"] != 'f') // в бою остались одни боты
-	include("inc/bots/bots_battle.php");
+	{
+	include("inc/bots/bots_battle.php");}
 
 #############################################
-echo "
+echo "<script>
 var go_no='" . $bplace["xy"] . $go_no_p . "';";
 $timeout = mtrunc($fight["ltime"] + $fight["timeout"] - time());
 
@@ -173,10 +173,8 @@ if ($OD_UDAR + 3 <= (round($pers["sb1"]) + 5))
 	echo "var od = " . (round($pers["sb1"]) + 5) . ";";
 else
 	echo "var od = " . ($OD_UDAR + 3) . ";";
-echo "var od_udar = " . ($OD_UDAR) . ";
-		console.log('11 :'+od);";
+echo "var od_udar = " . ($OD_UDAR) . ";";
 echo "show_fight_head(" . intval($fight["oruj"]) . "," . intval($fight["travm"]) . "," . $timeout . ");
-console.log('12 :'+od);
 ";
 
 #############################################
@@ -188,6 +186,7 @@ if ($LIFE1 == 0 or $LIFE2 == 0 or $fight["type"] == 'f') {
 ## Для завоевания. Если происходит завоевание и щёлкает таймаут - проигрыш и конец завоевания.
 if ($pers["gain_time"] and $timeout == 0 and $BOTS1 == $LIFE1 and !$_FINISHED) {
 	$LIFE2 = 0;
+
 	include('inc/inc/fights/finish.php');
 }
 #############################################
@@ -203,20 +202,20 @@ if ($timeout==0 and $BOTS1==$LIFE1 and !$_FINISHED)
 elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 {
 	################################### -  МАГИЯ - ################################################
-	$kblast = 0;
+	$kblast = 1;
 	$kaura = 0;
 	$kkid = 0;
 	// $idall = defined(BOOK_INDEX) ? explode("|", BOOK_INDEX) : "";
-	$img[0] = '';
-	$name[0] = '';
-	$idc[0] = '';
+	$img = [];
+	$name = [];
+	$idc = [];
 	$arimg[0] = '';
 	$arname[0] = '';
 	$arid[0] = '';
 	$kidimg[0] = '';
 	$kidname[0] = '';
 	$kidid[0] = '';
-	if ($pers["fstate"] == 3) {
+	if ($pers["fstate"] == 3) {	
 		$bls = SQL::q("SELECT * FROM u_blasts WHERE uidp=" . $pers["uid"] . " and tlevel<=" . $pers["level"] . " and ts6<=" . $pers["s6"] . " and manacost<=" . $pers["cma"] . " and cur_colldown<=" . time() . " and cur_turn_colldown<=" . $pers["f_turn"]);
 		foreach ($bls as $bl) {
 			if ($bl["turn_colldown"])
@@ -224,15 +223,15 @@ elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 			else
 				$colldown = 'Перезарядка: ' . $bl["colldown"] . ' сек.';
 			$bl["name"] = $bl["name"] . "|<b class=user>" . $bl["name"] . "</b><br><font class=ma>" . $bl["manacost"] . " MA</font><br>Удар: <b>" . $bl["udmin"] . "-" . $bl["udmax"] . "</b><br>" . $colldown . "<br>" . $bl["describe"];
-			$kblast++;
 			$img[$kblast] = $bl["image"];
 			$name[$kblast] = $bl["name"];
 			$idc[$kblast] = $bl["id"];
+			$kblast++;
 		}
-
 		$as = SQL::q("SELECT * FROM u_auras WHERE uidp=" . $pers["uid"] . " and tlevel<=" . $pers["level"] . " and ts6<=" . $pers["s6"] . " and manacost<=" . $pers["cma"] . " and cur_colldown<=" . time() . " and cur_turn_colldown<=" . $pers["f_turn"]);
 		$txt = '';
 		foreach ($as as $a) {
+
 			$txt .= $a["image"] . '#' . $a["id"] . '#<b class=user>' . $a["name"] . '</b>@';
 			if ($a["turn_colldown"])
 				$colldown = 'Перезарядка: <b>' . $a["turn_colldown"] . 'ход.</b>';
@@ -253,14 +252,18 @@ elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 			$txt .= $esttime . '@' . $colldown . $targets . "@" . $forenemy;
 			$params = explode("@", $a["params"]);
 			foreach ($params as $par) {
-				$p = explode("=", $par);
+				if($par == "") continue;
+					$p = explode("=", $par);
 				$perc = '';
 				if (substr($p[0], 0, 2) == 'mf') $perc = '%';
+
 				if ($p[1])
-					$txt .= '@' . name_of_skill($p[0]) . ':<b>' . plus_param($p[1]) . $perc . '</b>';
+					$txt .= '@' . name_of_skill($p[0]) . ':<b>' . plus_param((int)$p[1]) . $perc . '</b>';
+				
 			}
 			$txt .= '|';
 		}
+
 	}
 	echo '
 	var can_turn = ' . intval($CAN_TURN) . ';
@@ -268,7 +271,6 @@ elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 	img = new Array();
 	id = new Array();
 	nam = new Array();
-
 	var auras = \'' . $txt . '\';
 
 	var nk = ' . $kkid . ';

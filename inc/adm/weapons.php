@@ -10,10 +10,10 @@ if ($priv["ewp"] == 2) {
 		AddAllArtWp();
 	}
 	if (@$_GET["delartfullline"]) {
-		SQL::q("DELETE FROM weapons WHERE idn>=10000 and where_buy=1");
+		SQL::q1("DELETE FROM weapons WHERE idn>=10000 and where_buy=1");
 	}
 	if (isset($_GET["delete"])) {
-		if (SQL::q("DELETE FROM weapons WHERE id='" . $_GET["delete"] . "'")) echo "<center class=return_win>Удалено!</center>";
+		if (SQL::q1("DELETE FROM weapons WHERE id='" . $_GET["delete"] . "'")) echo "<center class=return_win>Удалено!</center>";
 	}
 	if (@$_GET["edit"]) {
 		include("edit_w.php");
@@ -30,13 +30,13 @@ if ($priv["ewp"] == 2) {
 		if ($p["type"] == "sapo") $type = "sapogi";
 		if ($p["type"] == "poya") $type = "poyas";
 		if ($p["type"] == "bron") $type = "bronya";
-		$mid = sql::q1("SELECT MAX(idn) as max FROM weapons")['max'] + 1;
+		$mid = SQL::q1("SELECT MAX(idn) as max FROM weapons")['max'] + 1;
 		if ($mid < 500) $mid += 500;
-		sql::q("INSERT INTO weapons (`id`,`idn`,`type`,`stype`,`name`) VALUES ('" . $mid . "'," . $mid . ",'" . $type . "','" . $p["type"] . "','Новая вещь " . $mid . "')");
+		SQL::q("INSERT INTO weapons (`id`,`idn`,`type`,`stype`,`name`) VALUES ('" . $mid . "'," . $mid . ",'" . $type . "','" . $p["type"] . "','Новая вещь " . $mid . "')");
 		echo "<center class=return_win>Добавлено.</center>";
 	}
 	if (@$_GET["copy"]) {
-		$mid = sql::q1("SELECT MAX(idn) as max FROM weapons")['max'] + 1;
+		$mid = SQL::q1("SELECT MAX(idn) as max FROM weapons")['max'] + 1;
 		if ($mid < 500) $mid += 500;
 		$part1 = "INSERT INTO weapons (";
 		$part2 = ") VALUES (";
@@ -49,11 +49,11 @@ if ($priv["ewp"] == 2) {
 		}
 		$part1 = substr($part1, 0, strlen($part1) - 1);
 		$part2 = substr($part2, 0, strlen($part2) - 1);
-		sql::q($part1 . $part2 . ");");
+		SQL::q($part1 . $part2 . ");");
 		echo "<center class=return_win>Скопировано.</center>";
 	}
 	if (@$_GET["give"]) {
-		$uid = sql::q1("SELECT uid FROM users WHERE user='" . $_POST["nickfor"] . "'")['uid'];
+		$uid = SQL::q1("SELECT uid FROM users WHERE user='" . $_POST["nickfor"] . "'")['uid'];
 		insert_wp($_GET["give"], $uid);
 		echo "Удачно выдано";
 	}
@@ -114,9 +114,9 @@ if ($priv["ewp"] == 2) {
 					$stype = "`type` = 'napad' ";
 
 				if ($_FILTER["lavkatype"] <> 'all')
-					$enures = sql::q("SELECT * FROM `weapons` WHERE `tlevel`>='" . $_FILTER["lavkaminlevel"] . "' and `tlevel`<='" . $_FILTER["lavkamaxlevel"] . "' and `price`<='" . $_FILTER["lavkamaxcena"] . "' and " . $stype . " ORDER BY `" . $_FILTER["lavkasort"] . "`,`where_buy` ASC");
+					$enures = SQL::q("SELECT * FROM `weapons` WHERE `tlevel`>='" . $_FILTER["lavkaminlevel"] . "' and `tlevel`<='" . $_FILTER["lavkamaxlevel"] . "' and `price`<='" . $_FILTER["lavkamaxcena"] . "' and " . $stype . " ORDER BY `" . $_FILTER["lavkasort"] . "`,`where_buy` ASC");
 				else
-					$enures = sql::q("SELECT * FROM `weapons` WHERE `tlevel`>='" . $_FILTER["lavkaminlevel"] . "' and `tlevel`<='" . $_FILTER["lavkamaxlevel"] . "' and `price`<='" . $_FILTER["lavkamaxcena"] . "' ORDER BY `" . $_FILTER["lavkasort"] . "`,`where_buy` ASC");
+					$enures = SQL::q("SELECT * FROM `weapons` WHERE `tlevel`>='" . $_FILTER["lavkaminlevel"] . "' and `tlevel`<='" . $_FILTER["lavkamaxlevel"] . "' and `price`<='" . $_FILTER["lavkamaxcena"] . "' ORDER BY `" . $_FILTER["lavkasort"] . "`,`where_buy` ASC");
 				echo '<table border="1" width="100%" cellspacing="0" cellpadding="0" bordercolorlight=#C0C0C0 bordercolordark=#FFFFFF class=LinedTable>';
 				foreach ($enures as $v) {
 					if ($_GET["view"] != 'l') {

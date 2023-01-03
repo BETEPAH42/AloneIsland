@@ -1456,20 +1456,19 @@ function mod_st_fin()
 		$module_statisticks[$i]["all_exec_time"];
 	$module_statisticks_counter++;
 }
-
-function insert_wp($id, $uid, $durability = -1, $weared = 0, $user = '', $weight = -1) // внести изменения дл клановых шмоток на сервер v[tsign]
+// внести изменения дл клановых шмоток на сервер v[tsign]
+function insert_wp($id, $uid, $durability = -1, $weared = 0, $user = '', $weight = -1) 
 {
-	// debag(is_scalar($id));
-	$uid = intval($uid);
+	$uid = (int)$uid;
 	if (is_scalar($id))
 		$v = SQL::q1("SELECT * FROM weapons WHERE id='" . $id . "'");
 	else
 		$v = $id;
-	// debag($v);
 	$id = $v["id"];
 	if ($durability == -1) $durability = $v["max_durability"];
 	if ($weight == -1) $weight = $v["weight"];
 	if (empty($v["id"])) return 0;
+	// debag($weight);
 	$user = _UserByUid($uid);
 	$user = $user['user'];
 	// debag($user);
@@ -1487,9 +1486,9 @@ function insert_wp($id, $uid, $durability = -1, $weared = 0, $user = '', $weight
 			$_params .= ",'" . $v[$param] . "'";
 		}
 	}
-	$result = SQL::qi("INSERT INTO `wp` ( `id` , `uidp` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` , `present` , `clan_sign` , `clan_name` ,`radius` , `slots` ,`arrows` ,`arrows_max` ,`arrow_name` , `arrow_price` , `tlevel` , `tsign` ,`p_type` , `user`, `material_show`, `material` " . $_colls . ") VALUES (0, '" . $uid . "', '" . $weared . "','" . $id . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $weight . "', '" . $v["where_buy"] . "', '" . $v["max_durability"] . "', '" . $durability . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "', '" . $v["tsign"] . "', '" . $v["p_type"] . "', '" . $user . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
 
-	return $result;
+	$result = SQL::q1("INSERT INTO `wp` ( `id` , `uidp` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` , `present` , `clan_sign` , `clan_name` ,`radius` , `slots` ,`arrows` ,`arrows_max` ,`arrow_name` , `arrow_price` , `tlevel` , `tsign` ,`p_type` , `user`, `material_show`, `material` " . $_colls . ") VALUES (0, '" . $uid . "', '" . $weared . "','" . $id . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $weight . "', '" . $v["where_buy"] . "', '" . $v["max_durability"] . "', '" . $durability . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "', '" . $v["tsign"] . "', '" . $v["p_type"] . "', '" . $user . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
+	return !$result;
 }
 
 
@@ -1790,8 +1789,9 @@ function uncrypt($value)
 
 function plus_param($param)
 {
-	if ($param > 0) return "+" . $param;
-	elseif ($param < 0) return "-" . abs($param);
+	if ($param > 0) {
+		return "+" . $param;}
+	elseif ($param < 0) {return "-" . abs($param);}
 	else return "0";
 }
 
@@ -1989,8 +1989,11 @@ function IsWearing($v)
 
 function _UserByUid($uid = 0)
 {
+	// var_dump($uid);
+	// $data = SQL::q1("SELECT user FROM users WHERE uid=" . (int)$uid . ";");
+	// var_dump($data);
 	if ($uid) {
-		return sql::q1("SELECT user FROM users WHERE uid=" . (int)$uid . ";")['user'];;
+		return SQL::q1("SELECT user FROM users WHERE uid=" . (int)$uid . ";");
 	} else
 		return false;
 }

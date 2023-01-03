@@ -111,7 +111,7 @@ if (count($res)>0){
 	foreach ($res as $v) {
 		$z = 1;
 		if ($v["durability"] < 1 || ($v["timeout"] > 0 and $v["timeout"] < $tt)) {
-			file_put_contents("weaponts.txt","inc wears ".count($res)."\n",FILE_APPEND);
+			// file_put_contents("weaponts.txt","inc wears ".count($res)."\n",FILE_APPEND);
 			$z = 0;
 			remove_weapon($v["id"], $v);
 			break;
@@ -182,7 +182,7 @@ if (count($res)>0){
 				$or1type = $v["stype"];
 			}
 			if ($v["type"] == "orujie" and $or2["id"] <> "0") 
-			{file_put_contents("/weaponts.txt","inc wears 184\n",FILE_APPEND);
+			{//file_put_contents("/weaponts.txt","inc wears 184\n",FILE_APPEND);
 				remove_weapon($v["id"], $v);}
 			if ($v["stype"] == 'book') {
 				define("BOOK_ID", $v["id"]);
@@ -259,7 +259,7 @@ if (@$_GET["rune_join"]) {
 	if ($weared_slots) {
 		$rune = sql::q1("SELECT * FROM wp WHERE id=" . intval($_GET["rune_join"]) . "");
 		if ($pers["sp5"] > $rune["tsp5"]) {
-			file_put_contents("/weaponts.txt","inc wears 260\n",FILE_APPEND);
+			//file_put_contents("/weaponts.txt","inc wears 260\n",FILE_APPEND);
 			remove_weapon($weared_id, $weared_wp);
 			$sk = explode("_", $rune["index"]);
 
