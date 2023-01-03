@@ -95,9 +95,9 @@ else
 			}
 		}
 		if ($pers["x"] == $qWitch["lParam"] && $pers["y"] == $qWitch["zParam"] && !$qWitch["finished"])
-			$ALIS = "<center class=but><b class=user>Вы нашли ведьму Алису! <hr><img src=images/design/warningblue.gif> <i>Обновите экран.</i></b></center>";
+			$ALIS = "<center class=but><b class=user>Вы нашли ведьму Алису! <hr><img src=/images/design/warningblue.gif> <i>Обновите экран.</i></b></center>";
 		if ($pers["x"] == $qFish["lParam"] && $pers["y"] == $qFish["zParam"] && $qFish["finished"] == 0)
-			$ALIS = "<center class=but><b class=user>Вы нашли Рыбака! <hr><img src=images/design/warningblue.gif> <i>Обновите экран.</i></b></center>";
+			$ALIS = "<center class=but><b class=user>Вы нашли Рыбака! <hr><img src=/images/design/warningblue.gif> <i>Обновите экран.</i></b></center>";
 	}
 }
 

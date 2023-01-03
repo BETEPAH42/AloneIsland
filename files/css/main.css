@@ -300,7 +300,7 @@ a.Button:hover{
 	border: 2px solid #CECECE;
 	FONT-SIZE: 11px;
 	font-family: Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	background-image: url('images/design/chbg2.gif');
+	background-image: url('/images/design/chbg2.gif');
 }
 
 .but {

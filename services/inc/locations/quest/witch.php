@@ -30,6 +30,7 @@ if ($qWitch["finished"] && $qWitch["time"] < tme()) {
 		WHERE id = " . Q_WITCH . ""
 	);
 }
+var_dump($_GET["gW"]);
 if (@$_GET["gW"] && !$qWitch["finished"] && $qWitch["time"] > tme()) {
 	if (
 		$pers["x"] == $qWitch["lParam"] &&
@@ -44,7 +45,7 @@ if (@$_GET["gW"] && !$qWitch["finished"] && $qWitch["time"] > tme()) {
 				$male = '';
 				$la = "";
 			}
-			SQL::q("UPDATE wp SET durability=0 WHERE id=" . $yourWp["id"] . "");
+			SQL::q1("UPDATE wp SET durability=0 WHERE id=" . $yourWp["id"] . "");
 			$r = rand(2, 4);
 			$exp = 1000 + round(($pers["level"] * 1000) / $pers['questWitch'], 0);
 			$ln = $yourWp["price"] * 2;

@@ -233,13 +233,13 @@
 						$dis = 'DISABLED';
 
 					if (substr_count($n["aura"], "invisible")) $ntext = ' <i>невидимка</i>[<font class=lvl>??</font>]';
-					else $ntext = '<img src=images/signs/' . $n["sign"] . '.gif title="' . $n["state"] . '"> <b>' . $n["user"] . '</b>[<font class=lvl>' . $n["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' . $n["user"] . '\',\'_blank\')" src=images/info.gif>';
+					else $ntext = '<img src=images/signs/' . $n["sign"] . '.gif title="' . $n["state"] . '"> <b>' . $n["user"] . '</b>[<font class=lvl>' . $n["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' . $n["user"] . '\',\'_blank\')" src=/images/info.gif>';
 
 					if ($nvs["user"]) {
 						if (substr_count($n["aura"], "invisible"))
 							$nvstext = ' <i>невидимка</i>[<font class=lvl>??</font>]';
 						else
-							$nvstext = '<img src=images/signs/' . $nvs["sign"] . '.gif title="' . $nvs["state"] . '"> <b>' . $nvs["user"] . '</b>[<font class=lvl>' . $nvs["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' . $nvs["user"] . '\',\'_blank\')" src=images/info.gif>';
+							$nvstext = '<img src=images/signs/' . $nvs["sign"] . '.gif title="' . $nvs["state"] . '"> <b>' . $nvs["user"] . '</b>[<font class=lvl>' . $nvs["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' . $nvs["user"] . '\',\'_blank\')" src=/images/info.gif>';
 					} else {
 						if ($pers["cfight"] == 0)
 							$nvstext = "<input type=radio value='" . $n["user"] . "' name='towhozay' " . $dis . ">нет соперника.";
@@ -281,7 +281,7 @@
 							if (substr_count($e["aura"], "invisible"))
 								$s1 .= '<i>невидимка</i>[<font class=lvl>??</font>] ,';
 							else
-								$s1 .= '<img src=images/signs/' . $e["sign"] . '.gif title="' . $e["state"] . '"><b>' . $e["user"] . '</b>[<font class=lvl>' . $e["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' . $e["user"] . '\',\'_blank\')" src=images/info.gif> ,';
+								$s1 .= '<img src=images/signs/' . $e["sign"] . '.gif title="' . $e["state"] . '"><b>' . $e["user"] . '</b>[<font class=lvl>' . $e["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' . $e["user"] . '\',\'_blank\')" src=/images/info.gif> ,';
 						}
 					}
 					$s1 = substr($s1, 0, strlen($s1) - 2);
@@ -294,7 +294,7 @@
 							if (substr_count($e["aura"], "invisible"))
 								$s2 .= '<i>невидимка</i>[<font class=lvl>??</font>] ,';
 							else
-								$s2 .= '<img src=images/signs/' . $e["sign"] . '.gif title="' . $e["state"] . '"><b>' . $e["user"] . '</b>[<font class=lvl>' . $e["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' . $e["user"] . '\',\'_blank\')" src=images/info.gif> ,';
+								$s2 .= '<img src=images/signs/' . $e["sign"] . '.gif title="' . $e["state"] . '"><b>' . $e["user"] . '</b>[<font class=lvl>' . $e["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' . $e["user"] . '\',\'_blank\')" src=/images/info.gif> ,';
 						}
 					}
 					$s2 = substr($s2, 0, strlen($s2) - 2);
@@ -404,7 +404,7 @@ if ($pers["cfight"] == 0 and substr_count($nvs_s, "|") < $k2)
 						<img title="30" src="images/arena/blood_30.gif" style="cursor:hand"></td>
 						<td width="7" class="time" style="border-style: solid; border-width: 1px" title=timeout style="cursor:hand">5м</td>
 						<td width="35">&nbsp;</td>
-						<td width="459" class="items"><input type=radio value="' . $bot1["id"] . '" name="tobot"><b>' . $bot1["user"] . '</b>[<font class=lvl>' . $bot1["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'binfo.php?' . $bot1["id"] . '\',\'_blank\')" src=images/info.gif></td></tr>';
+						<td width="459" class="items"><input type=radio value="' . $bot1["id"] . '" name="tobot"><b>' . $bot1["user"] . '</b>[<font class=lvl>' . $bot1["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'binfo.php?' . $bot1["id"] . '\',\'_blank\')" src=/images/info.gif></td></tr>';
 							if (@$bot2["user"])
 								echo '<tr>
 						<td width="17">
@@ -413,7 +413,7 @@ if ($pers["cfight"] == 0 and substr_count($nvs_s, "|") < $k2)
 						<img title="30" src="images/arena/blood_50.gif" style="cursor:hand"></td>
 						<td width="7" class="time" style="border-style: solid; border-width: 1px" title=timeout style="cursor:hand">5м</td>
 						<td width="35">&nbsp;</td>
-						<td width="459" class="items"><input type=radio value="' . $bot2["id"] . '" name="tobot"><b>' . $bot2["user"] . '</b>[<font class=lvl>' . $bot2["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'binfo.php?' . $bot2["id"] . '\',\'_blank\')" src=images/info.gif></td></tr>';
+						<td width="459" class="items"><input type=radio value="' . $bot2["id"] . '" name="tobot"><b>' . $bot2["user"] . '</b>[<font class=lvl>' . $bot2["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'binfo.php?' . $bot2["id"] . '\',\'_blank\')" src=/images/info.gif></td></tr>';
 							if (@$bot3["user"])
 								echo '<tr>
 						<td width="17">
@@ -422,7 +422,7 @@ if ($pers["cfight"] == 0 and substr_count($nvs_s, "|") < $k2)
 						<img title="30" src="images/arena/blood_80.gif" style="cursor:hand"></td>
 						<td width="7" class="time" style="border-style: solid; border-width: 1px" title=timeout style="cursor:hand">5м</td>
 						<td width="35">&nbsp;</td>
-						<td width="459" class="items"><input type=radio value="' . $bot3["id"] . '" name="tobot"><b>' . $bot3["user"] . '</b>[<font class=lvl>' . $bot3["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'binfo.php?' . $bot3["id"] . '\',\'_blank\')" src=images/info.gif></td></tr>';
+						<td width="459" class="items"><input type=radio value="' . $bot3["id"] . '" name="tobot"><b>' . $bot3["user"] . '</b>[<font class=lvl>' . $bot3["level"] . '</font>]<img style="CURSOR: hand" onclick="javascript:window.open(\'binfo.php?' . $bot3["id"] . '\',\'_blank\')" src=/images/info.gif></td></tr>';
 							if (empty($bot1["user"]) and empty($bot2["user"]) and empty($bot3["user"]))
 								echo "Извините, для вас подходящего зверя нет.";
 						}

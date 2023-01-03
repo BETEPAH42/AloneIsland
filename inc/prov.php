@@ -19,17 +19,17 @@ $images = "images";
 $pers = catch_user(UID);
 define("USER", $pers["user"]);
 $lastom_old = $pers["lastom"];
-echo '<script src="js/jquery.js"></script>
-<script type="text/javascript" src="js/yourpers.js"></script>
-<LINK href=css/main.css rel=STYLESHEET type=text/css>
-<LINK href=css/selectbox.css rel=STYLESHEET type=text/css>
-<script language=javascript src="js/pers.js"></script>
-<script language=javascript src="js/statsup.js"></script>
-<script language=javascript src="js/sell.js"></script>
-<script  language=javascript SRC="js/w.js"></script>
-<script src="js/fightn.js"></script>
-<script src="js/tools/scrollto.js"></script>
-<script src="js/newup.js"></script>';
+echo '<script src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/yourpers.js"></script>
+<LINK href=/css/main.css rel=STYLESHEET type=text/css>
+<LINK href=/css/selectbox.css rel=STYLESHEET type=text/css>
+<script language=javascript src="/js/pers.js"></script>
+<script language=javascript src="/js/statsup.js"></script>
+<script language=javascript src="/js/sell.js"></script>
+<script language=javascript src="/js/w.js"></script>
+<script src="/js/fightn.js"></script>
+<script src="/js/tools/scrollto.js"></script>
+<script src="/js/newup.js"></script>';
 
 
 // <script src='js/fight.js'></script>

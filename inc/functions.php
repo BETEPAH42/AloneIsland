@@ -1,5 +1,4 @@
 <?php
-// include_once '../classes/sql.php';
 
 $sql_queries_counter = 0;
 $sql_queries_timer = 0;
@@ -1491,6 +1490,13 @@ function insert_wp($id, $uid, $durability = -1, $weared = 0, $user = '', $weight
 	return !$result;
 }
 
+function insert_herbal ($id, $uid) {
+	if(!$uid) return false;
+		
+	$trava = SQL::q1("SELECT * FROM herbals WHERE id = ".$id.";");
+	$res = SQL::qi("INSERT INTO `wp` ( `uidp` , `user` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` ,`p_type`, `timeout`) VALUES (" . $uid . ", '" . _UserByUid($uid)["user"] . "', '0','','1', '0', 'herbals/" . $trava["image"] . "', '', 'herbal', 'herbal', '" . $trava["name"] . "', '', '1', '0', '1', '1','200'," . (time() + 1200000) . ");");
+	return $res;
+}
 
 function buy_prim_mayk($id, $uid, $durability)
 {
@@ -1520,8 +1526,7 @@ function buy_prim_mayk($id, $uid, $durability)
 			$_params .= ",'" . $v[$param] . "'";
 		}
 	}
-	$result = sql::qi("INSERT INTO `wp` ( `id` , `uidp` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` , `present` , `clan_sign` , `clan_name` ,`radius` , `slots` ,`arrows` ,`arrows_max` ,`arrow_name` , `arrow_price` , `tlevel` ,`p_type` , `user`, `material_show`, `material` " . $_colls . ")
-VALUES (0, '" . $uid . "', '" . $weared . "','" . $id . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $v["weight"] . "', '" . $v["where_buy"] . "', '" . $durability . "', '" . $durability . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "','" . $v["p_type"] . "', '" . $user . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
+	$result = sql::qi("INSERT INTO `wp` ( `id` , `uidp` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` , `present` , `clan_sign` , `clan_name` ,`radius` , `slots` ,`arrows` ,`arrows_max` ,`arrow_name` , `arrow_price` , `tlevel` ,`p_type` , `user`, `material_show`, `material` " . $_colls . ") VALUES (0, '" . $uid . "', '" . $weared . "','" . $id . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $v["weight"] . "', '" . $v["where_buy"] . "', '" . $durability . "', '" . $durability . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "','" . $v["p_type"] . "', '" . $user . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
 	return $result;
 }
 
@@ -1756,16 +1761,11 @@ function add_flog($txt, $cfight)
 		$cfight = $pers["cfight"];
 	}
 	if ($txt[strlen($txt) - 1] == '%') $txt = substr($txt, 0, strlen($txt) - 1);
-	SQL::q("INSERT INTO `fight_log` ( `time` , `log` , `cfight` , `turn` )
-VALUES (
-'" . date("H:i") . "', '" . addslashes($txt) . "', '" . $cfight . "', '" . round((time() + microtime()), 2) . "'
-);");
+	SQL::q("INSERT INTO `fight_log` ( `time` , `log` , `cfight` , `turn` ) VALUES ('" . date("H:i") . "', '" . addslashes($txt) . "', '" . $cfight . "', '" . round((time() + microtime()), 2) . "');");
 	$txt = "<font class=timef>" . date("H:i") . "</font> " . $txt;
 	$txt = str_replace("%", "<br><font class=timef>" . date("H:i") . "</font> ", $txt);
 	$battle_log .= $txt;
-	SQL::q("UPDATE `fights`
-SET `all`=CONCAT('" . addslashes($txt) . ";',`all`) , `ltime`='" . time() . "'
-WHERE `id`='" . $cfight . "' ;");
+	SQL::q("UPDATE `fights` SET `all`=CONCAT('" . addslashes($txt) . ";',`all`) , `ltime`='" . time() . "' WHERE `id`='" . $cfight . "' ;");
 }
 
 function signum($x)
@@ -1858,10 +1858,7 @@ function experience($damage, $yourlvl, $vslvl, $notnpc, $rank)
 
 function transfer_log($type, $uid, $user, $money1, $money2, $title, $ip1, $ip2)
 {
-	SQL::q("INSERT INTO `transfer` ( `date` , `type` , `uid` , `who` , `transfer_in` , `transfer_out` , `title` , `ip1` , `ip2`)
-VALUES (
-'" . time() . "', " . $type . " ,'" . $uid . "', '" . $user . "', '" . $money1 . "', '" . $money2 . "', '" . $title . "', '" . $ip1 . "' , '" . $ip2 . "'
-);");
+	SQL::q("INSERT INTO `transfer` ( `date` , `type` , `uid` , `who` , `transfer_in` , `transfer_out` , `title` , `ip1` , `ip2`) VALUES ( '" . time() . "', " . $type . " ,'" . $uid . "', '" . $user . "', '" . $money1 . "', '" . $money2 . "', '" . $title . "', '" . $ip1 . "' , '" . $ip2 . "' );");
 }
 
 function ylov($_pers, $_persvs)

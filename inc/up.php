@@ -110,6 +110,10 @@
         SQL::q("UPDATE `users` SET `curstate` = 33 WHERE `uid`=" . UID . " ;");
         $pers["curstate"] = 33;
       }
+      if (@$_GET["go"] == "gheralbism" and $pers["priveleged"]) {
+        SQL::q("UPDATE `users` SET `curstate` = 34 WHERE `uid`=" . UID . " ;");
+        $pers["curstate"] = 34;
+      }
     }
   }
   ##

@@ -59,7 +59,7 @@ if ($priv["ewp"] == 2) {
 	}
 }
 ?>
-<script language=JavaScript src='js/adm_new.js' type="text/javascript"></script>
+<script language=JavaScript src='/js/adm_new.js' type="text/javascript"></script>
 <script>
 	function give(id) {
 		init_main_layer();

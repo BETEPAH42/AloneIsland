@@ -2,14 +2,14 @@
 echo "
 <script type='text/javascript'>
 //обновление ДИВА каждую секунду
-setInterval(function() { $('div.show7').load('# div.show7');},1000);
+	setInterval(function() { $('div.show7').load('# div.show7');},1000);
 </script> ";
 echo "
 <style>
 #show7 
-{
-z-index:5000;
-}
+	{
+		z-index:5000;
+	}
 </style>
 ";
 
