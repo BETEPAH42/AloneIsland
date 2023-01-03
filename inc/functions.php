@@ -1695,7 +1695,7 @@ function dress_weapon($id_of_weapon, $checker)
 			if ($v["type"] == 'orujie') {
 
 				$tmp = SQL::q1("SELECT COUNT(id) as count FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie';");
-				var_dump($tmp);
+				// var_dump($tmp);
 				if ($tmp['count'] >= 2) {
 					if ($v["stype"] == 'noji' or $v["stype"] == 'shit') {
 						$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie' and (stype='noji' or stype='shit')");
