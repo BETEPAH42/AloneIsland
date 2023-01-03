@@ -206,7 +206,7 @@ a.wBut:hover{
 a.gBut{
 	display: block;
 	background-color: transparent;
-	background-image: url('images/DS/a_button_gbg.png');
+	background-image: url('/images/DS/a_button_gbg.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
