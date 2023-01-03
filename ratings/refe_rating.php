@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 if (!file_exists("../service/top_gamers/R" . date("d-m-y") . ".txt")) {
   $res = sql::q("SELECT sign,user,aura,level,state,exp,losses,victories,money,uid,rank_i,referal_counter,referal_rcounter FROM `users` WHERE  priveleged = 0 and block='' and lasto<>0  ORDER BY (referal_counter+referal_rcounter*3) DESC LIMIT 0 , 20");

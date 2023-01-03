@@ -1,4 +1,4 @@
-﻿var menu;
+var menu;
 
 function prov(allod, point) {
     document.getElementById('menu').innerHTML = '';

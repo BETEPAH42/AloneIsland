@@ -1,4 +1,4 @@
-﻿<?
+<?
 $chp2 = $pers['chp'];
 $maxhp = $pers['hp'];
 function tme()

@@ -1,4 +1,4 @@
-﻿<?
+<?
 $cell_type = SQL::q1("SELECT type FROM nature WHERE x=" . $pers["x"] . " and y=" . $pers["y"] . "");
 
 if ($_GET["d"]) {

@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (@$_POST["dk"]) {
 	$dk = abs($_POST["dk"]);
 	if ($dk <= $pers["dmoney"]) {

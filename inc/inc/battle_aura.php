@@ -1,4 +1,4 @@
-﻿<?
+<?
 if ($pers["invisible"] > tme()) {
 	$pers["user"] = '<i>невидимка</i>';
 	$invyou = 1;
@@ -9,7 +9,7 @@ if (!$invyou)
 else
 	$nyou = "<font class=bnick color=" . $colors[$pers["fteam"]] . "><i>невидимка</i></font>[??]";
 
-$a = sql::q1("SELECT * FROM u_auras WHERE uidp=" . $pers["uid"] . " and id=" . intval($aid) . "");
+$a = SQL::q1("SELECT * FROM u_auras WHERE uidp=" . $pers["uid"] . " and id=" . intval($aid) . "");
 if (
 	$a and
 	$a["manacost"] <= $pers["cma"] and
@@ -21,9 +21,9 @@ if (
 	$a["cur_turn_colldown"] <= $pers["f_turn"]
 ) {
 	if ($a["forenemy"])
-		$ps = sql::q1("SELECT * FROM users WHERE cfight=" . $pers["cfight"] . " and fteam<>" . $pers["fteam"] . " and chp>0");
+		$ps = SQL::q("SELECT * FROM users WHERE cfight=" . $pers["cfight"] . " and fteam<>" . $pers["fteam"] . " and chp>0");
 	else
-		$ps = sql::q1("SELECT * FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=" . $pers["fteam"] . " and chp>0");
+		$ps = SQL::q("SELECT * FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=" . $pers["fteam"] . " and chp>0");
 
 	$text2 = '';
 	$p1 = false;

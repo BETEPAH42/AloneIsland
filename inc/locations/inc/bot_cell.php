@@ -1,4 +1,4 @@
-﻿<?
+<?
 $TXT = '';
 if ($cell["last_bots_change"] < (time() - 7200)) {
 	// echo var_dump($cell["bot"]);

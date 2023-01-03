@@ -1,4 +1,4 @@
-﻿<?
+<?
 sql::q("DELETE FROM app_for_fight WHERE id=" . $app["id"] . "");
 sql::q("UPDATE users SET apps_id=0,fteam=0,refr=1 WHERE apps_id=" . $app["id"] . "");
 $p1 = '';

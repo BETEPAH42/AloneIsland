@@ -1,4 +1,4 @@
-﻿<?
+<?
 function send_mail($admin, $body, $email)
 {
   $subject = '=?windows-1251?B?'.base64_encode('Заполнена форма на сайте').'?=';

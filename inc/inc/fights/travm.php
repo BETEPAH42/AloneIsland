@@ -1,4 +1,4 @@
-﻿<?
+<?
 $str = "";
 if (!$_persvs) $_persvs = $persvs;
 if ($_persvs["invisible"] > tme()) $_persvs["user"] = '<i>невидимка</i>';

@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (isset($_REQUEST["store_act"]) && !empty($_REQUEST["store_act"]) && isset($_REQUEST["res_kolvo"]) && !empty($_REQUEST["res_kolvo"]) && isset($_REQUEST["what_res"])) {
 	if ($_REQUEST["store_act"] == 'sell') {
 		$cur_now = SQL::q1("SELECT count(name) as count FROM `wp` WHERE id_in_w='" . $_REQUEST["what_res"] . "' and uidp=" . $pers["uid"] . "")['count'];

@@ -1,4 +1,4 @@
-﻿/**********************************************************************
+/**********************************************************************
 TERMS OF USE - EASING EQUATIONS
 Open source under the BSD License.
 Copyright (c) 2001 Robert Penner

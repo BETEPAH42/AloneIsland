@@ -1,4 +1,4 @@
-﻿<?
+<?
 	function vaura($bl,$pers,$use=1)
 	{
 		GLOBAL $types,$_INV;

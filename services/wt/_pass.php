@@ -1,4 +1,4 @@
-﻿<?
+<?
 $punishs = sql::q("SELECT * FROM puns WHERE uid=" . $pers["uid"] . " and type=7");
 echo '<table border="1" cellspacing="0" cellpadding="0" bordercolorlight=#C0C0C0 bordercolordark=#FFFFFF bgcolor=#F5F5F5 align=center>';
 foreach ($punishs as $punish) {

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include ("main_rating.php"); 
 include ("hunt_rating.php");
 include ("alch_rating.php");

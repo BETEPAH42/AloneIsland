@@ -1,4 +1,4 @@
-﻿<?
+<?
 
 if (!$_persvs["id"]) $_persvs  =  $persvs;
 

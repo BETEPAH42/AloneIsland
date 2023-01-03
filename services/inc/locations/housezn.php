@@ -1,4 +1,4 @@
-﻿<center><?
+<center><?
 		if (@$_GET["la"]) {
 			$a = sql::q1("SELECT id,price,dprice,name FROM auras WHERE
 				id=" . intval($_GET["la"]) . " and 

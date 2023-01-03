@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 if (!file_exists("../service/top_gamers/A" . date("d-m-y") . ".txt")) {
   $top = "var list=new Array(\n";

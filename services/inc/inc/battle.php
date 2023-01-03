@@ -1,4 +1,4 @@
-﻿<?
+<?
 #### Считаем ОД на удар
 $_W = Weared_Weapons($pers["uid"]);
 $OD_UDAR = $_W["OD"];

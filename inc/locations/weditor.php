@@ -1,4 +1,4 @@
-﻿<div class=fightlong style="position:absolute;z-index:1;left:1%;top:60px;width:98%">
+<div class=fightlong style="position:absolute;z-index:1;left:1%;top:60px;width:98%">
 	<center><img src='images/locations/pr_shop.jpg' width=512></center>
 	<?
 	/*

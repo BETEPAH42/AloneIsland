@@ -1,4 +1,4 @@
-﻿<center><?
+<center><?
 		if (
 			@$_GET["buy_alchemy"] and $_GET["buy_alchemy"] == 1
 			and $pers["s5"] > 14 and $pers["money"] > 99

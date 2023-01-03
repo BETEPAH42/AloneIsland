@@ -1,4 +1,4 @@
-﻿<?	
+<?	
 //echo "<a href=main.php?go=back class=bga>ПАРАДНАЯ</a>";
 include ("./inc/combats.php");
 /*		

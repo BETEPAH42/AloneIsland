@@ -1,4 +1,4 @@
-﻿<Center><table width='900'><tr><td>
+<Center><table width='900'><tr><td>
 <?
 Echo "<center><Table width='90%'><tr><td width='25%'><center><a href='main.php?adm_clan=c' class=blocked>Отдел кланов</a></center></td>
 <td width='25%'><center><a href='main.php?adm_prof=prof' class=blocked>Отдел профессий</a></center></td>

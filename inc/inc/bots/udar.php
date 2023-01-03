@@ -1,4 +1,4 @@
-﻿<?
+<?php
 mod_st_start("Удар бота", 0);
 
 $pers["botlibnew"] = $pers["botlib"];
@@ -126,5 +126,4 @@ if ($kl <> 0) {
 	if ($fall) $fight["all"] = $die . "<font class=time>" . date("H:i") . "</font> " . $fall . " [<font class=time>" . $persvs["user"] . " [" . $persvs["level"] . "] HP: " . $persvs["chp"] . "/" . $persvs["hp"] . "</font>];" . $fight["all"];
 	sql::q("UPDATE `fights` SET `all`='" . addslashes($fight["all"]) . "' , `ltime`='" . time() . "' WHERE `id`='" . $fight["id"] . "' ;");
 }
-
 mod_st_fin();

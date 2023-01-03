@@ -1,4 +1,4 @@
-﻿<META Content='text/html; charset=utf-8' Http-Equiv='Content-type'>
+<META Content='text/html; charset=utf-8' Http-Equiv='Content-type'>
 <LINK href='main.css' rel='STYLESHEET' type='text/css'>
 <?
 error_reporting(E_ALL);

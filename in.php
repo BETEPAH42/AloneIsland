@@ -1,4 +1,4 @@
-﻿<LINK href=main.css rel=STYLESHEET type=text/css>
+<LINK href=main.css rel=STYLESHEET type=text/css>
 <center>
 <form action=game.php method=post>
 Login:<input type=text name=user class=laar value=<?php echo $_COOKIE["nick"];?>><br>

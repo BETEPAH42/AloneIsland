@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (@$_GET["attack"]) {
 	$bid = sql::q1("SELECT id FROM bots WHERE user='" . $_POST["name"] . "' and level=" . intval($_POST["lvl"]) . " and special=0")['id'];
 	begin_fight($pers["user"], "bot=" . $bid . "|", "Тестирующий бой", -1, 300, 1, 0);

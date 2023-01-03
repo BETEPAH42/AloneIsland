@@ -1,4 +1,4 @@
-﻿<script type="text/javascript" src="js/yourpers.js"></script>
+<script type="text/javascript" src="js/yourpers.js"></script>
 <div id=inf_from_php style='visibility:hidden;position:absolute;top:0px;height:0;' class=loc>
 	<?
 	$level = sql::q1("SELECT * FROM `exp` WHERE `level`=" . ($pers["level"] + 1));

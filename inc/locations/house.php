@@ -1,4 +1,4 @@
-﻿<?
+<?
 $ti=time();
 echo '<table border="0" width="100%" id="table1" cellspacing="9" cellpadding="0">
 	<tr>

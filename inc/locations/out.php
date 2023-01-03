@@ -1,4 +1,4 @@
-﻿<?
+<?
 define("FISHING_TIME", 75);
 define("HERBAL_CHANGE", 18200);
 define("HERBAL_GROW", 8600);

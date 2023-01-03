@@ -1,4 +1,4 @@
-﻿<script>
+<script>
 	<?
 	include_once '../classes/sql.php';
 	include '../inc/functions.php';

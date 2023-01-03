@@ -1,4 +1,4 @@
-﻿<?
+<?
 //Нападение.
 if (isset($_POST['napad']) and $pers['cfight'] == 0 and $_POST['fornickname'] <> $pers["user"]) {
 	$v = sql::q1("SELECT * FROM `wp` WHERE `id`='" . intval($_POST['napad']) . "' and uidp=" . $pers["uid"] . " and weared=0");

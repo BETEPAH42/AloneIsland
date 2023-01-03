@@ -1,4 +1,4 @@
-﻿<?
+<?
 $z = sql::q1("SELECT COUNT(*) as count FROM `users` WHERE referal_uid=" . UID . "")['count'];
 echo "Вы привели в игру <b>" . $z . "</b> персонажа.<hr>";
 if ($pers["refc"] != $z) {
@@ -37,9 +37,9 @@ foreach ($frs as $perssost) {
 	echo "<td class=ym>" . ($c * 30 + $count) . ".</td>";
 	echo "<td class=timef>" . $perssost["ds"] . "</td>";
 	echo "<td class=user>";
-	echo "<img src='images/signs/" . $perssost["sign"] . ".gif' title='" . $perssost["state"] . "'>";
+	echo "<img src='/images/signs/" . $perssost["sign"] . ".gif' title='" . $perssost["state"] . "'>";
 	echo " " . $perssost["user"] . "[<font class=lvl>" . $perssost["level"] . "</font>]";
-	echo "<img src='images/info.gif' onclick=\"javascript:window.open('info.php?p=" . $perssost["user"] . "','_blank')\" style=cursor:pointer>";
+	echo "<img src='/images/info.gif' onclick=\"javascript:window.open('info.php?p=" . $perssost["user"] . "','_blank')\" style=cursor:pointer>";
 	echo "</td>";
 	if ($perssost["online"] == 1) {
 		$loc = sql::q1("SELECT name FROM `locations` WHERE `id`='" . $perssost['location'] . "'");

@@ -1,4 +1,4 @@
-﻿<script type="text/javascript" src="js/fish_edit.js"></script>
+<script type="text/javascript" src="js/fish_edit.js"></script>
 <?
 
 
@@ -224,14 +224,14 @@ if ($pers["user"] == "BETEPAH") {
 					</tr>
 					<tr>
 						<td width=40%>
-							<center class=ma style=\"display:none;cursor:pointer;\">
+							<center class=ma style="display:none;cursor:pointer;">
 								<? echo "<a href='main.php?go=fishin&zapis=yes&fish=" . $_POST["fish"] . "&active=" . $_POST["active"] . "&water=" . $_POST["water"] . "&prim_1=" . $_POST["prim_1"] . "&prim_2=" . $_POST["prim_2"] . "&prim_3=" . $_POST["prim_3"] . "&lvl=" . $_POST["lvl"] . "&price=" . $_POST["price"] . "&ves=" . $_POST["ves"] . "'>Да</a>";
 								?>
 							</center>
 						</td>
 						<td width=20%></td>
 						<td width=40%>
-							<center class=hp style=\"display:none;cursor:pointer;\"><a href=main.php?go=fishin class=knopka>Нет</a></center>
+							<center class=hp style='display:none;cursor:pointer;'><a href=main.php?go=fishin class=knopka>Нет</a></center>
 						</td>
 					</tr>
 				</table>
@@ -258,14 +258,14 @@ if ($pers["user"] == "BETEPAH") {
 					</tr>
 					<tr>
 						<td width=40%>
-							<center class=ma style=\"display:none;cursor:pointer;\">
+							<center class=ma style="display:none;cursor:pointer;">
 								<? echo "<a href='main.php?go=fishin&zapis=yes&fish=" . $_POST["fish"] . "&active=" . $_POST["active"] . "&water=" . $_POST["water"] . "&prim_1=" . $_POST["prim_1"] . "&prim_2=" . $_POST["prim_2"] . "&prim_3=" . $_POST["prim_3"] . "&lvl=" . $_POST["lvl"] . "&price=" . $_POST["price"] . "&ves=" . $_POST["ves"] . "'>Да</a>";
 								?>
 							</center>
 						</td>
 						<td width=20%></td>
 						<td width=40%>
-							<center class=hp style=\"display:none;cursor:pointer;\"><a href=main.php?go=fishin class=knopka>Нет</a></center>
+							<center class=hp style="display:none;cursor:pointer;"><a href=main.php?go=fishin class=knopka>Нет</a></center>
 						</td>
 					</tr>
 				</table>

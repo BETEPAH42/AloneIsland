@@ -1,4 +1,4 @@
-﻿//*** This code is copyright 2002-2003 by Gavin Kistner and Refinery; www.refinery.com
+//*** This code is copyright 2002-2003 by Gavin Kistner and Refinery; www.refinery.com
 //*** It is covered under the license viewable at http://phrogz.net/JS/_ReuseLicense.txt
 //*** Reuse or modification is free provided you abide by the terms of that license.
 //*** (Including the first two lines above in your source code satisfies the conditions.)

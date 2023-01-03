@@ -1,4 +1,4 @@
-﻿<?
+<?
 $lb = 120;
 //$all_time = $get_time = time() + microtime(); 
 if ($SPECIAL_pers)

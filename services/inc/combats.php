@@ -1,4 +1,4 @@
-﻿<center>
+<center>
 	<?
 	$tour1 = '';
 	$tour2 = '';

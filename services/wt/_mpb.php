@@ -1,4 +1,4 @@
-﻿<?
+<?
 $m = (substr_count($you["rank"],"<molch>")) ? 1 : 0;
 $p = (substr_count($you["rank"],"<prison>")) ? 1 : 0;
 $b = (substr_count($you["rank"],"<block>")) ? 1 : 0;

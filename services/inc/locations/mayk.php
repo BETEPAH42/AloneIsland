@@ -1,4 +1,4 @@
-﻿<LINK href="css/vkladki.css" rel="STYLESHEET" type="text/css">
+<LINK href="css/vkladki.css" rel="STYLESHEET" type="text/css">
 <center>Маяк Безмолвия</center>
 <script type="text/javascript">
 	$(document).ready(function() {

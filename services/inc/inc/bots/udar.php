@@ -1,4 +1,4 @@
-﻿<?
+<?
 mod_st_start("Удар бота", 0);
 
 $pers["botlibnew"] = $pers["botlib"];

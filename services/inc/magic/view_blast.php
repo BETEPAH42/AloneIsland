@@ -1,4 +1,4 @@
-﻿<?
+<?
 	function vblast($bl,$pers)
 	{
 		GLOBAL $types;

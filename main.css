@@ -1,5 +1,4 @@
-﻿IMG
-{
+﻿img {
 	border-style: none;
 }
 
@@ -29,7 +28,7 @@ iframe{
 	overflow-y: auto;
 	min-height: 1px;
 }
-HR{
+hr{
 	border: 0px none;
 	color: #CCCCCC;
 	background-color: #CCCCCC;
@@ -54,23 +53,14 @@ h2 {
 	color: #000000;
 }
 
-BODY
-{
+body {
 	FONT-SIZE: 12px;
 	COLOR: #222222;
 	MARGIN: 0px;
-	scrollbar-3dlight-color: #DDDDDD;
-	scrollbar-arrow-color: #C6C6C6;
-	scrollbar-base-color: #EEEEEE;
-	scrollbar-darkshadow-color: #EEEEEE;
-	scrollbar-face-color: #EEEEEE;
-	scrollbar-highlight-color: #C6C6C6;
-	scrollbar-shadow-color: #C6C6C6;
-	scrollbar-track-color: #EEEEEE;
 	font-family: Trebuchet , "Trebuchet MS" , Tahoma , Verdana , Arial;
-	SCROLLING:  none;
 	background-color: #F5F5F5;
 	padding: 0px;
+	min-height: 696px;
 }
 
 table
@@ -241,7 +231,7 @@ a.Button:hover{
 	border: 2px solid #CECECE;
 	FONT-SIZE: 11px;
 	font-family: Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	background-image: url('images/design/chbg2.gif');
+	background-image: url('/images/design/chbg2.gif');
 }
 
 .but {

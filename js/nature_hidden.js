@@ -1,4 +1,4 @@
-﻿var go_str;
+var go_str;
 
 function show_nature(x, y, A) {
 	if (top.top.frames["updater"].go_str)

@@ -1,4 +1,4 @@
-﻿<center width=100% class=but><b>Возможности министра</b>
+<center width=100% class=but><b>Возможности министра</b>
 	<?
 	/*
 $ssss=0;
@@ -83,6 +83,7 @@ echo $ssss;
 	$links .= '<li><a class=bg href=main.php?go=add_tip>Подсказки</a></li>';
 	$links .= '<li><a class=bg href=main.php?go=add_new>Новости</a></li>';
 	$links .= '<li><a class=bg href=main.php?go=fishin>Рыбёшка</a></li>';
+	$links .= '<li><a class=bg href=main.php?go=gheralbism>Травки</a></li>';
 	echo "<br>Должность: Создатель мира назначил вас на должность <b>" . $priv["status"] . "</b><br>";
 	//echo "[Каждый министр привелегирован на: Добаление и редактирование новостей, Создание и редактирование подсказок в мире от лица создателя.]</center>";
 	echo "<center class=but>" . $online . "<div style='width:50%'><ul class=but>" . $links . "</ul></div><p>" . $abb . "</p></center>";

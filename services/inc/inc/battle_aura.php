@@ -1,4 +1,4 @@
-﻿<?
+<?
 if ($pers["invisible"] > tme()) {
 	$pers["user"] = '<i>невидимка</i>';
 	$invyou = 1;

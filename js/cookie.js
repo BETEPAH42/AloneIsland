@@ -1,4 +1,4 @@
-﻿function createCookie(name,value,days) {
+function createCookie(name,value,days) {
 	if (days) {
 		var date = new Date();
 		date.setTime(date.getTime()+(days*24*60*60*1000));

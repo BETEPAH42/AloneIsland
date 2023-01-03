@@ -1,4 +1,4 @@
-﻿<div class=fightlong>
+<div class=fightlong>
 	<?
 	/*
 if (substr_count($pers["rank"],"<molch>") or $pers["diler"]=='1' or $pers["priveleged"]);else

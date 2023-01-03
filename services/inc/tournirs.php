@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 ##### турниры рыбаков
 $ww12 = SQL::q1("SELECT * FROM quest WHERE `id`=6");
 ### начало турнира

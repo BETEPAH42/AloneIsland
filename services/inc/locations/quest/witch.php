@@ -1,12 +1,12 @@
-﻿<?
+<?
 
-$qWitch = sql::q1("SELECT * FROM quest WHERE id = " . Q_WITCH . "");
+$qWitch = SQL::q1("SELECT * FROM quest WHERE id = " . Q_WITCH . "");
 if (!$qWitch) {
-	sql::q("INSERT INTO quest (id,finished)VALUES(" . Q_WITCH . ",1)");
+	SQL::q("INSERT INTO quest (id,finished)VALUES(" . Q_WITCH . ",1)");
 }
 if ($qWitch["finished"] && $qWitch["time"] < tme()) {
-	$randWp = sql::q1("SELECT name FROM wp WHERE price<300 and dprice=0 and type='herbal' ORDER BY RAND() LIMIT 0,1;");
-	$randCell = sql::q1("SELECT x,y FROM nature WHERE (x*x+y*y)<1024 ORDER BY RAND() LIMIT 0,1");
+	$randWp = SQL::q1("SELECT name FROM wp WHERE price<300 and dprice=0 and type='herbal' ORDER BY RAND() LIMIT 0,1;");
+	$randCell = SQL::q1("SELECT x,y FROM nature WHERE (x*x+y*y)<1024 ORDER BY RAND() LIMIT 0,1");
 	if (signum($randCell["x"]) == 0 && signum($randCell["y"]) == -1) $go_n = 'север';
 	if (signum($randCell["x"]) == 0 && signum($randCell["y"]) == 1) $go_n = 'юг';
 	if (signum($randCell["x"]) == -1 && signum($randCell["y"]) == 0) $go_n = 'запад';
@@ -20,7 +20,7 @@ if ($qWitch["finished"] && $qWitch["time"] < tme()) {
 	$qWitch["sParam"] = $randWp['name'];
 	$qWitch["lParam"] = $randCell["x"];
 	$qWitch["zParam"] = $randCell["y"];
-	sql::q(
+	SQL::q(
 		"UPDATE quest SET 
 		sParam = '" . $qWitch["sParam"] . "',
 		lParam = '" . $qWitch["lParam"] . "',
@@ -30,6 +30,7 @@ if ($qWitch["finished"] && $qWitch["time"] < tme()) {
 		WHERE id = " . Q_WITCH . ""
 	);
 }
+var_dump($_GET["gW"]);
 if (@$_GET["gW"] && !$qWitch["finished"] && $qWitch["time"] > tme()) {
 	if (
 		$pers["x"] == $qWitch["lParam"] &&
@@ -44,13 +45,13 @@ if (@$_GET["gW"] && !$qWitch["finished"] && $qWitch["time"] > tme()) {
 				$male = '';
 				$la = "";
 			}
-			sql::q("UPDATE wp SET durability=0 WHERE id=" . $yourWp["id"] . "");
+			SQL::q1("UPDATE wp SET durability=0 WHERE id=" . $yourWp["id"] . "");
 			$r = rand(2, 4);
 			$exp = 1000 + round(($pers["level"] * 1000) / $pers['questWitch'], 0);
 			$ln = $yourWp["price"] * 2;
 			say_to_chat("o", "Ведьма Алиса в восторге от великодушия <b>" . $pers["user"] . "</b>, ведь он" . $male . " помог" . $la . " ей в осуществлении её нового плана! Она щедро дарит <b>" . $pers["user"] . "</b> " . $exp . " опыта и сундук с сокровищами.", 0, '', '*', 0);
 			say_to_chat("o", "Ведьма Алиса дарит вам " . $exp . " опыта, " . $r . " пергамента, <b>" . $ln . " LN</b> , 1 обнуление и накладывает на вас «Благословение Небес»", 1, $pers["user"], '*', 0);
-			sql::q(
+			SQL::q(
 				"UPDATE users SET
 					exp = exp + " . $exp . ",
 					coins = coins + " . $r . ",
@@ -79,7 +80,7 @@ if (@$_GET["gW"] && !$qWitch["finished"] && $qWitch["time"] > tme()) {
 		$pers["y"] == $qWitch["zParam"]
 	) {
 		$_RETURN .= '<table><tr><td><img src="images/witch.png"></td><td><center class=but>Вы нашли Ведьму Алису!</center><i class=user>Она всё ещё нуждается в <b>«' . $qWitch["sParam"] . '»</b></i></td></tr></table>';
-		$yourWp = sql::q1("SELECT * FROM wp WHERE uidp=" . UID . " and weared=0 and name='" . $qWitch["sParam"] . "'");
+		$yourWp = SQL::q1("SELECT * FROM wp WHERE uidp=" . UID . " and weared=0 and name='" . $qWitch["sParam"] . "'");
 		if ($yourWp) {
 			$vesh = $yourWp;
 			include("inc/inc/weapon2.php");
@@ -89,7 +90,7 @@ if (@$_GET["gW"] && !$qWitch["finished"] && $qWitch["time"] > tme()) {
 }
 if (!$qWitch["finished"] && $qWitch["time"] <= tme()) {
 	say_to_chat("o", "Никто не смог помочь Ведьме Алисе... Огрызнувшись на нерадивых жителей, она ушла спать...", 0, '', '*', 0);
-	sql::q("UPDATE quest SET 
+	SQL::q("UPDATE quest SET 
 		finished = 1, time = " . (tme() + 3600) . "
 		WHERE id = " . Q_WITCH . "");
 }

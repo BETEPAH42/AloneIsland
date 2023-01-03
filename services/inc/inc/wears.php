@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (@$_GET["use"] and $pers["cfight"] > 10 and $pers["chp"]) {
 	$v = SQL::q1("SELECT `id`,`index`,durability FROM `wp` WHERE `id`=" . intval($_GET["use"]) . "");
 	$index = $v["index"];

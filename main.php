@@ -136,6 +136,7 @@ if ($pers["curstate"] == 30) include_once('inc/adm/questsQ.php');
 if ($pers["curstate"] == 31) include_once('inc/adm/ava_req.php');
 if ($pers["curstate"] == 32) include_once('inc/adm/clans.php');
 if ($pers["curstate"] == 33) include_once('inc/adm/fish.php');
+if ($pers["curstate"] == 34) include_once('inc/adm/gheralbism.php');
 
 $t = time() + intval(microtime() * 1000) / 1000 - $timer;
 /*
@@ -167,7 +168,7 @@ if ($_COOKIE["uid"] == 1) {
 Простое модальное окно | 
     <a href='#'class='close'/>Закрыть его</a><br>
 	<font class=time><center>SQL :: [" . $sql_queries_counter . "] > " . $sql_queries_timer . " sec. | ALL :: " . $t . "</center></font>
-	<font class=time><center>SQL :: [" . $sql_longest_query . "] > " . $sql_longest_query_t . " sec.</center></font><Br><a href=main.php?serrors=1 class=timef>Показать ошибки </a><hr>
+	<font class=time><center>SQL :: [" . $sql_longest_query . "] > " . $sql_longest_query_t . " sec.</center></font><br><a href=main.php?serrors=1 class=timef>Показать ошибки </a><hr>
 <div class=scroler title='Подключаемые модули (файлы)'>";
 
     $included_files = get_included_files();

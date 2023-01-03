@@ -1,4 +1,4 @@
-﻿<SCRIPT LANGUAGE='JavaScript' SRC='js/mine.js'></SCRIPT>
+<SCRIPT LANGUAGE='JavaScript' SRC='js/mine.js'></SCRIPT>
 <?
 $MINE_ID = $pers["x"] * $pers["y"] % 65500;
 $tr = SQL::q1("SELECT * FROM mine WHERE x=" . ($pers["minex"] + 1) . " and y=" . $pers["miney"] . " and mine=" . $MINE_ID . "");
