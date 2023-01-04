@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (rand(0, 50) < 1) set_vars("action=-1", UID);
 $r = intval($_GET["beginr"]);
 $r_get = '<hr>';

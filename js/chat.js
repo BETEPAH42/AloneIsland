@@ -1,4 +1,4 @@
-﻿if (top.loading)
+if (top.loading)
 	top.load(10);
 
 

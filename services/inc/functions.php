@@ -1,4 +1,4 @@
-﻿<?
+<?php
 include_once 'classes/sql.php';
 
 $sql_queries_counter = 0;
@@ -1405,7 +1405,7 @@ function showWeapon(array $id)
 		<div class=weapons_box>
 			<div class=weapon_name>{$w['name']}</div>
 			<div class=weapon_img_xap>
-				<div><img src='../images/weapons/{$w['image']}.gif'></div>
+				<div><img src='images/weapons/{$w['image']}.gif'></div>
 				<div>Характеристики:</div>
 			</div>
 			<div>Кнопки:</div>

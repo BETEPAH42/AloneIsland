@@ -1,4 +1,4 @@
-﻿<?
+<?
 echo "<SCRIPT LANGUAGE=\"JavaScript\">
 function startCountdown(a,g_iCount2){
  var z=1;

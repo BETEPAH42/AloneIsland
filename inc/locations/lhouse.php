@@ -1,4 +1,4 @@
-﻿<center><?
+<center><?
 echo '<table border="0" width="700" cellspacing="9" cellpadding="0" class=weapons_box> <tr> <td align="center"><img src=images/locations/university.jpg width=600></td> </tr>'; 	
 echo "<tr>";
 echo "<td class=but align=center>";

@@ -1,4 +1,4 @@
-﻿<center>
+<center>
 	<table border="0" width="600" cellspacing="0" cellpadding="0" class=but>
 		<tr>
 			<td align="center" height="55">
@@ -104,49 +104,49 @@ if ($_GET["cat"] == 2) {
 		<td width="294" class="items"><span lang="ru">Самое большое количество
 		побед</span></td>
 		<td align="center" class="items">' . $wins . '</td>
-		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $wins_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $wins_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $wins_u['user'] . '\')"> ' . $wins_u['user'] . '</font></td><td>[<font class=lvl>' . $wins_u['level'] . '</font>]</td><td><img src=../images/info.gif onclick="javascript:window.open(\'info.php?p=' . $wins_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $wins_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $wins_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $wins_u['user'] . '\')"> ' . $wins_u['user'] . '</font></td><td>[<font class=lvl>' . $wins_u['level'] . '</font>]</td><td><img src=images/info.gif onclick="javascript:window.open(\'info.php?p=' . $wins_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
 		<td width="294" class="items"><span lang="ru">Самое большое количество
 		поражений</span></td>
 		<td align="center" class="items">' . $lozes['max'] . '</td>
-		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $lozes_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $lozes_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $lozes_u['user'] . '\')"> ' . $lozes_u['user'] . '</font></td><td>[<font class=lvl>' . $lozes_u['level'] . '</font>]</td><td><img src=../images/info.gif onclick="javascript:window.open(\'info.php?p=' . $lozes_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $lozes_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $lozes_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $lozes_u['user'] . '\')"> ' . $lozes_u['user'] . '</font></td><td>[<font class=lvl>' . $lozes_u['level'] . '</font>]</td><td><img src=images/info.gif onclick="javascript:window.open(\'info.php?p=' . $lozes_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
 		<td width="294" class="items"><span lang="ru">Самое большое количество
 		умений &quot;Охота&quot;</span></td>
 		<td align="center" class="items">' . round($hunt['max'] * 10) . '</td>
-		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $hunt_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $hunt_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $hunt_u['user'] . '\')"> ' . $hunt_u['user'] . '</font></td><td>[<font class=lvl>' . $hunt_u['level'] . '</font>]</td><td><img src=../images/info.gif onclick="javascript:window.open(\'info.php?p=' . $hunt_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $hunt_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $hunt_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $hunt_u['user'] . '\')"> ' . $hunt_u['user'] . '</font></td><td>[<font class=lvl>' . $hunt_u['level'] . '</font>]</td><td><img src=images/info.gif onclick="javascript:window.open(\'info.php?p=' . $hunt_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
 		<td width="294" class="items"><span lang="ru">Самое большое количество
 		Игровой Валюты</span></td>
 		<td align="center" class="items">' . round($money['max'], 2) . '</td>
-		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $money_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $money_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $money_u['ser'] . '\')"> ' . $money_u['ser'] . '</font></td><td>[<font class=lvl>' . $money_u['level'] . '</font>]</td><td><img src=../images/info.gif onclick="javascript:window.open(\'info.php?p=' . $money_u['ser'] . '\',\'_blank\')" style="cursor:hand"></font></td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $money_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $money_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $money_u['ser'] . '\')"> ' . $money_u['ser'] . '</font></td><td>[<font class=lvl>' . $money_u['level'] . '</font>]</td><td><img src=images/info.gif onclick="javascript:window.open(\'info.php?p=' . $money_u['ser'] . '\',\'_blank\')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
 		<td width="294" class="items"><span lang="ru">Самое большое количество
 		боёв</span></td>
 		<td align="center" class="items">' . $f['max'] . '</td>
-		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $f_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $f_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $f_u['user'] . '\')"> ' . $f_u['user'] . '</font></td><td>[<font class=lvl>' . $f_u['level'] . '</font>]</td><td><img src=../images/info.gif onclick="javascript:window.open(\'info.php?p=' . $f_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $f_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $f_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $f_u['user'] . '\')"> ' . $f_u['user'] . '</font></td><td>[<font class=lvl>' . $f_u['level'] . '</font>]</td><td><img src=images/info.gif onclick="javascript:window.open(\'info.php?p=' . $f_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
 		<td width="294" class="items"><span lang="ru">Самое большое количество
 		опыта</span></td>
 		<td align="center" class="items">' . $exp['max'] . '</td>
-		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $exp_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $exp_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $exp_u['user'] . '\')"> ' . $exp_u['user'] . '</font></td><td>[<font class=lvl>' . $exp_u['level'] . '</font>]</td><td><img src=../images/info.gif onclick="javascript:window.open(\'info.php?p=' . $exp_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $exp_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $exp_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $exp_u['user'] . '\')"> ' . $exp_u['user'] . '</font></td><td>[<font class=lvl>' . $exp_u['level'] . '</font>]</td><td><img src=images/info.gif onclick="javascript:window.open(\'info.php?p=' . $exp_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
 		<td width="294" class="items"><span lang="ru">Самое большое количество
 		</span><font class=hp>HP</font></td>
 		<td align="center" class="items">' . $hp['max'] . '</td>
-		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $hp_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $hp_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $hp_u['user'] . '\')"> ' . $hp_u['user'] . '</font></td><td>[<font class=lvl>' . $hp_u['level'] . '</font>]</td><td><img src=../images/info.gif onclick="javascript:window.open(\'info.php?p=' . $hp_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $hp_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $hp_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $hp_u['user'] . '\')"> ' . $hp_u['user'] . '</font></td><td>[<font class=lvl>' . $hp_u['level'] . '</font>]</td><td><img src=images/info.gif onclick="javascript:window.open(\'info.php?p=' . $hp_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
 	</tr>
 	<tr>
 		<td width="294" class="items"><span lang="ru">Самое большое количество
 		</span><font class=ma>MA</font></td>
 		<td align="center" class="items">' . $ma['max'] . '</td>
-		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $ma_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $ma_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $ma_u['user'] . '\')"> ' . $ma_u['user'] . '</font></td><td>[<font class=lvl>' . $ma_u['level'] . '</font>]</td><td><img src=../images/info.gif onclick="javascript:window.open(\'info.php?p=' . $ma_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
+		<td class="items"><img src=images/pr.gif onclick="javascript:top.say_private(\'' . $ma_u['user'] . '\')" style=cursor:hand> </td><td> <img src=images/signs/' . $ma_u['sign'] . '.gif><font class=user onclick="javascript:top.say_private(\'' . $ma_u['user'] . '\')"> ' . $ma_u['user'] . '</font></td><td>[<font class=lvl>' . $ma_u['level'] . '</font>]</td><td><img src=images/info.gif onclick="javascript:window.open(\'info.php?p=' . $ma_u['user'] . '\',\'_blank\')" style="cursor:hand"></font></td>
 	</tr>
 </table>
 	';

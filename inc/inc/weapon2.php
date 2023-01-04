@@ -1,4 +1,4 @@
-﻿<?
+<?
 $text = '';
 $t = time();
 $napad = 0;
@@ -13,13 +13,13 @@ if ($lavka == 1) $v["durability"] = $v["max_durability"];
 $text .= "'".$v["name"]."','".$sht."','".$v["image"]."','".$v["durability"]."','".$v["max_durability"]."','";
 if ($v['dprice']==0){
 if ($lavka<>1 or $pers['money']>=$v['price']) 
-	$text .= "<font class=user><img src=images/money.gif> <b>".$v["price"]."LN</font></b><font class=items><br>"; 
+	$text .= "<font class=user><img src=/images/money.gif> <b>".$v["price"]."LN</font></b><font class=items><br>"; 
 elseif ($v['where_buy']==2)
 	$text .= "<font class=items><br>";
 
 }
 else
-$text .= "<img src=images/gameplay/1_1.png> <b>".$v["dprice"]." Бр. </b><font class=items><br>";
+$text .= "<img src=/images/gameplay/1_1.png> <b>".$v["dprice"]." Бр. </b><font class=items><br>";
 $text .= "',".$v['price'].",'".$v["dprice"]."','";
 $rank_i = ($v["s1"]+$v["s2"]+$v["s3"]+$v["s4"]+$v["s5ya"]+$v["s6"]+$v["kb"])*0.3 + ($v["mf1"]+$v["mf2"]+$v["mf3"]+$v["mf4"]+$v["mf5"])*0.03 + ($v["hp"]+$v["ma"])*0.04+($v["udmin"]+$v["udmax"])*0.3;
 if ($v["stype"]=="shit")

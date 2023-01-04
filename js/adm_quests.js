@@ -1,4 +1,4 @@
-﻿function atype_ch()
+function atype_ch()
 {
 	var a = parseInt(jQuery("#atype").get(0).value);
 	

@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (@$_POST["friend_nick"]) {
 	$p = sql::q1("SELECT uid,user FROM users WHERE user='" . $_POST["friend_nick"] . "'");
 	if ($p) {
@@ -50,7 +50,7 @@ if (@$_GET["cans_friendship"]) {
 						echo "<img src='images/pr.gif' onclick=\"javascript:top.say_private('" . $perssost["user"] . "')\" style=cursor:pointer> &nbsp;&nbsp;";
 						echo "<img src='images/signs/" . $perssost["sign"] . ".gif' title='" . $perssost["state"] . "'>";
 						echo " " . $perssost["user"] . "[<font class=lvl>" . $perssost["level"] . "</font>]";
-						echo "<img src='../images/info.gif' onclick=\"javascript:window.open('info.php?p=" . $perssost["user"] . "','_blank')\" style=cursor:pointer>";
+						echo "<img src='images/info.gif' onclick=\"javascript:window.open('info.php?p=" . $perssost["user"] . "','_blank')\" style=cursor:pointer>";
 						echo "</td>";
 						if ($perssost["online"] == 1) {
 							$loc = sql::q1("SELECT name FROM `locations` WHERE `id`='" . $perssost['location'] . "'");
@@ -85,7 +85,7 @@ if (@$_GET["cans_friendship"]) {
 						echo "<img src='images/pr.gif' onclick=\"javascript:top.say_private('" . $perssost["user"] . "')\" style=cursor:pointer> &nbsp;&nbsp;";
 						echo "<img src='images/signs/" . $perssost["sign"] . ".gif' title='" . $perssost["state"] . "'>";
 						echo " " . $perssost["user"] . "[<font class=lvl>" . $perssost["level"] . "</font>]";
-						echo "<img src='../images/info.gif' onclick=\"javascript:window.open('info.php?p=" . $perssost["user"] . "','_blank')\" style=cursor:pointer>";
+						echo "<img src='images/info.gif' onclick=\"javascript:window.open('info.php?p=" . $perssost["user"] . "','_blank')\" style=cursor:pointer>";
 						if (strpos(" |" . $perssost["aura"], "|molch|") <> 0)
 							echo "<img src='images/signs/molch.gif' title='Заклинание Молчания'>";
 						echo "</td>";

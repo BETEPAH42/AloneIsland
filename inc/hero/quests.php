@@ -1,4 +1,4 @@
-﻿<center>
+<center>
     <font size=3 color=blue>Достижения персонажа:</font>
 </center>
 <table width=90% align=center>

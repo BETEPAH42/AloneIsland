@@ -1,5 +1,5 @@
-﻿<?php
-debag($pers);
+<?php
+
 $INFO_TEXT = '';
 //rank_i
 $rank_i = ($pers["s1"] + $pers["s2"] + $pers["s3"] + $pers["s4"] + $pers["s5"] + $pers["s6"] + $pers["kb"]) * 0.3 + ($pers["mf1"] + $pers["mf2"] + $pers["mf3"] + $pers["mf4"]) * 0.03 + ($pers["hp"] + $pers["ma"]) * 0.04 + ($pers["udmin"] + $pers["udmax"]) * 0.3;
@@ -156,7 +156,7 @@ if (($_SESSION["sign"] == 'c2' or strpos(" " . $_SESSION["rank"], "<pv>") > 0)) 
 	if ($pers["main_present"] == 1) $pers["main_present"] = '<img src="images/presents/m.jpg" title="Мужицкая медаль +15% к опыту.">';
 	elseif ($pers["main_present"] == 2) $pers["main_present"] = '<img src="images/presents/58.jpg" title="Женская медаль +15% к опыту.">';
 	elseif ($pers["main_present"])
-		$pers["main_present"] = '<img src="../images/presents/' . $pers["main_present"] . '.jpg" title="Новогодняя медаль">';
+		$pers["main_present"] = '<img src="images/presents/' . $pers["main_present"] . '.jpg" title="Новогодняя медаль">';
 	else $pers["main_present"] = '';
 	echo "build_pers('" . $sh["image"] . "','" . $sh["id"] . "','" . $oj["image"] . "','" . $oj["id"] . "','" . $or1["image"] . "','" . $or1["id"] . "','" . $po["image"] . "','" . $po["id"] . "','" . $z1["image"] . "','" . $z1["id"] . "','" . $z2["image"] . "','" . $z2["id"] . "','" . $z3["image"] . "','" . $z3["id"] . "','" . $sa["image"] . "','" . $sa["id"] . "','" . $na["image"] . "','" . $na["id"] . "','" . $pe["image"] . "','" . $pe["id"] . "','" . $or2["image"] . "','" . $or2["id"] . "','" . $ko1["image"] . "','" . $ko1["id"] . "','" . $ko2["image"] . "','" . $ko2["id"] . "','" . $br["image"] . "','" . $br["id"] . "','" . $pers["pol"] . "_" . $pers["obr"] . "',0,'" . $pers["sign"] . "','" . $pers["user"] . "','" . $pers["level"] . "','" . $pers["chp"] . "','" . $pers["hp"] . "','" . $pers["cma"] . "','" . $pers["ma"] . "'," . $pers["tire"] . ",'" . $kam1["image"] . "','" . $kam2["image"] . "','" . $kam3["image"] . "','" . $kam4["image"] . "','" . $kam1["id"] . "','" . $kam2["id"] . "','" . $kam3["id"] . "','" . $kam4["id"] . "'," . $hp . "," . $pers["hp"] . "," . $ma . "," . $pers["ma"] . "," . $sphp . "," . $spma . "," . $pers["s1"] . "," . $pers["s2"] . "," . $pers["s3"] . "," . $pers["s4"] . "," . $pers["s5"] . "," . $pers["s6"] . "," . $pers["free_stats"] . "," . $pers["money"] . ",0," . $pers["kb"] . "," . $pers["mf1"] . "," . $pers["mf2"] . "," . $pers["mf3"] . "," . $pers["mf4"] . "," . $pers["mf5"] . "," . $pers["udmin"] . "," . $pers["udmax"] . "," . $pers["rank_i"] . ",'" . $zv["name"] . "'," . $pers["victories"] . "," . $pers["losses"] . ",0,0,0," . $pers["zeroing"] . ",2," . intval($pers["diler"]) . ",0,'" . $ws1 . "','" . $ws2 . "','" . $ws3 . "','" . $ws4 . "','" . $ws5 . "','" . $ws6 . "','" . $pers["main_present"] . "'," . intval($you["uid"]) . "," . $_PUNISHMENT . "," . $_ONLINE . ");";
 	?>

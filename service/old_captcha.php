@@ -1,4 +1,4 @@
-﻿<?
+<?
 header("Content-type: image/gif");
 error_reporting(0);
 putenv('GDFONTPATH=' . realpath('../fonts/'));

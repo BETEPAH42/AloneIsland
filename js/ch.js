@@ -1,4 +1,4 @@
-﻿document.write('<META Content="text/html; Charset=utf-8" Http-Equiv=Content-type>');
+document.write('<META Content="text/html; Charset=utf-8" Http-Equiv=Content-type>');
 top.statusMSG = 1;
 function edit_msg(t, server_state, h, m, s) {
 	if (server_state) top.SERVER_STATE = server_state;

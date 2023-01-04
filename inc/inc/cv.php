@@ -1,3 +1,3 @@
-﻿<?php echo date("H:i:s")."<br>". $pers['user']; 
+<?php echo date("H:i:s")."<br>". $pers['user']; 
 
 ?>  

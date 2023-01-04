@@ -1,4 +1,4 @@
-﻿<?
+<?
 if ($cat == 1 and intval($_GET["id"]) < 0) {
 	if ($pers["level"] < 20) {
 		$lb = sql::q1("SELECT b_frequency FROM configs");

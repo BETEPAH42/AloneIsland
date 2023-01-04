@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include_once "common.php";
 error_reporting(1);
 function cutstr($s)

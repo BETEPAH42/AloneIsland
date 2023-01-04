@@ -1,4 +1,4 @@
-﻿if (frameResizer == undefined)
+if (frameResizer == undefined)
 	var frameResizer = '<a class=blocked href="javascript:show_wtch()" id=wtch>[Показать]Дополнительная информация для смотрителей о персонаже</a>';
 
 document.write('<script type="text/javascript" src="js/jquery.js?2"></script><center><table border="0" width="90%" cellspacing="0" cellpadding="0" class=but><tr> <td colspan="5" class="but2" align="center">' + frameResizer + '</td> </tr> <tr> <td class="but2" align="center" width="30%"><a href="info.php?p=' + nick + '&do_w=mpb&' + rnd() + '" class=bg>Заклинание молчания, тюрьма, блок ,пометка.</a></td> <td class="but2" align="center" width="30%"><a href="info.php?p=' + nick + '&do_w=sells&' + rnd() + '"class=bg>Продажи/передачи вещей и денег</a></td> <td class="but2" align="center" width="30%"><a href="info.php?p=' + nick + '&do_w=pass&' + rnd() + '"class=bg>Смены пароля</a></td> <td class="but2" align="center" width="30%"><a href="info.php?p=' + nick + '&do_w=onecomp&' + rnd() + '"class=bg>Заходы с одного комп.</a></td></tr> <tr> <td class="but2" align="center" width="30%"><a href="info.php?p=' + nick + '&do_w=ip"class=bg>Просмотр IP адресов</a></td> <td class="but2" align="center" width="30%"><a href="info.php?p=' + nick + '&do_w=rmpb&' + rnd() + '"class=bg>Наложенные молч., тюрьмы, блоки</a></td> <td class="but2" align="center" width="30%"><a href="info.php?p=' + nick + '&do_w=w_z&' + rnd() + '"class=bg>Заметки смотрителей</a></td> <td class="but2" align="center" width="30%"><a href="info.php?p=' + nick + '&do_w=battles&' + rnd() + '"class=bg>Бои</a></td></tr> <tr> <td class="inv" align="center" width="90%" colspan="9">');
@@ -131,24 +131,24 @@ function sells(sales, tr) {
 		if (lines[i] != '') {
 			s = lines[i].split('|');
 			if (s[1] == 0)
-				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Передано денег <b>' + s[2] + ' LN</b> для ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[3] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Передано денег <b>' + s[2] + ' LN</b> для ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[3] + '\',\'_blank\')" src=images/info.gif></td>');
 			if (s[1] == 3)
-				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Принято денег <b>' + s[2] + ' LN</b> от ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[3] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Принято денег <b>' + s[2] + ' LN</b> от ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[3] + '\',\'_blank\')" src=images/info.gif></td>');
 			if (s[1] == 1)
-				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Передано <b>' + s[2] + '</b>(гос ' + s[3] + ') для ' + s[4] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Передано <b>' + s[2] + '</b>(гос ' + s[3] + ') для ' + s[4] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=images/info.gif></td>');
 			if (s[1] == 2)
-				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Принято <b>' + s[2] + '</b>(гос ' + s[3] + ') от ' + s[4] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Принято <b>' + s[2] + '</b>(гос ' + s[3] + ') от ' + s[4] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=images/info.gif></td>');
 			if (s[1] == 4) {
 				if (s[2] == 20) var travm = 'лёгкой';
 				if (s[2] == 50) var travm = 'средней';
 				if (s[2] == 80) var travm = 'тяжёлой';
-				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Излечение ' + travm + '   травмы для ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td><<< Излечение ' + travm + '   травмы для ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=images/info.gif></td>');
 			}
 			if (s[1] == 5) {
 				if (s[2] == 20) var travm = 'лёгкой';
 				if (s[2] == 50) var travm = 'средней';
 				if (s[2] == 80) var travm = 'тяжёлой';
-				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Излечение ' + travm + '   травмы от ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=../images/info.gif></td>');
+				document.write('<td><font class=time>' + s[0] + '</font></td><td>>>> Излечение ' + travm + '   травмы от ' + s[3] + '<img style="CURSOR: hand" onclick="javascript:window.open(\'info.php?p=' + s[4] + '\',\'_blank\')" src=images/info.gif></td>');
 			}
 
 		}

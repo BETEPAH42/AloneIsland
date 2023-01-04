@@ -1,4 +1,4 @@
-﻿<script>
+<script>
 	function deletezakl(id) {
 		if (confirm('Вы действительно хотите вычеркнуть это заклинание?')) {
 			location = 'main.php?deletezakl=' + id;

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 error_reporting(E_ALL);
 
@@ -95,9 +95,9 @@ else
 			}
 		}
 		if ($pers["x"] == $qWitch["lParam"] && $pers["y"] == $qWitch["zParam"] && !$qWitch["finished"])
-			$ALIS = "<center class=but><b class=user>Вы нашли ведьму Алису! <hr><img src=images/design/warningblue.gif> <i>Обновите экран.</i></b></center>";
+			$ALIS = "<center class=but><b class=user>Вы нашли ведьму Алису! <hr><img src=/images/design/warningblue.gif> <i>Обновите экран.</i></b></center>";
 		if ($pers["x"] == $qFish["lParam"] && $pers["y"] == $qFish["zParam"] && $qFish["finished"] == 0)
-			$ALIS = "<center class=but><b class=user>Вы нашли Рыбака! <hr><img src=images/design/warningblue.gif> <i>Обновите экран.</i></b></center>";
+			$ALIS = "<center class=but><b class=user>Вы нашли Рыбака! <hr><img src=/images/design/warningblue.gif> <i>Обновите экран.</i></b></center>";
 	}
 }
 
@@ -160,7 +160,7 @@ echo "<div id=d2>";
 $bdg = sql::q1("SELECT x,y,type,name FROM buildings WHERE x=" . ($x) . " and y=" . ($y) . "");
 
 if ($bdg) {
-	echo "<div style='width:80px;height:80px;cursor:pointer;background-image: url(\"../images/map/" . ($x + 22) . "_" . ($y + 26) . ".jpg\");'><img src=images/buildings/" . $bdg["type"] . ".gif></div>";
+	echo "<div class='gg' style='width:80px;height:80px;cursor:pointer;background-image: url(\"images/map/" . ($x + 22) . "_" . ($y + 26) . ".jpg\");'><img src=images/buildings/" . $bdg["type"] . ".gif></div>";
 }
 
 $win_button = '<div class=but2><center><a class=but href=main.php?wcell=start>Отвоевать</a></center>Стоимость: 50 LN. Требуется 20 минут не сходить с этой местности и побеждать все бои.</div>';
@@ -193,7 +193,7 @@ if (!$cell["belong"] and $cell["winnable"])
 	echo "<center class=but><p class=green>Никому не принадлежит.</p></center>";
 elseif ($cell["winnable"]) {
 	$belong = catch_user($cell["belong"]);
-	echo "<center class=but>Принадлежит: <br><img src='../images/signs/" . $belong["sign"] . ".gif'  title='" . $belong["clan_name"] . "'><b class=user>" . $belong["user"] . "</b><font class=lvl>[" . $belong["level"] . "]</font> <a target=_blank href='info.php?" . $belong["user"] . "'><img src=images/i.gif></a></center>";
+	echo "<center class=but>Принадлежит: <br><img src='images/signs/" . $belong["sign"] . ".gif'  title='" . $belong["clan_name"] . "'><b class=user>" . $belong["user"] . "</b><font class=lvl>[" . $belong["level"] . "]</font> <a target=_blank href='info.php?" . $belong["user"] . "'><img src=images/i.gif></a></center>";
 }
 
 $free_for_work = false;

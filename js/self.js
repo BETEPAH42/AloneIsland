@@ -1,4 +1,4 @@
-﻿var c_showed = 0;
+var c_showed = 0;
 document.write('<div style="position:absolute; left:-2px; top:-2px; z-index: 2; width:0px; height:0px; visibility:visible;" id="center"></div><div style="position:absolute; left:0px; top:0px; z-index: 1; width:100%; height:100%; visibility:hidden;" id="center2" class=blackbg>&nbsp;</div>');
 $("#center").hide(1);
 

@@ -1,11 +1,14 @@
-﻿<?
+<?php
+error_reporting(E_ALL);
 #### Считаем ОД на удар
-$_W = Weared_Weapons($pers["uid"]);
+$_W = Weared_Weapons($pers["uid"]);	
 $OD_UDAR = $_W["OD"];
 
-$fight = sql::q1("SELECT * FROM `fights` WHERE `id`='" . $pers["cfight"] . "'");
-if (!$fight["id"]) set_vars("cfight=0,curstate=0,refr=1", $pers["uid"]);
-if ($fight["bplace"]) $bplace = sql::q1("SELECT * FROM battle_places WHERE id=" . $fight["bplace"]);
+$fight = SQL::q1("SELECT * FROM `fights` WHERE `id`='" . $pers["cfight"] . "'");
+if (!$fight["id"]) 
+	set_vars("cfight=0,curstate=0,refr=1", $pers["uid"]);
+if ($fight["bplace"]) 
+	$bplace = SQL::q1("SELECT * FROM battle_places WHERE id=" . $fight["bplace"]);
 if ($fight['type'] <> 'f')
 	include_once "fights/ch_p_vs.php";
 $delta = floor(sqrt(sqr($pers["xf"] - $persvs["xf"]) + sqr($pers["yf"] - $persvs["yf"]))); // Расстояние между игроками
@@ -64,7 +67,7 @@ if (@$_POST["attack"] and @$_POST["defence"]) {
 
 if ($persvs["uid"])
 	$can = sql::q1("SELECT * FROM turns_f WHERE uid2=" . $pers["uid"] . " and uid1=" . $persvs["uid"] . "");
-// ^ Если противник человек , то загружаем его действия в данный ход против нас. $go - показывает, можно ходить (1) или нельзя если противник не сходил против нас(0).
+// Если противник человек , то загружаем его действия в данный ход против нас. $go - показывает, можно ходить (1) или нельзя если противник не сходил против нас(0).
 unset($go);
 if (!$persvs["uid"] or $can["idf"]) $go = 1;
 else $go = 0;
@@ -82,7 +85,7 @@ if ($_STUN) {
 }
 // Хождение:: Если противник не сходил против нас, и мы перемещаемся по карте то добавляем наши действия в базу:
 if (@$_GET["gotox"] and $go == 0)
-	sql::q("INSERT INTO `turns_f` ( `idf` , `uid1` , `uid2` , `turn` ) VALUES (" . $pers["cfight"] . ", " . $pers["uid"] . ", " . $persvs["uid"] . ", 'gotox=" . intval($_GET["gotox"]) . ";gotoy=" . intval($_GET["gotoy"]) . ";');");
+	SQL::q("INSERT INTO `turns_f` ( `idf` , `uid1` , `uid2` , `turn` ) VALUES (" . $pers["cfight"] . ", " . $pers["uid"] . ", " . $persvs["uid"] . ", 'gotox=" . intval($_GET["gotox"]) . ";gotoy=" . intval($_GET["gotoy"]) . ";');");
 ########################################################################
 // Удар:: Если соперник не сходил против нас, то добавляем наше действие в базу против него::
 if (@$_POST["vs"] and $go == 0) {
@@ -90,7 +93,7 @@ if (@$_POST["vs"] and $go == 0) {
 	foreach ($_POST as $key => $v)
 		$str .= $key . "=" . $v . ";";
 	set_vars("turn_before='" . $str . "'", $pers["uid"]);
-	sql::q("INSERT INTO `turns_f` ( `idf` , `uid1` , `uid2` , `turn` ) 
+	SQL::q("INSERT INTO `turns_f` ( `idf` , `uid1` , `uid2` , `turn` ) 
 VALUES (" . $pers["cfight"] . ", " . $pers["uid"] . ", " . $persvs["uid"] . ", '" . $str . "');");
 	unset($persvs);
 } elseif (@$_POST["vs"] and !$persvs["uid"]) {
@@ -115,6 +118,7 @@ if ($go == 0) {
 	unset($_GET);
 	unset($_POST);
 }
+
 #########################################################################
 // Узнаём делаем ли мы какое-либо действие, $action = 1 - значит действие совершается.
 if (isset($_POST["vs"]) || isset($_GET["gotox"])) $action = 1;
@@ -249,15 +253,16 @@ if ($action) # Основной блок действий
 
 
 // Действие выполнено с человеком:
-if ($can["idf"] and $action) sql::q("DELETE FROM turns_f WHERE uid1=" . $can["uid1"] . " and uid2=" . $can["uid2"] . "");
-if ($action and $can["idf"]) sql::q("UPDATE users SET bg=0,bn=0,bj=0 WHERE uid=" . intval($pers["uid"]) . " or uid=" . intval($persvs["uid"]) . "");
+if ($can["idf"] and $action) SQL::q("DELETE FROM turns_f WHERE uid1=" . $can["uid1"] . " and uid2=" . $can["uid2"] . "");
+if ($action and $can["idf"]) SQL::q("UPDATE users SET bg=0,bn=0,bj=0 WHERE uid=" . intval($pers["uid"]) . " or uid=" . intval($persvs["uid"]) . "");
 //Итоговые преобразования:
 if ($action) {
-	sql::q("UPDATE `users` SET  f_turn='" . (++$pers["f_turn"]) . "'   WHERE `uid`='" . $pers["uid"] . "';");
+	SQL::q("UPDATE `users` SET  f_turn='" . (++$pers["f_turn"]) . "'   WHERE `uid`='" . $pers["uid"] . "';");
 	$fight["ltime"] = time();
-	sql::q("UPDATE `fights` SET ltime=" . $fight["ltime"] . " WHERE `id`=" . $pers["cfight"] . "");
+	SQL::q("UPDATE `fights` SET ltime=" . $fight["ltime"] . " WHERE `id`=" . $pers["cfight"] . "");
 	if ($persvs["uid"])
 		SQL::q("UPDATE `users` SET `refr`=1 WHERE `uid`='" . $persvs["uid"] . "';");
 }
 
-if ($fight['type'] <> 'f' and $persvs["chp"] < 1) include("fights/ch_p_vs.php");
+if ($fight['type'] <> 'f' and $persvs["chp"] < 1) 
+	include("fights/ch_p_vs.php");

@@ -59,17 +59,8 @@ BODY
 	FONT-SIZE: 12px;
 	COLOR: #222222;
 	MARGIN: 0px;
-	scrollbar-3dlight-color: #DDDDDD;
-	scrollbar-arrow-color: #C6C6C6;
-	scrollbar-base-color: #EEEEEE;
-	scrollbar-darkshadow-color: #EEEEEE;
-	scrollbar-face-color: #EEEEEE;
-	scrollbar-highlight-color: #C6C6C6;
-	scrollbar-shadow-color: #C6C6C6;
-	scrollbar-track-color: #EEEEEE;
 	font-family: Trebuchet , "Trebuchet MS" , Tahoma , Verdana , Arial;
-	SCROLLING:  none;
-	background-image: url('../images/DS/main_bg.png');
+	background-image: url('/images/DS/main_bg.png');
 	padding: 0px;
 	background-color: transparent;
 }
@@ -147,7 +138,7 @@ a.Button:hover{
 a.But{
 	display: block;
 	background-color: transparent;
-	background-image: url('../images/DS/a_button_bg.png');
+	background-image: url('/images/DS/a_button_bg.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -164,7 +155,7 @@ a.But{
 a.But:hover{
 	display: block;
 	background-color: transparent;
-	background-image: url('../images/DS/a_button_bg_hover.png');
+	background-image: url('/images/DS/a_button_bg_hover.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -181,7 +172,7 @@ a.But:hover{
 a.wBut{
 	display: block;
 	background-color: transparent;
-	background-image: url('../images/DS/a_button_wbg.png');
+	background-image: url('/images/DS/a_button_wbg.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -198,7 +189,7 @@ a.wBut{
 a.wBut:hover{
 	display: block;
 	background-color: transparent;
-	background-image: url('../images/DS/a_button_wbg_hover.png');
+	background-image: url('/images/DS/a_button_wbg_hover.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -215,7 +206,7 @@ a.wBut:hover{
 a.gBut{
 	display: block;
 	background-color: transparent;
-	background-image: url('../images/DS/a_button_gbg.png');
+	background-image: url('/images/DS/a_button_gbg.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -232,7 +223,7 @@ a.gBut{
 a.gBut:hover{
 	display: block;
 	background-color: transparent;
-	background-image: url('../images/DS/a_button_gbg_hover.png');
+	background-image: url('/images/DS/a_button_gbg_hover.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -258,7 +249,7 @@ a.gBut:hover{
 	border:1px solid #C0C0C0; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('../images/login.gif');
+	background-image: url('/images/login.gif');
 	color: #111;
 }
 .login2 {
@@ -274,14 +265,14 @@ a.gBut:hover{
 	border:1px solid #C0C0C0; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('../images/login.gif');
+	background-image: url('/images/login.gif');
 	color: #888888;
 }
 .login:hover {
 	border:1px solid #AAAAAA; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('../images/login.gif');
+	background-image: url('/images/login.gif');
 }
 .white {
 	font-family: Tahoma;
@@ -379,7 +370,7 @@ a.gBut:hover{
 	border: 2px solid #CECECE;
 	FONT-SIZE: 11px;
 	font-family: Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	background-image: url('../images/design/chbg2.gif');
+	background-image: url('/images/design/chbg2.gif');
 }
 ._but {
 	padding: 2px;
@@ -394,7 +385,7 @@ a.gBut:hover{
 	padding: 2px;
 	margin: 2px auto;
 	border-width: 0px;
-	background-image: url('../images/bg.png');
+	background-image: url('/images/bg.png');
 	border: #DDDDDD 1px solid;
 	COLOR: #222222;
 	FONT: 12px Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
@@ -405,7 +396,7 @@ a.gBut:hover{
 	padding: 2px;
 	margin: 2px ;
 	border-width: 0px;
-	background-image: url('../images/DS/graybg.png');
+	background-image: url('/images/DS/graybg.png');
 	border: #CCCCCC 1px solid;
 	COLOR: #222222;
 	FONT: 12px Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
@@ -444,7 +435,7 @@ a.gBut:hover{
 }
 .lightblock
 {
-	background-image: url('../images/bg.png');
+	background-image: url('/images/bg.png');
 	margin: 0 auto;
 }
 .Lstat {
@@ -540,7 +531,7 @@ a.gBut:hover{
 	font-family: Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
 	background-color: #C0C0C0;
 	font-size: 12px;
-	background-image: url('../images/design/f_line_long.jpg');
+	background-image: url('images/design/f_line_long.jpg');
 	border-style: solid;
 	border-width: 1px;
 	border-color: #CCCCCC;
@@ -675,7 +666,7 @@ a.gBut:hover{
 	font-family: Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
 	background-color: #CCCCCC;
 	font-size: 11px;
-	background-image: url('../images/design/f_line_long.jpg');
+	background-image: url('images/design/f_line_long.jpg');
 	border-style: solid;
 	border-width: 1px;
 	border-color: #E1E1E1;
@@ -735,7 +726,7 @@ a.gBut:hover{
 	border:0px;
 	font-family: Verdana;
 	font-size: 12px;
-	background-image: url('../images/design/brdr.gif');
+	background-image: url('images/design/brdr.gif');
 	color: #222222;
 }
 
@@ -743,7 +734,7 @@ a.gBut:hover{
 	border: 1px solid #F5F5F5;
 	font-family: Verdana;
 	font-size: 12px;
-	background-image: url('../images/design/brdrbig.gif');
+	background-image: url('images/design/brdrbig.gif');
 	color: #222222;
 }
 
@@ -775,7 +766,7 @@ a.bg:hover{
 	color: #000000; 
 	font-weight:bold;
 	text-decoration:none;
-	background-image: url('../images/bg.png');
+	background-image: url('/images/bg.png');
 	border-style:none;
 	display:block;
 }
@@ -800,7 +791,7 @@ a.Lbg:hover{
 	color: #000000; 
 	font-weight:bold;
 	text-decoration:none;
-	background-image: url('../images/bg.png');
+	background-image: url('/images/bg.png');
 	border-style:none;
 	display:block;
 }
@@ -812,7 +803,7 @@ a.bga{
 	color: #FFFFFF;
 	font-weight: bold;
 	text-decoration: none;
-	background-image: url('../images/DS/graybg.png');
+	background-image: url('/images/DS/graybg.png');
 	border-style: none none none;
 	display: block;
 }
@@ -825,7 +816,7 @@ a.bga:hover{
 	color: #000000; 
 	font-weight:bold;
 	text-decoration:none;
-	background-image: url('../images/bg.png');
+	background-image: url('/images/bg.png');
 	border-style:none;
 	display:block;
 }
@@ -1021,7 +1012,7 @@ img.m
 }
 
 .content {
-	background: url(../images/bg.png);
+	background: url(/images/bg.png);
 	text-align: center;
 }
 /* Стили, относящиеся к построению прозрачных уголков */
@@ -1030,7 +1021,7 @@ img.m
 	padding:1px 18px;
 	margin:18px 0;		
 	height: expression( this.parentNode.clientHeight - 36 + 'px' );  
-	background:url("../images/left.png") 0 0 repeat-y;
+	background:url("images/left.png") 0 0 repeat-y;
 }
 .corners .inner {
 	position:relative;
@@ -1038,14 +1029,14 @@ img.m
 	padding:1px 0;
 	padding-right:18px;
 	margin-right:-18px;
-	background:url("../images/right.png") 100% 0 repeat-y;
+	background:url("images/right.png") 100% 0 repeat-y;
 	
 }
 .corners:before {
 	display:block;
 	height:18px;
-	content:url("../images/left_top.png");
-	background:url("../images/right_top.png") 100% 0 no-repeat;
+	content:url("images/left_top.png");
+	background:url("images/right_top.png") 100% 0 no-repeat;
 	margin:-19px -18px 0 -18px;
 	font-size:0;
 }
@@ -1053,15 +1044,15 @@ img.m
 	display:block;
 	height:18px;
 	content:"";
-	background:url("../images/top.png") repeat-x;
+	background:url("images/top.png") repeat-x;
 	margin:-19px 0 0 0;
 	font-size:0;
 }
 .corners:after {
 	display:block;
 	height:18px;
-	content:url("../images/left_bottom.png");
-	background:url("../images/right_bottom.png") 100% 100% no-repeat;
+	content:url("images/left_bottom.png");
+	background:url("images/right_bottom.png") 100% 100% no-repeat;
 	margin:0 -18px -19px -18px;
 	font-size:0;
 }
@@ -1069,7 +1060,7 @@ img.m
 	display:block;
 	height:18px;
 	content:"";
-	background:url("../images/bottom.png") repeat-x;
+	background:url("images/bottom.png") repeat-x;
 	margin:0 0 -19px 0;
 	font-size:0;
 }
@@ -1204,7 +1195,7 @@ a.Blocked{
 	color: #333333; 
 	font-weight:bold;
 	text-decoration:none;
-	background-image: url('../images/bg.png');
+	background-image: url('/images/bg.png');
 	display:block;
 	}
 a.Blocked:hover{
@@ -1216,7 +1207,7 @@ a.Blocked:hover{
 	color: #EEEEEE; 
 	font-weight:bold;
 	text-decoration:none;
-	background-image: url('../images/DS/graybg.png');
+	background-image: url('/images/DS/graybg.png');
 	display:block;
 }
 a.LBlocked{

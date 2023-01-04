@@ -1,4 +1,4 @@
-﻿<center>
+<center>
 	<font class=hp>
 		<?
 		if (@$_POST["id"]) {

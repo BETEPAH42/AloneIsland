@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (@$_POST and $priv["ewp"] == 2) {
 	$params = explode("@", $_POST["params"]);
 	foreach ($params as $z) {

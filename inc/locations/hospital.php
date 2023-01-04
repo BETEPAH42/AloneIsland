@@ -1,4 +1,4 @@
-﻿<center>
+<center>
 	<table border="1">
 		<tr>
 			<font size=3 color=red>

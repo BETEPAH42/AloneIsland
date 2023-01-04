@@ -1,4 +1,4 @@
-﻿<script language=JavaScript src='js/ajax.js' type="text/javascript"></script>
+<script language=JavaScript src='js/ajax.js' type="text/javascript"></script>
 <script language=JavaScript src='js/adm_magic.js' type="text/javascript"></script>
 <a href=main.php class=bga>Назад</a>
 <?

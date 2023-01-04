@@ -1,4 +1,4 @@
-﻿<div class=return_win><input type="button" value="Назад" class="inv_but" onclick="location='main.php'" style="width:120">
+<div class=return_win><input type="button" value="Назад" class="inv_but" onclick="location='main.php'" style="width:120">
 	<input type="button" value="Улучшить" class="inv_but" onclick="location='main.php?c=indap'" style="width:120">
 </div><?
 		if (empty($_POST) and empty($_GET["buy"])) {

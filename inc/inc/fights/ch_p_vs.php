@@ -1,4 +1,4 @@
-﻿<?
+<?
 $pers["chp"] = floor($pers["chp"]);
 $pers["cma"] = floor($pers["cma"]);
 

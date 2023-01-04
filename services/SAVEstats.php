@@ -1,9 +1,9 @@
-﻿<script>
+<script>
 	<?
 	include_once '../classes/sql.php';
 	include '../inc/functions.php';
 	$pers = sql::q1("SELECT pass,uid,s1,s2,s3,s4,s5,s6,free_stats,hp,ma,kb,level FROM users WHERE uid=" . intval($_COOKIE["uid"]) . "");
-	debag($pers);
+	// debag($pers);
 	if ($pers["pass"] <> $_COOKIE["hashcode"]) {
 		echo "top.show_return('Ошибка');</script>";
 		exit;

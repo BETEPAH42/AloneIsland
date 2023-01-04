@@ -1,4 +1,4 @@
-﻿<center>
+<center>
 	<table border=0 width=90%>
 		<tr>
 			<td class=return_win align=center>

@@ -1,4 +1,4 @@
-﻿<?
+<?
 $qFish = sql::q1("SELECT * FROM quest WHERE id = " . Q_FISH);
 if (!$qFish) {
 	sql::q("INSERT INTO quest (id,finshed)VALUES(" . Q_FISH . ",1)");

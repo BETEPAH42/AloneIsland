@@ -1,4 +1,4 @@
-﻿/*
+/*
    DHTML Snowstorm! OO-style Jascript-based Snow effect
    ----------------------------------------------------
    Version 1.4.20091115 (Previous rev: v1.3.20081215)

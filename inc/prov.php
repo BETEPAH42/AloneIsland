@@ -1,4 +1,4 @@
-﻿<?
+<?php
 include_once '../classes/sql.php';
 function make_seed()
 {
@@ -19,7 +19,24 @@ $images = "images";
 $pers = catch_user(UID);
 define("USER", $pers["user"]);
 $lastom_old = $pers["lastom"];
+echo '<script src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/yourpers.js"></script>
+<LINK href=/css/main.css rel=STYLESHEET type=text/css>
+<LINK href=/css/selectbox.css rel=STYLESHEET type=text/css>
+<script language=javascript src="/js/pers.js"></script>
+<script language=javascript src="/js/statsup.js"></script>
+<script language=javascript src="/js/sell.js"></script>
+<script language=javascript src="/js/w.js"></script>
+<script src="/js/fightn.js"></script>
+<script src="/js/tools/scrollto.js"></script>
+<script src="/js/newup.js"></script>';
 
+
+// <script src='js/fight.js'></script>
+// 	<script src='js/pers.js'></script>
+// 	<script src='js/yourpers.js'></script>
+// 	<script src='js/newup.js'></script>
+// 	<script src='js/fightn.js'></script>";
 //if (@!$DONT_CHECK)
 if ($pers["action"] != -1)
 	$lastom_new = tme();
@@ -84,9 +101,12 @@ if (@!$DONT_CHECK) {
 }
 
 if (@!$DONT_CHECK) {
-	if ($pers["cfight"] > 10 and $pers["curstate"] <> 4) set_vars("cfight=0,refr=1", UID);
-	if ($pers["cfight"] < 10 and $pers["curstate"] == 4) set_vars("curstate=2,cfight=0,refr=1", UID);
-	if ($pers["curstate"] == 4) include('inc/inc/battle.php');
+	if ($pers["cfight"] > 10 and $pers["curstate"] <> 4) 
+		set_vars("cfight=0,refr=1", UID);
+	if ($pers["cfight"] < 10 and $pers["curstate"] == 4) 
+		set_vars("curstate=2,cfight=0,refr=1", UID);
+	if ($pers["curstate"] == 4) 
+		include('inc/inc/battle.php');
 }
 // ^ Нападения бота
 //Вытаскивание из бага
@@ -109,8 +129,8 @@ $_FILTER["filter_f6"] = intval($f[13]);
 $_FILTER["pers_sort"] = $f[14];
 unset($f);
 
-if ($pers["priveleged"]) $priv = SQL::q1("SELECT * FROM priveleges WHERE uid=" . UID);
-
+if ($pers["priveleged"]) 
+	$priv = SQL::q1("SELECT * FROM priveleges WHERE uid=" . UID);
 
 ########Новый год
 if ($pers["level"] > 0 and $pers["new_year"] > 1 and $pers["new_year"] < (tme()) and $pers["curstate"] != 4) {

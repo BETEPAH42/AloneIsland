@@ -1,4 +1,4 @@
-﻿<?
+<?
 echo "<center><i>Вы смогли подписать бланки у:</i></center><br>";
 
 $sostav = sql::q("SELECT * FROM wp ORDER by ID DESC");

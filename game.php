@@ -1,14 +1,12 @@
-﻿<?
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+<?php
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 require_once 'classes/sql.php';
 include_once 'inc/functions.php';
 // include ('inc/sendmail.php');
-
 // $weather = SQL::q1("SELECT weather,weatherchange FROM world");
-
 // $world = SQL::q1("SELECT weather,weatherchange FROM world");
 $world = SQL::q1("SELECT weather,weatherchange FROM world");
 if ($world["weatherchange"] < tme())
@@ -91,8 +89,17 @@ if ($drday == date("d") and $drmonth == date("m") and ($pers["DR_congratulate"] 
 }
 //if ($pers["DR_congratulate"]<>$DR_congratulate) set_vars("DR_congratulate=".$pers["DR_congratulate"]."");
 
-echo "<!DOCTYPE html><html><head><title>Одинокие земли[" . $pers["user"] . "]</title><meta content='text/html; charset=utf-8' Http-Equiv=Content-type><link rel='favicon' href='images/icon.ico'><link rel='shortcut icon' href='images/pict.png'><link href='main.css' rel=stylesheet type=text/css></head><body scroll=no style='overflow:hidden;'><script src='js/cookie.js'></script><script SRC='js/jquery.js'></script><script src='js/game.js?2'></script><script>
-	";
+echo "<!DOCTYPE html><html><head><title>Одинокие земли[" . $pers["user"] . "]</title>
+<meta content='text/html; charset=utf-8' Http-Equiv=Content-type>
+<link rel='favicon' href='images/icon.ico'>
+<link rel='shortcut icon' href='images/pict.png'>
+<link href='main.css' rel=stylesheet type=text/css></head>
+<body scroll=no style='overflow:hidden;'>
+<script src='js/cookie.js'></script>
+<script SRC='js/jquery.js'></script>
+<script src='js/game.js?2'></script>
+<script src='js/fight.js'></script>
+<script src='js/pers.js'></script><script>";
 $today = getdate();
 echo "let ctip = " . $pers["ctip"] . ";";
 
@@ -132,7 +139,7 @@ view_frames(<?= $night; ?>);
 </BODY>
 
 </HTML>
-<?
+<?php
 if ($night == 0) {
 
 	$configs = SQL::q1("SELECT * FROM configs LIMIT 0,1");

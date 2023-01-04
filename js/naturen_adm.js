@@ -1,4 +1,4 @@
-﻿document.write('<div style="position:absolute; left:0px; top:-500px; z-index: 2; width:300 ; height:400; visibility:visible;" id="ml" class=inv>&nbsp;</div>');
+document.write('<div style="position:absolute; left:0px; top:-500px; z-index: 2; width:300 ; height:400; visibility:visible;" id="ml" class=inv>&nbsp;</div>');
 var ml = document.getElementById('ml');
 $(ml).fadeOut(1);
 var mx, my;
@@ -42,9 +42,9 @@ function show_nature(x, y) {
 			if (go_str.indexOf('<' + (cx - 22) + '_' + (cy - 26)) == -1) ctxt = '&nbsp;';
 			if (cx < 50 && (cx > 10 || cx % 10 < 5)) dir = 'map/day'; else dir = 'map/day';
 			onclick_g = 'onclick = "location=\'main.php?gotox=' + (cx - 22) + '&gotoy=' + (cy - 26) + '\'" style="cursor:pointer"';
-			if (cx == x && cy == y) text += '<td class=fader background="../images/' + dir + '/' + cx + '_' + cy + '.jpg" style="cursor:pointer" onclick="shm_resedit()" width=80 height=80>' + ctxt + '</td>';
+			if (cx == x && cy == y) text += '<td class=fader background="images/' + dir + '/' + cx + '_' + cy + '.jpg" style="cursor:pointer" onclick="shm_resedit()" width=80 height=80>' + ctxt + '</td>';
 			else
-				if (go_str.indexOf('<' + (cx - 22) + '_' + (cy - 26)) > -1) text += '<td class=go_yes background="../images/' + dir + '/' + cx + '_' + cy + '.jpg" ' + onclick_g + '  width=80 height=80>' + ctxt + '</td>'; else text += '<td  width=80 height=80 background="../images/' + dir + '/' + cx + '_' + cy + '.jpg" ' + onclick_g + '>' + ctxt + '</td>';
+				if (go_str.indexOf('<' + (cx - 22) + '_' + (cy - 26)) > -1) text += '<td class=go_yes background="images/' + dir + '/' + cx + '_' + cy + '.jpg" ' + onclick_g + '  width=80 height=80>' + ctxt + '</td>'; else text += '<td  width=80 height=80 background="images/' + dir + '/' + cx + '_' + cy + '.jpg" ' + onclick_g + '>' + ctxt + '</td>';
 		}
 		text += '</tr>';
 	}
@@ -65,9 +65,9 @@ function return_minicart(x, y) {
 		for (cx = x - 5; cx <= x + 5; cx++) {
 			if (cx < 50 && (cx > 10 || cx % 10 < 5)) dir = 'map/day'; else dir = 'map/day';
 			onclick_g = 'onclick = "location=\'main.php?gotox=' + (cx - 22) + '&gotoy=' + (cy - 26) + '\'" style="cursor:pointer"';
-			if (cx == x && cy == y) text += '<td class=fader><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=20 ' + onclick_g + '></td>';
+			if (cx == x && cy == y) text += '<td class=fader><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=20 ' + onclick_g + '></td>';
 			else
-				if (go_str.indexOf('<' + (cx - 22) + '_' + (cy - 26)) > -1) text += '<td class=go_yes><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=20 ' + onclick_g + '></td>'; else text += '<td><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=20 ' + onclick_g + '></td>';
+				if (go_str.indexOf('<' + (cx - 22) + '_' + (cy - 26)) > -1) text += '<td class=go_yes><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=20 ' + onclick_g + '></td>'; else text += '<td><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=20 ' + onclick_g + '></td>';
 		}
 		text += '</tr>';
 	}

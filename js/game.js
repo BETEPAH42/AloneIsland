@@ -349,7 +349,7 @@ function add_msg(msg, ttt, add) {
 }
 
 function helpwin(page) {
-	url = 'http://localhost/AloneIsland/help/' + page;
+	url = 'help/' + page;
 	viewwin = open(url, "helpWindow", "width=420, height=400, status=no, toolbar=no, menubar=no, resizable=no, scrollbars=yes");
 }
 
@@ -375,7 +375,6 @@ function show_smiles() {
 	ch2.style.visibility = 'hidden';
 	Smiles_OPENED = true;;
 }
-
 
 function hide_smiles() {
 	var sm = top.frames['ch_list'].document.getElementById('smiles');
@@ -447,10 +446,10 @@ function view_frames(a) {
 	dw('<table height=100% width=100%><tr><td align=center valign=center id=TIME style="color:#FFFFFF;cursor:pointer;" onclick="top.frames[\'main_top\'].location=\'main.php\'" title="Часы показывают серверное время(Россия>Москва), при нажатии обновит игровое окно.">Загрузка...</td></tr></table>');
 	dw('</div>');
 
-	dw('<div id=title style="background-image: url(\'images/DS/title_bg.jpg\'); background-positin: center top; position: absolute; width: ' + (DWidth - 36) + 'px; height: 50px; z-index: 1; left: -1000px; top: 18px"></div>');
-	dw('<div id=logo style="background-image: url(\'images/DS/logo_bg.gif\'); background-position: bottom; background-repeat:repeat-x; position: absolute; width: ' + (DWidth - 36) + 'px; height: 90px; z-index: 1; left: -1000px; top: -20px; text-align: center; cursor:pointer;" onclick="main_top_update();"><img border="0" src="images/DS/logo.png" width="924" height="92"></div>');
+	dw('<div id=title style="background-image: url(\'images/DS/title_bg.jpg\'); background-positin: center top; position: absolute; width: ' + (DWidth - 36) + 'px; height: 50px; z-index: 1; left: 58px; top: 18px"></div>');
+	dw('<div id=logo style="background-image: url(\'images/DS/logo_bg.gif\'); background-position: bottom; background-repeat:repeat-x; position: absolute; width: ' + (DWidth - 36) + 'px; height: 90px; z-index: 1; left: 58px; top: -20px; text-align: center; cursor:pointer;" onclick="main_top_update();"><img border="0" src="images/DS/logo.png" width="924" height="92"></div>');
 	dw('<div id=logo_down style="position: absolute; width: 206px; height: 29px; z-index: 1; left: -1000px; top: 72px"><img border="0" src="images/DS/logo_down.png" width="206" height="29"  onclick="main_top_update();"></div>');
-	dw('<div id=title_buttons style="position: absolute; width: ' + (DWidth - 36) + 'pxpx; height: 42px; z-index: 1; left: -1000px; top: 18px"></div>');
+	dw('<div id=title_buttons style="position: absolute; width: ' + (DWidth - 36) + 'pxpx; height: 42px; z-index: 1; left: 58px; top: 18px"></div>');
 
 	dw('<table border="0" cellspacing="0" cellpadding="0" style="width:' + DWidth + 'px; height:100%;">');
 	dw('<tr>');
@@ -461,7 +460,7 @@ function view_frames(a) {
 	dw('</tr>');
 	dw('<tr>');
 	dw('<td width="18" background="images/DS/left_border.gif" style="width:18px;"></td>');
-	dw(`<td valign=top align=center background="images/DS/main_bg.png" style="width:${DWidth - 36}px;">`);
+	dw(`<td valign=top align=center background="/images/DS/main_bg.png" style="width:${DWidth - 36}px;">`);
 	dw("<iframe src='main.php' id=main_top name=main_top class=iframe scrolling=auto noResize frameborder=0 border=0 framespacing=0 marginwidth=0 marginheight=0 style='width:100%;height:100%;background-color:transparent;' allowtransparency=\"true\">Обновите браузер.</iframe>");
 	dw('</td>');
 	dw('<td width="18" background="images/DS/right_border.gif" style="width:18px;"></td>');
@@ -490,7 +489,7 @@ function view_frames(a) {
 	dw('</table>');
 	dw('</td>');
 	dw('<td width="22" background="images/DS/c_side_border.gif">&nbsp;</td>');
-	dw('<td width="320" valign=top bgcolor="#000" style="overflow:hidden;">');
+	dw("<td width=\"320\" valign=top bgcolor=\"#000\" style=\"overflow:hidden;\">");
 	dw("<iframe src='ch.php' id=ch_list name=ch_list scrolling=auto noResize frameborder=0 border=0 framespacing=0 marginwidth=0 marginheight=0 style='width:320px;height:100%;border:0;' class=iframe2 allowtransparency=\"true\">Обновите браузер.</iframe>");
 	dw('</td>');
 	dw('</tr>');

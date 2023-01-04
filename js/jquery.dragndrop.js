@@ -1,4 +1,4 @@
-﻿/*
+/*
 * dragndrop
 * version: 1.0.0 (05/13/2009)
 * @ jQuery v1.2.*

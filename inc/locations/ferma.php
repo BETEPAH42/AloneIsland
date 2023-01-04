@@ -1,4 +1,4 @@
-﻿<center>
+<center>
 	<font color=blue size=4><b><i>Хижина крестьянина</i></b></font>
 </center>
 

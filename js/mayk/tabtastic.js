@@ -1,4 +1,4 @@
-﻿//*** This library is copyright 2004 by Gavin Kistner, gavin@refinery.com
+//*** This library is copyright 2004 by Gavin Kistner, gavin@refinery.com
 //*** It is covered under the license viewable at http://phrogz.net/JS/_ReuseLicense.txt
 //*** Reuse or modification is free provided you abide by the terms of that license.
 //*** (Including the first two lines above in your source code mostly satisfies the conditions.)

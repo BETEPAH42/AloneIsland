@@ -1,4 +1,4 @@
-﻿<SCRIPT LANGUAGE='JavaScript' SRC='js/mine.js'></SCRIPT>
+<SCRIPT LANGUAGE='JavaScript' SRC='js/mine.js'></SCRIPT>
 <?
 $MINE_ID = $pers["x"] * $pers["y"] % 65500;
 $tr = SQL::q1("SELECT * FROM mine WHERE x=" . ($pers["minex"] + 1) . " and y=" . $pers["miney"] . " and mine=" . $MINE_ID . "");
@@ -273,7 +273,7 @@ $resources .= '</table>';
 			?>
 			<hr><?= $help; ?>
 		</td>
-		<td align=center class=but width=300 valign=top style="background-image:url('../images/locations/mine<?php echo (date("i") % 5 + 1); ?>.jpg');background-repeat:no-repeat;">
+		<td align=center class=but width=300 valign=top style="background-image:url('images/locations/mine<?php echo (date("i") % 5 + 1); ?>.jpg');background-repeat:no-repeat;">
 			<div style="z-index:2;position:relative;width:100%;text-align:center;" class=alt id=mainbox>
 				<form method="POST" action=main.php><input type="submit" value="Обновить" class="login" style="width:96%"></form>
 			</div>

@@ -30,7 +30,7 @@ include("adm.php");
 
 echo '<link rel="stylesheet" type="text/css" href="../main.css" />';
 echo '<link rel="stylesheet" type="text/css" href="../forum/style.css" />';
-$razd_img = '../images/emp.gif';
+$razd_img = 'images/emp.gif';
 if (isset($_GET['act'])){
   $act = $_GET['act'];
 }else{
@@ -556,7 +556,7 @@ function ans_form($id, $type){
   $smiles = Array('009','001','002','003','008','007','004','010','005','011','006','012','013','015','016','017','018','019','020','021','022','023','024','025','026','027','028','029','031','032','033','034','035','036','037','038','039','040','041','042','161','045','043','049');
   $k = 0;
   foreach($smiles as $smile){
-    ?><img src="../images/smiles/smile_<? echo $smile; ?>.gif" onClick="add_smile('<? echo $k; ?>')" height=20 style="cursor:pointer;"> <? //>
+    ?><img src="images/smiles/smile_<? echo $smile; ?>.gif" onClick="add_smile('<? echo $k; ?>')" height=20 style="cursor:pointer;"> <? //>
     $k++;
   }
   echo '</div><br></td><td width=75% align=center>';

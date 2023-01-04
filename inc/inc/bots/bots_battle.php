@@ -1,12 +1,12 @@
-﻿<?
+<?php
 $die = '';
 $text = '';
 echo "/*";
 $persTEMP = $pers;
 for ($i = 0; $i < 3; $i++) {
 	//Битва ботов между собой
-	$bot1 = sql::q1("SELECT * FROM bots_battle WHERE cfight='" . $fight["id"] . "' and fteam=1 and chp>0");
-	$bot2 = sql::q1("SELECT * FROM bots_battle WHERE cfight='" . $fight["id"] . "' and fteam=2 and chp>0");
+	$bot1 = SQL::q1("SELECT * FROM bots_battle WHERE cfight='" . $fight["id"] . "' and fteam=1 and chp>0");
+	$bot2 = SQL::q1("SELECT * FROM bots_battle WHERE cfight='" . $fight["id"] . "' and fteam=2 and chp>0");
 	$bot1["xf"] = $bot2["xf"] = $bot1["yf"] = $bot2["yf"] = 0;
 	$pers = $bot2;
 	$persvs = $bot1;
@@ -19,8 +19,8 @@ for ($i = 0; $i < 3; $i++) {
 		$die = '';
 		$text = '';
 	}
-	$bot1 = sql::q1("SELECT * FROM bots_battle WHERE cfight='" . $fight["id"] . "' and fteam=1 and chp>0");
-	$bot2 = sql::q1("SELECT * FROM bots_battle WHERE cfight='" . $fight["id"] . "' and fteam=2 and chp>0");
+	$bot1 = SQL::q1("SELECT * FROM bots_battle WHERE cfight='" . $fight["id"] . "' and fteam=1 and chp>0");
+	$bot2 = SQL::q1("SELECT * FROM bots_battle WHERE cfight='" . $fight["id"] . "' and fteam=2 and chp>0");
 	$bot1["xf"] = $bot2["xf"] = $bot1["yf"] = $bot2["yf"] = 0;
 	$pers = $bot1;
 	$persvs = $bot2;

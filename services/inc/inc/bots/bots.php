@@ -1,4 +1,4 @@
-﻿<?
+<?
 $bot = sql::q1("SELECT * FROM `bots` WHERE `id`='" . $p[1] . "'");
 $bot["chp"] = $p[2];
 $bot["cma"] = $p[3];

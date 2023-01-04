@@ -1,4 +1,4 @@
-﻿<center><font class=user>Тюрьма метрополиса</font><hr><img border="0" src="images/locations/prison.jpg"></center>
+<center><font class=user>Тюрьма метрополиса</font><hr><img border="0" src="images/locations/prison.jpg"></center>
 <center>
 <font class=hp>
 <?

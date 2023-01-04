@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (isset($_REQUEST["store_act"]) && !empty($_REQUEST["store_act"]) && isset($_REQUEST["res_kolvo"]) && !empty($_REQUEST["res_kolvo"]) && isset($_REQUEST["what_res"])) {
 	if ($_REQUEST["store_act"] == 'sell') {
 		$cur_now = SQL::q1("SELECT count(name) as count FROM `wp` WHERE id_in_w='" . $_REQUEST["what_res"] . "' and uidp=" . $pers["uid"] . "")['count'];
@@ -88,7 +88,7 @@ if (isset($_REQUEST["store_act"]) && !empty($_REQUEST["store_act"]) && isset($_R
 				endif;
 			?>
 				<tr>
-					<td align="center" valign="middle"><img src="../images/weapons/<? echo $b['resource_image']; ?>.gif" border="0" /></td>
+					<td align="center" valign="middle"><img src="images/weapons/<? echo $b['resource_image']; ?>.gif" border="0" /></td>
 					<td align="center" valign="middle">&laquo;<? echo $resources['resource_name']; ?>&raquo;</td>
 					<td align="center" valign="middle"><? echo $b['resource_is']; ?>/<? echo $b['resource_max']; ?></td>
 					<td align="center" valign="middle"><?= $price_total ?> LN</td>

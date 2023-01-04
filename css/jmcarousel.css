@@ -8,14 +8,14 @@
 
 
 div.aurasc .prev{
-	background: url('./images/design/left.png') center center no-repeat;
+	background: url('images/design/left.png') center center no-repeat;
 	width:47px;
 	height:61px;
 	border:0px;
 }
 
 div.aurasc .next{
-	background: url('./images/design/right.png') center center no-repeat;
+	background: url('images/design/right.png') center center no-repeat;
 	width:40px;
 	height:61px;
 	border:0px;

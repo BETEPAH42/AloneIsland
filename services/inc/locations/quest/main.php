@@ -1,4 +1,4 @@
-﻿<?
+<?
 	include ("quests.php");
 	$_RETURN = '';
 	include ("witch.php");

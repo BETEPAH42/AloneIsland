@@ -1,4 +1,4 @@
-﻿<script type="text/javascript" src="js/newup.js?k"></script>
+<script type="text/javascript" src="js/newup.js?k"></script>
 <script>
   <?
   $t = tme();

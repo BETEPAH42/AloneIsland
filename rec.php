@@ -1,4 +1,4 @@
-﻿<head>
+<head>
 <meta http-equiv="Content-Language" content="ru">
 <LINK href=main.css rel=STYLESHEET type=text/css>
 <title>Alone Islands [Подборка рецепта]</title>

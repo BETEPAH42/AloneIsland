@@ -1,5 +1,4 @@
-﻿<?
-// include_once '../classes/sql.php';
+<?php
 
 $sql_queries_counter = 0;
 $sql_queries_timer = 0;
@@ -1404,7 +1403,7 @@ function showWeapon(array $id)
 		<div class=weapons_box>
 			<div class=weapon_name>{$w['name']}</div>
 			<div class=weapon_img_xap>
-				<div><img src='../images/weapons/{$w['image']}.gif'></div>
+				<div><img src='images/weapons/{$w['image']}.gif'></div>
 				<div>Характеристики:</div>
 			</div>
 			<div>Кнопки:</div>
@@ -1456,20 +1455,19 @@ function mod_st_fin()
 		$module_statisticks[$i]["all_exec_time"];
 	$module_statisticks_counter++;
 }
-
-function insert_wp($id, $uid, $durability = -1, $weared = 0, $user = '', $weight = -1) // внести изменения дл клановых шмоток на сервер v[tsign]
+// внести изменения дл клановых шмоток на сервер v[tsign]
+function insert_wp($id, $uid, $durability = -1, $weared = 0, $user = '', $weight = -1) 
 {
-	// debag(is_scalar($id));
-	$uid = intval($uid);
+	$uid = (int)$uid;
 	if (is_scalar($id))
 		$v = SQL::q1("SELECT * FROM weapons WHERE id='" . $id . "'");
 	else
 		$v = $id;
-	// debag($v);
 	$id = $v["id"];
 	if ($durability == -1) $durability = $v["max_durability"];
 	if ($weight == -1) $weight = $v["weight"];
 	if (empty($v["id"])) return 0;
+	// debag($weight);
 	$user = _UserByUid($uid);
 	$user = $user['user'];
 	// debag($user);
@@ -1487,11 +1485,18 @@ function insert_wp($id, $uid, $durability = -1, $weared = 0, $user = '', $weight
 			$_params .= ",'" . $v[$param] . "'";
 		}
 	}
-	$result = SQL::qi("INSERT INTO `wp` ( `id` , `uidp` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` , `present` , `clan_sign` , `clan_name` ,`radius` , `slots` ,`arrows` ,`arrows_max` ,`arrow_name` , `arrow_price` , `tlevel` , `tsign` ,`p_type` , `user`, `material_show`, `material` " . $_colls . ") VALUES (0, '" . $uid . "', '" . $weared . "','" . $id . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $weight . "', '" . $v["where_buy"] . "', '" . $v["max_durability"] . "', '" . $durability . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "', '" . $v["tsign"] . "', '" . $v["p_type"] . "', '" . $user . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
 
-	return $result;
+	$result = SQL::q1("INSERT INTO `wp` ( `id` , `uidp` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` , `present` , `clan_sign` , `clan_name` ,`radius` , `slots` ,`arrows` ,`arrows_max` ,`arrow_name` , `arrow_price` , `tlevel` , `tsign` ,`p_type` , `user`, `material_show`, `material` " . $_colls . ") VALUES (0, '" . $uid . "', '" . $weared . "','" . $id . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $weight . "', '" . $v["where_buy"] . "', '" . $v["max_durability"] . "', '" . $durability . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "', '" . $v["tsign"] . "', '" . $v["p_type"] . "', '" . $user . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
+	return !$result;
 }
 
+function insert_herbal ($id, $uid) {
+	if(!$uid) return false;
+		
+	$trava = SQL::q1("SELECT * FROM herbals WHERE id = ".$id.";");
+	$res = SQL::qi("INSERT INTO `wp` ( `uidp` , `user` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` ,`p_type`, `timeout`) VALUES (" . $uid . ", '" . _UserByUid($uid)["user"] . "', '0','','1', '0', 'herbals/" . $trava["image"] . "', '', 'herbal', 'herbal', '" . $trava["name"] . "', '', '1', '0', '1', '1','200'," . (time() + 1200000) . ");");
+	return $res;
+}
 
 function buy_prim_mayk($id, $uid, $durability)
 {
@@ -1521,8 +1526,7 @@ function buy_prim_mayk($id, $uid, $durability)
 			$_params .= ",'" . $v[$param] . "'";
 		}
 	}
-	$result = sql::qi("INSERT INTO `wp` ( `id` , `uidp` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` , `present` , `clan_sign` , `clan_name` ,`radius` , `slots` ,`arrows` ,`arrows_max` ,`arrow_name` , `arrow_price` , `tlevel` ,`p_type` , `user`, `material_show`, `material` " . $_colls . ")
-VALUES (0, '" . $uid . "', '" . $weared . "','" . $id . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $v["weight"] . "', '" . $v["where_buy"] . "', '" . $durability . "', '" . $durability . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "','" . $v["p_type"] . "', '" . $user . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
+	$result = sql::qi("INSERT INTO `wp` ( `id` , `uidp` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` , `present` , `clan_sign` , `clan_name` ,`radius` , `slots` ,`arrows` ,`arrows_max` ,`arrow_name` , `arrow_price` , `tlevel` ,`p_type` , `user`, `material_show`, `material` " . $_colls . ") VALUES (0, '" . $uid . "', '" . $weared . "','" . $id . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $v["weight"] . "', '" . $v["where_buy"] . "', '" . $durability . "', '" . $durability . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "','" . $v["p_type"] . "', '" . $user . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
 	return $result;
 }
 
@@ -1670,7 +1674,8 @@ function dress_weapon($id_of_weapon, $checker)
 {
 	global $pers;
 	$i = 5;
-	$v = SQL::q1("SELECT * FROM `wp` WHERE `id`= " . $id_of_weapon . " and uidp=" . $pers["uid"] . " and weared=0");
+	$v = SQL::q1("SELECT * FROM `wp` WHERE `id`= " . $id_of_weapon . " and uidp=" . $pers["uid"] . " and weared = 0");
+	// file_put_contents('wear.txt', "Начинаем ".print_r($v)."",FILE_APPEND);
 	if (@$v["id"]) {
 		$z = 1;
 		if ($pers["level"] < $v["tlevel"])
@@ -1683,7 +1688,7 @@ function dress_weapon($id_of_weapon, $checker)
 				if ($z == 0)
 					break;
 			}
-
+			// var_dump($z);
 		if ($z == 1) {
 			$r = all_params();
 			foreach ($r as $a)
@@ -1695,43 +1700,55 @@ function dress_weapon($id_of_weapon, $checker)
 			if ($v["type"] == 'orujie') {
 
 				$tmp = SQL::q1("SELECT COUNT(id) as count FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie';");
+				// var_dump($tmp);
 				if ($tmp['count'] >= 2) {
 					if ($v["stype"] == 'noji' or $v["stype"] == 'shit') {
 						$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie' and (stype='noji' or stype='shit')");
-						if (@$w_for_remove["id"])
-							remove_weapon($w_for_remove["id"], $w_for_remove);
+						if (@$w_for_remove["id"]) {
+							// file_put_contents("weaponts.txt","oruj function tmp[count]>=2\n",FILE_APPEND);
+							remove_weapon($w_for_remove["id"], $w_for_remove);}
 					} else {
 						$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie' and stype<>'noji' and stype<>'shit'");
-						if (@$w_for_remove["id"])
-							remove_weapon($w_for_remove["id"], $w_for_remove);
+						if (@$w_for_remove["id"]) 
+							{
+								// file_put_contents("weaponts.txt","oruj function else 1\n",FILE_APPEND);
+							remove_weapon($w_for_remove["id"], $w_for_remove);}
 					}
 				} elseif ($tmp == 1) {
 					$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie'");
 					if ($v["stype"] <> 'noji' and $v["stype"] <> 'shit' and $w_for_remove["stype"] <> 'noji' and $w_for_remove["stype"] <> 'shit')
-						remove_weapon($w_for_remove["id"], $w_for_remove);
+						{
+							// file_put_contents("weaponts.txt","oruj function tmp==1\n",FILE_APPEND);	
+						remove_weapon($w_for_remove["id"], $w_for_remove);}
 				}
 			} elseif ($v["type"] == 'kolco') {
 				$tmp = SQL::q1("SELECT COUNT(id) as count FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kolco'");
 				if ($tmp['count'] >= 2) {
 					$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kolco'");
 					if (@$w_for_remove["id"])
-						remove_weapon($w_for_remove["id"], $w_for_remove);
+					{
+						// file_put_contents("weaponts.txt","kolco function tmp[count]>=2\n",FILE_APPEND);
+						remove_weapon($w_for_remove["id"], $w_for_remove);}
 				}
 			} elseif ($v["type"] == 'kam') {
 				$tmp = SQL::q1("SELECT COUNT(id) as count FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kam'");
 				if ($tmp['count'] == 4) {
-					$w_for_remove = sql::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kam'");
+					$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='kam'");
 					if (@$w_for_remove["id"])
-						remove_weapon($w_for_remove["id"], $w_for_remove);
+					{
+						// file_put_contents("weaponts.txt","kam function tmp[count]==4\n",FILE_APPEND);
+						remove_weapon($w_for_remove["id"], $w_for_remove);}
 				}
 			} else {
 				$w_for_remove = SQL::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='" . $v["type"] . "'");
 				if (@$w_for_remove["id"])
-					remove_weapon($w_for_remove["id"], $w_for_remove);
+				{
+					// file_put_contents("weaponts.txt","last function \n",FILE_APPEND);
+					remove_weapon($w_for_remove["id"], $w_for_remove);}
 			}
 			SQL::q("UPDATE wp SET weared=1 WHERE id=" . $v["id"] . "");
 			if ($aq = aq($pers))
-				SQL::q("UPDATE `users` SET " . $aq . " WHERE `uid` = " . $pers["uid"] . " ;");
+				SQL::q("UPDATE users SET " . $aq . " WHERE uid = " . $pers["uid"] . " ;");
 		}
 	}
 }
@@ -1744,16 +1761,11 @@ function add_flog($txt, $cfight)
 		$cfight = $pers["cfight"];
 	}
 	if ($txt[strlen($txt) - 1] == '%') $txt = substr($txt, 0, strlen($txt) - 1);
-	SQL::q("INSERT INTO `fight_log` ( `time` , `log` , `cfight` , `turn` )
-VALUES (
-'" . date("H:i") . "', '" . addslashes($txt) . "', '" . $cfight . "', '" . round((time() + microtime()), 2) . "'
-);");
+	SQL::q("INSERT INTO `fight_log` ( `time` , `log` , `cfight` , `turn` ) VALUES ('" . date("H:i") . "', '" . addslashes($txt) . "', '" . $cfight . "', '" . round((time() + microtime()), 2) . "');");
 	$txt = "<font class=timef>" . date("H:i") . "</font> " . $txt;
 	$txt = str_replace("%", "<br><font class=timef>" . date("H:i") . "</font> ", $txt);
 	$battle_log .= $txt;
-	SQL::q("UPDATE `fights`
-SET `all`=CONCAT('" . addslashes($txt) . ";',`all`) , `ltime`='" . time() . "'
-WHERE `id`='" . $cfight . "' ;");
+	SQL::q("UPDATE `fights` SET `all`=CONCAT('" . addslashes($txt) . ";',`all`) , `ltime`='" . time() . "' WHERE `id`='" . $cfight . "' ;");
 }
 
 function signum($x)
@@ -1777,8 +1789,9 @@ function uncrypt($value)
 
 function plus_param($param)
 {
-	if ($param > 0) return "+" . $param;
-	elseif ($param < 0) return "-" . abs($param);
+	if ($param > 0) {
+		return "+" . $param;}
+	elseif ($param < 0) {return "-" . abs($param);}
 	else return "0";
 }
 
@@ -1845,10 +1858,7 @@ function experience($damage, $yourlvl, $vslvl, $notnpc, $rank)
 
 function transfer_log($type, $uid, $user, $money1, $money2, $title, $ip1, $ip2)
 {
-	SQL::q("INSERT INTO `transfer` ( `date` , `type` , `uid` , `who` , `transfer_in` , `transfer_out` , `title` , `ip1` , `ip2`)
-VALUES (
-'" . time() . "', " . $type . " ,'" . $uid . "', '" . $user . "', '" . $money1 . "', '" . $money2 . "', '" . $title . "', '" . $ip1 . "' , '" . $ip2 . "'
-);");
+	SQL::q("INSERT INTO `transfer` ( `date` , `type` , `uid` , `who` , `transfer_in` , `transfer_out` , `title` , `ip1` , `ip2`) VALUES ( '" . time() . "', " . $type . " ,'" . $uid . "', '" . $user . "', '" . $money1 . "', '" . $money2 . "', '" . $title . "', '" . $ip1 . "' , '" . $ip2 . "' );");
 }
 
 function ylov($_pers, $_persvs)
@@ -1976,8 +1986,11 @@ function IsWearing($v)
 
 function _UserByUid($uid = 0)
 {
+	// var_dump($uid);
+	// $data = SQL::q1("SELECT user FROM users WHERE uid=" . (int)$uid . ";");
+	// var_dump($data);
 	if ($uid) {
-		return sql::q1("SELECT user FROM users WHERE uid=" . (int)$uid . ";")['user'];;
+		return SQL::q1("SELECT user FROM users WHERE uid=" . (int)$uid . ";");
 	} else
 		return false;
 }
@@ -1997,23 +2010,26 @@ function Weared_Weapons($uid = 0)
 		global $pers;
 		$uid = $pers["uid"];
 	}
-	$array = "SELECT stype,udmin,udmax,kb FROM wp WHERE uidp=" . intval($uid) . " and weared=1 and type='orujie';";
-	$_W["noji"] = 0;
-	$_W["mech"] = 0;
-	$_W["topo"] = 0;
-	$_W["drob"] = 0;
-	$_W["shit"] = 0;
-	foreach (SQL::q($array) as $a) {
-		$_W[$a["stype"]] += 1;
-		$_W[$a["stype"]]["udmin"] = $a["udmin"];
-		$_W[$a["stype"]]["udmax"] = $a["udmax"];
-		$_W[$a["stype"]]["kb"] = $a["kb"];
+	$array = "SELECT stype,udmin,udmax,kb FROM wp WHERE uidp = ? and weared=1 and type='orujie';";
+	$or = ["noji","mech","topo","drob","shit"];
+	$_W["noji"]['od'] = 0;
+	$_W["mech"]['od'] = 0;
+	$_W["topo"]['od'] = 0;
+	$_W["drob"]['od'] = 0;
+	$_W["shit"]['od'] = 0;
+	$arr = SQL::q($array,[intval($uid)]);
+	foreach ($arr as $a) {
+		if (!in_array($a["stype"],$or))
+			continue;
+
+		$_W [$a["stype"]] = [
+			'od' => $_W[$a["stype"]]['od']+1,
+			"udmin" => $a["udmin"],
+			"udmax" => $a["udmax"],
+			"kb" => $a["kb"]
+			];
 	}
-	$_W["OD"] = $_W["noji"] * 1 +
-		$_W["mech"] * 2 +
-		$_W["topo"] * 3 +
-		$_W["drob"] * 4 +
-		$_W["shit"] * 1;
+	$_W["OD"] = (int)$_W["noji"]['od'] * 1 + $_W["mech"]['od'] * 2 + (int)$_W["topo"]['od'] * 3 + (int)$_W["drob"]['od'] * 4 + (int)$_W["shit"]['od'] * 1;
 	return $_W;
 }
 

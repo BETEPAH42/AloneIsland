@@ -1,4 +1,4 @@
-﻿<?
+<?
 $perstemp = $pers;
 $pers = $persvs;
 $persvs = $perstemp;

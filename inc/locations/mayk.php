@@ -1,4 +1,4 @@
-﻿<LINK href="css/vkladki.css" rel="STYLESHEET" type="text/css">
+<LINK href="css/vkladki.css" rel="STYLESHEET" type="text/css">
 <center>Маяк Безмолвия</center>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -45,7 +45,7 @@
 									if ($z == 0) echo "<tr>";
 									$sprim = round($prim["price"] / $prim["max_durability"], 2);
 									echo "<td width=50%><FIELDSET><LEGEND align=center>" . $prim["name"] . "</LEGEND><table width=100%><tr><td width=58>";
-									echo "<img src='../images/weapons/fishing_prim/" . $prim["image"] . ".gif'></td><td valign=top>Цена за 1 шт.: " . $sprim . " LN<br>";
+									echo "<img src='images/weapons/fishing_prim/" . $prim["image"] . ".gif'></td><td valign=top>Цена за 1 шт.: " . $sprim . " LN<br>";
 									if ($pers["sp6"] >= $prim["sp6"]) {
 										$color = "green";
 										$knopka = "Приобрести <input type=text name=kolvo value=0 maxlength=4 size=4> шт.<br>

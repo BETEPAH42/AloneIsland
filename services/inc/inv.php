@@ -42,7 +42,7 @@
 		?>
 		<tr>
 			<td>
-				<a href="javascript:inv_conf()" class=Blocked><img src='../images/icons/0_on.png'></a>
+				<a href="javascript:inv_conf()" class=Blocked><img src='images/icons/0_on.png'></a>
 			</Td>
 			<?
 			if ($weared_count) echo "<td><a href=main.php?snall=all class=Blocked>Снять всё</a></td>";

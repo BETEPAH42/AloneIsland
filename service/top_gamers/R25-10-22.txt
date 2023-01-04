@@ -1,0 +1,2 @@
+var list=new Array(
+'CBAT|8|c1|Вампир-алхимик|15|||','LORKA|6|none||9|||','DieSeL81|20|c1||8|||','Tatarin|5|none||6|||','Luna|16|l/l3|1-ый зам|4|||','P0larBeer|16|l/l3|1-ый зам|4|||','puha|5|none||4|||','DeSent|5|none||4|||','BladeVampires|12|none||4|||','Azat|6|none||2|||','Zema415|18|t/t5|Верховный волхв Сварога|1|||','veterok7|19|c1|Второй Вампир|1|||','орлик|20|c1|Второй Вампир|0|||','Gogi|5|none||0|||','Pticsan|18|t/t5|Витязь|0|||','Elf|4|none||0|||','Simson|22|c1||0|||','Oklad|4|none||0|||','Aik|6|none||0|||','Masta|21|t/t5|Князь|0|||');show_list ('0+');

@@ -1,4 +1,4 @@
-﻿<table border="0" width="150" cellspacing="1">
+<table border="0" width="150" cellspacing="1">
 	<tr>
 		<td><font class=stats>Сила:</font></td>
 		<td><font class=user><div id=sila></div></font></td>

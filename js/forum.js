@@ -1,4 +1,4 @@
-﻿function dw(a)
+function dw(a)
 {
 	return document.write(a);
 }
@@ -210,7 +210,7 @@ x = a + time + b;
 	 dw("<tr><td valign=Top class=but><i class=gray>"+_Date+"</i><strong class=user>");
 	dw(subrazd[j * 11].substr(0,17)); //Print Nmae
 	dw(" [<b class=lvl>"+subrazd[j * 11 + 1]+"</b>]</strong> "); //Print ID
-    dw("<img src='../images/i.gif' onClick=\"info("+subrazd[j * 11 + 4]+")\" style='cursor:pointer;'>");
+    dw("<img src='images/i.gif' onClick=\"info("+subrazd[j * 11 + 4]+")\" style='cursor:pointer;'>");
 	dw("<br><div class=timef>");
 	dw(subrazd[j * 11 + 2]); // Print group
 	if(i==0)

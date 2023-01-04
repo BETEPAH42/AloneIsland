@@ -1,4 +1,4 @@
-﻿<?
+<?
 echo "<SCRIPT type=\"text/JavaScript\">
 function startCountdown(){
 	   for (var i=1; i<3;i++){

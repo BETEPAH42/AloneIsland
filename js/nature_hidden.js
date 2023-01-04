@@ -1,4 +1,4 @@
-﻿var go_str;
+var go_str;
 
 function show_nature(x, y, A) {
 	if (top.top.frames["updater"].go_str)
@@ -14,9 +14,9 @@ function show_nature(x, y, A) {
 		for (cx = x - 4; cx <= x + 4; cx++) {
 			if (cx < 50 && (cx > 10 || cx % 10 < 5)) dir = 'map'; else dir = 'map';
 			if (go_str.indexOf('<' + (cx - 22) + '_' + (cy - 26)) > -1 && ((cx - x) * (cx - x) + (cy - y) * (cy - y)) <= (2 + A * 6))
-				text += '<td class=go_yes onclick="go_nature(' + (cx - 22) + ',' + (cy - 26) + ')" style=\'width:80px;height:80px;cursor:pointer\'><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=80 height=80></td>';
+				text += '<td class=go_yes onclick="go_nature(' + (cx - 22) + ',' + (cy - 26) + ')" style=\'width:80px;height:80px;cursor:pointer\'><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=80 height=80></td>';
 			else
-				text += '<td title="Недоступно" style="width:80px;height:80px;"><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=80 height=80></td>';
+				text += '<td title="Недоступно" style="width:80px;height:80px;"><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=80 height=80></td>';
 		}
 		text += '</tr>';
 	}

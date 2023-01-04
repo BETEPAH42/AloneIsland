@@ -1,8 +1,8 @@
-﻿var d=document;
+var d=document;
 var upSc = '12';
 d.write ('<SCRIPT src="js/jquery.js?'+upSc+'"></SCRIPT><LINK href=css/main.css?'+upSc+' rel=STYLESHEET type=text/css>');
 
-d.write ('<title>Лог Боя['+bid+'] - AloneIslands / Страница '+(page+1)+'</title><META Content=\'text/html; charset=windows-1251\' Http-Equiv=Content-type><body class=fightlong>');
+d.write ('<title>Лог Боя['+bid+'] - AloneIslands / Страница '+(page+1)+'</title><META Content=\'text/html; charset=utf-8\' Http-Equiv=Content-type><body class=fightlong>');
 
 var txt = '';
 txt += '<center class=logbox>';

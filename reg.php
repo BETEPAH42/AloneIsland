@@ -1,4 +1,4 @@
-﻿<?
+<?php
 error_reporting(0);
 $a1 = md5(microtime());
 $a2 = time();

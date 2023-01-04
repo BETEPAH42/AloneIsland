@@ -1,4 +1,4 @@
-﻿<?
+<?php
 if (@$_GET["gomine"] and $_MINE and !$_UMINE) {
 	set_vars("minex=0,miney=0,waiter=" . (tme() + 20) . ",location='mine'", $pers["uid"]);
 	$pers["location"] = 'mine';

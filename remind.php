@@ -1,8 +1,8 @@
-﻿<head>
+<head>
 	<meta http-equiv="Content-Language" content="en-us">
 	<LINK href=main.css rel=STYLESHEET type=text/css>
 	<title>Восстановление персонажа</title>
-	<meta http-equiv=content-type content='text/html; charset=windows-1251'>
+	<meta http-equiv=content-type content='text/html; charset=utf-8'>
 </head>
 
 

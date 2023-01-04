@@ -1,4 +1,4 @@
-﻿<?
+<?
 $status = $pers["clan_state"];
 define("DD_STND_KOEF", 1);
 define("DD_CLAN_KOEF", 1);

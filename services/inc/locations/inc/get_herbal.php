@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (isset($_GET["get_herbal"]) and $pers["action"] == 1) {
 	set_vars("action=0", $pers["uid"]);
 	$herbal_grow = HERBAL_GROW;

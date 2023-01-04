@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //error_reporting(0);
 require_once 'classes/sql.php';
 include_once 'inc/functions.php';
@@ -249,15 +249,12 @@ if($pers["uid"]==5)
 	$s.= "'•Сервер••Время работы: ".round(time()+microtime()-$server_state,3)."•0•265•0•',";
 }
 */
-	// echo "let zero = " . $zz . ";";
-
-	// echo "console.log('" . $zz . "');";
 	?>
 	// let t = {};
 	async function getMsgChat() {
 		let respons = await fetch("showChatApi.php?show=all");
 		let res = await respons.json();
-		// console.log(res);
+
 		if (res.status)
 			res.messages.forEach(element => {
 				// описываем логику чата здесь
@@ -308,7 +305,7 @@ if($pers["uid"]==5)
 
 					if (Number(smile) < 268) {
 						// console.log(smile);
-						msg = str_replace2(msg, '//' + smile, '<img src=../images/smiles/smile_' + smile + '.gif onclick="top.sm_ins(\'' + smile + '\')">');
+						msg = str_replace2(msg, '//' + smile, '<img src=/images/smiles/smile_' + smile + '.gif onclick="top.sm_ins(\'' + smile + '\')">');
 						// console.log(msg);
 					}
 					q++;

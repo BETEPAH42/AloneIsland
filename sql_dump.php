@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (empty($pass)) exit;
 include("configs/config.php");
 $_POST['db_backup'] = $mysqlibase;
@@ -22,7 +22,7 @@ define('DBHOST', 'localhost:3306');
 // и ничего не показывается после авторизации. Перечислите названия через запятую
 define('DBNAMES', '');
 // Кодировка данных базы данных
-define('CHARSET', 'cp1251');
+define('CHARSET', 'utf8');
 // Включить сохранение настроек и последних действий
 // Для отключения установить значение 0
 define('SC', 1);

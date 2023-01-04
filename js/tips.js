@@ -1,4 +1,4 @@
-﻿var d=document;
+var d=document;
 var interval = -1;
 var sw = screen.width*0.25;
 var $ = function(id){

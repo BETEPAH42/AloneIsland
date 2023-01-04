@@ -1,4 +1,5 @@
-﻿<?
+<?php
+error_reporting(E_ALL);
 $t = tme();
 
 $waiter = '';
@@ -90,18 +91,18 @@ if ($fight["type"] == 'notf' or $fight["type"] == '') {
 	else
 		$s = $s . "";
 
-	$c1b = sql::q1("SELECT COUNT(id) as count FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=1")['count'];
-	$c2b = sql::q1("SELECT COUNT(id) as count FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=2")["count"];
+	$c1b = SQL::q1("SELECT COUNT(id) as count FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=1")['count'];
+	$c2b = SQL::q1("SELECT COUNT(id) as count FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=2")["count"];
 
 
-	$p_t1 = sql::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,aura,losses,victories,exp_in_f,main_present,clan_name,fexp,pol,fteam,kills,punishment,invisible,instructor
+	$p_t1 = SQL::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,aura,losses,victories,exp_in_f,main_present,clan_name,fexp,pol,fteam,kills,punishment,invisible,instructor
 FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=1");
-	$p_t2 = sql::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,aura,losses,victories,exp_in_f,main_present,clan_name,fexp,pol,fteam,kills,punishment,invisible,instructor
+	$p_t2 = SQL::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,aura,losses,victories,exp_in_f,main_present,clan_name,fexp,pol,fteam,kills,punishment,invisible,instructor
 FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2");
 
 	if ($pers["tour"] == 1) {
-		$b_t1 = sql::q("SELECT * FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=1");
-		$b_t2 = sql::q("SELECT * FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=2");
+		$b_t1 = SQl::q("SELECT * FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=1");
+		$b_t2 = SQL::q("SELECT * FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=2");
 	} else {
 		$b_t1 = 0;
 		$b_t2 = 0;
@@ -109,31 +110,31 @@ FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2");
 
 
 	if ($c1b == 1) {
-		$ghost = sql::q1("SELECT dropvalue FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and droptype=0 and dropvalue>0")['dropvalue'];
+		$ghost = SQL::q1("SELECT dropvalue FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and droptype=0 and dropvalue>0")['dropvalue'];
 		if ($ghost)
-			if (sql::q1("SELECT COUNT(*) as count FROM users WHERE uid=" . $ghost . " and ctip=-1")['count'])
+			if (SQL::q1("SELECT COUNT(*) as count FROM users WHERE uid=" . $ghost . " and ctip=-1")['count'])
 				set_vars("chp=0,silence=0,lb_attack=" . (tme() + 300), $ghost);
 	}
 
-	$c1 = sql::q1("SELECT COUNT(uid) as count FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=1")['count'];
-	$c2 = sql::q1("SELECT COUNT(uid) as count FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2")['count'];
+	$c1 = SQL::q1("SELECT COUNT(uid) as count FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=1")['count'];
+	$c2 = SQL::q1("SELECT COUNT(uid) as count FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2")['count'];
 
 	if ($fight["turn"] <> "finished" and $fight["type"] == "notf" and $t > $pers["waiter"]) {
 
 		if ($pers["tour"] == 1) {
-			$t1 = sql::q1("SELECT * FROM quest WHERE id = 2");
+			$t1 = SQL::q1("SELECT * FROM quest WHERE id = 2");
 			if ($t1["type"] == 1)
-				sql::q("UPDATE quest SET time=" . tme() . ",type=2 WHERE id=2"); // TOUR1
+				SQL::q("UPDATE quest SET time=" . tme() . ",type=2 WHERE id=2"); // TOUR1
 		}
 		if ($pers["tour"] == 2) {
-			$t1 = sql::q1("SELECT * FROM quest WHERE id = 3");
+			$t1 = SQL::q1("SELECT * FROM quest WHERE id = 3");
 			if ($t1["type"] == 1)
-				sql::q("UPDATE quest SET time=" . tme() . ",type=2 WHERE id=3"); // TOUR1
+				SQL::q("UPDATE quest SET time=" . tme() . ",type=2 WHERE id=3"); // TOUR1
 		}
 		if ($pers["tour"] == 3) {
-			$t1 = sql::q1("SELECT * FROM quest WHERE id = 4");
+			$t1 = SQL::q1("SELECT * FROM quest WHERE id = 4");
 			if ($t1["type"] == 1)
-				sql::q("UPDATE quest SET time=" . tme() . ",type=2 WHERE id=4"); // TOUR1
+				SQL::q("UPDATE quest SET time=" . tme() . ",type=2 WHERE id=4"); // TOUR1
 		}
 
 		$exptext = array();
@@ -266,7 +267,7 @@ FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2");
 } else echo "show_exp('" . addslashes($fight["result"]) . "');";
 
 $yourwin = 0;
-if ($fight["type"] == 'notf' or $fight["type"] == '') {
+if ($fight["type"] == 'notf' || $fight["type"] == '') {
 	if ($LIFE2 == 0 and $LIFE1 and $pers["fteam"] == 1) $yourwin = 1;
 	if ($LIFE1 == 0 and $LIFE2 and $pers["fteam"] == 2) $yourwin = 1;
 } else {

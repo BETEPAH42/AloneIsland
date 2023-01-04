@@ -1,5 +1,5 @@
-﻿<?
-// error_reporting(E_ALL);
+<?
+error_reporting(E_ALL);
 $TXT = '';
 if ($cell["last_bots_change"] < (time() - 7200)) {
 	if ($cell["blvlmax"] > rand(0, 100)) {
@@ -22,7 +22,7 @@ if ($cell["last_bots_change"] < (time() - 7200)) {
 		$bot_id = sql::q1("SELECT id,user,level FROM bots WHERE user='" . $user["user"] . "' and level='" . rand($cell["blvlmin"], $cell["blvlmax"]) . "';");
 		if ($bot_id) {
 			$count = rand(1, 1);
-			sql::q("INSERT INTO `bots_cell` ( `id` , `name` , `time` , `xy` , `count`,`id_skin`) VALUES ('" . $bot_id["id"] . "', '<font class=user>" . $bot_id["user"] . "</font>[<font class=lvl>" . $bot_id["level"] . "</font>]<img src=../images/info.gif onclick=\"javascript:window.open(\'binfo.php?" . $bot_id["id"] . "\',\'_blank\')\" style=\"cursor:pointer\">', '" . time() . "', '" . $cell["x"] . "_" . $cell["y"] . "'," . $count . ",0);");
+			sql::q("INSERT INTO `bots_cell` ( `id` , `name` , `time` , `xy` , `count`,`id_skin`) VALUES ('" . $bot_id["id"] . "', '<font class=user>" . $bot_id["user"] . "</font>[<font class=lvl>" . $bot_id["level"] . "</font>]<img src=images/info.gif onclick=\"javascript:window.open(\'binfo.php?" . $bot_id["id"] . "\',\'_blank\')\" style=\"cursor:pointer\">', '" . time() . "', '" . $cell["x"] . "_" . $cell["y"] . "'," . $count . ",0);");
 		}
 		sql::q("UPDATE nature SET last_bots_change=" . time() . " WHERE x='" . $cell["x"] . "' and y='" . $cell["y"] . "'");
 	}
@@ -30,14 +30,14 @@ if ($cell["last_bots_change"] < (time() - 7200)) {
 $TXT .= "Живность на локации: <br>";
 $TXT .= '<table border="0" width="100%" cellspacing="0" cellpadding="0" class=LinedTable>';
 $bots = sql::q("SELECT * FROM bots_cell WHERE xy='" . $cell["x"] . "_" . $cell["y"] . "'");
-debag($bots);
+// debag($bots);
 $BCNT = 0;
 foreach ($bots as $b) {
 	$BCNT++;
 	$TXT .= "<tr>";
 	if ($b["id_skin"]) $b["name"] = "<font class=user>" . $b["name"] . "</font>[<font class=lvl>" . ($pers["level"]) . "</font>]";
 	if ($b["time"] <= time()) {
-		$TXT .= "<td><center><input type=image class=login onclick=\"{if(confirm('Вы действительно хотите напасть?')) location='main.php?out_action=battle&id=" . $b["id"] . "'}\" src=../images/rp_logo.png></center></td>";
+		$TXT .= "<td><center><input type=image class=login onclick=\"{if(confirm('Вы действительно хотите напасть?')) location='main.php?out_action=battle&id=" . $b["id"] . "'}\" src=images/rp_logo.png></center></td>";
 		$TXT .= "<td class=user nowrap>" . $b["name"] . "</td>";
 		if (@$_GET["out_action"] == "battle" and $_GET["id"] == $b["id"]) {
 			$f_type = 0;

@@ -1,4 +1,4 @@
-﻿<table border=0 width=100% bgcolor=#F5F5F5 class=LinedTable cellspacing=0>
+<table border=0 width=100% bgcolor=#F5F5F5 class=LinedTable cellspacing=0>
 <tr><td colspan=6><? if (($pers["free_f_skills"] + $pers["free_p_skills"] + $pers["free_m_skills"])>0) echo "<center><b><a href='javascript:document.ym.submit()' class=but>Сохранить</a></b></center>"; ?></td></tr>
 <? if ($pers['free_f_skills']<>0)echo '<tr bgcolor="D5D5D5"><td align="center"><i class=user>Свободные боевые</i></td><td class=babout><div id=nymen class=user></div></td></tr>';?>
 <? if ($pers['free_m_skills']<>0)echo '<tr ><td align="center"><i class=user>Свободные второстепенные</i></td><td class=babout><div id=nsymen class=user></div></td></tr>';?>

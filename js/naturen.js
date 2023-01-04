@@ -1,4 +1,4 @@
-﻿var c_showed = 0;
+var c_showed = 0;
 var wX = 0, wY = 0;
 var waiterMode = 1;
 var D2 = 0;
@@ -40,17 +40,17 @@ function return_minicart(x, y) {
 		text += '<tr>';
 		for (cx = x - 6; cx <= x + 6; cx++) {
 			//if(cx<50 && (cx>10 || cx%10<5)) dir='map'; else dir='map';
-			if (cx == x && cy == y) text += '<td class=go_yes><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg  width=18></td>'; else
-				if (cx == x - 1 && cy == y) text += '<td><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
-					if (cx == x + 1 && cy == y) text += '<td><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
-						if (cx == x && cy == y - 1) text += '<td><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
-							if (cx == x && cy == y + 1) text += '<td><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
-								if (cx == x - 1 && cy == y - 1) text += '<td><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
-									if (cx == x + 1 && cy == y + 1) text += '<td><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
-										if (cx == x + 1 && cy == y - 1) text += '<td><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
-											if (cx == x - 1 && cy == y + 1) text += '<td><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>';
+			if (cx == x && cy == y) text += '<td class=go_yes><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg  width=18></td>'; else
+				if (cx == x - 1 && cy == y) text += '<td><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
+					if (cx == x + 1 && cy == y) text += '<td><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
+						if (cx == x && cy == y - 1) text += '<td><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
+							if (cx == x && cy == y + 1) text += '<td><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
+								if (cx == x - 1 && cy == y - 1) text += '<td><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
+									if (cx == x + 1 && cy == y + 1) text += '<td><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
+										if (cx == x + 1 && cy == y - 1) text += '<td><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>'; else
+											if (cx == x - 1 && cy == y + 1) text += '<td><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>';
 											else
-												text += '<td><img src=../images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>';
+												text += '<td><img src=images/' + dir + '/' + cx + '_' + cy + '.jpg width=18></td>';
 		}
 		text += '</tr>';
 	}
@@ -191,10 +191,10 @@ function show_nature(x, y, A) {
 				if ((tmpTd & 4) == 4) colorTd = '#00FFFF';
 
 				if (btmpTd != -1)
-					building = '<div class=fader style="position:absolute;z-index:3;width:80px;height:80px;background-color:' + colorTd + ';border-style:none;' + f + '>&nbsp;</div><img src=../images/buildings/' + btmpTd + '.gif>';
+					building = '<div class=fader style="position:absolute;z-index:3;width:80px;height:80px;background-color:' + colorTd + ';border-style:none;' + f + '>&nbsp;</div><img src=images/buildings/' + btmpTd + '.gif>';
 				else
 					building = `<div class=fader title="Ваше местоположение[${name}]" style="width:80px;height:80px;background-color:${colorTd};border-style:none;${f}>&nbsp;</div>`;
-				text += '<td style=\'width:80px;height:80px;cursor:pointer;background-image: url("../images/' + dir + '/' + cx + '_' + cy + '.jpg");\' valign=top>' + building + '</td>';
+				text += '<td class = \''+document.location+'\' style=\'width:80px;height:80px;cursor:pointer;background-image: url("images/' + dir + '/' + cx + '_' + cy + '.jpg");\' valign=top>' + building + '</td>';
 			}
 			else
 				if (tmpTd != -1 && ((cx - x) * (cx - x) + (cy - y) * (cy - y)) <= (50 + A * 6)) {
@@ -206,7 +206,7 @@ function show_nature(x, y, A) {
 					if ((tmpTd & 4) == 4) { colorTd = '#00FFFF'; tipTd = 'Ваша местность'; }
 
 					if (btmpTd != -1)
-						building = '<div class=ngo_yes style="position:absolute;z-index:3;width:80px;height:80px;background-color:' + colorTd + ';border-style:none;">&nbsp;</div><img src=../images/buildings/' + btmpTd + '.gif>';
+						building = '<div class=ngo_yes style="position:absolute;z-index:3;width:80px;height:80px;background-color:' + colorTd + ';border-style:none;">&nbsp;</div><img src=images/buildings/' + btmpTd + '.gif>';
 					else
 						building = '<div class=ngo_yes style="width:80px;height:80px;background-color:' + colorTd + ';border-style:none;">&nbsp;</div>';
 
@@ -217,27 +217,27 @@ function show_nature(x, y, A) {
 
 
 					if (((cx - x) * (cx - x) + (cy - y) * (cy - y)) <= 2)
-						text += '<td ' + onclicktxt + ' style=\'width:80px;height:80px;cursor:pointer;background-image:url("../images/' + dir + '/' + cx + '_' + cy + '.jpg");\' valign=top title="[' + name + ']Перейти' + tipTd + '">' + building + '</td>';
+						text += '<td ' + onclicktxt + ' style=\'width:80px;height:80px;cursor:pointer;background-image:url("images/' + dir + '/' + cx + '_' + cy + '.jpg");\' valign=top title="[' + name + ']Перейти' + tipTd + '">' + building + '</td>';
 					else if (colorTd != '#FFFFFF') {
 						if (btmpTd != -1)
-							building = '<div class=ngo_yes style="width:80px;height:80px;background-color:' + colorTd + ';border-style:none;position:absolute;z-index:3;">&nbsp;</div><img src=../images/buildings/' + btmpTd + '.gif>';
+							building = '<div class=ngo_yes style="width:80px;height:80px;background-color:' + colorTd + ';border-style:none;position:absolute;z-index:3;">&nbsp;</div><img src=images/buildings/' + btmpTd + '.gif>';
 						else
 							building = '<div class=ngo_yes style="width:80px;height:80px;background-color:' + colorTd + ';border-style:none;" title="' + tipTd + '">&nbsp;</div>';
-						text += '<td title="[' + name + ']Недоступно" style=\'width:80px;height:80px;background-image:url("../images/' + dir + '/' + cx + '_' + cy + '.jpg");\'>' + building + '</td>';
+						text += '<td title="[' + name + ']Недоступно" style=\'width:80px;height:80px;background-image:url("images/' + dir + '/' + cx + '_' + cy + '.jpg");\'>' + building + '</td>';
 					} else {
 						if (btmpTd != -1)
-							building = '<img src=../images/buildings/' + btmpTd + '.gif>';
+							building = '<img src=images/buildings/' + btmpTd + '.gif>';
 						else
 							building = '&nbsp;';
-						text += '<td title="[' + name + ']Недоступно" style=\'width:80px;height:80px;background-image:url("../images/' + dir + '/' + cx + '_' + cy + '.jpg");\'>' + building + '</td>';
+						text += '<td title="[' + name + ']Недоступно" style=\'width:80px;height:80px;background-image:url("images/' + dir + '/' + cx + '_' + cy + '.jpg");\'>' + building + '</td>';
 					}
 				}
 				else {
 					if (btmpTd != -1)
-						building = '<img src=../images/buildings/' + btmpTd + '.gif>';
+						building = '<img src=images/buildings/' + btmpTd + '.gif>';
 					else
 						building = '<div style="width:80px;height:80px;border-style:none;">&nbsp;</div>';
-					text += '<td title="[' + name + ']Недоступно" style=\'width:80px;height:80px;background-image:url("../images/' + dir + '/' + cx + '_' + cy + '.jpg");\'>' + building + '</td>';
+					text += '<td title="[' + name + ']Недоступно" style=\'width:80px;height:80px;background-image:url("images/' + dir + '/' + cx + '_' + cy + '.jpg");\'>' + building + '</td>';
 				}
 		}
 		text += '</tr>';
