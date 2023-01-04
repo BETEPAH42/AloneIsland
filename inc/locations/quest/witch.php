@@ -23,13 +23,14 @@ if ($qWitch["finished"] && $qWitch["time"] < tme()) {
 	$qWitch["zParam"] = $randCell["y"];
 	SQL::q1("UPDATE quest SET sParam = '" . $qWitch["sParam"] . "', lParam = '" . $qWitch["lParam"] . "', zParam = '" . $qWitch["zParam"] . "', 	finished = 0, time = " . (tme() + 3600) . " WHERE id = " . Q_WITCH . ";");
 }
-if (@$_GET["gW"] && !$qWitch["finished"] && $qWitch["time"] > tme()) {
+if ( !$qWitch["finished"] && $qWitch["time"] > tme()) {
 	if (
 		$pers["x"] == $qWitch["lParam"] &&
 		$pers["y"] == $qWitch["zParam"]
 	) {
 		$yourWp = SQL::q1("SELECT * FROM wp WHERE uidp=" . UID . " and weared=0 and name='" . $qWitch["sParam"] . "'");
 		if ($yourWp) {
+			echo "<script>console.log('Пришли куда нужно!!!');</script>";
 			if ($pers["pol"] == 'female') {
 				$male = 'а';
 				$la = "ла";
@@ -50,12 +51,8 @@ if (@$_GET["gW"] && !$qWitch["finished"] && $qWitch["time"] > tme()) {
 			$a["name"] = 'Благословение Небес';
 			$a["special"] = 16;
 			light_aura_on($a, $pers["uid"]);
-			SQL::q1("UPDATE quest SET finished = 1, time = " . (tme() + 3600) . " WHERE id = " . Q_WITCH . ";");
-		}
-	}
-} else
-	if (!$qWitch["finished"] && $qWitch["time"] > tme()) {
-		if ($pers["x"] == $qWitch["lParam"] && $pers["y"] == $qWitch["zParam"]) {
+			SQL::q1("UPDATE quest SET finished = 1, time = " . (tme() + 3600) . ", description = " . $pers["user"] . " WHERE id = " . Q_WITCH . ";");
+		} else {
 			echo "<script>console.log('О вот здесь и сидит ведьма, но у тебя нет нужной травки!!! ".$text." ');</script>";
 			$_RETURN .= '<table><tr><td><img src="images/witch.png"></td><td><center class=but>Вы нашли Ведьму Алису!</center><i class=user>Она всё ещё нуждается в <b>«' . $qWitch["sParam"] . '»</b></i></td></tr></table>';
 			$yourWp = SQL::q1("SELECT * FROM wp WHERE uidp=" . UID . " and weared=0 and name='" . $qWitch["sParam"] . "'");
@@ -66,6 +63,8 @@ if (@$_GET["gW"] && !$qWitch["finished"] && $qWitch["time"] > tme()) {
 			}
 		}
 	}
+}
+
 if (!$qWitch["finished"] && $qWitch["time"] <= tme()) {
 	say_to_chat("o", "Никто не смог помочь Ведьме Алисе... Огрызнувшись на нерадивых жителей, она ушла спать...", 0, '', '*', 0);
 	SQL::q("UPDATE quest SET 
