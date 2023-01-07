@@ -12,7 +12,7 @@ if ($cell["last_bots_change"] < (time() - 7200)) {
 		$bot_id = SQL::q1("SELECT id,user,id_skin FROM bots WHERE " . $q . " and id_skin>0 ORDER BY RAND()");
 		if ($bot_id) {
 			$count = rand(1, 1);
-			SQL::q("INSERT INTO `bots_cell` ( `id` , `name` , `time` , `xy` , `count` , `id_skin`) 	VALUES ('" . $bot_id["id"] . "', '" . $bot_id["user"] . "', '" . time() . "', '" . $cell["x"] . "_" . $cell["y"] . "'," . $count . "," . $bot_id["id_skin"] . ");");
+			SQL::q("INSERT INTO `bots_cell` ( `bid` , `name` , `time` , `xy` , `count` , `id_skin`) 	VALUES ('" . $bot_id["id"] . "', '" . $bot_id["user"] . "', '" . time() . "', '" . $cell["x"] . "_" . $cell["y"] . "'," . $count . "," . $bot_id["id_skin"] . ");");
 			SQL::q("UPDATE nature SET last_bots_change=" . time() . " WHERE x='" . $cell["x"] . "' and y='" . $cell["y"] . "'");
 		}
 	} elseif ($cell["bot"] <> "Тип ботов" and rand(0, 100) < 50) {
@@ -20,7 +20,7 @@ if ($cell["last_bots_change"] < (time() - 7200)) {
 		$bot_id = SQL::q1("SELECT id,user,level FROM bots WHERE user='" . $user["user"] . "' and level='" . rand($cell["blvlmin"], $cell["blvlmax"]) . "'");
 		if ($bot_id) {
 			$count = rand(1, 1);
-			SQL::q1("INSERT INTO `bots_cell` ( `id` , `name` , `time` , `xy` , `count`,`id_skin`) VALUES ('" . $bot_id["id"] . "', '<font class=user>" . $bot_id["user"] . "</font>[<font class=lvl>" . $bot_id["level"] . "</font>]<img src=images/info.gif onclick=\"javascript:window.open(\'binfo.php?" . $bot_id["id"] . "\',\'_blank\')\" style=\"cursor:pointer\">', '" . time() . "', '" . $cell["x"] . "_" . $cell["y"] . "'," . $count . ",0);");
+			SQL::q1("INSERT INTO `bots_cell` ( `bid` , `name` , `time` , `xy` , `count`,`id_skin`) VALUES ('" . $bot_id["id"] . "', '<font class=user>" . $bot_id["user"] . "</font>[<font class=lvl>" . $bot_id["level"] . "</font>]<img src=images/info.gif onclick=\"javascript:window.open(\'binfo.php?" . $bot_id["id"] . "\',\'_blank\')\" style=\"cursor:pointer\">', '" . time() . "', '" . $cell["x"] . "_" . $cell["y"] . "'," . $count . ",0);");
 		}
 		SQL::q1("UPDATE nature SET last_bots_change=" . time() . " WHERE x='" . $cell["x"] . "' and y='" . $cell["y"] . "'");
 	}
