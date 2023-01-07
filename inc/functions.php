@@ -1545,7 +1545,10 @@ function insert_wp_fish ($id, $uid = 0) {
 	$vesh["name"] = $fish["name"];
 	$vesh["image"] = "fish_new/" . $fish["id"];
 	$vesh["tlevel"] = $fish["lvl"];
-	$res = SQL::qi("INSERT INTO `wp` ( `uidp` , `user` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `tlevel` , `max_durability` , `durability` ,`p_type`, `timeout`) VALUES (".$pers['uid'].", '".$pers['user']."', 0,'fish_".$fish["id"]."', " . $vesh["price"] . ", 0, '" . $vesh["image"] . "', '', 'fish', 'fish', '" . $vesh["name"] . "', '".$l."', " . $vesh["weight"] . "," . $vesh["tlevel"] . ", 1, 1, 200, " . $vesh["timeout"] . ");");
+	$id = SQL::qi("INSERT INTO `wp` ( `uidp` , `user` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `tlevel` , `max_durability` , `durability` ,`p_type`, `timeout`) VALUES (".$pers['uid'].", '".$pers['user']."', 0,'fish_".$fish["id"]."', " . $vesh["price"] . ", 0, '" . $vesh["image"] . "', '', 'fish', 'fish', '" . $vesh["name"] . "', '".$l."', " . $vesh["weight"] . "," . $vesh["tlevel"] . ", 1, 1, 200, " . $vesh["timeout"] . ");");
+	// после добавления нужно сразу получить массив по wp
+	$res = SQL::q1("SELECT * FROM wp WHERE id = ?;",[$id]);
+	// var_dump($res);
 	return $res;
 }
 

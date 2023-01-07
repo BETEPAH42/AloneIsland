@@ -1,7 +1,6 @@
 <?
 
 $qWitch = sql::q1("SELECT * FROM quest WHERE id = " . Q_WITCH . "");
-var_dump($qWitch);
 if (!$qWitch) {
 	SQL::q1("INSERT INTO quest (id,finished) VALUES (" . Q_WITCH . ",1)");
 }

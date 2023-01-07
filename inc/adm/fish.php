@@ -20,7 +20,7 @@ if ($_GET["zapis"] == "yes") {
 	sql::q("INSERT INTO fish_new (`name` ,`water` ,`active` ,`prim_1` , `prim_2` , `prim_3` , `lvl` , `ves` , `price`) VALUES ('" . $_GET["fish"] . "' , '" . $_GET["water"] . "' , '" . $_GET["active"] . "' , '" . $_GET["prim_1"] . "' , '" . $_GET["prim_2"] . "' , '" . $_GET["prim_3"] . "' , '" . $_GET["lvl"] . "' , '" . $_GET["ves"] . "' , '" . $_GET["price"] . "');");
 	echo "Сохранено " . $_GET["fish"] . " [" . $_GET["water"] . "]";
 }
-echo "<table width=10%><tr><td><a class=bga href=main.php?go=administration>Назад в меню</a></td></tr></table>";
+echo "<table width=10%><tr><td><a class='bga' href='main.php?go=administration'>Назад в меню</a></td></tr></table>";
 
 $sortir = "";
 $priman = "";
@@ -29,7 +29,6 @@ if (@$_GET["lvl"]) {
 	$lvl = "lvl={$_GET["lvl"]}";
 	$query .= "WHERE {$lvl}";
 }
-
 if (@$_GET["water"]) {
 	$waters = " water like '%{$_GET["water"]}%'";
 	if(trim($query)){
