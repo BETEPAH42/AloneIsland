@@ -13,16 +13,15 @@ if (@$_GET["giveFish"]) {
             echo "Удачно выдано";
     }
 }
-
 if (@$_GET["fishining"]) {
 	echo "<span style='color:red;'>{$_GET["fishining"]}</span>";
 }
-
 if ($_GET["zapis"] == "yes") {
 	sql::q("INSERT INTO fish_new (`name` ,`water` ,`active` ,`prim_1` , `prim_2` , `prim_3` , `lvl` , `ves` , `price`) VALUES ('" . $_GET["fish"] . "' , '" . $_GET["water"] . "' , '" . $_GET["active"] . "' , '" . $_GET["prim_1"] . "' , '" . $_GET["prim_2"] . "' , '" . $_GET["prim_3"] . "' , '" . $_GET["lvl"] . "' , '" . $_GET["ves"] . "' , '" . $_GET["price"] . "');");
 	echo "Сохранено " . $_GET["fish"] . " [" . $_GET["water"] . "]";
 }
 echo "<table width=10%><tr><td><a class=bga href=main.php?go=administration>Назад в меню</a></td></tr></table>";
+
 $sortir = "";
 $priman = "";
 $qyery = "";
@@ -30,6 +29,7 @@ if (@$_GET["lvl"]) {
 	$lvl = "lvl={$_GET["lvl"]}";
 	$query .= "WHERE {$lvl}";
 }
+
 if (@$_GET["water"]) {
 	$waters = " water like '%{$_GET["water"]}%'";
 	if(trim($query)){
@@ -37,10 +37,7 @@ if (@$_GET["water"]) {
 	} else {
 		$query .= "WHERE {$waters}";
 	}
-	
-	
 }
-
 if (@$_GET["priman"]) {
 	if ($_GET["lvl"] <> "all") {
 		$priman = "(prim_1 like '{$_GET["priman"]}|__' or prim_2 like '{$_GET["priman"]}|__' or prim_3 like '{$_GET["priman"]}|__') ";
@@ -53,8 +50,8 @@ if (@$_GET["priman"]) {
 }
 
 $fishhh = "SELECT * FROM fish_new {$query} ORDER BY id ASC";
-// var_dump($fishhh);
-echo "<br><center><form method=GET>Сотрировка: по уровню <form><select name=lvl>";
+
+echo "<br><center><form method='GET'>Сотрировка: по уровню <form><select name='lvl'>";
 if ($_GET["lvl"] == "0") $sl0 = "selected";
 echo "<option value=0 {$sl0}>Все</option>";
 if ($_GET["lvl"] == "1") $sl1 = "selected";

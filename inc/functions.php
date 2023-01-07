@@ -1490,7 +1490,8 @@ function insert_wp($id, $uid, $durability = -1, $weared = 0, $user = '', $weight
 	return !$result;
 }
 
-function insert_herbal ($id, $uid) {
+function insert_herbal ($id, $uid) 
+{
 	if(!$uid) return false;
 		
 	$trava = SQL::q1("SELECT * FROM herbals WHERE id = ".$id.";");
@@ -1501,13 +1502,12 @@ function insert_herbal ($id, $uid) {
 function insert_wp_fish ($id, $uid = 0) {
 	if(!$uid) return false;
 	global $pers;
-	$fish = sql::q1("SELECT * FROM fish_new WHERE id=? ORDER BY RAND();",[$id]);
-	if ($pers["prof_osnLVL"] >= 0) $k = mt_rand(0, 2);
-	elseif ($pers["prof_osnLVL"] >= 1) $k = mt_rand(0, 3);
-	elseif ($pers["prof_osnLVL"] >= 2) $k = mt_rand(0, 4);
-	elseif ($pers["prof_osnLVL"] >= 3) $k = mt_rand(0, 5);
-	elseif ($pers["prof_osnLVL"] >= 4) $k = mt_rand(0, 6);
-	
+	$fish = SQL::q1("SELECT * FROM fish_new WHERE id = ? ORDER BY RAND();",[$id]);
+	if ($pers["prof_osnLVL"] == 0) $k = mt_rand(0, 2);
+	elseif ($pers["prof_osnLVL"] == 1) $k = mt_rand(0, 3);
+	elseif ($pers["prof_osnLVL"] == 2) $k = mt_rand(0, 4);
+	elseif ($pers["prof_osnLVL"] == 3) $k = mt_rand(0, 5);
+	elseif ($pers["prof_osnLVL"] >= 4) {$k = mt_rand(0, 6);}
 	$ves = explode("|", $fish["ves"]);
 	$rvnach = floor(($ves[1] - $ves[0]) / 7);
 	$rvsred = ($ves[1] - $ves[0]) / 2 + $ves[0];
@@ -1545,8 +1545,7 @@ function insert_wp_fish ($id, $uid = 0) {
 	$vesh["name"] = $fish["name"];
 	$vesh["image"] = "fish_new/" . $fish["id"];
 	$vesh["tlevel"] = $fish["lvl"];
-	$res = SQL::qi("INSERT INTO `wp` ( `uidp` , `user` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `tlevel` , `max_durability` , `durability` ,`p_type`, `timeout`) VALUES (".$pers['uid'].", '".$pers['user']."', 0,'', " . $vesh["price"] . ", 0, '" . $vesh["image"] . "', '', 'fish', 'fish', '" . $vesh["name"] . "', '".$l."', " . $vesh["weight"] . "," . $vesh["tlevel"] . ", 1, 1, 200, " . $vesh["timeout"] . ");");
-	// var_dump($res);
+	$res = SQL::qi("INSERT INTO `wp` ( `uidp` , `user` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `tlevel` , `max_durability` , `durability` ,`p_type`, `timeout`) VALUES (".$pers['uid'].", '".$pers['user']."', 0,'fish_".$fish["id"]."', " . $vesh["price"] . ", 0, '" . $vesh["image"] . "', '', 'fish', 'fish', '" . $vesh["name"] . "', '".$l."', " . $vesh["weight"] . "," . $vesh["tlevel"] . ", 1, 1, 200, " . $vesh["timeout"] . ");");
 	return $res;
 }
 

@@ -46,11 +46,12 @@ echo "<style>
         padding:20px;
     }  
     #boxes #dialog {
-        background:url(images/white.png) no-repeat 0 0 transparent;
+        // background:url(images/white.png) no-repeat 0 0 transparent;
         width:600px; 
         height:500px;
         padding:25px;
         z-index:3001;
+        background: white;
     }  
 	
     .scroler {
@@ -81,11 +82,9 @@ $(document).ready(function() {
     var winH = $(window).height();
     var winW = $(window).width();
   
-   $(id).css('top',  winH/2-$(id).height()/2);
+   $(id).css('top', '55px');
     $(id).css('left', winW/2-$(id).width()/2);
-  
     $(id).fadeIn(2000); 
-  
    });
   
     $('.window .close').click(function (e) {
@@ -162,14 +161,14 @@ $t = time() + intval(microtime() * 1000) / 1000 - $timer;
 
 if ($_COOKIE["uid"] == 1) {
     // echo "<script>function sysdown(){  jQuery(\"#sysinf\").slideDown(300); }</script>";
-    echo "<a href='#dialog' name='modal' class=bga>Системная информация[" . $t . " | " . $sql_queries_timer . "]</a>";
+    echo "<a href='#dialog' name='modal' class='bga'>Системная информация[" . $t . " | " . $sql_queries_timer . "]</a>";
     echo "<div id='boxes'>  
-<div id='dialog' class='window'> 
-Простое модальное окно | 
-    <a href='#'class='close'/>Закрыть его</a><br>
-	<font class=time><center>SQL :: [" . $sql_queries_counter . "] > " . $sql_queries_timer . " sec. | ALL :: " . $t . "</center></font>
-	<font class=time><center>SQL :: [" . $sql_longest_query . "] > " . $sql_longest_query_t . " sec.</center></font><br><a href=main.php?serrors=1 class=timef>Показать ошибки </a><hr>
-<div class=scroler title='Подключаемые модули (файлы)'>";
+        <div id='dialog' class='window'> 
+        Простое модальное окно | 
+            <a href='#'class='close'/>Закрыть его</a><br>
+            <font class=time><center>SQL :: [" . $sql_queries_counter . "] > " . $sql_queries_timer . " sec. | ALL :: " . $t . "</center></font>
+            <font class=time><center>SQL :: [" . $sql_longest_query . "] > " . $sql_longest_query_t . " sec.</center></font><br><a href=main.php?serrors=1 class='timef'>Показать ошибки </a><hr>
+        <div class=scroler title='Подключаемые модули (файлы)'>";
 
     $included_files = get_included_files();
     foreach ($included_files as $filename) {
@@ -178,7 +177,8 @@ if ($_COOKIE["uid"] == 1) {
     echo "</div>
    </div>
 	</div>";
-    echo "<SCRIPT SRC='js/c.js'></SCRIPT><SCRIPT>$(\".LinedTable tr:nth-child(odd)\").css(\"background-color\",\"#ECECEC\");</SCRIPT>";
+    echo "<script src='js/c.js'></script>
+    <script>$(\".LinedTable tr:nth-child(odd)\").css(\"background-color\",\"#ECECEC\");</script>";
     //	echo " <div id='mask'></div>";
 }
 ?>
@@ -189,7 +189,6 @@ if ($_COOKIE["uid"] == 1) {
         if (m.indexOf('nick=') > 0) {
             cookNick = m.split('nick=')[1];
         }
-
     });
     top.frames['chmain'].nick = cookNick;
 </script>
