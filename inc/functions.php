@@ -1498,6 +1498,58 @@ function insert_herbal ($id, $uid) {
 	return $res;
 }
 
+function insert_wp_fish ($id, $uid = 0) {
+	if(!$uid) return false;
+	global $pers;
+	$fish = sql::q1("SELECT * FROM fish_new WHERE id=? ORDER BY RAND();",[$id]);
+	if ($pers["prof_osnLVL"] >= 0) $k = mt_rand(0, 2);
+	elseif ($pers["prof_osnLVL"] >= 1) $k = mt_rand(0, 3);
+	elseif ($pers["prof_osnLVL"] >= 2) $k = mt_rand(0, 4);
+	elseif ($pers["prof_osnLVL"] >= 3) $k = mt_rand(0, 5);
+	elseif ($pers["prof_osnLVL"] >= 4) $k = mt_rand(0, 6);
+	
+	$ves = explode("|", $fish["ves"]);
+	$rvnach = floor(($ves[1] - $ves[0]) / 7);
+	$rvsred = ($ves[1] - $ves[0]) / 2 + $ves[0];
+	if ($k == 0) {
+		$l = "Малёк.";
+		$wr = mt_rand($ves[0], $ves[0] + $rvnach);
+	}
+	if ($k == 1) {
+		$l = "Подросший малёк.";
+		$wr = mt_rand($ves[0], $ves[0] + $rvnach * 2);
+	}
+	if ($k == 2) {
+		$l = "Малая.";
+		$wr = mt_rand($ves[0] + $rvnach * 2, $ves[0] + $rvnach * 3);
+	}
+	if ($k == 3) {
+		$l = "Средняя.";
+		$wr = mt_rand($rvsred - 100, $rvsred + 100);
+	}
+	if ($k == 4) {
+		$l = "Большая.";
+		$wr = rand($ves[1] - $rvnach * 3, $ves[1] - $rvnach * 2);
+	}
+	if ($k == 5) {
+		$l = "Огромная.";
+		$wr = rand($ves[1] - $rvnach * 2, $ves[1] - $rvnach);
+	}
+	if ($k == 6) {
+		$l = "Гигантская.";
+		$wr = rand($ves[1] - $rvnach, $ves[1]);
+	}
+	$vesh["weight"] = $wr / 1000; // внести изменения по весу не забывая что вес весь в гр. а нужен в кг.
+	$vesh["price"] = round($vesh["weight"] * $fish["price"], 2); //стоимость будет зависеть от веса, т.е. за кг.
+	$vesh["timeout"] = (tme() + 345600);
+	$vesh["name"] = $fish["name"];
+	$vesh["image"] = "fish_new/" . $fish["id"];
+	$vesh["tlevel"] = $fish["lvl"];
+	$res = SQL::qi("INSERT INTO `wp` ( `uidp` , `user` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `tlevel` , `max_durability` , `durability` ,`p_type`, `timeout`) VALUES (".$pers['uid'].", '".$pers['user']."', 0,'', " . $vesh["price"] . ", 0, '" . $vesh["image"] . "', '', 'fish', 'fish', '" . $vesh["name"] . "', '".$l."', " . $vesh["weight"] . "," . $vesh["tlevel"] . ", 1, 1, 200, " . $vesh["timeout"] . ");");
+	// var_dump($res);
+	return $res;
+}
+
 function buy_prim_mayk($id, $uid, $durability)
 {
 	global $weared;
@@ -1662,7 +1714,7 @@ function remove_all_auras()
 	} elseif ($count)
 		SQL::q("DELETE FROM p_auras WHERE uid=" . $pers["uid"] . " and esttime<=" . tme() . " and (turn_esttime<=" . $pers["f_turn"] . ") and autocast=0");
 	/*
-if(!$pers["cfight"])
+	if(!$pers["cfight"])
 	foreach($autoAS as $a)
 	{
 		aura_on($a,$pers,$pers);
@@ -2147,18 +2199,21 @@ function tournir_fisher($uid, $pos = 0, $priz = '', $fish = '')
 		sql::q("UPDATE users SET fish_tournir='0&" . $posWins[0] . "-" . $posWins[1] . "-" . $posWins[2] . "&" . ($posWin[2] + 1) . "' WHERE uid=" . $uid);
 	}
 }
+
 function tournirer($i, $tournir = '')
 {
 	$otbor = sql::q1("SELECT count(uid) as count FROM users WHERE fish_tournir LIKE '1&%' and uid=" . $i . "");
 	if ($otbor['count']) return "1";
 	else return "0";
 }
+
 function proverka_fish($fish, $tpers)
 {
 	$f = sql::q1("SELECT count(uidp)as count FROM wp WHERE `image`='fish_new/" . $fish . "' and uidp='" . $tpers . "'");
 	if ($f['count'] > 0) return "1";
 	else return "0";
 }
+
 function debag($str)
 {
 	echo "<pre>";

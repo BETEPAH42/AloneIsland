@@ -36,7 +36,6 @@ class SQL
 
     public static function q($sql, $params = [])
     {
-        // file_put_contents("sql.txt", "Q:". $sql."\n",FILE_APPEND);
         $dbConnection = self::init();
 
         try {
@@ -47,11 +46,11 @@ class SQL
             return $result;
         } catch (Exception $e) {
             if (in_array($_SERVER['SERVER_NAME'], ['aloneisland.test', 'localhost'])) {
-                // echo '<pre>';
+                echo '<pre>';
 
-                // echo $sql;
-                // echo "\n\n\n------- \n\n\n";
-                // print_r($params);
+                echo $sql;
+                echo "\n\n\n------- \n\n\n";
+                print_r($params);
                 die();
             } else {
                 // echo '<pre>';
@@ -76,12 +75,12 @@ class SQL
             return $result;
         } catch (Exception $e) {
             if (in_array($_SERVER['SERVER_NAME'], ['aloneisland.test', 'localhost'])) {
-                // echo '<pre>';
-                // print_r($e);
-                // echo "\n\n\n------- \n\n\n";
-                // echo $sql;
-                // echo "\n\n\n------- \n\n\n";
-                // print_r($params);
+                echo '<pre>';
+                print_r($e);
+                echo "\n\n\n------- \n\n\n";
+                echo $sql;
+                echo "\n\n\n------- \n\n\n";
+                print_r($params);
                 die();
             } else {
                 // echo '<pre>';
@@ -110,12 +109,12 @@ class SQL
                 return;
             }
             if (in_array($_SERVER['SERVER_NAME'], ['aloneisland.test', 'localhost'])) {
-                // echo '<pre>';
-                // print_r($e);
-                // echo "\n\n\n------- \n\n\n";
-                // echo $sql;
-                // echo "\n\n\n------- \n\n\n";
-                // print_r($params);
+                echo '<pre>';
+                print_r($e);
+                echo "\n\n\n------- \n\n\n";
+                echo $sql;
+                echo "\n\n\n------- \n\n\n";
+                print_r($params);
                 die();
             } else {
                 die("Qi - Произошла ошибка в SQL-запросе. Обратитесь к Вашему менеджеру.<br /> <a href='engine/exit.php'>Выход</a>");
