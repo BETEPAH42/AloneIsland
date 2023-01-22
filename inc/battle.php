@@ -157,13 +157,16 @@ foreach ($b_t2 as $tmp) {
 	
 	// Выводит всех людей в первой команде:
 
-echo "var team2 = '".$team2."';</script>";
+echo "var team2 = '{$team2}';
+console.log('161');
+</script>";
 #######################################################################################
 
 if (($LIFE1 - $BOTS1) == 0 and ($LIFE2 - $BOTS2) == 0 and $LIFE1 and $LIFE2 and $fight["type"] != 'f') // в бою остались одни боты
 	{
-	include("inc/bots/bots_battle.php");}
 
+	include("inc/bots/bots_battle.php");
+}
 #############################################
 echo "<script>
 var go_no='" . $bplace["xy"] . $go_no_p . "';";
@@ -175,18 +178,22 @@ else
 	echo "var od = " . ($OD_UDAR + 3) . ";";
 echo "var od_udar = " . ($OD_UDAR) . ";";
 echo "show_fight_head(" . intval($fight["oruj"]) . "," . intval($fight["travm"]) . "," . $timeout . ");
-";
-
+</script>";
 #############################################
 $_FINISHED = 0;
 if ($LIFE1 == 0 or $LIFE2 == 0 or $fight["type"] == 'f') {
+	echo "<script>console.log('183');";
 	include('inc/inc/fights/finish.php');
+	echo "</script>";
 	$_FINISHED = 1;
 }
+// echo "</script>";
+// var_dump("hi");
+// echo "<script>";
 ## Для завоевания. Если происходит завоевание и щёлкает таймаут - проигрыш и конец завоевания.
 if ($pers["gain_time"] and $timeout == 0 and $BOTS1 == $LIFE1 and !$_FINISHED) {
+	echo "console.log('192');";
 	$LIFE2 = 0;
-
 	include('inc/inc/fights/finish.php');
 }
 #############################################
@@ -201,6 +208,7 @@ if ($timeout==0 and $BOTS1==$LIFE1 and !$_FINISHED)
 #############################################
 elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 {
+		echo "</script>console.log('207');</script>";
 	################################### -  МАГИЯ - ################################################
 	$kblast = 1;
 	$kaura = 0;
@@ -265,7 +273,8 @@ elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 		}
 
 	}
-	echo '
+	echo '<script>
+	console.log("279");
 	var can_turn = ' . intval($CAN_TURN) . ';
 	var n = ' . $kblast . ';
 	img = new Array();
@@ -345,9 +354,7 @@ elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 		} else add_flog($s, $pers["cfight"]);
 	}
 }
-// echo "<pre>";
-// var_dump(intval($fight["oruj"]) . "," . intval($fight["travm"]) . "," . $timeout);
-// echo "</pre>";
+
 ######################################## - Не твой ХОД
 if ($timeout == 0 and @$_GET["battle"] == "nowhom" and $CAN_TURN == 0 and $pers["chp"] > 0) {
 	if ($pers["invisible"] <= tme())
@@ -384,7 +391,6 @@ if ($timeout == 0 and @$_GET["battle"] == "nowhom" and $CAN_TURN == 0 and $pers[
 		include('inc/inc/fights/finish.php');
 	}
 } elseif ($timeout > 0 and !$_FINISHED and $CAN_TURN == 0) {
-
 	if ($pers["chp"] > 0)
 		echo "show_message_in_f('<div align=center class=title>Ожидаем хода соперника.</div>');";
 	else
@@ -412,7 +418,7 @@ foreach ($log as $l) {
 	if ($i % 2)
 		$_LOG .= "</div>";
 }
-echo "show_message_in_f('<div class=but>" . $_LOG . "</div>');";
+echo "<script>show_message_in_f('<div class=but>" . $_LOG . "</div>');";
 ########################
 if (!$_FINISHED)
 	echo "show_finish(" . $pers["fexp"] . "," . $pers["exp_in_f"] . "," . $pers["f_turn"] . ");";

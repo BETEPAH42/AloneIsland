@@ -2,7 +2,7 @@
 $str = "";
 if (!$_persvs) $_persvs = $persvs;
 if ($_persvs["invisible"] > tme()) $_persvs["user"] = '<i>невидимка</i>';
-
+var_dump("hi");
 $rand = rand(1, 100);
 if (($rand < $fight["travm"] / 3 and $_persvs["uid"]  or $fight["travm"] == 100) and $_persvs["level"] > 4) {
 
