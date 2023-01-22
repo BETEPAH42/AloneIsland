@@ -1,8 +1,8 @@
 <?php
-echo "console.log('2222222');";
 error_reporting(E_ALL);
 $t = tme();
 $waiter = '';
+echo "<script>";
 if ($t < $pers["waiter"]) {
 	echo "show_message_in_f('<div id=waiter class=but align=center></div>');";
 	$waiter = "waiter(" . ($pers["waiter"] - $t) . ",0,'Ожидание');";

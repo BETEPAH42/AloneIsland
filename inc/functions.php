@@ -1299,7 +1299,6 @@ function show_pers_in_f($_pers, $inv)
 	$s .= "InFight=1;";
 	$s .= "show_pers_new('" . $sh["image"] . "','" . $sh["id"] . "','" . $oj["image"] . "','" . $oj["id"] . "','" . $or1["image"] . "','" . $or1["id"] . "','" . $po["image"] . "','" . $po["id"] . "','" . $z1["image"] . "','" . $z1["id"] . "','" . $z2["image"] . "','" . $z2["id"] . "','" . $z3["image"] . "','" . $z3["id"] . "','" . $sa["image"] . "','" . $sa["id"] . "','" . $na["image"] . "','" . $na["id"] . "','" . $pe["image"] . "','" . $pe["id"] . "','" . $or2["image"] . "','" . $or2["id"] . "','" . $ko1["image"] . "','" . $ko1["id"] . "','" . $ko2["image"] . "','" . $ko2["id"] . "','" . $br["image"] . "','" . $br["id"] . "','" . $_pers["pol"] . "_" . $_pers["obr"] . "'," . $inv . ",'" . $_pers["sign"] . "','" . $_pers["user"] . "','" . $_pers["level"] . "','" . $_pers["chp"] . "','" . $_pers["hp"] . "','" . $_pers["cma"] . "','" . $_pers["ma"] . "'," . intval($_pers["tire"]) . ",'" . $kam1["image"] . "','" . $kam2["image"] . "','" . $kam3["image"] . "','" . $kam4["image"] . "','" . $kam1["id"] . "','" . $kam2["id"] . "','" . $kam3["id"] . "','" . $kam4["id"] . "');";
 	$s .= '</script></td></tr><tr><td>';
-
 	if ($_pers["invisible"] < tme() or $pers["uid"] == $_pers["uid"]) {
 		if ($_pers["uid"])
 			//$s .= "<div id=prs".$_pers["uid"]." class=aurasc></div>";
@@ -1343,11 +1342,11 @@ function show_pers_in_f($_pers, $inv)
 			}
 			$s .= '</tr>';
 		}
+		
 		$s .= '</table>';
 		$s .= '</td></tr></table>';
-
 		if ($_pers["uid"]) {
-			$as = SQL::q1("SELECT * FROM p_auras WHERE uid=" . $_pers["uid"] . "");
+			$as = SQL::q("SELECT * FROM p_auras WHERE uid=" . $_pers["uid"] . "");
 			$txt = '';
 			foreach ($as as $a) {
 				$txt .= $a["image"] . '#<b>' . $a["name"] . '</b>@';
