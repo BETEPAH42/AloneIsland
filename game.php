@@ -3,7 +3,7 @@
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-require_once 'classes/sql.php';
+require_once 'classes/loadclasses.php';
 include_once 'inc/functions.php';
 // include ('inc/sendmail.php');
 // $weather = SQL::q1("SELECT weather,weatherchange FROM world");

@@ -1,4 +1,4 @@
-<?
+<?php
 $text = '';
 $t = time();
 $napad = 0;
@@ -18,10 +18,13 @@ if ($v['id']<>'') {
 		}
 		else
 			$text .= "<img src=/images/gameplay/1_1.png> <b>".$v["dprice"]." Бр. </b><font class=items><br>";
+		
 		$text .= "',".$v['price'].",'".$v["dprice"]."','";
 		$rank_i = ($v["s1"]+$v["s2"]+$v["s3"]+$v["s4"]+$v["s5ya"]+$v["s6"]+$v["kb"])*0.3 + ($v["mf1"]+$v["mf2"]+$v["mf3"]+$v["mf4"]+$v["mf5"])*0.03 + ($v["hp"]+$v["ma"])*0.04+($v["udmin"]+$v["udmax"])*0.3;
+		
 		if ($v["stype"]=="shit")
 			$v["describe"] .= "<br>Защита от магии +50%";
+
 		if ($v["type"]=="napad")
 		{
 			if ($v["stype"]=="napadt")
@@ -31,8 +34,10 @@ if ($v['id']<>'') {
 			if ($v["p_type"]==15)
 				$v["describe"] .= "<div class=hp>ЗАКРЫТЫЙ БОЙ</div>";
 		}
+
 		if ($v["stype"]=="resources")
 			$v["describe"] .= "Полезный ресурс";
+
 		if ($v["timeout"])
 		{
 			if($v["describe"])
@@ -40,11 +45,13 @@ if ($v['id']<>'') {
 			else
 				$v["describe"].='<span class=timef>Пропадёт через '.tp($v["timeout"]-$t)."</span>";
 		}
+
 		if ($v["type"]=="rune")
 		{
 			$v["describe"].='<br>Чтобы вставить руну в предмет, нужно чтобы этот предмет был надет на вас, и ничего больше.';
 			if ($v["udmax"]) $v["udmin"] = 1;
 		}
+
 		if ($v["upgrated"])
 		{
 			$v["describe"].='<br><b class=green>УЛУЧШЕНА</b>';
@@ -124,7 +131,8 @@ if ($v['id']<>'') {
 		if (!$v_count) $attrs = '';
 		$text .= $attrs;
 
-		if($v["clan_sign"])$text .= "Клан:<img src=images/signs/".$v["clan_sign"].".gif title=\'".$v["clan_name"]."\'><br>";
+		if($v["clan_sign"])
+			$text .= "Клан:<img src=images/signs/".$v["clan_sign"].".gif title=\'".$v["clan_name"]."\'><br>";
 
 		$text .= "'";
 		if ($v["type"]=="zakl") $napad=2;

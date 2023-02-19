@@ -1485,7 +1485,7 @@ function insert_wp($id, $uid, $durability = -1, $weared = 0, $user = '', $weight
 		}
 	}
 
-	$result = SQL::q1("INSERT INTO `wp` ( `id` , `uidp` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` , `present` , `clan_sign` , `clan_name` ,`radius` , `slots` ,`arrows` ,`arrows_max` ,`arrow_name` , `arrow_price` , `tlevel` , `tsign` ,`p_type` , `user`, `material_show`, `material` " . $_colls . ") VALUES (0, '" . $uid . "', '" . $weared . "','" . $id . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $weight . "', '" . $v["where_buy"] . "', '" . $v["max_durability"] . "', '" . $durability . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "', '" . $v["tsign"] . "', '" . $v["p_type"] . "', '" . $user . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
+	$result = SQL::q1("INSERT INTO `wp` ( `uidp` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` , `present` , `clan_sign` , `clan_name` ,`radius` , `slots` ,`arrows` ,`arrows_max` ,`arrow_name` , `arrow_price` , `tlevel` , `tsign` ,`p_type` , `user`, `material_show`, `material` " . $_colls . ") VALUES ('" . $uid . "', '" . $weared . "','" . $id . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $weight . "', '" . $v["where_buy"] . "', '" . $v["max_durability"] . "', '" . $durability . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "', '" . $v["tsign"] . "', '" . $v["p_type"] . "', '" . $user . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
 	return !$result;
 }
 
@@ -1494,7 +1494,7 @@ function insert_herbal ($id, $uid)
 	if(!$uid) return false;
 		
 	$trava = SQL::q1("SELECT * FROM herbals WHERE id = ".$id.";");
-	$res = SQL::qi("INSERT INTO `wp` ( `uidp` , `user` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` ,`p_type`, `timeout`) VALUES (" . $uid . ", '" . _UserByUid($uid)["user"] . "', '0','','1', '0', 'herbals/" . $trava["image"] . "', '', 'herbal', 'herbal', '" . $trava["name"] . "', '', '1', '0', '1', '1','200'," . (time() + 1200000) . ");");
+	$res = SQL::qi("INSERT INTO `wp` ( `uidp` , `user` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` ,`p_type`, `timeout`) VALUES (" . $uid . ", '" . _UserByUid($uid)["user"] . "', '0','hertbal_".$trava["id"]."','1', '0', 'herbals/" . $trava["image"] . "', '', 'herbal', 'herbal', '" . $trava["name"] . "', '', '1', '0', '1', '1','200'," . (time() + 1200000) . ");");
 	return $res;
 }
 
@@ -1601,11 +1601,9 @@ function insert_wp_new($uid, $teta, $user = '')
 			$_params .= ",'" . $v[$param] . "'";
 		}
 	}
-	global $main_conn;
-	$user = sql::q1("SELECT user FROM users WHERE uid=" . $uid);
-	$user = $user['user'];
+	$user = sql::q1("SELECT user FROM users WHERE uid=" . $uid)['user'];
 	$rees = sql::qi("INSERT INTO `wp` ( `id` , `uidp` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` , `present` , `clan_sign` , `clan_name` ,`radius` , `slots` ,`arrows` ,`arrows_max` ,`arrow_name` , `arrow_price` , `tlevel` ,`p_type`,`timeout` , `user`,`material_show`,`material` " . $_colls . ")
-	VALUES (0, '" . $uid . "', 0,'" . $v["id_in_w"] . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $v["weight"] . "', '" . $v["where_buy"] . "', '" . $v["max_durability"] . "', '" . $v["durability"] . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "','" . $v["p_type"] . "','" . $v["timeout"] . "', '" . $v["user"] . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
+	VALUES (0, '" . $uid . "', 0,'" . $v["id"] . "','" . $v["price"] . "', '" . $v["dprice"] . "', '" . $v["image"] . "', '" . $v["index"] . "', '" . $v["type"] . "', '" . $v["stype"] . "', '" . $v["name"] . "', '" . $v["describe"] . "', '" . $v["weight"] . "', '" . $v["where_buy"] . "', '" . $v["max_durability"] . "', '" . $v["durability"] . "', '" . $v["present"] . "', '', '', '" . $v["radius"] . "', '" . $v["slots"] . "', '" . $v["arrows"] . "', '" . $v["arrows_max"] . "', '" . $v["arrow_name"] . "', '" . $v["arrow_price"] . "', '" . $v["tlevel"] . "','" . $v["p_type"] . "','" . $v["timeout"] . "', '" . $v["user"] . "', '" . $v["material_show"] . "', '" . $v["material"] . "' " . $_params . ");");
 
 	$v["id"] = $rees;
 	$v["uidp"] = $uid;

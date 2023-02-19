@@ -7,7 +7,8 @@
 
 <body topmargin="15" leftmargin="15" rightmargin="15" bottommargin="15" class=fightlong style="overflow:hidden;">
 
-	<?
+	<?php
+use ClassQuests\EveryDayQuests;
 
 	function ykind_stat($i)
 	{
@@ -17,19 +18,16 @@
 		elseif ($i > 0) return "Недолюбливает вас";
 		elseif ($i == 0) return "Относится к вам нейтрально.";
 	}
-
-
+	require_once 'classes/loadclasses.php';
 	include_once 'inc/functions.php';
 	error_reporting(0);
-	include_once "configs/config.php";
 	if ($_COOKIE["uid"])
 		$pers = catch_user(intval($_COOKIE["uid"]), $_COOKIE["hashcode"], 1);
 
 	$id = intval($_GET["id"]);
-	$rs = sql::q1("SELECT * FROM residents WHERE id=" . $id . " and location='" . $pers["location"] . "'");
-	$b = sql::q1("SELECT level FROM bots WHERE id=" . $rs["id_bot"]);
-
-	$rel = sql::q1("SELECT * FROM relationship WHERE uid=" . $pers["uid"] . " and rid=" . $rs["id"]);
+	$rs = SQL::q1("SELECT * FROM residents WHERE id=" . (int)$id . " AND location='" . $pers["location"] . "' AND online=1;");
+	$b = SQL::q1("SELECT level FROM bots WHERE id=" . $rs["id_bot"])['level'] ?? 0;
+	$rel = SQL::q1("SELECT * FROM relationship WHERE uid=" . $pers["uid"] . " and rid=" . $rs["id"]);
 	if (!$rel) {
 		$R = 0;
 		SQL::q("INSERT INTO `relationship` (`uid` ,`rid` ,`rel` )VALUES ('" . $pers["uid"] . "', '" . $rs["id"] . "', '0');");
@@ -44,7 +42,7 @@
 		$s = sql::q1("SELECT * FROM speech WHERE id_from=" . $pers["speechid"] . " and id=" . intval($_GET["say"]));
 		if ($s) {
 			if ($s["showcounts"] and !$pers["priveleged"]) {
-				if (mtrunc($s["showcounts"] - intval(sql::q1("SELECT `count` FROM u_speech WHERE uid=" . $pers["uid"] . " and sid=" . $s["id"])['count'])))
+				if (mtrunc($s["showcounts"] - intval(SQL::q1("SELECT `count` FROM u_speech WHERE uid=" . $pers["uid"] . " and sid=" . $s["id"])['count'])))
 					$_SPEECH = $s["id"];
 			} else
 				$_SPEECH = $s["id"];
@@ -52,27 +50,59 @@
 	}
 
 	if (isset($_GET["tsay"])) {
-		$sp = sql::q1("SELECT * FROM speech WHERE id=" . intval($pers["speechid"]));
-		$s = sql::q1("SELECT * FROM speech WHERE id=" . intval($_GET["tsay"]));
+		$sp = SQL::q1("SELECT * FROM speech WHERE id=" . intval($pers["speechid"]));
+		$s = SQL::q1("SELECT * FROM speech WHERE id=" . intval($_GET["tsay"]));
 		if ($s and $s["id"] == $sp["value"] and $sp["action"] == 1) {
 			if ($s["showcounts"] and !$pers["priveleged"]) {
-				if (mtrunc($s["showcounts"] - intval(sql::q1("SELECT `count` FROM u_speech WHERE uid=" . $pers["uid"] . " and sid=" . $s["id"])['count'])))
+				if (mtrunc($s["showcounts"] - intval(SQL::q1("SELECT `count` FROM u_speech WHERE uid=" . $pers["uid"] . " and sid=" . $s["id"])['count'])))
 					$_SPEECH = $s["id"];
 			} else
 				$_SPEECH = $s["id"];
 		}
 	}
+	echo "<div style='float:left;height:100%;width:200px;border-right-style: solid; border-right-color: #2B587A; border-right-width:1px;'>
+		<div class='but'>
+				<div valign=center align=center>
+					<b class=timef>" . kind_stat($rs["kindness"]) . "</b>
+					<b class=user>" . $rs["name"] . "</b>
+					<b class=lvl>[" . $b . "]</b>
+					<br>
+					<span class=gray>" . $rs["description"] . "</span>
+					<img src='images/persons/" . $rs["image"] . ".gif' width='115'>
+					<br>
+					<span class=about>" . ykind_stat(abs($R)) . "</span>
+				</div>
+		</div>
+	</div>";
 
-	echo "<div style='float:left;height:100%;width:200px;border-right-style: solid; border-right-color: #2B587A; border-right-width:1px;'><table class=but width=100% height=100%><tr><td valign=center align=center><b class=timef>" . kind_stat($rs["kindness"]) . "</b><b class=user>" . $rs["name"] . "</b> <b class=lvl>[" . $b['level'] . "]</b><br><span class=gray>" . $rs["description"] . "</span><img src='images/persons/" . $rs["image"] . ".gif'><br><span class=about>" . ykind_stat(abs($R)) . "</span></td></tr></table></div>";
+	echo "<div style='float:right;height:100%;width:70%;'>
+		<table width=100% height=80%>
+			<tr>
+				<td valign=center>";
+				try {
+					$q = new EveryDayQuests();
+				}
+				catch (Exception $e) {
+					var_dump($e);
+				}
+				catch (Error $er) {
+					var_dump($er);
 
-	echo "<div style='float:right;height:100%;width:70%;'><table width=100% height=80%><tr><td valign=center>";
-
+				}
+				$quest = $q->showQuest($pers['x'], $pers['y']);
+				//var_dump($quest);
 	if ($pers["cfight"])
 		echo "<span class=about>Вы не можете разговаривать в бою.</span>";
 	else
 
-if (!$_SPEECH)
+	if (!$_SPEECH) {
+		if($quest)
+		{
+			var_dump($quest);
+			// echo $_RETURN;
+		} else
 		echo "<span class=about>Мне нечего тебе сказать.</span>";
+	}
 	else {
 		echo "<div style='width:80%'>";
 		$sp = sql::q1("SELECT * FROM speech WHERE id=" . $_SPEECH);
@@ -80,6 +110,7 @@ if (!$_SPEECH)
 		$text = $sp["text"];
 		$text = str_replace("%s", $pers["user"], $text);
 		$text = str_replace("%l", $pers["level"], $text);
+		$text = str_replace("%q", $quest["sParam"], $text);
 
 		if ($R == -7)
 			begin_fight("bot=" . $rs["id_bot"], $pers["user"], "Нападение", 80, 100, 1, 0);
@@ -161,16 +192,22 @@ if (!$_SPEECH)
 				echo "<span class=gray><b>Вы:</b> -" . $sp["answer"] . "</span><br>";
 			echo "<span class=about><b>" . $rs["name"] . ":</b> -" . $text . "</span>";
 
-			$sps = sql::q("SELECT * FROM speech WHERE id_from=" . $sp["id"]);
+			$sps = SQL::q("SELECT * FROM speech WHERE id_from=" . $sp["id"]);
 			$table = '<center><br><br><table border=0 width=80% cellspacing=0 cellspadding=0>';
 			foreach ($sps as $s) {
+				// добавить условие на текстовку для квестов
 				if ($s["showcounts"]) {
-					if (!mtrunc($s["showcounts"] - intval(sql::q("SELECT `count` FROM u_speech WHERE uid=" . $pers["uid"] . " and sid=" . $s["id"])['count']))) {
-						if (!$pers["priveleged"])	continue;
+					if (!mtrunc($s["showcounts"] - intval(
+						SQL::q("SELECT `count` FROM u_speech WHERE uid=" . $pers["uid"] . " and sid=" . $s["id"])['count']))) {
+						if (!$pers["priveleged"])
+							continue;
 					}
 					$table .= "<tr><td class=gray valign=center style='height:30px'>[ЗАКОНЧИЛОСЬ]<a class=nt href=speech.php?id=" . $id . "&say=" . $s["id"] . "><img src=images/icons/right.png> &nbsp; <u>" . $s["answer"] . "</u></a></td></tr>";
-				} else
-					$table .= "<tr><td class=gray valign=center style='height:30px'><a class=nt href=speech.php?id=" . $id . "&say=" . $s["id"] . "><img src=images/icons/right.png> &nbsp; <u>" . $s["answer"] . "</u></a></td></tr>";
+				} else {
+					// функционал по проверке наличия квестового предмета
+					if ($s['in_wp'] == 'qwp')
+						$table .= "<tr><td class=gray valign=center style='height:30px'><a class=nt href=speech.php?id=" . $id . "&say=" . $s["id"] . "><img src=images/icons/right.png> &nbsp; <u>" . $s["answer"] . "</u></a></td></tr>";
+				}
 			}
 			$table .= "<tr><td class=gray valign=center style='height:30px'><a class=nt href='javascript:top.FuncyOff();'><img src=images/icons/right.png> &nbsp; <u>Я, пожалуй, пойду...</u></a></td></tr>";
 			$table .= '</table></center>';

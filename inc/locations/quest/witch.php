@@ -21,6 +21,7 @@ if ($qWitch["finished"] && $qWitch["time"] < tme()) {
 	$qWitch["lParam"] = $randCell["x"];
 	$qWitch["zParam"] = $randCell["y"];
 	SQL::q1("UPDATE quest SET sParam = '" . $qWitch["sParam"] . "', lParam = '" . $qWitch["lParam"] . "', zParam = '" . $qWitch["zParam"] . "', 	finished = 0, time = " . (tme() + 3600) . " WHERE id = " . Q_WITCH . ";");
+	SQL::q1("UPDATE residents SET x = '" . $qWitch["lParam"] . "', y = '" . $qWitch["zParam"] . "',	online = 1 WHERE quest_id =" . Q_WITCH . ";");
 }
 if ( !$qWitch["finished"] && $qWitch["time"] > tme()) {
 	if (
@@ -69,4 +70,5 @@ if (!$qWitch["finished"] && $qWitch["time"] <= tme()) {
 	SQL::q("UPDATE quest SET 
 		finished = 1, time = " . (tme() + 3600) . "
 		WHERE id = " . Q_WITCH . "");
+		SQL::q1("UPDATE residents SET online = 0 WHERE quest_id = " . Q_WITCH . ";");
 }

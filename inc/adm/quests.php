@@ -1,4 +1,4 @@
-<?
+<?php
 include_once "inc/balance.php";
 echo '<script type="text/javascript" src="js/adm_bots.js?3"></script>';
 echo '<script type="text/javascript" src="js/adm_quests.js?3"></script>';
@@ -222,6 +222,13 @@ if ($priv["equests"]) {
 		$atype .= '<option value=11>Телепортировать</option>';
 		$atype .= '</select>';
 
+		$from_user = '<select name=qwp id=atype onchange="atype_ch()">';
+		$from_user .= '<option value=\'null\' SELECTED>Ничего</option>';
+		$from_user .= '<option value=\'qwp\'>Квестовый предмет</option>';
+		$from_user .= '<option value=\'wp\'>Предмет в рюкзаке</option>';
+		$from_user .= '<option value=\'ln\'>Деньги LN</option>';
+		$from_user .= '<option value=\'gold\'>Деньги золото</option>';		
+		$from_user .= '</select>';
 
 		$speech_select = '<select name=speechto>';
 		$asp["id_from"] = intval($_GET["spadd"]);
@@ -252,6 +259,9 @@ if ($priv["equests"]) {
 		echo "</tr>";
 		echo "<tr>";
 		echo "<td class=timef>Количество показов(0-бесконечно)</td><td width=50%><input type=text class=inv value=0 name=showcounts></td>";
+		echo "</tr>";
+		echo "<tr>";
+		echo "<td class=timef>Требование для диалога:</td><td width=50%>" . $from_user . "</td>";
 		echo "</tr>";
 		echo "<tr>";
 		echo "<td class=timef>Показывать до квеста</td><td width=50%>" . $before_q . "</td>";
@@ -290,16 +300,16 @@ if ($priv["equests"]) {
 		}
 
 		$p = $_POST;
-		$slast = sql::q1("SELECT MAX(id) as max FROM speech")['max'] + 1;
-		sql::q("INSERT INTO `speech` (`id` ,`id_from` ,`answer` ,`text` ,`action` ,`value` ,`kindup` , `afterquest`,`beforequest`,`relation`,`showcounts`,`prehistory`) VALUES ('$slast', '" . intval($_GET["spadd"]) . "', '" . $p["answer"] . "', '" . $p["text"] . "', '" . $p["atype"] . "', '" . $value . "', '" . $p["kindness"] . "'," . intval($p["afterquest"]) . "," . intval($p["beforequest"]) . "," . $rel . "," . intval($p["showcounts"]) . ",'" . $p["prehistory"] . "');");
+		$slast = SQL::q1("SELECT MAX(id) as max FROM speech")['max'] + 1;
+		SQL::q1("INSERT INTO `speech` (`id` ,`id_from` ,`answer` ,`text` ,`action` ,`value` ,`kindup` , `afterquest`,`beforequest`,`relation`,`showcounts`,`prehistory`, `in_wp`) VALUES ('$slast', '" . intval($_GET["spadd"]) . "', '" . $p["answer"] . "', '" . $p["text"] . "', '" . $p["atype"] . "', '" . $value . "', '" . $p["kindness"] . "'," . intval($p["afterquest"]) . "," . intval($p["beforequest"]) . "," . $rel . "," . intval($p["showcounts"]) . ",'" . $p["prehistory"] . "', '".$p['qwp']."');");
 	}
 
-
 	if (@$_GET["spedit"] and empty($_POST)) {
-		$sp = sql::q1("SELECT * FROM speech WHERE id=" . intval($_GET["spedit"]));
-		$rs = sql::q("SELECT id,name,speechid FROM residents");
+		$sp = SQL::q1("SELECT * FROM speech WHERE id=" . intval($_GET["spedit"]));
+		var_dump($sp);
+		$rs = SQL::q("SELECT id,name,speechid FROM residents;");
 		$rs_select = '<select name=rs>';
-		foreach ($r as $r) {
+		foreach ($rs as $r) {
 			if ($r["speechid"] == $sp["id"])
 				$rs_select .= '<option value=' . $r["id"] . ' SELECTED>' . $r["name"] . '</option>';
 			else
@@ -316,10 +326,10 @@ if ($priv["equests"]) {
 		echo "</tr>";
 		echo "</table></center>";
 		echo "<tr>";
-		echo "<td colspan=4><input type=submit class=login style='width:100%;' value='Добавить'></td>";
+		echo "<td colspan=4><input type=submit class=login style='width:100%;' value='Сохранить'></td>";
 		echo "</tr>";
 		echo "</form>";
-		echo "<center class=inv>%s - ник персонажа; %l - уровень персонажа; </center>";
+		echo "<center class=inv>%s - ник персонажа; %l - уровень персонажа; %q - квестовая вещь;</center>";
 	} elseif (@$_GET["spedit"]) {
 		$p = $_POST;
 		sql::q("UPDATE speech SET text='" . htmlspecialchars_decode($p["text"]) . "' WHERE id=" . intval($_GET["spedit"]));

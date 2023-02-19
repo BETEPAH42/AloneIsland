@@ -23,7 +23,6 @@ else
 ####//
 echo "</td></tr></table>";
 $radius = SQL::q1("SELECT MAX(radius) as max FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie'")['max'];
-var_dump(27);
 if ($radius < 1) 
 	$radius = 1;
 

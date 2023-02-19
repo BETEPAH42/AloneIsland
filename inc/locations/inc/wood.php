@@ -31,11 +31,11 @@ if (empty($_GET["take"])) {
 					if ($cell["wood"] == 9) $Wcell = 41;
 					$tree = sql::q1("SELECT * FROM trees WHERE id=" . $Wcell);
 					$diff = rand(1, 4);
-					sql::q("INSERT INTO `trees_cell` 
+					SQL::q1("INSERT INTO `trees_cell` 
 				( `x_y` , `name` , `image` , `time` , `count` , `difficult` , `lvl`, `tree_exp`, `price`) 
 				VALUES 
 				( '" . $cell["x"] . "_" . $cell["y"] . "', '" . $tree["name"] . "', '" . $tree["id"] . "',
-				'" . ($time - rand(0, 100)) . "', '" . rand(1, 10) . "', '" . $diff . "', " . $tree["lvl"] . ", " . $tree["tree_exp"] . ", " . $tree["price"] . ");");
+				'" . ($time - rand(0, 100)) . "', '" . rand(1, 10) . "', '" . $diff . "', " . (int)$tree["lvl"] . ", " . (int)$tree["tree_exp"] . ", " . $tree["price"] . ");");
 
 					$tree_grow = TREE_CHANGE;
 					if (WEATHER == 2) $tree_grow /= 2;
