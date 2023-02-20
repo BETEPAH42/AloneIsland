@@ -7,6 +7,7 @@ use ClassWeapons\Weapon;
 try {
     $user = new User(UID);
     echo "<pre>";
+    // var_dump($user->WpUser->inWpByName('Кориандр'));
     var_dump($user);
     echo "</pre>";
 }

@@ -9,16 +9,22 @@ use ClassWeapons\WeaponUser;
 
 class User extends Person
 {
-    public int $uid;
-    private $user;
-    public $nick;
-    public array $WpUser;
+    protected $uid  = NULL;
+    protected $user = NULL;
+    protected $nick = NULL;
+    protected $lvl = NULL;
+    private $userAllParam = NULL;
+    public $WpUser = NULL;
 
     public function __construct($id)
     {
-        $this->uid = $id;
-        $this->user = SQL::q1("SELECT * FROM users WHERE uid = ?;",[$this->uid]);
+        $params = SQL::q1("SELECT * FROM users WHERE uid = ?;",[$id]);
+        $this->uid = $params['uid'];
+        $this->lvl = $params['level'];
+        $this->nick = $params['user'];
+        $this->userAllParam = $params;
         $this->WpUser = $this->WpUser();
+        return $this;
     }
 
     public function getUser()
@@ -28,12 +34,21 @@ class User extends Person
 
     public function getLevel ()
     {
-        return $this->user['level'];
+        return $this->lvl;
+    }
+
+    public function getUID ()
+    {
+        return $this->uid;
+    }
+
+    public function getNick ()
+    {
+        return $this->nick;
     }
 
     public function WpUser()
     {
-        $wp = new WeaponUser($this->uid);
-        return $wp->getAllWp();
+        return new WeaponUser($this->uid);
     }
 }

@@ -3,6 +3,44 @@ include_once "inc/balance.php";
 echo '<script type="text/javascript" src="js/adm_bots.js?3"></script>';
 echo '<script type="text/javascript" src="js/adm_quests.js?3"></script>';
 
+function selectQuester($id = null) {
+	var_dump($id);
+	$rs = sql::q("SELECT id,name FROM residents");
+	$rs_select = '<select name=rs>';
+	foreach ($rs as $r) {
+		$sel = $r["id"] == $id ?'selected': '';
+		$rs_select .= '<option value=' . $r["id"] . ' '.$sel.'>' . $r["name"] . '</option>';
+	}
+	$rs_select .= '</select>';
+	return $rs_select;
+} 
+
+function selectAction($num = 0) {
+	$selects = [
+		'Ничего',
+		'Перейти на речёвку',
+		'Закрыть окно общения',
+		'Выдать квест',
+		'Написать фразу в чат',
+		'Начать бой с говорящим',
+		'Выдать опыта',
+		'Выдать денег',
+		'Выдать бриллиантов',
+		'Выдать пергаментов',
+		'Вылечить травму',
+		'Телепортировать',
+		'Забрать квестовую вещь',
+		'Выдать квестовую вещь'
+	];
+	$atype = '';
+	$atype = '<select name=atype id=atype onchange="atype_ch()">';
+	foreach ($selects as $key=>$select) {
+		$sel = $key==$num ?'SELECTED': '';
+		$atype .= '<option value='.$key.' '.$sel.'>'.$select.'</option>';
+	}
+	$atype .= '</select>';
+	return $atype;
+}
 
 function show_speech($sp, $def = 0)
 {
@@ -22,7 +60,7 @@ function show_speech($sp, $def = 0)
 	$text .= "<td class=about>" . $sp["text"] . "</td>";
 	$text .= "<td class=but><b class=blue>" . $sp["kindup"] . "</b></td>";
 	$text .= "<td><a href=main.php?spadd=" . $sp["id"] . " class=nt><img src=images/icons/apps_on.png title='Добавть вариант ответа'></a></td>";
-	$text .= "<td><a href=main.php?spedit=" . $sp["id"] . " class=nt><img src=images/icons/0_on.png title='Изменить'></a></td>";
+	$text .= "<td><a href=main.php?spedit=" . $sp["id"] . "&res=".$rs["id_bot"]." class=nt><img src=images/icons/0_on.png title='Изменить'></a></td>";
 	$text .= "<td><a href=main.php?spdelete=" . $sp["id"] . " class=nt><img src=images/icons/delete.png title='Удалить'></a></td>";
 
 	$sps = sql::q("SELECT * FROM speech WHERE id_from=" . $sp["id"]);
@@ -40,14 +78,14 @@ function show_speech($sp, $def = 0)
 		if ($s["action"] == 9) $str = 'Выдать пергаментов';
 		if ($s["action"] == 10) $str = 'Вылечить травму';
 		if ($s["action"] == 11) $str = 'Телепортировать';
+		if ($s["action"] == 12) $str = 'Забрать квестовую вещь';
+		if ($s["action"] == 13) $str = 'Выдать квестовую вещь';
 		if ($str) $str = '[<b class=red>' . $str . '</b><b class=green>' . $s["value"] . '</b>]';
 		$table .= "<tr><td class=gray><img src=images/icons/right.png>" . $s["answer"] . "" . $str . "</td><td><table class=but2>" . show_speech($s, 1) . "</table></td></tr>";
 	}
 	$table .= '</table>';
 	$text .= "<td>" . $table . "</td>";
-
 	$text .= "</tr>";
-
 	return $text;
 }
 
@@ -198,29 +236,31 @@ if ($priv["equests"]) {
 		sql::q("INSERT INTO `speech` (`id` ,`id_from` ,`answer` ,`text` ,`action` ,`value` ,`kindup`,`prehistory`) VALUES ('$slast', '', '', '" . $p["text"] . "', '0', '', '0','" . $p["prehistory"] . "');");
 		sql::q("UPDATE residents SET speechid=" . $slast . " WHERE id=" . intval($p["rs"]));
 	}
+	$atype = '';
+	$atype = '<select name=atype id=atype onchange="atype_ch()">';
+	$atype .= '<option value=0 SELECTED>Ничего</option>';
+	$atype .= '<option value=1>Перейти на речёвку</option>';
+	$atype .= '<option value=2>Закрыть окно общения</option>';
+	$atype .= '<option value=3>Выдать квест</option>';
+	$atype .= '<option value=4>Написать фразу в чат</option>';
+	$atype .= '<option value=5>Начать бой с говорящим</option>';
+	$atype .= '<option value=6>Выдать опыта</option>';
+	$atype .= '<option value=7>Выдать денег</option>';
+	$atype .= '<option value=8>Выдать бриллиантов</option>';
+	$atype .= '<option value=9>Выдать пергаментов</option>';
+	$atype .= '<option value=10>Вылечить травму</option>';
+	$atype .= '<option value=11>Телепортировать</option>';
+	$atype .= '<option value=12>Забрать квестовую вещь</option>';
+	$atype .= '<option value=13>Выдать квестовую вещь</option>';
+	$atype .= '</select>';
 
 	if (@$_GET["spadd"] and empty($_POST)) {
-		$rs = sql::q("SELECT id,name FROM residents");
-		$rs_select = '<select name=rs>';
-		foreach ($rs as $r) {
-			$rs_select .= '<option value=' . $r["id"] . '>' . $r["name"] . '</option>';
-		}
-		$rs_select .= '</select>';
-
-		$atype = '<select name=atype id=atype onchange="atype_ch()">';
-		$atype .= '<option value=0 SELECTED>Ничего</option>';
-		$atype .= '<option value=1>Перейти на речёвку</option>';
-		$atype .= '<option value=2>Закрыть окно общения</option>';
-		$atype .= '<option value=3>Выдать квест</option>';
-		$atype .= '<option value=4>Написать фразу в чат</option>';
-		$atype .= '<option value=5>Начать бой с говорящим</option>';
-		$atype .= '<option value=6>Выдать опыта</option>';
-		$atype .= '<option value=7>Выдать денег</option>';
-		$atype .= '<option value=8>Выдать бриллиантов</option>';
-		$atype .= '<option value=9>Выдать пергаментов</option>';
-		$atype .= '<option value=10>Вылечить травму</option>';
-		$atype .= '<option value=11>Телепортировать</option>';
-		$atype .= '</select>';
+		// $rs = sql::q("SELECT id,name FROM residents");
+		// $rs_select = '<select name=rs>';
+		// foreach ($rs as $r) {
+		// 	$rs_select .= '<option value=' . $r["id"] . '>' . $r["name"] . '</option>';
+		// }
+		// $rs_select .= '</select>';
 
 		$from_user = '<select name=qwp id=atype onchange="atype_ch()">';
 		$from_user .= '<option value=\'null\' SELECTED>Ничего</option>';
@@ -273,7 +313,7 @@ if ($priv["equests"]) {
 		echo "<td class=timef>Отношение</td><td width=50%>><input type=radio name=plus value=1> <<input type=radio name=plus value=2> <input type=text name=plusv value=0></td>";
 		echo "</tr>";
 		echo "<tr>";
-		echo "<td class=timef>Квестолог</td><td width=50%>" . $rs_select . "</td>";
+		echo "<td class=timef>Квестолог</td><td width=50%>" . selectQuester() . "</td>";
 		echo "</tr>";
 		echo "</table></center>";
 		echo "<tr>";
@@ -308,21 +348,16 @@ if ($priv["equests"]) {
 		$sp = SQL::q1("SELECT * FROM speech WHERE id=" . intval($_GET["spedit"]));
 		var_dump($sp);
 		$rs = SQL::q("SELECT id,name,speechid FROM residents;");
-		$rs_select = '<select name=rs>';
-		foreach ($rs as $r) {
-			if ($r["speechid"] == $sp["id"])
-				$rs_select .= '<option value=' . $r["id"] . ' SELECTED>' . $r["name"] . '</option>';
-			else
-				$rs_select .= '<option value=' . $r["id"] . '>' . $r["name"] . '</option>';
-		}
-		$rs_select .= '</select>';
 		echo "<form action=main.php?spedit=" . $sp["id"] . " method=post>";
 		echo "<center><table class=but2 border=0 width=60%>";
 		echo "<tr>";
-		echo "<td class=timef>Текст</td><td width=50%><textarea class=inv rows=4 cols=30 name=text>" . $sp["text"] . "</textarea></td>";
+		echo "<tr>";
+		echo "<td class=timef>Ответ</td><td width=50%><textarea class=but rows=2 cols=30 name=answer>" . $sp["answer"] . "</textarea></td>";
 		echo "</tr>";
 		echo "<tr>";
-		echo "<td class=timef>Квестолог</td><td width=50%>" . $rs_select . "</td>";
+		echo "<td class=timef>Действие</td><td width=50%>" . selectAction($sp["action"]) . "<div id=_atype></div></td>";
+		echo "</tr>";
+		echo "<td class=timef>Текст</td><td width=50%><textarea class=inv rows=4 cols=30 name=text>" . $sp["text"] . "</textarea></td>";
 		echo "</tr>";
 		echo "</table></center>";
 		echo "<tr>";
@@ -332,8 +367,9 @@ if ($priv["equests"]) {
 		echo "<center class=inv>%s - ник персонажа; %l - уровень персонажа; %q - квестовая вещь;</center>";
 	} elseif (@$_GET["spedit"]) {
 		$p = $_POST;
-		sql::q("UPDATE speech SET text='" . htmlspecialchars_decode($p["text"]) . "' WHERE id=" . intval($_GET["spedit"]));
-		sql::q("UPDATE residents SET speechid=" . intval($_GET["spedit"]) . " WHERE id=" . intval($p["rs"]));
+		var_dump($p);
+		sql::q("UPDATE speech SET text='" . htmlspecialchars_decode($p["text"]) . "', action=".$p["atype"]." WHERE id=" . intval($_GET["spedit"]));
+		//sql::q("UPDATE residents SET speechid=" . intval($_GET["spedit"]) . " WHERE id=" . intval($p["rs"]));
 	} elseif (@$_GET["spdelete"]) {
 		delete_sp($_GET["spdelete"]);
 	}

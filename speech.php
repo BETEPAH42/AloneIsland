@@ -7,10 +7,12 @@
 
 <body topmargin="15" leftmargin="15" rightmargin="15" bottommargin="15" class=fightlong style="overflow:hidden;">
 
-	<?php
+<?php
+
+use ClassPerson\User;
 use ClassQuests\EveryDayQuests;
 
-	function ykind_stat($i)
+function ykind_stat($i)
 	{
 		if ($i > 5) return "Настроен враждебно";
 		elseif ($i > 3) return "Презирает вас";
@@ -23,6 +25,8 @@ use ClassQuests\EveryDayQuests;
 	error_reporting(0);
 	if ($_COOKIE["uid"])
 		$pers = catch_user(intval($_COOKIE["uid"]), $_COOKIE["hashcode"], 1);
+	
+	$user = new User($pers['uid']);
 
 	$id = intval($_GET["id"]);
 	$rs = SQL::q1("SELECT * FROM residents WHERE id=" . (int)$id . " AND location='" . $pers["location"] . "' AND online=1;");
@@ -30,7 +34,7 @@ use ClassQuests\EveryDayQuests;
 	$rel = SQL::q1("SELECT * FROM relationship WHERE uid=" . $pers["uid"] . " and rid=" . $rs["id"]);
 	if (!$rel) {
 		$R = 0;
-		SQL::q("INSERT INTO `relationship` (`uid` ,`rid` ,`rel` )VALUES ('" . $pers["uid"] . "', '" . $rs["id"] . "', '0');");
+		SQL::q("INSERT INTO `relationship` (`uid` ,`rid` ,`rel` )VALUES ('" . $user->getUID() . "', '" . $rs["id"] . "', '0');");
 	} else
 		$R = $rel["rel"];
 
@@ -79,54 +83,44 @@ use ClassQuests\EveryDayQuests;
 		<table width=100% height=80%>
 			<tr>
 				<td valign=center>";
-				try {
-					$q = new EveryDayQuests();
-				}
-				catch (Exception $e) {
-					var_dump($e);
-				}
-				catch (Error $er) {
-					var_dump($er);
+	try {
+		$q = new EveryDayQuests();
+		$quest = $q->getQuestOnLocation($pers['x'], $pers['y']);
+	}
+	catch (Exception $e) {
+		var_dump($e);
+	}
+	catch (Error $er) {
+		var_dump($er);
+	}
 
-				}
-				$quest = $q->showQuest($pers['x'], $pers['y']);
-				//var_dump($quest);
 	if ($pers["cfight"])
 		echo "<span class=about>Вы не можете разговаривать в бою.</span>";
 	else
 
 	if (!$_SPEECH) {
-		if($quest)
-		{
-			var_dump($quest);
-			// echo $_RETURN;
-		} else
 		echo "<span class=about>Мне нечего тебе сказать.</span>";
-	}
-	else {
+	} else {
 		echo "<div style='width:80%'>";
-		$sp = sql::q1("SELECT * FROM speech WHERE id=" . $_SPEECH);
+		$sp = SQL::q1("SELECT * FROM speech WHERE id=" . $_SPEECH);
 		$prehistory = $sp["prehistory"];
 		$text = $sp["text"];
-		$text = str_replace("%s", $pers["user"], $text);
-		$text = str_replace("%l", $pers["level"], $text);
-		$text = str_replace("%q", $quest["sParam"], $text);
-
+		$text = str_replace("%s", $user->getNick(), $text);
+		$text = str_replace("%l", $user->getLevel(), $text);
+		$text = str_replace("%q", $q->getSParam(), $text);
 		if ($R == -7)
-			begin_fight("bot=" . $rs["id_bot"], $pers["user"], "Нападение", 80, 100, 1, 0);
+			begin_fight("bot=" . $rs["id_bot"], $user->getNick(), "Нападение", 80, 100, 1, 0);
 
 		if (($sp["relation"] > 0 and $R > $sp["relation"]) or ($sp["relation"] < 0 and $R < $sp["relation"]) or $sp["relation"] == 0) {
 
 			if ($sp["showcounts"]) {
-				$c = sql::q1("SELECT COUNT(*) as count FROM u_speech WHERE uid=" . $pers["uid"] . " and sid=" . $sp["id"]);
+				$c = SQL::q1("SELECT COUNT(*) as count FROM u_speech WHERE uid=" . $user->getUID() . " and sid=" . $sp["id"]);
 				if ($c['count'])
-					sql::q("UPDATE u_speech SET `count`=`count`+1 WHERE uid=" . $pers["uid"] . " and sid=" . $sp["id"]);
+					SQL::q("UPDATE u_speech SET `count`=`count`+1 WHERE uid=" . $user->getUID() . " and sid=" . $sp["id"]);
 				else
-					sql::q("INSERT INTO `u_speech` (`uid` ,`sid` ,`count` )VALUES ('" . $pers["uid"] . "', '" . $sp["id"] . "', '1');");
+					SQL::q("INSERT INTO `u_speech` (`uid` ,`sid` ,`count` )VALUES ('" . $user->getUID() . "', '" . $sp["id"] . "', '1');");
 			}
-
 			## Делаем действие здесь
-
 			/*
 		$atype = '<select name=atype id=atype onchange="atype_ch()">';
 		$atype .= '<option value=0 SELECTED>Ничего</option>';
@@ -142,7 +136,6 @@ use ClassQuests\EveryDayQuests;
 		$atype .= '<option value=10>Вылечить травму</option>';
 		$atype .= '<option value=11>Телепортировать</option>';
 		$atype .= '</select>';
-		
 		*/
 
 			if ($sp["action"] == 2)
@@ -182,6 +175,21 @@ use ClassQuests\EveryDayQuests;
 				set_vars("location='" . $loc . "',x=" . $x . ",y=" . $y, $pers["uid"]);
 				say_to_chat('a', "<b>" . $rs["name"] . "</b> телепортировал вас.", 1, $pers["user"], '*');
 			}
+			if ($sp["action"] == 12) {
+				if (!$user->WpUser->removeWp($q->getSParam()))
+				{
+					$user->WpUser->removeWpByName($q->getSParam());
+				}
+				// list($loc, $x, $y) = explode("|", $sp["value"]);
+				// set_vars("location='" . $loc . "',x=" . $x . ",y=" . $y, $pers["uid"]);
+				say_to_chat('a', "<b>" . $rs["name"] . "</b> забираем квестовую вещь ".$q->getSParam().".", 1, $pers["user"], '*');
+			}
+			if ($sp["action"] == 13) {
+				// $user->WpUser->removeWpByName($q->getSParam());
+				// list($loc, $x, $y) = explode("|", $sp["value"]);
+				// set_vars("location='" . $loc . "',x=" . $x . ",y=" . $y, $pers["uid"]);
+				say_to_chat('a', "<b>" . $rs["name"] . "</b> выдаем квестовую вещь.", 1, $pers["user"], '*');
+			}
 			//
 			#####
 
@@ -194,7 +202,9 @@ use ClassQuests\EveryDayQuests;
 
 			$sps = SQL::q("SELECT * FROM speech WHERE id_from=" . $sp["id"]);
 			$table = '<center><br><br><table border=0 width=80% cellspacing=0 cellspadding=0>';
+
 			foreach ($sps as $s) {
+
 				// добавить условие на текстовку для квестов
 				if ($s["showcounts"]) {
 					if (!mtrunc($s["showcounts"] - intval(
@@ -203,10 +213,13 @@ use ClassQuests\EveryDayQuests;
 							continue;
 					}
 					$table .= "<tr><td class=gray valign=center style='height:30px'>[ЗАКОНЧИЛОСЬ]<a class=nt href=speech.php?id=" . $id . "&say=" . $s["id"] . "><img src=images/icons/right.png> &nbsp; <u>" . $s["answer"] . "</u></a></td></tr>";
-				} else {
+				} 
+				else {
 					// функционал по проверке наличия квестового предмета
-					if ($s['in_wp'] == 'qwp')
+					if ($s['in_wp'] == 'qwp' && ($user->WpUser->inWpByName($q->getSParam()) || $user->WpUser->inWp($q->getSParam()) ) )
 						$table .= "<tr><td class=gray valign=center style='height:30px'><a class=nt href=speech.php?id=" . $id . "&say=" . $s["id"] . "><img src=images/icons/right.png> &nbsp; <u>" . $s["answer"] . "</u></a></td></tr>";
+						//прописать изъятие вещи из рюкзака
+
 				}
 			}
 			$table .= "<tr><td class=gray valign=center style='height:30px'><a class=nt href='javascript:top.FuncyOff();'><img src=images/icons/right.png> &nbsp; <u>Я, пожалуй, пойду...</u></a></td></tr>";
@@ -218,8 +231,8 @@ use ClassQuests\EveryDayQuests;
 		} elseif ($sp["relation"] < 0) {
 			echo "Ты мне слишком симпатичен, чтобы говорить с тобой об этом.";
 		}
-		sql::q("UPDATE relationship SET rel=rel+" . $sp["kindup"] . " WHERE uid=" . $pers["uid"] . " and rid=" . $rs["id"]);
-		$pers["kindness"] += $sp["kindup"] / sql::q1("SELECT COUNT(*) as count FROM `residents`")['count'];
+		SQL::q("UPDATE relationship SET rel=rel+" . $sp["kindup"] . " WHERE uid=" . $pers["uid"] . " and rid=" . $rs["id"]);
+		$pers["kindness"] += $sp["kindup"] / SQL::q1("SELECT COUNT(*) as count FROM `residents`")['count'];
 		set_vars("speechid=" . $sp["id"] . ",kindness=" . $pers["kindness"], $pers["uid"]);
 	}
 	echo "</td></tr></table>

@@ -1494,7 +1494,7 @@ function insert_herbal ($id, $uid)
 	if(!$uid) return false;
 		
 	$trava = SQL::q1("SELECT * FROM herbals WHERE id = ".$id.";");
-	$res = SQL::qi("INSERT INTO `wp` ( `uidp` , `user` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` ,`p_type`, `timeout`) VALUES (" . $uid . ", '" . _UserByUid($uid)["user"] . "', '0','hertbal_".$trava["id"]."','1', '0', 'herbals/" . $trava["image"] . "', '', 'herbal', 'herbal', '" . $trava["name"] . "', '', '1', '0', '1', '1','200'," . (time() + 1200000) . ");");
+	$res = SQL::qi("INSERT INTO `wp` ( `uidp` , `user` , `weared` ,`id_in_w`, `price` , `dprice` , `image` , `index` , `type` , `stype` , `name` , `describe` , `weight` , `where_buy` , `max_durability` , `durability` ,`p_type`, `timeout`) VALUES (" . $uid . ", '" . _UserByUid($uid)["user"] . "', '0','herbal_".$trava["id"]."','1', '0', 'herbals/" . $trava["image"] . "', '', 'herbal', 'herbal', '" . $trava["name"] . "', '', '1', '0', '1', '1','200'," . (time() + 1200000) . ");");
 	return $res;
 }
 
