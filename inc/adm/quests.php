@@ -4,7 +4,6 @@ echo '<script type="text/javascript" src="js/adm_bots.js?3"></script>';
 echo '<script type="text/javascript" src="js/adm_quests.js?3"></script>';
 
 function selectQuester($id = null) {
-	var_dump($id);
 	$rs = sql::q("SELECT id,name FROM residents");
 	$rs_select = '<select name=rs>';
 	foreach ($rs as $r) {
@@ -30,7 +29,8 @@ function selectAction($num = 0) {
 		'Вылечить травму',
 		'Телепортировать',
 		'Забрать квестовую вещь',
-		'Выдать квестовую вещь'
+		'Выдать квестовую вещь',
+		'Выдать вещь'
 	];
 	$atype = '';
 	$atype = '<select name=atype id=atype onchange="atype_ch()">';
@@ -80,6 +80,7 @@ function show_speech($sp, $def = 0)
 		if ($s["action"] == 11) $str = 'Телепортировать';
 		if ($s["action"] == 12) $str = 'Забрать квестовую вещь';
 		if ($s["action"] == 13) $str = 'Выдать квестовую вещь';
+		if ($s["action"] == 14) $str = 'Выдать вещь';
 		if ($str) $str = '[<b class=red>' . $str . '</b><b class=green>' . $s["value"] . '</b>]';
 		$table .= "<tr><td class=gray><img src=images/icons/right.png>" . $s["answer"] . "" . $str . "</td><td><table class=but2>" . show_speech($s, 1) . "</table></td></tr>";
 	}
@@ -88,7 +89,6 @@ function show_speech($sp, $def = 0)
 	$text .= "</tr>";
 	return $text;
 }
-
 
 function delete_sp($id)
 {
@@ -99,7 +99,6 @@ function delete_sp($id)
 	}
 	sql::q("DELETE FROM speech WHERE id=" . $id);
 }
-
 
 if ($priv["equests"]) {
 
@@ -155,9 +154,9 @@ if ($priv["equests"]) {
 		echo "<td class=timef>Значение дропа(Для вещи надо указать ID)(Для пергаментов и денег надо указать среднее значение кол-ва)</td><td width=50%><input type=text class=login style='width:90%;' name=dropvalue value=5></td>";
 		echo "</tr>";
 
-		echo "<tr>";
-		echo "<td class=timef>Частота дропа в процентах.</td><td width=50%><input type=text class=login style='width:90%;' name=dropfrequency value=5></td>";
-		echo "</tr>";
+		echo "<tr>
+			<td class=timef>Частота дропа в процентах.</td><td width=50%><input type=text class=login style='width:90%;' name=dropfrequency value=5></td>
+		</tr>";
 
 		echo "<tr>";
 		echo "<td class=timef>Невоспреимчивость к магии</td><td width=50%><select name=magic_resistance class=real>
