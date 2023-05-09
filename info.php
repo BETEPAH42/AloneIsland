@@ -1,4 +1,4 @@
-<?
+<?php
 error_reporting(E_ALL);
 if (@$_GET["do_w"]) {
 	include("watchers.php");
@@ -160,7 +160,7 @@ if (substr_count($you["rank"], "<pv>") || $you["sign"] == 'c2') {
 				</div>
 			</div>
 		</div>
-	<?
+	<?php
 
 	// echo '<title>[' . $pers["user"] . '] Одинокие земли</title><frameset rows="*,20" FRAMEBORDER=0 FRAMESPACING=2 BORDER=0 id="frmset">';
 	// echo '<frame src="info.php?p=' . $pers["user"] . '&no_watch=1" scrolling=auto FRAMEBORDER=0 BORDER=0 FRAMESPACING=0 MARGINWIDTH=0 MARGINHEIGHT=0 style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: #666666" name="Fr1">';

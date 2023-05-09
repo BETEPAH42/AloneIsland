@@ -1,4 +1,4 @@
-<?
+<?php
 // Уровни Рыболовов
 if ($pers["sp6"] >= 300 and $pers["sp6"] < 450 and $pers["prof_osn"] == "fishing"  and $pers["prof_osnLVL"] == 0) {
 	set_vars("prof_osnLVL=1");

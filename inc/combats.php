@@ -1,5 +1,5 @@
 <center>
-	<?
+	<?php
 	$tour1 = '';
 	$tour2 = '';
 	$tour3 = '';
@@ -13,7 +13,7 @@
 </center>
 <script LANGUAGE="JavaScript" src="js/apps_for_fight.js"></script>
 <script>
-	<?
+	<?php
 	if ($_FILTER["cat"] == 1) 	set_vars("help=4", UID);
 
 	if ($pers["sign"] == 'c2' or $pers["diler"] == 1 or $pers["priveleged"])
