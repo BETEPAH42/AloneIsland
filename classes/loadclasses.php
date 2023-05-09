@@ -1,6 +1,7 @@
 <?php
 require_once "sql.php";
 // require_once "SQL/sql.php";
+require_once "users/Persons.php";
 require_once "users/Person.php";
 require_once "users/User.php";
 require_once "quests/Quests.php";

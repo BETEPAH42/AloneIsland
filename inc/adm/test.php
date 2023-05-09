@@ -4,11 +4,13 @@ echo '<div style="width: 20%;"><a class=bga href=main.php?go=administration>На
 
 use ClassPerson\User;
 use ClassWeapons\Weapon;
+use ClassPerson\Persons;
 try {
-    $user = new User(UID);
+    // $user = new User(UID);
+    $users = new Persons();
     echo "<pre>";
     // var_dump($user->WpUser->inWpByName('Кориандр'));
-    var_dump($user);
+    var_dump($users->getPersonByUid(300));
     echo "</pre>";
 }
 catch (Exception $e)
