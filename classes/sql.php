@@ -5,8 +5,9 @@ class SQL
     /** Init and connect */
     private static function init()
     {
+       // var_dump(['mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';charset=utf8', DB_USER, DB_PASS]);
         $dbConnection = null;
-        if (in_array($_SERVER['SERVER_NAME'], ['localhost', 'ry.alef.im'])) {
+        if (in_array($_SERVER['SERVER_NAME'], ['localhost'])) {
             ini_set('display_errors', 'On');
             error_reporting(E_ALL & ~E_NOTICE);
         } else {
@@ -21,7 +22,7 @@ class SQL
                 include $_SERVER['DOCUMENT_ROOT'] . '/db.cfg.php';
                 $dbConnection = new PDO('mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';charset=utf8', DB_USER, DB_PASS);
             } else {
-                $dbConnection = new PDO('mysql:dbname=aloneisland;host=localhost;charset=utf8', 'LaravelUser', 'Bb359722');
+                $dbConnection = new PDO('mysql:dbname=dev;host=mysql;charset=utf8', 'dev', 'dev');
             }
         }
 

@@ -2,15 +2,15 @@
 
 echo '<div style="width: 20%;"><a class=bga href=main.php?go=administration>Назад в меню</a></div>';
 
-use ClassPerson\User;
+// use ClassPerson\User;
 use ClassWeapons\Weapon;
-use ClassPerson\Persons;
+use ClassPerson\Person;
 try {
     // $user = new User(UID);
-    $users = new Persons();
+    $user = new Person('BETEPAH',md5('061108'));
     echo "<pre>";
     // var_dump($user->WpUser->inWpByName('Кориандр'));
-    var_dump($users->getPersonByUid(300));
+    var_dump($user);
     echo "</pre>";
 }
 catch (Exception $e)

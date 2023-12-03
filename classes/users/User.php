@@ -9,7 +9,6 @@ use ClassWeapons\WeaponUser;
 
 class User extends Person
 {
-    protected $uid  = NULL;
     protected $user = NULL;
     protected $nick = NULL;
     protected $lvl = NULL;
@@ -45,10 +44,5 @@ class User extends Person
     public function getNick ()
     {
         return $this->nick;
-    }
-
-    public function WpUser()
-    {
-        return new WeaponUser($this->uid);
     }
 }

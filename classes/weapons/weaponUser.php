@@ -2,15 +2,17 @@
 namespace ClassWeapons;
 
 use SQL;
+use ClassPerson\Person;
 
 class WeaponUser extends Weapons
 {
     public $wpUser;
     private $uid;
-    public function __construct($uid)
+
+    public function __construct(Person $person)
     {
-        $this->uid = $uid;
-        $arrWp = SQL::q("SELECT * FROM wp WHERE uidp = ? ORDER by id;",[$uid]);
+        // $this->uid = $person->uid;
+        $arrWp = SQL::q("SELECT * FROM wp WHERE uidp = ? ORDER by id;",[$person->uid]);
         $this->wpUser = $this->structureWp($arrWp);
     }
 
