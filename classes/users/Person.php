@@ -25,7 +25,7 @@ class Person
     public function __construct($login, $password)
     {
         $data = $this::getPersonArray($login, $password);
-        var_dump($data);
+        // var_dump($data);
         if($data) {
             $this->nicname = (string)$data['user'];
             $this->level = (int)$data['level'];
