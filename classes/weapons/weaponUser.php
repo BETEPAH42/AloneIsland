@@ -12,7 +12,7 @@ class WeaponUser extends Weapons
     public function __construct(Person $person)
     {
         // $this->uid = $person->uid;
-        $arrWp = SQL::q("SELECT * FROM wp WHERE uidp = ? ORDER by id;",[$person->uid]);
+        $arrWp = SQL::q("SELECT * FROM wp WHERE uidp = ? ORDER by id;",[$person->getUid()]);
         $this->wpUser = $this->structureWp($arrWp);
     }
 

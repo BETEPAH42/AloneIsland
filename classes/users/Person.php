@@ -8,24 +8,25 @@ use PersonException;
 
 class Person 
 {
-    public string $nicname;
-    public int $health;
-    public int $mana;
-    public int $t_health;
-    public int $t_mana;
-    public int $level;
+    private string $nicname;
+    protected int $health;
+    protected int $mana;
+    protected int $t_health;
+    protected int $t_mana;
+    protected int $level;
     public int $uid;
-    public int $experience;
-    public string $location;
-    public string $picture;
+    protected int $experience;
+    protected string $location;
+    protected string $picture;
     public $weapons;
+    public $skills;
+    protected $speed;
     public array $error;
     private array $allDatas;
 
     public function __construct($login, $password)
     {
         $data = $this::getPersonArray($login, $password);
-        // var_dump($data);
         if($data) {
             $this->nicname = (string)$data['user'];
             $this->level = (int)$data['level'];
@@ -38,7 +39,8 @@ class Person
             $this->location = $data['location'];
             $this->picture = $data['obr'];
             $this->allDatas = $data;
-            $this->weapons = $this->WpUser();
+            $this->weapons = $this->getUserWpDb();
+            $this->skills = $this->getUserSkills();
         } else {
             $this->error = [
                 'message' => 'Пользователь не нейден, вероятно указан неправильный логин или пароль',
@@ -48,7 +50,7 @@ class Person
 
     }
 
-    static function getPersonArray($login, $password)
+    private static function getPersonArray($login, $password)
     {
         try {
             $user = SQL::q1("SELECT * FROM users WHERE `user`='" . addslashes($login) . "' and `pass`='" . ($password) . "';");
@@ -74,9 +76,20 @@ class Person
         return $this->allDatas;
     }
 
-    protected function WpUser()
+    protected function getUserWpDb()
     {
-        // echo "<pre>".print_r($this->uid,true)."</pre>";
         return new WeaponUser($this);
     }
+
+    public function getUserWp()
+    {
+        return $this->weapons;
+    }
+
+    protected function getUserSkills()
+    {
+
+        return new PersonSkills($this);
+    }
+
 }
