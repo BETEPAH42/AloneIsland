@@ -9,3 +9,4 @@ require_once "weapons/Weapons.php";
 require_once "weapons/weapon.php";
 require_once "weapons/weaponUser.php";
 require_once "users/PersonSkills.php";
+require_once "users/PersonAbilities.php";

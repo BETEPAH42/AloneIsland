@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace ClassPerson;
 
-Class PersonAbilities
+class PersonAbilities
 {
     public $power;
     public $reaction;
@@ -10,6 +10,7 @@ Class PersonAbilities
     public $health;
     public $intellect;
     public $willpower;
+    public $free_stats;
 
     function __construct(Person $person)
     {
@@ -36,6 +37,10 @@ Class PersonAbilities
         $this->willpower = [
             'name' => 'Сила воли',
             'value' => $person->getAllDatas()['s6']
+        ];
+        $this->free_stats = [
+            'name' => 'Свобоные статы',
+            'value' => $person->getAllDatas()['free_stats']
         ];
     }
 }

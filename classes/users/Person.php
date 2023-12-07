@@ -18,8 +18,9 @@ class Person
     protected int $experience;
     protected string $location;
     protected string $picture;
-    public $weapons;
+    public $abilities;
     public $skills;
+    public $weapons;
     protected $speed;
     public array $error;
     private array $allDatas;
@@ -39,8 +40,10 @@ class Person
             $this->location = $data['location'];
             $this->picture = $data['obr'];
             $this->allDatas = $data;
-            $this->weapons = $this->getUserWpDb();
+            $this->abilities = $this->getUserAbilities();
             $this->skills = $this->getUserSkills();
+            $this->weapons = $this->getUserWpDb();
+            
         } else {
             $this->error = [
                 'message' => 'Пользователь не нейден, вероятно указан неправильный логин или пароль',
@@ -92,4 +95,9 @@ class Person
         return new PersonSkills($this);
     }
 
+    protected function getUserAbilities()
+    {
+
+        return new PersonAbilities($this);
+    }
 }
