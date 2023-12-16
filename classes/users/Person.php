@@ -15,8 +15,13 @@ class Person
     protected int $t_mana;
     protected int $level;
     public int $uid;
-    protected int $experience;
-    protected string $location;
+    protected int $experience; /** Боевой опыт */
+    protected int $experiencePeace; /** Мирный опыт */
+    public string $location;
+    public int $x;
+    public int $y;
+    public int $xf;
+    public int $yf;
     protected string $picture;
     public $abilities;
     public $skills;
@@ -25,9 +30,9 @@ class Person
     public array $error;
     private array $allDatas;
 
-    public function __construct($login, $password)
+    public function __construct($uid)
     {
-        $data = $this::getPersonArray($login, $password);
+        $data = $this->getPersonArray($uid);
         if($data) {
             $this->nicname = (string)$data['user'];
             $this->level = (int)$data['level'];
@@ -38,6 +43,10 @@ class Person
             $this->mana = (int)$data['ma'];
             $this->t_mana = (int)$data['cma'];
             $this->location = $data['location'];
+            $this->x = (int) $data['x'];
+            $this->y = (int) $data['y'];
+            $this->xf = (int) $data['xf'];
+            $this->yf = (int) $data['yf'];
             $this->picture = $data['obr'];
             $this->allDatas = $data;
             $this->abilities = $this->getUserAbilities();
@@ -50,13 +59,12 @@ class Person
                 'code' => 401,
             ];
         }
-
     }
 
-    private static function getPersonArray($login, $password)
+    protected static function getPersonArray($uid)
     {
         try {
-            $user = SQL::q1("SELECT * FROM users WHERE `user`='" . addslashes($login) . "' and `pass`='" . ($password) . "';");
+            $user = SQL::q1("SELECT * FROM users WHERE `uid`=" . $uid . ";");
             return $user;
         } catch (PersonException $e) {
             echo "Ошибка получения сведений о пользователях!";

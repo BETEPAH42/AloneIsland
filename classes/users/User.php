@@ -3,46 +3,51 @@
 namespace ClassPerson;
 
 use SQL;
+use UserException;
 use ClassPerson\Person;
-use ClassWeapons\Weapon;
-use ClassWeapons\WeaponUser;
 
-class User extends Person
+class User
 {
-    protected $user = NULL;
-    protected $nick = NULL;
-    protected $lvl = NULL;
-    private $userAllParam = NULL;
-    public $WpUser = NULL;
+    protected $uid = NULL;
+    protected $person = NULL;
 
-    public function __construct($id)
+    public function __construct($login, $password)
     {
-        $params = SQL::q1("SELECT * FROM users WHERE uid = ?;",[$id]);
-        $this->uid = $params['uid'];
-        $this->lvl = $params['level'];
-        $this->nick = $params['user'];
-        $this->userAllParam = $params;
-        $this->WpUser = $this->WpUser();
-        return $this;
+        $userUid = $this->getPersonArray($login, $password);
+        if($userUid) {
+            $this->uid = $userUid['uid'];
+            $this->person = new Person($userUid['uid']);
+        }
+    }
+
+    protected static function getPersonArray($login, $password)
+    {
+        try {
+            $user = SQL::q1("SELECT uid FROM users WHERE `user`='" . addslashes($login) . "' and `pass`='" . ($password) . "';");
+            return $user;
+        } catch (UserException $e) {
+            echo "Ошибка получения сведений о пользователях!";
+        }
+        return [];
     }
 
     public function getUser()
     {
-        return $this->user;
+        return $this->person;
     }
 
-    public function getLevel ()
-    {
-        return $this->lvl;
-    }
+    // public function getLevel ()
+    // {
+    //     return $this->lvl;
+    // }
 
     public function getUID ()
     {
         return $this->uid;
     }
 
-    public function getNick ()
-    {
-        return $this->nick;
-    }
+    // public function getNick ()
+    // {
+    //     return $this->nick;
+    // }
 }
