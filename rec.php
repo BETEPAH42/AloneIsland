@@ -4,7 +4,7 @@
 <title>Alone Islands [Подборка рецепта]</title>
 </head>
 <body topmargin="15" leftmargin="15" rightmargin="15" bottommargin="15" class=inv>
-<?
+<?php
 include_once "configs/config.php";
 require_once 'classes/sql.php';
 include_once 'inc/functions.php';

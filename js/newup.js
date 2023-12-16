@@ -4,8 +4,15 @@ var upSc = '112';
 var resize_f = 0;
 
 d.write('<script src="/js/jquery.js?' + upSc + '"></script>');
-d.write('<script type="text/javascript" src="/js/yourpers.js?1' + upSc + '"></script><LINK href=/css/main.css?' + upSc + ' rel=STYLESHEET type=text/css><link href=/css/selectbox.css?' + upSc + ' rel=STYLESHEET type=text/css><script language=javascript src=/js/pers.js?' + upSc + '></script><script language=javascript src=/js/statsup.js?' + upSc + '></script><script language=javascript src="/js/sell.js?' + upSc + '"></script><script  language=javascript src="/js/w.js?' + upSc + '"></script><script src="/js/fightn.js"></script><script src="/js/tools/scrollto.js"></script>');
-
+d.write('<script type="text/javascript" src="/js/yourpers.js?1' + upSc + '"></script>'+
+	'<link href=/css/main.css?' + upSc + ' rel=STYLESHEET type=text/css>'+
+	'<link href=/css/selectbox.css?' + upSc + ' rel=STYLESHEET type=text/css>'+
+	'<script language=javascript src=/js/pers.js?' + upSc + '></script>'+
+	'<script language=javascript src=/js/statsup.js?' + upSc + '></script>'+
+	'<script language=javascript src="/js/sell.js?' + upSc + '"></script>'+
+	'<script language=javascript src="/js/w.js?' + upSc + '"></script>'+
+	'<script src="/js/fightn.js"></script>'+
+	'<script src="/js/tools/scrollto.js"></script>');
 
 function BodyScroll() {
 	if (document.body.scrollTop > 10) top.hide_logo();

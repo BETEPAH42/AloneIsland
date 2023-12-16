@@ -32,7 +32,7 @@ define("GAIN_COST", 50);
 	<div style="background-image: url('images/DS/main_topline.jpg'); height:17px; width:100%;"></div>
 </div>
 
-<div id="outer" style="display:none;background: grey; position:absolute;z-index:356;top:60px;top: 85px;width: 50%;left: 25%;border-radius:6px;">
+<div id="outer" style="display:none;background: grey; position:absolute;z-index:356;top:60px;top: 85px;width: 50%;left: 25%;border-radius:6px;min-height:40px;">
 	<span style="position: relative;top:20px;left:520px;" onclick="document.getElementById('outer').style.display = 'none';">Закрыть</span>
 	<?
 	$t = tme();

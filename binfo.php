@@ -1,4 +1,4 @@
-<?
+<?php
 error_reporting(0);
 
 require_once 'classes/sql.php';
@@ -29,7 +29,7 @@ if ($rank_i <> $pers["rank_i"] and $pers["rank_i"] = $rank_i)
 $pers["dmoney"] = -1;
 ?>
 <div id=inf_from_php2 style='visibility:hidden;position:absolute;top:0px;height:0;'> <i class=timef>Это существо не управляется игроками.</i>
-	<?
+	<?php
 	if ($pers["magic_resistance"])
 		echo "<br><b><i class=timef>Это существо невосприимчиво к магии.</i></b>";
 	?>
@@ -37,7 +37,7 @@ $pers["dmoney"] = -1;
 <div id=inf_from_php style='visibility:hidden;position:absolute;top:0px;height:0;'></div>
 <script type="text/javascript" src="js/info.js?3"></script>
 <script>
-	<?
+	<?php
 	include('inc/inc/p_clothes.php');
 	$hp = $pers["chp"];
 	$ma = $pers["cma"];

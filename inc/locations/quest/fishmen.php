@@ -19,9 +19,8 @@ if ($qFish["finished"] == 1 && $qFish["time"] < tme()) {
 	$qFish["sParam"] = $randWp;
 	$qFish["lParam"] = $randCell["x"];
 	$qFish["zParam"] = $randCell["y"];
-	SQL::q1(
-		"UPDATE quest SET sParam = '" . $qFish["sParam"] . "', lParam = '" . $qFish["lParam"] . "', zParam = '" . $qFish["zParam"] . "',	finished = 0,time = " . (tme() + 3600) . " WHERE id =" . Q_FISH . ""
-	);
+	SQL::q1("UPDATE quest SET sParam = '" . $qFish["sParam"] . "', lParam = '" . $qFish["lParam"] . "', zParam = '" . $qFish["zParam"] . "',	finished = 0,time = " . (tme() + 3600) . " WHERE id =" . Q_FISH . ";");
+	SQL::q1("UPDATE residents SET x = '" . $qFish["lParam"] . "', y = '" . $qFish["zParam"] . "',	online = 1 WHERE quest_id =" . Q_FISH . ";");
 }
 if (@$_GET["gF"] && !$qFish["finished"] && $qFish["time"] > tme()) {
 	if ($pers["x"] == $qFish["lParam"] && $pers["y"] == $qFish["zParam"]) {
@@ -60,17 +59,17 @@ if (@$_GET["gF"] && !$qFish["finished"] && $qFish["time"] > tme()) {
 		$pers["x"] == $qFish["lParam"] &&
 		$pers["y"] == $qFish["zParam"]
 	) {
-		echo "<script>console.log('О вот здесь и сидит Рыбак, но у тебя нет нужной рыбки!!!');</script>";
-		$_RETURN .= '<center class=but>Вы нашли Рыбака!</center><i class=user>Он всё ещё нуждается в <b>«' . $qFish["sParam"] . '»</b></i>';
-		$yourWp = SQL::q1("SELECT * FROM wp WHERE uidp=" . UID . " and weared=0 and name='" . $qFish["sParam"] . "'");
+		$_RETURN .= '<center class=but id=wers>Вы нашли Рыбака!</center><i class=user>Он всё ещё нуждается в <b>«' . $qFish["sParam"] . '»</b></i>';
+		$yourWp = SQL::q1("SELECT * FROM wp WHERE uidp=" . UID . " and type='fish' and weared=0 and name='" . $qFish["sParam"] . "'");
 		if ($yourWp) {
 			$vesh = $yourWp;
-			include("inc/inc/weapon2.php");
-			$_RETURN .= "<div class=but2><script>" . $text . "</script></div><input type=button class=login value='Отдать' onclick=\"location = 'main.php?gF=" . md5(tme()) . "';\">";
+			include_once("inc/inc/weapon2.php");
+			$_RETURN .= "<div class=but2>".$test."</div><input type=button class=login value='Отдать' onclick=\"location = 'main.php?gF=" . md5(tme()) . "';\">";
 		}
 	}
 }
 if (!$qFish["finished"] && $qFish["time"] <= tme()) {
 	say_to_chat("o", "Никто не смог помочь Рыбаку... Огрызнувшись на нерадивых жителей, он ушёл спать...", 0, '', '*', 0);
-	SQL::q1("UPDATE quest SET finished = 1,	time = " . (tme() + 3600) . "	WHERE id = " . Q_FISH . "");
+	SQL::q1("UPDATE quest SET finished = 1,	time = " . (tme() + 3600) . "	WHERE id = " . Q_FISH . ";");
+	SQL::q1("UPDATE residents SET online = 0 WHERE quest_id = " . Q_FISH . ";");
 }

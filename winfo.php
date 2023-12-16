@@ -55,7 +55,7 @@
 </head>
 
 <body>
-	<?
+	<?php
 	include('inc/functions.php');
 	error_reporting(E_ALL);
 	include("configs/config.php");
@@ -90,7 +90,7 @@
 					</tr>
 					<tr height=75>
 						<td colspan='2' valign='top'>
-							<? ?>
+							<?php ?>
 						</td>
 					</tr>
 					<tr height=20>
@@ -104,11 +104,11 @@
 				</table>
 			</div>
 		</center>
-	<?
+	<?php
 	}
 	?>
 </body>
-<?
+<?php
 $rune3 = SQL::q1("SELECT * FROM weapons WHERE id='5' LIMIT 1");
 foreach ($rune3 as $key => $value4) {
 	if (!$value4 or $key > 0) continue;

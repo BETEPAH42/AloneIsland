@@ -3,8 +3,8 @@ error_reporting(E_ALL);
 #### Считаем ОД на удар
 $_W = Weared_Weapons($pers["uid"]);	
 $OD_UDAR = $_W["OD"];
-
 $fight = SQL::q1("SELECT * FROM `fights` WHERE `id`='" . $pers["cfight"] . "'");
+// var_dump($fight);
 if (!$fight["id"]) 
 	set_vars("cfight=0,curstate=0,refr=1", $pers["uid"]);
 if ($fight["bplace"]) 
@@ -14,7 +14,7 @@ if ($fight['type'] <> 'f')
 $delta = floor(sqrt(sqr($pers["xf"] - $persvs["xf"]) + sqr($pers["yf"] - $persvs["yf"]))); // Расстояние между игроками
 ############@@@@@@@
 ###### ПОВТОР
-if ($_GET["repeat"] and $pers["turn_before"]) {
+if (@$_GET["repeat"] and $pers["turn_before"]) {
 	$arr = explode(";", $pers["turn_before"]);
 	foreach ($arr as $a)
 		if ($a <> '') {
@@ -45,8 +45,7 @@ if ($r != $OD_UDAR + 3) {
 }
 //////////////////////////////
 #####Лечимся за счёт маны
-if (
-	@$_GET["up_health"] and
+if (@$_GET["up_health"] and
 	$pers["hp"] <> $pers["chp"] and
 	(($pers["hp"] - $pers["chp"]) <= $pers["cma"]) and $pers["chp"] and $persvs
 ) {
@@ -59,7 +58,6 @@ if (
 	$pers["cma"] = $pers["cma"] - $pers["hp"] + $pers["chp"];
 	$pers["chp"] = $pers["hp"];
 }
-
 if (@$_POST["attack"] and @$_POST["defence"]) {
 	$pers["fight_request"] = intval($_POST["attack"]) . ":" . intval($_POST["defence"]) . ":" . intval($zid) . ":" . intval($_POST["magic_koef"]);
 	set_vars("fight_request='" . $pers["fight_request"] . "'", $pers['uid']);
@@ -78,7 +76,6 @@ if (@$_POST["vs"] and !$persvs["uid"]) {
 		$str .= $key . "=" . $v . ";";
 	set_vars("turn_before='" . $str . "'", $pers["uid"]);
 }
-
 if ($_STUN) {
 	$_GET["gotox"] = $pers["xf"];
 	$_GET["gotoy"] = $pers["yf"];
@@ -118,7 +115,6 @@ if ($go == 0) {
 	unset($_GET);
 	unset($_POST);
 }
-
 #########################################################################
 // Узнаём делаем ли мы какое-либо действие, $action = 1 - значит действие совершается.
 if (isset($_POST["vs"]) || isset($_GET["gotox"])) $action = 1;
@@ -251,7 +247,6 @@ if ($action) # Основной блок действий
 }
 #@##@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#
 
-
 // Действие выполнено с человеком:
 if ($can["idf"] and $action) SQL::q("DELETE FROM turns_f WHERE uid1=" . $can["uid1"] . " and uid2=" . $can["uid2"] . "");
 if ($action and $can["idf"]) SQL::q("UPDATE users SET bg=0,bn=0,bj=0 WHERE uid=" . intval($pers["uid"]) . " or uid=" . intval($persvs["uid"]) . "");
@@ -263,6 +258,5 @@ if ($action) {
 	if ($persvs["uid"])
 		SQL::q("UPDATE `users` SET `refr`=1 WHERE `uid`='" . $persvs["uid"] . "';");
 }
-
 if ($fight['type'] <> 'f' and $persvs["chp"] < 1) 
 	include("fights/ch_p_vs.php");

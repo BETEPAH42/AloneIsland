@@ -23,7 +23,6 @@ else
 ####//
 echo "</td></tr></table>";
 $radius = SQL::q1("SELECT MAX(radius) as max FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie'")['max'];
-
 if ($radius < 1) 
 	$radius = 1;
 
@@ -66,7 +65,8 @@ $NEAR = ($pers["fstate"] < 2 and $radius < (floor(sqrt(sqr($pers["xf"] - $persvs
 		}
 		else {
 			echo "var up_health=0;
-			</script>";}
+			</script>";
+		}
 
 	$go_no_p = '|'; // -  Переменная определяющая клетки куда ходить нельзя.
 	//////////////// Командs
@@ -157,13 +157,16 @@ foreach ($b_t2 as $tmp) {
 	
 	// Выводит всех людей в первой команде:
 
-echo "var team2 = '".$team2."';</script>";
+echo "var team2 = '{$team2}';
+</script>";
+
 #######################################################################################
 
 if (($LIFE1 - $BOTS1) == 0 and ($LIFE2 - $BOTS2) == 0 and $LIFE1 and $LIFE2 and $fight["type"] != 'f') // в бою остались одни боты
 	{
-	include("inc/bots/bots_battle.php");}
 
+	include("inc/bots/bots_battle.php");
+}
 #############################################
 echo "<script>
 var go_no='" . $bplace["xy"] . $go_no_p . "';";
@@ -175,18 +178,22 @@ else
 	echo "var od = " . ($OD_UDAR + 3) . ";";
 echo "var od_udar = " . ($OD_UDAR) . ";";
 echo "show_fight_head(" . intval($fight["oruj"]) . "," . intval($fight["travm"]) . "," . $timeout . ");
-";
+</script>";
 
 #############################################
 $_FINISHED = 0;
 if ($LIFE1 == 0 or $LIFE2 == 0 or $fight["type"] == 'f') {
+	// echo "<script>console.log('183');";
 	include('inc/inc/fights/finish.php');
+	// echo "</script>";
 	$_FINISHED = 1;
 }
+// echo "</script>";
+// var_dump("hi");
+// echo "<script>";
 ## Для завоевания. Если происходит завоевание и щёлкает таймаут - проигрыш и конец завоевания.
 if ($pers["gain_time"] and $timeout == 0 and $BOTS1 == $LIFE1 and !$_FINISHED) {
 	$LIFE2 = 0;
-
 	include('inc/inc/fights/finish.php');
 }
 #############################################
@@ -265,14 +272,13 @@ elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 		}
 
 	}
-	echo '
+	echo '<script>
 	var can_turn = ' . intval($CAN_TURN) . ';
 	var n = ' . $kblast . ';
 	img = new Array();
 	id = new Array();
 	nam = new Array();
 	var auras = \'' . $txt . '\';
-
 	var nk = ' . $kkid . ';
 	arimg = new Array();
 	arid = new Array();
@@ -293,7 +299,7 @@ elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 	if ($pers["fstate"] == 1) {
 		$bliz = 'Простой|Прицельный|Оглушающий';
 		$bliz_od = '3|5|7';
-		$spds = sql::q("SELECT * FROM u_special_dmg WHERE uid=" . $pers["uid"] . " ORDER BY od ASC");
+		$spds = SQL::q("SELECT * FROM u_special_dmg WHERE uid=" . $pers["uid"] . " ORDER BY od ASC");
 		foreach ($spds as $spd) {
 			$bliz .= "|" . $spd["name"];
 			$bliz_od .= "|" . $spd["od"];
@@ -310,6 +316,7 @@ elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 	$block = 'Простой|Усиленный|Крепчайший';
 	$block_od = '1|2|5';
 	##############################################################################
+
 	echo "var bliz='" . $bliz . "';";
 	echo "var bliz_od='" . $bliz_od . "';";
 	echo "var block='" . $block . "';";
@@ -320,7 +327,9 @@ elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 		echo "var noone=1;";
 	else
 		echo "var noone=0;";
+
 	echo "show_boxes_and_form('" . $addon . "','" . $addon_od . "'," . $pers["fstate"] . ");";
+	echo "</script><script>";
 	$_CAN_TURN = 1;
 	# Голосование за ничью:
 	if (@$_GET["noone"] == 1 and !substr_count($fight["nowhomvote"], "<" . $pers["user"] . ">")) {
@@ -345,9 +354,7 @@ elseif ($pers["chp"] > 0 and !$_FINISHED and $CAN_TURN) # - Твой ХОД
 		} else add_flog($s, $pers["cfight"]);
 	}
 }
-// echo "<pre>";
-// var_dump(intval($fight["oruj"]) . "," . intval($fight["travm"]) . "," . $timeout);
-// echo "</pre>";
+
 ######################################## - Не твой ХОД
 if ($timeout == 0 and @$_GET["battle"] == "nowhom" and $CAN_TURN == 0 and $pers["chp"] > 0) {
 	if ($pers["invisible"] <= tme())
@@ -384,7 +391,6 @@ if ($timeout == 0 and @$_GET["battle"] == "nowhom" and $CAN_TURN == 0 and $pers[
 		include('inc/inc/fights/finish.php');
 	}
 } elseif ($timeout > 0 and !$_FINISHED and $CAN_TURN == 0) {
-
 	if ($pers["chp"] > 0)
 		echo "show_message_in_f('<div align=center class=title>Ожидаем хода соперника.</div>');";
 	else
@@ -396,7 +402,9 @@ if ($timeout == 0 and @$_GET["battle"] == "nowhom" and $CAN_TURN == 0 and $pers[
 	else
 		echo "show_message_in_f('<div align=center class=title>Ожидаем хода соперника.</div>');";
 }
+echo "</script>";
 
+echo "<script>";
 set_vars("can_turn=" . intval($_CAN_TURN) . "", $pers["uid"]);
 
 $log = SQL::q("SELECT time,log FROM fight_log WHERE cfight=" . $pers["cfight"] . " ORDER BY turn DESC LIMIT 0,3");

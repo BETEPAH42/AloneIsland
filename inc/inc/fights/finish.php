@@ -1,8 +1,8 @@
 <?php
 error_reporting(E_ALL);
 $t = tme();
-
 $waiter = '';
+echo "<script>";
 if ($t < $pers["waiter"]) {
 	echo "show_message_in_f('<div id=waiter class=but align=center></div>');";
 	$waiter = "waiter(" . ($pers["waiter"] - $t) . ",0,'Ожидание');";
@@ -71,7 +71,6 @@ if ($wp and $sk)
 }
 }*/
 
-
 $_FT = $fight["travm"];
 if ($fight["type"] == 'notf' or $fight["type"] == '') {
 	if ($fight["travm"] <= 10)  $fight["travm"] = 4 / 5;
@@ -94,7 +93,6 @@ if ($fight["type"] == 'notf' or $fight["type"] == '') {
 	$c1b = SQL::q1("SELECT COUNT(id) as count FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=1")['count'];
 	$c2b = SQL::q1("SELECT COUNT(id) as count FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and fteam=2")["count"];
 
-
 	$p_t1 = SQL::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,aura,losses,victories,exp_in_f,main_present,clan_name,fexp,pol,fteam,kills,punishment,invisible,instructor
 FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=1");
 	$p_t2 = SQL::q("SELECT user,chp,level,sign,hp,uid,xf,yf,cma,ma,aura,losses,victories,exp_in_f,main_present,clan_name,fexp,pol,fteam,kills,punishment,invisible,instructor
@@ -107,7 +105,6 @@ FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2");
 		$b_t1 = 0;
 		$b_t2 = 0;
 	}
-
 
 	if ($c1b == 1) {
 		$ghost = SQL::q1("SELECT dropvalue FROM bots_battle WHERE cfight=" . $pers["cfight"] . " and droptype=0 and dropvalue>0")['dropvalue'];
@@ -186,8 +183,7 @@ FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2");
 				else $tmp['losses']++;
 			}
 			if ($_FT < 10) $exp = 0;
-			sql::q("UPDATE `users` SET `victories`='" . $tmp['victories'] . "',`losses`='" . $tmp['losses'] . "'
-,`exp`=exp + " . $exp . ",exp_in_f=0,`exp_chat`=" . $exp . ",f_turn=" . $win . " WHERE `uid`='" . $tmp['uid'] . "'");
+			SQL::q("UPDATE `users` SET `victories`='" . $tmp['victories'] . "',`losses`='" . $tmp['losses'] . "',`exp`=exp + " . $exp . ",exp_in_f=0,`exp_chat`=" . $exp . ",f_turn=" . $win . " WHERE `uid`='" . $tmp['uid'] . "'");
 		}
 		$WIN1 = substr($m, 0, strlen($m) - 1);
 
@@ -236,11 +232,11 @@ FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2");
 				else $tmp['losses']++;
 			}
 			if ($_FT < 10) $exp = 0;
-			sql::q("UPDATE `users` SET `victories`='" . $tmp['victories'] . "',`losses`='" . $tmp['losses'] . "',`exp`=exp + " . $exp . ",exp_in_f=0,`exp_chat`=" . $exp . ",f_turn=" . $win . " WHERE `uid`='" . $tmp['uid'] . "'");
+			SQL::q("UPDATE `users` SET `victories`='" . $tmp['victories'] . "',`losses`='" . $tmp['losses'] . "',`exp`=exp + " . $exp . ",exp_in_f=0,`exp_chat`=" . $exp . ",f_turn=" . $win . " WHERE `uid`='" . $tmp['uid'] . "'");
 		}
 		$WIN2 = substr($m, 0, strlen($m) - 1);
 
-		$s = $s . "<center><table border=0 class=but width=400 cellspacing=0 id=exp_table>	<tr><td class=mfb>Персонаж</td>	<td class=mfb>Убийства</td>	<td class=mfb>Нанесено урона</td><td class=mfb>Опыт</td>	</tr>";
+		$s = $s . "<center><table border=0 class=but width=400 cellspacing=0 id=exp_table>	<tr><td class=mfb>Персонаж</td>	<td class=mfb>Убийства</td>	<td class=mfb>Нанесено урона</td><td class=mfb>Опыт</td></tr>";
 		for ($i = 0; $i < count($expnum); $i++)
 			for ($j = 0; $j < $i; $j++)
 				if ($expnum[$j + 1] > $expnum[$j]) {
@@ -259,9 +255,9 @@ FROM users WHERE cfight=" . $pers["cfight"] . " and fteam=2");
 		if ($LIFE1 == 0 and $LIFE2 == 0) $s = $s . "<br><font class=items><b>Ничья</b></font>";
 
 		if ($fight["turn"] <> "finished" and $fight["type"] == "notf") {
-			sql::q("UPDATE `fights` SET `result`='" . addslashes($s) . "' , `type`='f', `turn`='finish' WHERE `id`='" . $pers["cfight"] . "' ;");
+			SQL::q("UPDATE `fights` SET `result`='" . addslashes($s) . "' , `type`='f', `turn`='finish' WHERE `id`='" . $pers["cfight"] . "' ;");
 			echo "show_exp('" . addslashes($s) . "');";
-			sql::q1("DELETE FROM turns_f WHERE idf='" . $pers["cfight"] . "'");
+			SQL::q1("DELETE FROM turns_f WHERE idf='" . $pers["cfight"] . "'");
 		}
 	}
 } else echo "show_exp('" . addslashes($fight["result"]) . "');";

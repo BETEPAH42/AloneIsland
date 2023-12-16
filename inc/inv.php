@@ -84,7 +84,7 @@
 		</tr>
 	</table>
 	<div id=container1 class=but></div>
-	<?
+	<?php
 	$r = types();
 	$types = '';
 	foreach ($r as $key => $value) {

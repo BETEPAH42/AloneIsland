@@ -1,4 +1,4 @@
-<?
+<?php
 $book = sql::q1("SELECT slots,`index`,id FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and stype='book'");
 if ($_GET["into_book"] and $book["slots"]) {
 	$book["index"] .= "|" . addslashes($_GET["into_book"]) . "|";
@@ -20,11 +20,11 @@ if ($_GET["out_book"]) {
 	}
 </script>
 <center>
-	<?
+	<?php
 	if ($pers["sign"] <> 'none') echo "<input type=button class=laar value=Клан onclick=\"location='main.php?action=addon&gopers=clan'\">"; ?>
 </center>
 <hr>
-<?
+<?php
 if ($_GET["gopers"] == "clan") {
 	include('inc/inc/clans/info.php');
 	exit;
@@ -88,7 +88,7 @@ if ($_GET["gopers"] == "clan") {
 			<center><input type=button class=loc onclick="location='main.php?filter=clear'" value='Сбросить фильтр' style="width: 100"></center>
 		</td>
 		<td>
-			<?
+			<?php
 			if ($pers["cfight"] == 0) {
 
 				switch ($_FILTER["show_z"]) {

@@ -8,8 +8,10 @@ $rsds = sql::q("SELECT * FROM residents");
 echo "<table class=fightlong width=100% border=0>";
 foreach ($rsds as $rs) {
 	$b = sql::q1("SELECT * FROM bots WHERE id=" . $rs["id_bot"]);
+	$online = $rs["online"] == 1 ? "Онлайн" : "Оффлайн" ;
 	echo "<tr>";
 	echo "<td><b class=user>" . $rs["name"] . "</b><b class=lvl>[" . $b["level"] . "]</b><img src='images/info.gif' onclick=\"javascript:window.open('binfo.php?" . $rs["id_bot"] . "','_blank')\" style=\"cursor:point\"></td>";
+	echo "<td>" . $online . "</td>";
 	echo "<td class=gray>" . $rs["description"] . "</td>";
 	echo "<td><img src='images/persons/" . $rs["image"] . ".gif' height=50></td>";
 	echo "<td class=green>" . $rs["location"] . "</td>";

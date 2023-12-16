@@ -3,7 +3,9 @@
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-require_once 'classes/sql.php';
+use ClassPerson\Person;
+
+require_once 'classes/loadclasses.php';
 include_once 'inc/functions.php';
 // include ('inc/sendmail.php');
 // $weather = SQL::q1("SELECT weather,weatherchange FROM world");
@@ -11,11 +13,13 @@ include_once 'inc/functions.php';
 $world = SQL::q1("SELECT weather,weatherchange FROM world");
 if ($world["weatherchange"] < tme())
 	say_to_chat("#W", "#W", 0, '', '*');
-
-if (@$_POST["pass"])
-	$pers = SQL::q1("SELECT * FROM `users` WHERE `user`='" . addslashes($_POST["user"]) . "' and `pass`='" . (md5($_POST["pass"])) . "'");
-else
+$auth = new Person(addslashes($_POST["user"]),md5($_POST["pass"]));
+if (@$_POST["pass"]) {
+	$pers = $auth->getAllDatas();
+	// $pers = SQL::q1("SELECT * FROM `users` WHERE `user`='" . addslashes($_POST["user"]) . "' and `pass`='" . (md5($_POST["pass"])) . "'");
+} else {
 	$pers = SQL::q1("SELECT * FROM `users` WHERE `user`='" . addslashes($_POST["user"]) . "' and `pass`='" . addslashes($_POST["passnmd"]) . "'");
+}
 
 if (empty($_POST))
 	$pers = SQL::q1("SELECT * FROM `users` WHERE `uid`=" . intval($_COOKIE["uid"]) . " and `pass`='" . addslashes($_COOKIE["hashcode"]) . "'");

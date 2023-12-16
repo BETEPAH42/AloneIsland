@@ -6,7 +6,7 @@
 </head>
 
 
-<?
+<?php
 error_reporting(0);
 include('inc/functions.php');
 // include ('inc/sendmail.php');

@@ -1,4 +1,4 @@
-<?
+<?php
 // tgn ))
 if ($rights['adm'] == 1) {
 

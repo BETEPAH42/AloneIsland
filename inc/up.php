@@ -114,6 +114,10 @@
         SQL::q("UPDATE `users` SET `curstate` = 34 WHERE `uid`=" . UID . " ;");
         $pers["curstate"] = 34;
       }
+      if (@$_GET["go"] == "test" and $pers["priveleged"]) {
+        SQL::q("UPDATE `users` SET `curstate` = 35 WHERE `uid`=" . UID . " ;");
+        $pers["curstate"] = 35;
+      }
     }
   }
   ##

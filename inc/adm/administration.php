@@ -1,17 +1,5 @@
 <center width=100% class=but><b>Возможности министра</b>
-	<?
-	/*
-$ssss=0;
-$sch=sql::q('SELECT * FROM weapons');
-foreach ($sch as $sh)
-{
-if ($sh['idn']<>$sh['id']) {$ssss++; 
-//SQL::q("UPDATE weapons SET id='".$sh['idn']."' WHERE idn=".$sh['idn']."");
-}
-else continue;
-}
-echo $ssss;
-*/
+	<?php
 	$_max = sql::q1("SELECT max_online,time_max_online FROM `configs` LIMIT 0,1");
 	$max = $_max["max_online"];
 	$tmax = $_max["time_max_online"];
@@ -84,6 +72,7 @@ echo $ssss;
 	$links .= '<li><a class=bg href=main.php?go=add_new>Новости</a></li>';
 	$links .= '<li><a class=bg href=main.php?go=fishin>Рыбёшка</a></li>';
 	$links .= '<li><a class=bg href=main.php?go=gheralbism>Травки</a></li>';
+	$links .= '<li><a class=bg href=main.php?go=test>Тестовая</a></li>';
 	echo "<br>Должность: Создатель мира назначил вас на должность <b>" . $priv["status"] . "</b><br>";
 	//echo "[Каждый министр привелегирован на: Добаление и редактирование новостей, Создание и редактирование подсказок в мире от лица создателя.]</center>";
 	echo "<center class=but>" . $online . "<div style='width:50%'><ul class=but>" . $links . "</ul></div><p>" . $abb . "</p></center>";

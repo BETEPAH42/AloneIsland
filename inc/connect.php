@@ -1,9 +1,9 @@
-<?
+<?php 
 $options = explode("|", $_COOKIE["options"]);
-
 if (isset($_COOKIE["filter1"]))
 	$f = explode("|", $_COOKIE["filter1"]);
-else $f = explode("|", 'shle|0|100|1000000|tlevel||elements||||||||');
+else 
+	$f = explode("|", 'shle|0|100|1000000|tlevel||elements||||||||');
 
 if (@$_GET["set_type"]) $f[0] = $_GET["set_type"];
 if (isset($_POST["minlevel"])) {
@@ -23,8 +23,9 @@ if (@$_GET["ar_loc"]) $f[12] = $_GET["ar_loc"];
 if (@$_GET["filter_f6"]) $f[13] = $_GET["filter_f6"];
 if (@$_GET["pers_sort"]) $f[14] = $_GET["pers_sort"];
 $f = implode("|", $f);
-if (empty($_COOKIE["filter1"]) or $_COOKIE["filter1"] <> $f) {
-	setcookie("filter1", $f, time() + 20000);
+
+if (empty($_COOKIE["filter1"]) || $_COOKIE["filter1"] != $f) {
+	setcookie("filter1", $f, time() + 20001);
 	$_COOKIE["filter1"] = $f;
 }
 header("Cache-Control: no-cache, must-revalidate");
