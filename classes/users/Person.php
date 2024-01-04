@@ -28,7 +28,7 @@ class Person
     public $weapons;
     protected $speed;
     public array $error;
-    private array $allDatas;
+    public array $allDatas;
 
     public function __construct($uid)
     {
@@ -107,5 +107,16 @@ class Person
     {
 
         return new PersonAbilities($this);
+    }
+
+    public static function GetIdByLoginPass($login, $password) 
+    {
+        try {
+            $user = SQL::q1("SELECT uid FROM users WHERE `user`='" . addslashes($login) . "' and `pass`='" . ($password) . "';");
+            return $user['uid'];
+        } catch (PersonException $e) {
+            echo "Ошибка получения сведений о пользователях!";
+        }
+        return [];
     }
 }

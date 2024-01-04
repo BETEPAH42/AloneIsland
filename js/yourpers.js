@@ -108,7 +108,7 @@ function build_pers(sh, shd, oj, ojd, or1, or1d, po, pod, z1, z1d, z2, z2d, z3, 
 		TEXT += ('<div style="width:100%;background-image: url(\'images/DS/blackbg.jpg\');"><table border=0 width=100% height=39 cellspacing=0 cellspadding=0 style="height:39px;"><tr><td align=center></div><td width=80 align=center><a href=main.php?gopers=info><img src="images/DS/help.png"></a></td><td width=100 align=center><a href=main.php?gopers=um><img src="images/DS/skills.png"></a> </td><td width=100 align=center> <a href=main.php?gopers=parol><img src="images/DS/password.png"></a> </td><td width=100 align=center> <a href=main.php?gopers=options><img src="images/DS/options.png"></a></td><td width=100 align=center><a href="javascript:exit()"><img src="images/DS/options.png"></a></td></tr></table></div>');
 		TEXT += ('<center><table border=0 width=98% cellspacing=0 cellspadding=0 style="height:16px;"><tr><td style="background-image: url(\'images/DS/graybg_left.png\'); background-position:bottom left; height:16px; width:12px;"></td><td style="background-image: url(\'images/DS/graybg.png\');" align=center nowrap><b>');
 
-		TEXT += ('<a href=forum/ target=_blank class=nt>Форум</a> | <a href=main.php?gopers=law class=nt>' + lawimg + 'Законы</a>  ');
+		TEXT += ('<a href=main.php?gopers=law class=nt>' + lawimg + 'Законы</a>  ');
 		if (zeroing > 0) TEXT += ("| <a href='javascript:void(0)' onclick=\"obnyl()\" class=nt>Обнулиться [<b class=hp>" + zeroing + "</b>]</a> ");
 		if (sign != 'none') TEXT += ("| <a href=main.php?go=addon&action=addon&gopers=clan class=nt>Клан </a> ");
 		TEXT += ('| <a href=main.php?go=self class=nt>Личное</a> ');

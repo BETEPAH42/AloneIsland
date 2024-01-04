@@ -3,6 +3,7 @@
 echo '<div style="width: 20%;"><a class=bga href=main.php?go=administration>Назад в меню</a></div>';
 
 use ClassPerson\User;
+use UserException;
 // use ClassWeapons\Weapon;
 use ClassPerson\Person;
 try {

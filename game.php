@@ -1,41 +1,59 @@
 <?php
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
-
-use ClassPerson\Person;
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once 'classes/loadclasses.php';
 include_once 'inc/functions.php';
+
+use ClassPerson\Person;
+use ClassPerson\User;
 // include ('inc/sendmail.php');
-// $weather = SQL::q1("SELECT weather,weatherchange FROM world");
-// $world = SQL::q1("SELECT weather,weatherchange FROM world");
+
 $world = SQL::q1("SELECT weather,weatherchange FROM world");
-if ($world["weatherchange"] < tme())
+if ($world["weatherchange"] < tme()) {
 	say_to_chat("#W", "#W", 0, '', '*');
-$auth = new Person(addslashes($_POST["user"]),md5($_POST["pass"]));
+}
+
+$auth = new Person(Person::GetIdByLoginPass(addslashes($_POST["user"]),md5($_POST["pass"])));
 if (@$_POST["pass"]) {
-	$pers = $auth->getAllDatas();
-	// $pers = SQL::q1("SELECT * FROM `users` WHERE `user`='" . addslashes($_POST["user"]) . "' and `pass`='" . (md5($_POST["pass"])) . "'");
+	$pers = $auth->allDatas;
 } else {
 	$pers = SQL::q1("SELECT * FROM `users` WHERE `user`='" . addslashes($_POST["user"]) . "' and `pass`='" . addslashes($_POST["passnmd"]) . "'");
 }
 
-if (empty($_POST))
-	$pers = SQL::q1("SELECT * FROM `users` WHERE `uid`=" . intval($_COOKIE["uid"]) . " and `pass`='" . addslashes($_COOKIE["hashcode"]) . "'");
+if (empty($_POST)) {
+	$auth = new Person(intval($_COOKIE["uid"]));
+	$pers = $auth->allDatas;
+	//$pers = SQL::q1("SELECT * FROM `users` WHERE `uid`=" . intval($_COOKIE["uid"]) . " and `pass`='" . addslashes($_COOKIE["hashcode"]) . "'");
+}
 $err = 1;
-if (isset($pers["uid"]))
+if (isset($auth->uid)) {
 	$err = 0;
+}
+
 if ($pers["flash_pass"] and empty($_POST["spass"])) {
 	include("second_password.php");
 	exit;
-} elseif ($pers["flash_pass"] and $pers["flash_pass"] <> $_POST["spass"])
+} elseif ($pers["flash_pass"] and $pers["flash_pass"] <> $_POST["spass"]) {
 	$err = 1;
+}
+
 if (@$pers["block"] <> '')
 	$err = 2;
 
 if ($pers["diler"] == 1) {
 	$pers["rank"] .= "<pv><diler>";
+}
+if ($err == 1) {
+	$_GET['error'] = "login";
+	include("index.php");
+	exit;
+}
+
+if ($err == 2) {
+	$_GET['error'] = "block";
+	include("index.php");
+	exit;
 }
 
 $lt = date("d.m.Y H:i");
@@ -50,18 +68,7 @@ $design = explode("|", $pers["options"]);
 if ($_COOKIE["uid"] != $pers["uid"] and $_COOKIE["uid"] != 0 and intval($pers["uid"])) {
 	SQL::q("INSERT INTO `one_comp_logins` (`uid1`,`uid2`,`time`) VALUES (" . intval($_COOKIE["uid"]) . ", " . intval($pers["uid"]) . ", '" . tme() . "');");
 }
-if ($err == 1) {
-	$_GET['error'] = "login";
-	include("index.php");
 
-	exit;
-}
-
-if ($err == 2) {
-	$_GET['error'] = "block";
-	include("index.php");
-	exit;
-}
 
 SQL::q("INSERT INTO `ips_in` ( `uid` , `ip` , `date`) VALUES (" . $pers["uid"] . ",'" . show_ip() . "'," . tme() . ");");
 
