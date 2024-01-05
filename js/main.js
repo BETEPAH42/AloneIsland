@@ -7,14 +7,14 @@ var GLOB_ERROR = '';
 
 function co1() {
 
-document.write("<a href='http://www.liveinternet.ru/click' "+
-"target=_blank style='display:none;'><img src='http://counter.yadro.ru/hit?t26.5;r"+
-escape(document.referrer)+((typeof(screen)=="undefined")?"":
-";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
-screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
-";"+Math.random()+
-"' alt='' title='LiveInternet: показано число посетителей за сегодня' "+
-" width=88 height=15 style='display:none;'></a><br>");
+// document.write("<a href='http://www.liveinternet.ru/click' "+
+// "target=_blank style='display:none;'><img src='http://counter.yadro.ru/hit?t26.5;r"+
+// escape(document.referrer)+((typeof(screen)=="undefined")?"":
+// ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+// screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+// ";"+Math.random()+
+// "' alt='' title='LiveInternet: показано число посетителей за сегодня' "+
+// " width=88 height=15 style='display:none;'></a><br>");
 }
 
 function co2() {

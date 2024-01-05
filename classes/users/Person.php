@@ -82,6 +82,11 @@ class Person
         return $this->nicname;
     }
 
+    public function getLevel ()
+    {
+        return $this->level;
+    }
+
     public function getAllDatas ()
     {
         return $this->allDatas;

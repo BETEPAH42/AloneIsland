@@ -93,7 +93,7 @@ http://AloneIsland/into.php?id=" . $pers["uid"] . " </font> <br>С уважен�
 		if (($duration = ($pers["punishment"] - tme())) > 0) echo "<b>На вас наложена кара смотрителя!</b><font class=timef>ещё " .
 			tp($duration) . "</font>(Опыт -50%)<br>";
 		if ($pers["coins"])
-			echo "<a href='forum/' target=_blank class=bg>Форум</a><center><table style='width: 90%' class=but> <tr> <td style='height: 58px; width: 40px; text-align: center; background-image: url(\"images/pgs.gif\")'><b>" . $pers["coins"] . "</b></td> <td class=items>Количество ваших пергаментов , полученных за проведение отличных боёв.<br><i> Они могут вам понадобиться в университете.</i></td> </tr> </table></center>";
+			echo "<center><table style='width: 90%' class=but> <tr> <td style='height: 58px; width: 40px; text-align: center; background-image: url(\"images/pgs.gif\")'><b>" . $pers["coins"] . "</b></td> <td class=items>Количество ваших пергаментов , полученных за проведение отличных боёв.<br><i> Они могут вам понадобиться в университете.</i></td> </tr> </table></center>";
 		echo "
 <p class=weapons_box>
 <font class=blue>Приводи друзей в игру и зарабатывай LN!</font>[<a href=main.php?gopers=ref class=timef>Подробнее...</a>] <br>
