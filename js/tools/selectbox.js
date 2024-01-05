@@ -1,4 +1,4 @@
-﻿jQuery.fn.selectbox = function(options){
+jQuery.fn.selectbox = function(options){
 	/* Default settings */
 	var settings = {
 		className: 'jquery-selectbox',

@@ -1,4 +1,4 @@
-﻿<?
+<?
 $yourzay = SQL::q1("SELECT * FROM `zayavki` WHERE `name`='" . $_SESSION["user"] . "|' and `vsname`='' ;");
 if ($yourzay["name"] <> "" and $_GET["deletezay"] == 1) {
     SQL::q("DELETE FROM `zayavki` WHERE `name`='" . $_SESSION["user"] . "|' and `vsname`='' ;");

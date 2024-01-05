@@ -1,4 +1,4 @@
-﻿d.write('<div  class=but style="position:fixed; left:-5px; top:-5px; z-index: 65000; width:0px;  border-radius:10px; height:0px;display:none;" id="ec"> &nbsp;</div>');
+document.write('<div class="but" style="position:fixed; left:-5px; top:-5px; z-index: 65000; width:0px;  border-radius:10px; height:0px;display:none;" id="ec"></div>');
 var ActionFormUse = 0;
 var ec = $("#ec");
 var Give = '';

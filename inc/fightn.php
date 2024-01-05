@@ -1,4 +1,5 @@
-﻿<?
+<?
+error_reporting(E_ALL);
 mod_st_start("Вывод боя", 0);
 $cans = sql::q("SELECT uid2 FROM turns_f WHERE uid1=" . $pers["uid"] . "");
 $uids = '';
@@ -164,7 +165,7 @@ if ($_GET["fstate"] == 4 and $pers["fstate"] <> 4 and $pers["fstate"] = 4)
 
 	$lt = date("H:i:s ");
 
-	if ($life1 == 0 or $life2 == 0 or $fight["turn"] == "finish" or $fight["turn"] == "finished" or $fight["turn"] == "timeout" or $fight["turn"] == "nicya" or count($turns) < 2) include('inc/inc/finish.php');
+	if ($life1 == 0 or $life2 == 0 or $fight["turn"] == "finish" or $fight["turn"] == "finished" or $fight["turn"] == "timeout" or $fight["turn"] == "nicya" or count($turns) < 2) include('inc/fights/finish.php');
 	else {
 
 		$kblast = 0;

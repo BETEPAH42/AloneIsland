@@ -4,7 +4,7 @@ header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");
 // header("Content-type: text/html; charset=utf-8");
 $opt = explode("|", $_COOKIE["options"]);
-include_once "classes/sql.php";
+require_once 'classes/loadclasses.php';
 include_once 'inc/functions.php';
 
 if (@$_GET["sort"]) {
@@ -21,7 +21,6 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 
 ?>
 <script src='js/newch_list.js?2'></script>
-<script>
 	<?php
 	$pers = SQL::q1("SELECT `x`,`y`,`location`,`block`,`pass`,`rank`,
 	`sign`,`user`,`uid`,`diler`,`priveleged`,`level` FROM `users` WHERE `uid` = '" . (int)$_COOKIE["uid"] . "'");
@@ -55,6 +54,7 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 		$locname = SQL::q1("SELECT name FROM `locations` WHERE `id`='" . $place . "' ;");
 	else
 		$locname = SQL::q1("SELECT name FROM `nature` WHERE `x`='" . $pers["x"] . "' and `y`='" . $pers["y"] . "' ;");
+	echo "<script>";
 	echo "let locname = '" . $locname['name'] . "';";
 	echo "let xy='" . $pers["x"] . " : " . $pers["y"] . "';";
 
@@ -63,41 +63,36 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 	else
 		echo "let vsg=0;";
 
-
 	if (substr_count($pers["rank"], "<molch>") or $pers["diler"] == '1' or $pers["priveleged"] or 1)
 		echo "let priveleged=1;";
 	else
 		echo "let priveleged=0;";
-
-
+		echo "</script>";
 	if ($place == 'arena') $dQ = 'or sign=\'c2\'';
 
 	if (empty($_GET["view"]) or $_GET["view"] == "this") {
 		if ($place <> 'out')
 			$res = SQL::q("SELECT sign,user,level,state,diler,clan_name,uid,priveleged,silence,invisible,clan_state FROM `users` WHERE `online`=1 and (`location`='" . $place . "' " . $dQ . ");");
 		else
-			$res = sql::q("SELECT sign,user,level,state,diler,clan_name,uid,priveleged,silence,invisible,clan_state FROM `users` WHERE `online`=1 and `location`='out' and x=" . $pers["x"] . " and y=" . $pers["y"]);
+			$res = SQL::q("SELECT sign,user,level,state,diler,clan_name,uid,priveleged,silence,invisible,clan_state FROM `users` WHERE `online`=1 and `location`='out' and x=" . $pers["x"] . " and y=" . $pers["y"]);
 	} else
-		$res = sql::q("SELECT sign, user, level, state, diler, clan_name, uid, priveleged, silence, invisible, clan_state FROM `users` WHERE `online` = 1;");
+		$res = SQL::q("SELECT sign, user, level, state, diler, clan_name, uid, priveleged, silence, invisible, clan_state FROM `users` WHERE `online` = 1;");
 	$i = 0;
 	$s = '';
 	$tyt = 0;
 
-
-	$r = '';
+	$r = [];
 	if ($place <> 'out')
-		$rsds = SQL::q("SELECT * FROM residents WHERE location='" . $place . "'");
+		$rsds = SQL::q("SELECT * FROM residents WHERE location=? AND online=1;",[$place]);
 	else
-		$rsds = SQL::q("SELECT * FROM residents WHERE x=" . $pers["x"] . " and y=" . $pers["y"] . " and location='out'");
+		$rsds = SQL::q("SELECT * FROM residents WHERE x=" . $pers["x"] . " AND y=" . $pers["y"] . " AND location='out' AND online=1;");
 	if (count($rsds) > 0) {
 		foreach ($rsds as $rs) {
-			$b = SQL::q1("SELECT level FROM bots WHERE id=" . $rs["id_bot"])['level'];
-			$r .= "'" . $rs["name"] . "|" . $b . "|" . $rs["id"] . "|" . $rs["id_bot"] . "'";
-			$r .= ",";
+			$b = SQL::q1("SELECT level FROM bots WHERE id=" . $rs["id_bot"])['level'] ?? 0;
+			$r [] = "'".$rs["name"] . "|" . $b . "|" . $rs["id"] . "|" . $rs["id_bot"]."'";
 			$tyt++;
 		}
 	}
-
 	$ignore = '';
 	$ign  = SQL::q("SELECT nick FROM ignor WHERE uid=" . $pers["uid"] . "");
 	foreach ($ign as $ig)
@@ -143,13 +138,13 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 		}
 		if ($inv) $s .= ",";
 	}
+	echo "<script>";
 	echo "let list = new Array('";
 	echo substr($s, 0, strlen($s) - 2);
 	echo "');";
-	echo "var residents = new Array('";
-	echo substr($r, 0, strlen($r) - 2);
-	echo "'); ";
-
+	echo "var residents = new Array(";
+	echo implode(",",$r);
+	echo "); ";
 	echo "var zds=" . $tyt . "; show_head();";
 	echo "show_list('" . intval($_GET["sort"]) . "','" . $_GET["view"] . "');";
 

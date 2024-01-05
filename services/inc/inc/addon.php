@@ -1,4 +1,4 @@
-﻿<?
+<?
 $book = sql::q1("SELECT slots,`index`,id FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and stype='book'");
 if ($_GET["into_book"] and $book["slots"]) {
 	$book["index"] .= "|" . addslashes($_GET["into_book"]) . "|";

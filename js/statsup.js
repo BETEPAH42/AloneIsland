@@ -1,4 +1,4 @@
-﻿function getByName(nn) {
+function getByName(nn) {
 	var a = d.getElementsByName(nn);
 	return a[0];
 }

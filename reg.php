@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 error_reporting(0);
 $a1 = md5(microtime());
 $a2 = time();
@@ -227,13 +227,13 @@ function uncrypt2($value, $key)
 				<td class="items">Дата рождения</td>
 				<td>
 					<select name="dayd" class="items">
-						<? for ($i = 1; $i < 32; $i++) echo  "<option value=" . $i . ">" . $i . "</option>"; ?>
+						<?php for ($i = 1; $i < 32; $i++) echo  "<option value=" . $i . ">" . $i . "</option>"; ?>
 					</select>
 					<select name="monthd" class="items">
-						<? for ($i = 1; $i < 13; $i++) echo  "<option value=" . $i . ">" . $i . "</option>"; ?>
+						<?php for ($i = 1; $i < 13; $i++) echo  "<option value=" . $i . ">" . $i . "</option>"; ?>
 					</select>
 					<select name="yeard" class="items">
-						<? for ($i = 1959; $i < 2000; $i++) echo  "<option value=" . $i . ">" . $i . "</option>"; ?>
+						<?php for ($i = 1959; $i < 2000; $i++) echo  "<option value=" . $i . ">" . $i . "</option>"; ?>
 					</select>
 				</td>
 				<td></td>

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * FancyBox - simple jQuery plugin for fancy image zooming
  * Examples and documentation at: http://fancy.klade.lv/
  * Version: 1.0.0 (29/04/2008)

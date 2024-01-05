@@ -1,41 +1,56 @@
-﻿<script type="text/javascript" src="js/fish_edit.js"></script>
-<?
-
-
+<script type="text/javascript" src="/js/fish_edit.js"></script>
+<script language=JavaScript src='/js/adm_new.js' type="text/javascript"></script>
+<script>
+	function give(id) {
+		init_main_layer();
+		ml.innerHTML += '<form action="main.php?giveFish=' + id + '" method=POST>КОМУ: <input class=login type=text value="" name=nickfor size=20><hr><input class=login type=submit value=[OK]></form>';
+	}
+</script>
+<?php
+if (@$_GET["giveFish"]) {
+    $uid = SQL::q1("SELECT uid FROM users WHERE user='" . $_POST["nickfor"] . "'")['uid'];
+    if(insert_wp_fish((int)$_GET["giveFish"], $uid)){
+            echo "Удачно выдано";
+    }
+}
+if (@$_GET["fishining"]) {
+	echo "<span style='color:red;'>{$_GET["fishining"]}</span>";
+}
 if ($_GET["zapis"] == "yes") {
 	sql::q("INSERT INTO fish_new (`name` ,`water` ,`active` ,`prim_1` , `prim_2` , `prim_3` , `lvl` , `ves` , `price`) VALUES ('" . $_GET["fish"] . "' , '" . $_GET["water"] . "' , '" . $_GET["active"] . "' , '" . $_GET["prim_1"] . "' , '" . $_GET["prim_2"] . "' , '" . $_GET["prim_3"] . "' , '" . $_GET["lvl"] . "' , '" . $_GET["ves"] . "' , '" . $_GET["price"] . "');");
 	echo "Сохранено " . $_GET["fish"] . " [" . $_GET["water"] . "]";
 }
-echo "<table width=10%><tr><td><a class=bga href=main.php?go=administration>Назад в меню</a></td></tr></table>";
+echo "<table width=10%><tr><td><a class='bga' href='main.php?go=administration'>Назад в меню</a></td></tr></table>";
+
 $sortir = "";
 $priman = "";
-if ($_GET["lvl"]) {
-	echo $_GET["lvl"] . " " . $_GET["water"];
+$qyery = "";
+if (@$_GET["lvl"]) {
 	$lvl = "lvl={$_GET["lvl"]}";
-	$sortir = "WHERE {$lvl}";
+	$query .= "WHERE {$lvl}";
 }
-if ($_GET["water"]) {
-
-	$waters = intval($_GET["water"]);
+if (@$_GET["water"]) {
+	$waters = " water like '%{$_GET["water"]}%'";
+	if(trim($query)){
+		$query .= " and ".$waters;
+	} else {
+		$query .= "WHERE {$waters}";
+	}
+}
+if (@$_GET["priman"]) {
+	if ($_GET["lvl"] <> "all") {
+		$priman = "(prim_1 like '{$_GET["priman"]}|__' or prim_2 like '{$_GET["priman"]}|__' or prim_3 like '{$_GET["priman"]}|__') ";
+	}
+	if(trim($query)){
+		$query .= " and ".$priman;
+	} else {
+		$query .= "WHERE {$priman}";
+	}
 }
 
-if ($_GET["priman"] <> "all") {
-	if (!$_GET["lvl"]) $priman = "WHERE (prim_1 like '{$_GET["priman"]}|__' or prim_2 like '{$_GET["priman"]}|__' or prim_3 like '{$_GET["priman"]}|__') ";
-	else $priman = "and (prim_1 like '{$_GET["priman"]}|__' or prim_2 like '{$_GET["priman"]}|__' or prim_3 like '{$_GET["priman"]}|__') ";
-}
-/*	Echo ($_GET["water"]-1)." ghj ->";
-		$fishhh2=sql::q1("SELECT * FROM fish_new WHERE id=1");
-		if (preg_match_all("/\b".($_GET["water"]-1)."\b/i", $fishhh2["water"], $zzz)) {
-    echo " Вхождение найдено.".$zzz[0][0]." в-> ". $fishhh2["water"];
-} else {
-    echo " Вхождение не найдено.";}
-		//if ()
-		
-		//$water = "water={$_GET["water"]}";*/
+$fishhh = "SELECT * FROM fish_new {$query} ORDER BY id ASC";
 
-$fishhh = "SELECT * FROM fish_new {$sortir} {$priman} ORDER BY id ASC";
-
-echo "<center><form method=GET>Сотрировка: по уровню <form><select name=lvl>";
+echo "<br><center><form method='GET'>Сотрировка: по уровню <form><select name='lvl'>";
 if ($_GET["lvl"] == "0") $sl0 = "selected";
 echo "<option value=0 {$sl0}>Все</option>";
 if ($_GET["lvl"] == "1") $sl1 = "selected";
@@ -128,16 +143,24 @@ echo "<option value=bl";
 if ($_GET["priman"] == "bl") echo " selected";
 echo ">Блесна</option>";
 echo "</select>
-<input type=submit value=Отсортировать>
+<input type='submit' value='Отсортировать'>
 </form>
 </center>";
 
-
-echo "<center class=hp>БАЗА ДАННЫХ РЫБЫ</center>
-<table width=90% align=center>
-<tr><td align=center>ID</td><td align=center>Название рыбы<br>[уровень]:</td><td align=center>Активность рыбки:</td>
-<td align=center>Изображение</td><td align=center>Место обитания</td><td align=center>Приманки</td>
-<td align=center>Вес</td><td align=center>Цена за кг.</td><td align=center>Примечание</td></tr>";
+echo "<center class='hp'>БАЗА ДАННЫХ РЫБЫ</center>
+<table width=90% align='center'>
+	<tr>
+		<td align='center'>ID</td>
+		<td align='center'>Название рыбы<br>[уровень]:</td>
+		<td align='center'>Активность рыбки:</td>
+		<td align='center'>Изображение</td>
+		<td align='center'>Место обитания</td>
+		<td align='center'>Приманки</td>
+		<td align='center'>Вес</td>
+		<td align='center'>Цена за кг.</td>
+		<td align='center'>Примечание</td>
+		<td align='center'>Действия</td>
+	</tr>";
 
 foreach (SQL::q($fishhh) as $fishh) {
 
@@ -183,35 +206,50 @@ foreach (SQL::q($fishhh) as $fishh) {
 		$i++;
 	}
 
-	if (preg_match("/\b" . $waters . "\b/i", $fishh["water"])) {
-		echo "<tr><td align=center>" . $fishh["id"] . "</td><td><font class=user>" . $fishh["name"] . " [" . $fishh["lvl"] . "]</font></td>
-<td align=center>" . $d[0] . "<br>" . $d[1] . "</td>
-<td align=center onclick=\"fish_edits('" . $fishh["name"] . "', '{$fishh["id"]}', '{$fishh["lvl"]}')\" style='cursor:pointer'><img src=images/weapons/fish_new/" . $fishh["id"] . ".gif></td>
-<td align=center>" . $water[0] . " " . $water[1] . " " . $water[2] . "</td>
-<td align=center>" . $prim[1][0] . " " . $prim[1][1] . "<br>" . $prim[2][0] . " " . $prim[2][1] . "<br>" . $prim[3][0] . " " . $prim[3][1] . "</td>
-<td align=center>" . $ves[0] . "<br>" . $ves[1] . "</td><td align=center>" . $fishh["price"] . "<br></td>
-<td align=center>навык<br>" . $fishh["exp"] . "</td></tr>";
-	} else echo "";
+	// if (preg_match("/\b" . $waters . "\b/i", $fishh["water"])) {
+		echo "<tr><td align=center>" . $fishh["id"] . "</td><td><font class=user>" . $fishh["name"] . " [" . $fishh["lvl"] . "]</font>
+		</td>
+		<td align=center>" . $d[0] . "<br>" . $d[1] . "</td>
+		<td align=center onclick=\"fish_edits('" . $fishh["name"] . "', '{$fishh["id"]}', '{$fishh["lvl"]}')\" style='cursor:pointer'><img src=images/weapons/fish_new/" . $fishh["id"] . ".gif></td>
+		<td align=center>" . $water[0] . " " . $water[1] . " " . $water[2] . "</td>
+		<td align=center>" . $prim[1][0] . " " . $prim[1][1] . "<br>" . $prim[2][0] . " " . $prim[2][1] . "<br>" . $prim[3][0] . " " . $prim[3][1] . "</td>
+		<td align=center>" . $ves[0] . "<br>" . $ves[1] . "</td><td align=center>" . $fishh["price"] . "<br></td>
+		<td align=center>навык<br>" . $fishh["exp"] . "</td>
+		<td align=center>
+			<input type=button class=login onclick='give({$fishh["id"]});' value='Выдать'>
+		</td>
+	</tr>";
+	// } else echo "";
 }
 if ($pers["user"] == "BETEPAH") {
-	echo "<tr><td align=center><form action='main.php?go=fishin&add=fish' method='POST'>
-Название рыбы:<br><input type=text name=fish value='" . $_POST["fish"] . "' size=6></td>
-<td align=center border=4>Активность рыбы:<br><input type=text name=active value='" . $_POST["active"] . "' size=6></td>
-<td align=center>Уровень рыбы:<br><input type=text name=lvl value='" . $_POST["lvl"] . "' maxlength=4 size=4></td>
-<td  align=center>Место обитания<br><input type=text name=water value='" . $_POST["water"] . "' maxlength=4 size=4></td>
-<td align=center>Приманка №1<br><input type=text name=prim_1 value='" . $_POST["prim_1"] . "' maxlength=4 size=4></td>
-<td align=center>Приманка №2<br><input type=text name=prim_2 value='" . $_POST["prim_2"] . "' maxlength=4 size=4></td>
-<td align=center>Приманка №3<br><input type=text name=prim_3 value='" . $_POST["prim_3"] . "' maxlength=4 size=4></td>
-<td align=center>Цена за 1 кг.<br><input type=text name=price value='" . $_POST["price"] . "' maxlength=4 size=4></td>
-<td align=center>Мин./макc. ВЕС<br><input type=text name=ves value='" . $_POST["ves"] . "' size=4></td>
-</tr><tr><td colspan=9 align=right><input type=submit value=Ввести></form></td></tr></table>
-<center class=hp>Результат</center>";
+	echo "
+		<tr>
+			<td align='center'>
+				<form action='main.php?go=fishin&add=fish' method='POST'>
+					Название рыбы:<br>
+					<input type='text' name='fish' value='" . $_POST["fish"] . "' size=6>
+			</td>
+			<td align='center' border=4>Активность рыбы:<br><input type=text name=active value='" . $_POST["active"] . "' size=6></td>
+			<td align='center'>Уровень рыбы:<br><input type=text name=lvl value='" . $_POST["lvl"] . "' maxlength=4 size=4></td>
+			<td align='center'>Место обитания<br><input type=text name=water value='" . $_POST["water"] . "' maxlength=4 size=4></td>
+			<td align='center'>Приманка №1<br><input type=text name=prim_1 value='" . $_POST["prim_1"] . "' maxlength=4 size=4></td>
+			<td align='center'>Приманка №2<br><input type=text name=prim_2 value='" . $_POST["prim_2"] . "' maxlength=4 size=4></td>
+			<td align='center'>Приманка №3<br><input type=text name=prim_3 value='" . $_POST["prim_3"] . "' maxlength=4 size=4></td>
+			<td align='center'>Цена за 1 кг.<br><input type=text name=price value='" . $_POST["price"] . "' maxlength=4 size=4></td>
+			<td align='center'>Мин./макc. ВЕС<br><input type=text name=ves value='" . $_POST["ves"] . "' size=4></td>
+		</tr>
+		<tr>
+			<td colspan='9' align='right'>
+				<input type='submit' value='Ввести'></form>
+			</td>
+		</tr>
+	</table>";
+	// echo "<center class=hp>Результат</center>";
 	if ($_GET["add"] == "fish" and $pers["user"] == "BETEPAH") {
 		//SQL::q("INSERT INTO fish_new (`name` ,`water` ,`prim_1` , `prim_2` , `prim_3` , `lvl` , `ves` , `price`) VALUES ('".$_POST["fish"]."' , '".$_POST["water"]."' , '".$_POST["prim_1"]."' , '".$_POST["prim_2"]."' , '".$_POST["prim_3"]."' , '".$_POST["lvl"]."' , '".$_POST["ves"]."' , '".$_POST["price"]."');");
-?>
+	?>
 		<div class=lbutton style='display:block;position:absolute;left:30%;top:40%;width:40%;z-index:2;'>
-			<? echo "<center><font size=3>Вы ввели: " . $_POST["fish"] . " | " . $_POST["lvl"] . " | " . $_POST["water"] . " | " . $_POST["prim_1"] . " | " . $_POST["prim_2"] . " | 
-" . $_POST["prim_3"] . " | " . $_POST["price"] . " | " . $_POST["ves"] . " | </font></center>";
+			<?php echo "<center><font size=3>Вы ввели: " . $_POST["fish"] . " | " . $_POST["lvl"] . " | " . $_POST["water"] . " | " . $_POST["prim_1"] . " | " . $_POST["prim_2"] . " | " . $_POST["prim_3"] . " | " . $_POST["price"] . " | " . $_POST["ves"] . " | </font></center>";
 			?>
 			<div align=center style='display:block;z-index:1;'>
 				<table class=bt align=center width=80%>
@@ -224,54 +262,51 @@ if ($pers["user"] == "BETEPAH") {
 					</tr>
 					<tr>
 						<td width=40%>
-							<center class=ma style=\"display:none;cursor:pointer;\">
+							<center class=ma style="display:none;cursor:pointer;">
 								<? echo "<a href='main.php?go=fishin&zapis=yes&fish=" . $_POST["fish"] . "&active=" . $_POST["active"] . "&water=" . $_POST["water"] . "&prim_1=" . $_POST["prim_1"] . "&prim_2=" . $_POST["prim_2"] . "&prim_3=" . $_POST["prim_3"] . "&lvl=" . $_POST["lvl"] . "&price=" . $_POST["price"] . "&ves=" . $_POST["ves"] . "'>Да</a>";
 								?>
 							</center>
 						</td>
 						<td width=20%></td>
 						<td width=40%>
-							<center class=hp style=\"display:none;cursor:pointer;\"><a href=main.php?go=fishin class=knopka>Нет</a></center>
+							<center class=hp style="display:none;cursor:pointer;"><a href=main.php?go=fishin class=knopka>Нет</a></center>
 						</td>
 					</tr>
 				</table>
 			</div>
 		</div>
-
 	<?
 	}
 	if ($_GET["add"] == "fish_edit" and $pers["user"] == "BETEPAH") {
 		//SQL::q("INSERT INTO fish_new (`name` ,`water` ,`prim_1` , `prim_2` , `prim_3` , `lvl` , `ves` , `price`) VALUES ('".$_POST["fish"]."' , '".$_POST["water"]."' , '".$_POST["prim_1"]."' , '".$_POST["prim_2"]."' , '".$_POST["prim_3"]."' , '".$_POST["lvl"]."' , '".$_POST["ves"]."' , '".$_POST["price"]."');");
 	?>
 		<div class=lbutton style='display:block; position:absolute; left:30%; top:40%; width:40%; z-index:2;'>
-			<? echo "<center><font size=3>Вы ввели: " . $_POST["fish"] . " | " . $_POST["lvl"] . " | " . $_POST["water"] . " | " . $_POST["prim_1"] . " | " . $_POST["prim_2"] . " | 
-" . $_POST["prim_3"] . " | " . $_POST["price"] . " | " . $_POST["ves"] . " | </font></center>";
+			<? echo "<center><font size=3>Вы ввели: " . $_POST["fish"] . " | " . $_POST["lvl"] . " | " . $_POST["water"] . " | " . $_POST["prim_1"] . " | " . $_POST["prim_2"] . " | " . $_POST["prim_3"] . " | " . $_POST["price"] . " | " . $_POST["ves"] . " | </font></center>";
 			?>
-			<div align=center style='display:block;z-index:1;'>
-				<table class=bt align=center width=80%>
+			<div align='center' style='display:block;z-index:1;'>
+				<table class='bt' align='center' width=80%>
 					<tr>
 						<td colspan=3>
-							<center class=but>
-								<font class=hp>Хотите сохранить эти данные?</font>
+							<center class='but'>
+								<font class='hp'>Хотите сохранить эти данные?</font>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td width=40%>
-							<center class=ma style=\"display:none;cursor:pointer;\">
+							<center class='ma' style="display:none;cursor:pointer;">
 								<? echo "<a href='main.php?go=fishin&zapis=yes&fish=" . $_POST["fish"] . "&active=" . $_POST["active"] . "&water=" . $_POST["water"] . "&prim_1=" . $_POST["prim_1"] . "&prim_2=" . $_POST["prim_2"] . "&prim_3=" . $_POST["prim_3"] . "&lvl=" . $_POST["lvl"] . "&price=" . $_POST["price"] . "&ves=" . $_POST["ves"] . "'>Да</a>";
 								?>
 							</center>
 						</td>
 						<td width=20%></td>
 						<td width=40%>
-							<center class=hp style=\"display:none;cursor:pointer;\"><a href=main.php?go=fishin class=knopka>Нет</a></center>
+							<center class='hp' style="display:none;cursor:pointer;"><a href='main.php?go=fishin' class='knopka'>Нет</a></center>
 						</td>
 					</tr>
 				</table>
 			</div>
 		</div>
-
 <?
 	}
 }

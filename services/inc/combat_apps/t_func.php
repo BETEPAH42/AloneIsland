@@ -1,4 +1,4 @@
-﻿<?
+<?
 function start_t1($a = 20, $STEP = 1, $tour = 1, $quest_id = 1)
 {
 	global $t1, $pers;

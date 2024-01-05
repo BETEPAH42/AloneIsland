@@ -1,4 +1,4 @@
-﻿<?
+<?
 $lts = date("H:i");
 
 $zakname = '';
@@ -224,7 +224,7 @@ if ($r <= round($pers["sm5"] / 3 + 3 + $pers["od_b"])) {
 				$fight["name"] = str_replace($botlib . "|", $botlibnew . "|", $fight["name"]);
 			if (strpos(" " . $fight["namevs"], $botlib) > 0)
 				$fight["namevs"] = str_replace($botlib . "|", $botlibnew . "|", $fight["namevs"]);
-			sql::q("UPDATE `fights` SET 	 `ltime`=" . time() . " ,
+			SQL::q("UPDATE `fights` SET 	 `ltime`=" . time() . " ,
 	`name`='" . $fight["name"] . "'  , `namevs`='" . $fight["namevs"] . "' WHERE `id`='" . $fight["id"] . "' ;");
 			$kl = 1;
 		}
@@ -263,7 +263,7 @@ if ($r <= round($pers["sm5"] / 3 + 3 + $pers["od_b"])) {
 		$radius = sql::q1("SELECT MAX(radius) as max FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and type='orujie'");
 		$radius = $radius['max'];
 		if ($radius < 2) $radius = 2;
-		if ($pers["fstate"] == 2 and ARROWS > 0 or $pers["fstate"] <> 2)
+		if ($pers["fstate"] == 2 && ARROWS > 0 || $pers["fstate"] <> 2)
 			if ($radius >= (sqrt(sqr($pers["xf"] - $persvs["xf"]) + sqr($pers["yf"] - $persvs["yf"]))) or $magic) {
 				$pers["damage_give"] = 0;
 				$pers["damage_get"] = $pers["chp"];

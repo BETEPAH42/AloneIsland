@@ -1,4 +1,4 @@
-﻿<script type="text/javascript" src="js/newup.js?k"></script>
+<script type="text/javascript" src="js/newup.js?k"></script>
 <script>
   <?
   $t = tme();
@@ -109,6 +109,14 @@
       if (@$_GET["go"] == "fishin" and $pers["priveleged"]) {
         SQL::q("UPDATE `users` SET `curstate` = 33 WHERE `uid`=" . UID . " ;");
         $pers["curstate"] = 33;
+      }
+      if (@$_GET["go"] == "gheralbism" and $pers["priveleged"]) {
+        SQL::q("UPDATE `users` SET `curstate` = 34 WHERE `uid`=" . UID . " ;");
+        $pers["curstate"] = 34;
+      }
+      if (@$_GET["go"] == "test" and $pers["priveleged"]) {
+        SQL::q("UPDATE `users` SET `curstate` = 35 WHERE `uid`=" . UID . " ;");
+        $pers["curstate"] = 35;
       }
     }
   }

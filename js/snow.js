@@ -1,4 +1,4 @@
-﻿//snow
+//snow
 
 var no = 15;
 var speed = 36;

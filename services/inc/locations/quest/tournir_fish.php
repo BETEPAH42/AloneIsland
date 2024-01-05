@@ -1,4 +1,4 @@
-﻿<?
+<?
 echo "
 <script type='text/javascript'>
 //обновление ДИВА каждую секунду

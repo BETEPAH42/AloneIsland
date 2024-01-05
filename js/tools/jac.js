@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Just Another Carousel v1.0
  * http://intrepidstudios.com/projects/jquery-just-another-carousel/
  *

@@ -1,4 +1,4 @@
-﻿/*
+/*
     tabSlideOUt v1.1
     
     By William Paoli: http://wpaoli.building58.com

@@ -3,9 +3,16 @@ var HELP = 0;
 var upSc = '112';
 var resize_f = 0;
 
-d.write('<SCRIPT src="js/jquery.js?' + upSc + '"></SCRIPT>');
-d.write('<script type="text/javascript" src="js/yourpers.js?1' + upSc + '"></script><LINK href=css/main.css?' + upSc + ' rel=STYLESHEET type=text/css><LINK href=css/selectbox.css?' + upSc + ' rel=STYLESHEET type=text/css><script language=javascript src=js/pers.js?' + upSc + '></script><script language=javascript src=js/statsup.js?' + upSc + '></script><SCRIPT language=javascript src="js/sell.js?' + upSc + '"></SCRIPT><SCRIPT  language=javascript SRC="js/w.js?' + upSc + '"></SCRIPT><SCRIPT src="js/fightn.js?' + upSc + '"></SCRIPT><SCRIPT src="js/tools/scrollto.js"></SCRIPT>');
-
+d.write('<script src="/js/jquery.js?' + upSc + '"></script>');
+d.write('<script type="text/javascript" src="/js/yourpers.js?1' + upSc + '"></script>'+
+	'<link href=/css/main.css?' + upSc + ' rel=STYLESHEET type=text/css>'+
+	'<link href=/css/selectbox.css?' + upSc + ' rel=STYLESHEET type=text/css>'+
+	'<script language=javascript src=/js/pers.js?' + upSc + '></script>'+
+	'<script language=javascript src=/js/statsup.js?' + upSc + '></script>'+
+	'<script language=javascript src="/js/sell.js?' + upSc + '"></script>'+
+	'<script language=javascript src="/js/w.js?' + upSc + '"></script>'+
+	'<script src="/js/fightn.js"></script>'+
+	'<script src="/js/tools/scrollto.js"></script>');
 
 function BodyScroll() {
 	if (document.body.scrollTop > 10) top.hide_logo();
@@ -30,8 +37,8 @@ function waiter(time, upd, info) {
 	//if (time>10 && top.ctip && top._duration) setTimeout("show_tip(0)",7000);
 	//$('.head').get(7).disabled = true;
 	var addtxt = '';
-	addtxt = '<table width=190 border=0 cellspacing=0 cellspadding=0><tr><td align=right><img src=images/skill.gif height=8 width=0 id=waiter_on></td><td align=left>';
-	addtxt += '<img src=images/no.png height=8 width=190 id=waiter_off></td></table>';
+	addtxt = '<table width=190 border=0 cellspacing=0 cellspadding=0><tr><td align=right><img src=/images/skill.gif height=8 width=0 id=waiter_on></td><td align=left>';
+	addtxt += '<img src=/images/no.png height=8 width=190 id=waiter_off></td></table>';
 	if (info != undefined && info != '') addtxt += '<br>' + info;
 	document.getElementById("waiter").innerHTML = 'Действие, ещё <i><b id=waiter_time>' + allTime + '</b> сек...</i><br>' + addtxt;
 
@@ -129,8 +136,8 @@ function show_head(curstate, fourthname, code, apps, trvm, help) {
 		$buttons += ('</table>');
 		top.document.getElementById('title_buttons').innerHTML = $buttons;
 
-		d.write("<div style='height:3%;'></div>");
-		d.write("<div id=_top style='width:100%; height:18px; background-image:url(\"images/DS/main_topline.jpg\"); margin-top:2px;'></div>");
+		d.write("<div style='height:7%;'></div>");
+		d.write("<div id=_top style='width:100%; height:18px; background-image:url(\"/images/DS/main_topline.jpg\"); margin-top:17px;'></div>");
 
 
 		document.onscroll = function () {

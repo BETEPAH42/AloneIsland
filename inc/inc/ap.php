@@ -1,4 +1,4 @@
-﻿<?
+<?php
 $zeroyed = 0;
 if (@$_GET["fz"] and $pers["level"] >= 5) unset($_GET["fz"]);
 if ($pers["action"] == -10) {

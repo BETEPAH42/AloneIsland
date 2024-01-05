@@ -1,37 +1,59 @@
 <?php
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
-
-require_once 'classes/sql.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once 'classes/loadclasses.php';
 include_once 'inc/functions.php';
+
+use ClassPerson\Person;
+use ClassPerson\User;
 // include ('inc/sendmail.php');
-// $weather = SQL::q1("SELECT weather,weatherchange FROM world");
-// $world = SQL::q1("SELECT weather,weatherchange FROM world");
+
 $world = SQL::q1("SELECT weather,weatherchange FROM world");
-if ($world["weatherchange"] < tme())
+if ($world["weatherchange"] < tme()) {
 	say_to_chat("#W", "#W", 0, '', '*');
+}
 
-if (@$_POST["pass"])
-	$pers = SQL::q1("SELECT * FROM `users` WHERE `user`='" . addslashes($_POST["user"]) . "' and `pass`='" . (md5($_POST["pass"])) . "'");
-else
+$auth = new Person(Person::GetIdByLoginPass(addslashes($_POST["user"]),md5($_POST["pass"])));
+if (@$_POST["pass"]) {
+	$pers = $auth->allDatas;
+} else {
 	$pers = SQL::q1("SELECT * FROM `users` WHERE `user`='" . addslashes($_POST["user"]) . "' and `pass`='" . addslashes($_POST["passnmd"]) . "'");
+}
 
-if (empty($_POST))
-	$pers = SQL::q1("SELECT * FROM `users` WHERE `uid`=" . intval($_COOKIE["uid"]) . " and `pass`='" . addslashes($_COOKIE["hashcode"]) . "'");
+if (empty($_POST)) {
+	$auth = new Person(intval($_COOKIE["uid"]));
+	$pers = $auth->allDatas;
+	//$pers = SQL::q1("SELECT * FROM `users` WHERE `uid`=" . intval($_COOKIE["uid"]) . " and `pass`='" . addslashes($_COOKIE["hashcode"]) . "'");
+}
 $err = 1;
-if (isset($pers["uid"]))
+if (isset($auth->uid)) {
 	$err = 0;
+}
+
 if ($pers["flash_pass"] and empty($_POST["spass"])) {
 	include("second_password.php");
 	exit;
-} elseif ($pers["flash_pass"] and $pers["flash_pass"] <> $_POST["spass"])
+} elseif ($pers["flash_pass"] and $pers["flash_pass"] <> $_POST["spass"]) {
 	$err = 1;
+}
+
 if (@$pers["block"] <> '')
 	$err = 2;
 
 if ($pers["diler"] == 1) {
 	$pers["rank"] .= "<pv><diler>";
+}
+if ($err == 1) {
+	$_GET['error'] = "login";
+	include("index.php");
+	exit;
+}
+
+if ($err == 2) {
+	$_GET['error'] = "block";
+	include("index.php");
+	exit;
 }
 
 $lt = date("d.m.Y H:i");
@@ -46,18 +68,7 @@ $design = explode("|", $pers["options"]);
 if ($_COOKIE["uid"] != $pers["uid"] and $_COOKIE["uid"] != 0 and intval($pers["uid"])) {
 	SQL::q("INSERT INTO `one_comp_logins` (`uid1`,`uid2`,`time`) VALUES (" . intval($_COOKIE["uid"]) . ", " . intval($pers["uid"]) . ", '" . tme() . "');");
 }
-if ($err == 1) {
-	$_GET['error'] = "login";
-	include("index.php");
 
-	exit;
-}
-
-if ($err == 2) {
-	$_GET['error'] = "block";
-	include("index.php");
-	exit;
-}
 
 SQL::q("INSERT INTO `ips_in` ( `uid` , `ip` , `date`) VALUES (" . $pers["uid"] . ",'" . show_ip() . "'," . tme() . ");");
 
@@ -89,7 +100,17 @@ if ($drday == date("d") and $drmonth == date("m") and ($pers["DR_congratulate"] 
 }
 //if ($pers["DR_congratulate"]<>$DR_congratulate) set_vars("DR_congratulate=".$pers["DR_congratulate"]."");
 
-echo "<!DOCTYPE html><html><head><title>Одинокие земли[" . $pers["user"] . "]</title><meta content='text/html; charset=utf-8' Http-Equiv=Content-type><link rel='favicon' href='images/icon.ico'><link rel='shortcut icon' href='images/pict.png'><link href='main.css' rel=stylesheet type=text/css></head><body scroll=no style='overflow:hidden;'><script src='js/cookie.js'></script><script SRC='js/jquery.js'></script><script src='js/game.js?2'></script><script>";
+echo "<!DOCTYPE html><html><head><title>Одинокие земли[" . $pers["user"] . "]</title>
+<meta content='text/html; charset=utf-8' Http-Equiv=Content-type>
+<link rel='favicon' href='images/icon.ico'>
+<link rel='shortcut icon' href='images/pict.png'>
+<link href='main.css' rel=stylesheet type=text/css></head>
+<body scroll=no style='overflow:hidden;'>
+<script src='js/cookie.js'></script>
+<script SRC='js/jquery.js'></script>
+<script src='js/game.js?2'></script>
+<script src='js/fight.js'></script>
+<script src='js/pers.js'></script><script>";
 $today = getdate();
 echo "let ctip = " . $pers["ctip"] . ";";
 

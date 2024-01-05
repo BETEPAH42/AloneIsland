@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //Сдаём вещь в лавку
 ###############
 if (isset($_GET["lavkasdat"]) and $pers["punishment"] < $time and strpos(" " . $pers["location"], "lavka")) {

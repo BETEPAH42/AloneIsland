@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (isset($_GET["fishing"])) {
 	if (date("H") > 6 and date("H") < 22) $hrfish = 1;
 	else $hrfish = 0;

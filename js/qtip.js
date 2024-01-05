@@ -1,4 +1,4 @@
-﻿/**
+/**
  * jquery.qtip. The jQuery tooltip plugin
  * 
  * Copyright (c) 2009 Craig Thompson

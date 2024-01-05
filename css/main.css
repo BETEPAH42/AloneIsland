@@ -59,16 +59,7 @@ BODY
 	FONT-SIZE: 12px;
 	COLOR: #222222;
 	MARGIN: 0px;
-	scrollbar-3dlight-color: #DDDDDD;
-	scrollbar-arrow-color: #C6C6C6;
-	scrollbar-base-color: #EEEEEE;
-	scrollbar-darkshadow-color: #EEEEEE;
-	scrollbar-face-color: #EEEEEE;
-	scrollbar-highlight-color: #C6C6C6;
-	scrollbar-shadow-color: #C6C6C6;
-	scrollbar-track-color: #EEEEEE;
 	font-family: Trebuchet , "Trebuchet MS" , Tahoma , Verdana , Arial;
-	SCROLLING:  none;
 	background-image: url('/images/DS/main_bg.png');
 	padding: 0px;
 	background-color: transparent;
@@ -147,7 +138,7 @@ a.Button:hover{
 a.But{
 	display: block;
 	background-color: transparent;
-	background-image: url('images/DS/a_button_bg.png');
+	background-image: url('/images/DS/a_button_bg.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -164,7 +155,7 @@ a.But{
 a.But:hover{
 	display: block;
 	background-color: transparent;
-	background-image: url('images/DS/a_button_bg_hover.png');
+	background-image: url('/images/DS/a_button_bg_hover.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -181,7 +172,7 @@ a.But:hover{
 a.wBut{
 	display: block;
 	background-color: transparent;
-	background-image: url('images/DS/a_button_wbg.png');
+	background-image: url('/images/DS/a_button_wbg.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -198,7 +189,7 @@ a.wBut{
 a.wBut:hover{
 	display: block;
 	background-color: transparent;
-	background-image: url('images/DS/a_button_wbg_hover.png');
+	background-image: url('/images/DS/a_button_wbg_hover.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -215,7 +206,7 @@ a.wBut:hover{
 a.gBut{
 	display: block;
 	background-color: transparent;
-	background-image: url('images/DS/a_button_gbg.png');
+	background-image: url('/images/DS/a_button_gbg.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -232,7 +223,7 @@ a.gBut{
 a.gBut:hover{
 	display: block;
 	background-color: transparent;
-	background-image: url('images/DS/a_button_gbg_hover.png');
+	background-image: url('/images/DS/a_button_gbg_hover.png');
 	background-repeat: no-repeat;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -258,7 +249,7 @@ a.gBut:hover{
 	border:1px solid #C0C0C0; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('images/login.gif');
+	background-image: url('/images/login.gif');
 	color: #111;
 }
 .login2 {
@@ -274,14 +265,14 @@ a.gBut:hover{
 	border:1px solid #C0C0C0; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('images/login.gif');
+	background-image: url('/images/login.gif');
 	color: #888888;
 }
 .login:hover {
 	border:1px solid #AAAAAA; font-family: Verdana;
 	font-size: 12px;
 	background-color: #666666;
-	background-image: url('images/login.gif');
+	background-image: url('/images/login.gif');
 }
 .white {
 	font-family: Tahoma;
@@ -379,7 +370,7 @@ a.gBut:hover{
 	border: 2px solid #CECECE;
 	FONT-SIZE: 11px;
 	font-family: Verdana, Arial, Helvetica, Tahoma, Verdana, sans-serif;
-	background-image: url('images/design/chbg2.gif');
+	background-image: url('/images/design/chbg2.gif');
 }
 ._but {
 	padding: 2px;

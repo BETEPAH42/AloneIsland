@@ -1,4 +1,4 @@
-﻿document.write('<LINK href=ch_main.css rel=STYLESHEET type=text/css><body topmargin="0" style="word-spacing: 0; margin-left: 0; margin-right: 0" leftmargin=0><form action="msg.php" target="ch_refr" method=POST name=mess onsubmit="if (!top.ch_menu_opened) top.mess(); else return false;">');
+document.write('<LINK href=ch_main.css rel=STYLESHEET type=text/css><body topmargin="0" style="word-spacing: 0; margin-left: 0; margin-right: 0" leftmargin=0><form action="msg.php" target="ch_refr" method=POST name=mess onsubmit="if (!top.ch_menu_opened) top.mess(); else return false;">');
 function cler() {
 	document.mess.message.value = "";
 }

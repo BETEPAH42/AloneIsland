@@ -1,4 +1,4 @@
-﻿document.write('<div style=" position:fixed; left:0px; top:0px; z-index: 80; width:0px; height:0px; visibility:visible;" id="zcenter" class=inv></div><div style="position:fixed; left:0px; top:0px; z-index: 11; width:100%; height:100%; display:none; text-align:center;" id="center3" class=news onclick="wtwt()">&nbsp;</div><div style="position:fixed; left:0px; top:0px; z-index: 1; width:100%; height:100%; display:none; text-align:center;" id="center2" class=news onclick="wtwt()">&nbsp;</div>');
+document.write('<div style=" position:fixed; left:0px; top:0px; z-index: 80; width:0px; height:0px; visibility:visible;" id="zcenter" class=inv></div><div style="position:fixed; left:0px; top:0px; z-index: 11; width:100%; height:100%; display:none; text-align:center;" id="center3" class=news onclick="wtwt()">&nbsp;</div><div style="position:fixed; left:0px; top:0px; z-index: 1; width:100%; height:100%; display:none; text-align:center;" id="center2" class=news onclick="wtwt()">&nbsp;</div>');
 //background-image: url(\'images/map.jpg\');
 var c_showed=0;
 

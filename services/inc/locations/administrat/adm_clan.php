@@ -1,4 +1,4 @@
-﻿<script type="text/javascript" src="js/reg_clan.js?8"></script>
+<script type="text/javascript" src="js/reg_clan.js?8"></script>
 <?
 // 
 echo "<center><table width=70%><tr><td width=25%><a href='main.php?adm_clan=c&folin=say' class=blocked>Поговорить с Форином</a></td><td width=25%><a href='main.php?adm_clan=c&folin=sclon' class=blocked>Виды преимуществ</a></td><td  width=25%><a href='main.php?adm_clan=c&folin=zaivka' class=blocked>Подать заявку</a></td><td  width=25%><a href='main.php?adm_clan=c&folin=zaivki' class=blocked>Поданые заявки</a></td></tr></table></center>";

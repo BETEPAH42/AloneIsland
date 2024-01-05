@@ -1,4 +1,4 @@
-﻿<script>
+<script>
 	var MAINID;
 
 	function w_buy(id) {

@@ -1,4 +1,4 @@
-﻿var c_showed = 0;
+var c_showed = 0;
 var wX = 0, wY = 0;
 var waiterMode = 1;
 var D2 = 0;

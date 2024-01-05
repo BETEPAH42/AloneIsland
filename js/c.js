@@ -1,4 +1,4 @@
-﻿// document.write("<div style='position:absolute;z-index:0;top:-10px;left:-100px;'><br>");
+// document.write("<div style='position:absolute;z-index:0;top:-10px;left:-100px;'><br>");
 // var js = 10;
 // var a = ';j=' + navigator.javaEnabled();
 // js = 11;

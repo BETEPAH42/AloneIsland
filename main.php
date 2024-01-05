@@ -1,8 +1,12 @@
 <?php
-// error_reporting(E_ALL);
-require_once 'classes/sql.php';
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+require_once "classes/loadclasses.php";
 include_once 'inc/functions.php';
 include_once 'inc/connect.php';
+
+
 // var_dump($_COOKIE["uid"]);
 // $uid = intval($_COOKIE["uid"]);
 // echo '<br>'.$iud.'<br>';
@@ -46,11 +50,12 @@ echo "<style>
         padding:20px;
     }  
     #boxes #dialog {
-        background:url(images/white.png) no-repeat 0 0 transparent;
+        // background:url(images/white.png) no-repeat 0 0 transparent;
         width:600px; 
         height:500px;
         padding:25px;
         z-index:3001;
+        background: white;
     }  
 	
     .scroler {
@@ -64,42 +69,39 @@ echo "<style>
 </style>
  
 <script type='text/javascript' src='js/jquery.js'></script>
-	<script>
-$(document).ready(function() {   
-    $('a[name=modal]').click(function(e) {
-    e.preventDefault();
-    var id = $(this).attr('href');
-  
+<script>
+    $(document).ready(function() {   
+        $('a[name=modal]').click(function(e) {
+        e.preventDefault();
+        var id = $(this).attr('href');
+    
         var maskHeight = $(document).height();
-    var maskWidth = $(window).width();
-  
-    $('#mask').css({'width':maskWidth,'height':maskHeight});
-  
-    $('#mask').fadeIn('slow',0.8);
-    $('#mask').fadeTo('slow',0.8); 
-  
-    var winH = $(window).height();
-    var winW = $(window).width();
-  
-   $(id).css('top',  winH/2-$(id).height()/2);
-    $(id).css('left', winW/2-$(id).width()/2);
-  
-    $(id).fadeIn(2000); 
-  
-   });
+        var maskWidth = $(window).width();
+    
+        $('#mask').css({'width':maskWidth,'height':maskHeight});
+    
+        $('#mask').fadeIn('slow',0.8);
+        $('#mask').fadeTo('slow',0.8); 
+    
+        var winH = $(window).height();
+        var winW = $(window).width();
+    
+        $(id).css('top', '55px');
+        $(id).css('left', winW/2-$(id).width()/2);
+        $(id).fadeIn(2000); 
+    });
   
     $('.window .close').click(function (e) {
-e.preventDefault();
-    $('#mask, .window').hide();
+        e.preventDefault();
+        $('#mask, .window').hide();
     }); 
  
     $('#mask').click(function () {
-    $(this).hide();
-    $('.window').hide();
+        $(this).hide();
+        $('.window').hide();
     }); 
   
     });  
-	
 </script>";
 //SQL::q("SELECT COALESCE(GET_LOCK('".intval($_COOKIE["uid"])."', 60));");
 
@@ -136,6 +138,8 @@ if ($pers["curstate"] == 30) include_once('inc/adm/questsQ.php');
 if ($pers["curstate"] == 31) include_once('inc/adm/ava_req.php');
 if ($pers["curstate"] == 32) include_once('inc/adm/clans.php');
 if ($pers["curstate"] == 33) include_once('inc/adm/fish.php');
+if ($pers["curstate"] == 34) include_once('inc/adm/gheralbism.php');
+if ($pers["curstate"] == 35) include_once('inc/adm/test.php');
 
 $t = time() + intval(microtime() * 1000) / 1000 - $timer;
 /*
@@ -161,14 +165,14 @@ $t = time() + intval(microtime() * 1000) / 1000 - $timer;
 
 if ($_COOKIE["uid"] == 1) {
     // echo "<script>function sysdown(){  jQuery(\"#sysinf\").slideDown(300); }</script>";
-    echo "<a href='#dialog' name='modal' class=bga>Системная информация[" . $t . " | " . $sql_queries_timer . "]</a>";
+    echo "<a href='#dialog' name='modal' class='bga'>Системная информация[" . $t . " | " . $sql_queries_timer . "]</a>";
     echo "<div id='boxes'>  
-<div id='dialog' class='window'> 
-Простое модальное окно | 
-    <a href='#'class='close'/>Закрыть его</a><br>
-	<font class=time><center>SQL :: [" . $sql_queries_counter . "] > " . $sql_queries_timer . " sec. | ALL :: " . $t . "</center></font>
-	<font class=time><center>SQL :: [" . $sql_longest_query . "] > " . $sql_longest_query_t . " sec.</center></font><Br><a href=main.php?serrors=1 class=timef>Показать ошибки </a><hr>
-<div class=scroler title='Подключаемые модули (файлы)'>";
+        <div id='dialog' class='window'> 
+        Простое модальное окно | 
+            <a href='#'class='close'/>Закрыть его</a><br>
+            <font class=time><center>SQL :: [" . $sql_queries_counter . "] > " . $sql_queries_timer . " sec. | ALL :: " . $t . "</center></font>
+            <font class=time><center>SQL :: [" . $sql_longest_query . "] > " . $sql_longest_query_t . " sec.</center></font><br><a href=main.php?serrors=1 class='timef'>Показать ошибки </a><hr>
+        <div class=scroler title='Подключаемые модули (файлы)'>";
 
     $included_files = get_included_files();
     foreach ($included_files as $filename) {
@@ -177,7 +181,8 @@ if ($_COOKIE["uid"] == 1) {
     echo "</div>
    </div>
 	</div>";
-    echo "<SCRIPT SRC='js/c.js'></SCRIPT><SCRIPT>$(\".LinedTable tr:nth-child(odd)\").css(\"background-color\",\"#ECECEC\");</SCRIPT>";
+    echo "<script src='js/c.js'></script>
+    <script>$(\".LinedTable tr:nth-child(odd)\").css(\"background-color\",\"#ECECEC\");</script>";
     //	echo " <div id='mask'></div>";
 }
 ?>
@@ -188,7 +193,6 @@ if ($_COOKIE["uid"] == 1) {
         if (m.indexOf('nick=') > 0) {
             cookNick = m.split('nick=')[1];
         }
-
     });
     top.frames['chmain'].nick = cookNick;
 </script>

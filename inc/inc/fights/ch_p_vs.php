@@ -1,4 +1,4 @@
-﻿<?
+<?
 $pers["chp"] = floor($pers["chp"]);
 $pers["cma"] = floor($pers["cma"]);
 
@@ -6,7 +6,6 @@ $cans = sql::q("SELECT uid2 FROM turns_f WHERE uid1=" . $pers["uid"] . "");
 $uid_query = '';
 foreach ($cans as $c)
 	$uid_query .= ' and uid<>' . $c["uid2"] . '';
-
 if ($pers["chp"] > 0) {
 	if (@$_GET["vs_id"]) {
 		$idvs = intval(base64_decode($_GET["vs_id"]));

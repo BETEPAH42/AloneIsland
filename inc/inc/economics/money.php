@@ -1,4 +1,4 @@
-﻿<?
+<?
 // Передача денег
 if (isset($_POST["money"]) 
 and isset($_POST["fornickname"]) 

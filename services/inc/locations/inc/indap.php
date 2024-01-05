@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (empty($_POST) and empty($_GET["buy"])) {
 	echo '<div class=weapons_box><form action=main.php?c=indap method=post>Выберите вещь: <select size="1" name="id" class="return_win"> ';
 	$r = sql::q("SELECT name,id FROM wp WHERE uidp='" . $pers["uid"] . "' and where_buy=1 and id_in_w='' and clan_sign='' and weared=0");

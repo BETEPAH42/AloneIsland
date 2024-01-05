@@ -1,4 +1,4 @@
-﻿var birdInterv;
+var birdInterv;
 var loop1,loop2,loop3;
 var Night;
 

@@ -1,3 +1,3 @@
-﻿<script>
+<script>
 	location = 'http://AloneIsland/main.php';
 </script>

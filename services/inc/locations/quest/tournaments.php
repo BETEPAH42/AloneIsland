@@ -1,4 +1,4 @@
-﻿<?
+<?
 $t1 = SQL::q1("SELECT * FROM quest WHERE id = " . TOUR1 . "");
 $t2 = SQL::q1("SELECT * FROM quest WHERE id = " . TOUR2 . "");
 $t3 = SQL::q1("SELECT * FROM quest WHERE id = " . TOUR3 . "");

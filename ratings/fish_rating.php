@@ -1,6 +1,6 @@
-﻿<?php
+<?php
 if (!file_exists("../service/top_gamers/F" . date("d-m-y") . ".txt")) {
-  $res = sql::q("SELECT id,sign,user,aura,level,state,exp,losses,victories,money,uid,rank_i,sp6 FROM `users` WHERE  priveleged = 0 and block='' and lasto<>0 ORDER BY (sp6) DESC LIMIT 0 , 20");
+  $res = sql::q("SELECT id,sign,user,aura,level,state,exp,losses,victories,money,uid,rank_i,sp6 FROM `users` WHERE  priveleged = 0 and block = '' and lasto <> 0 ORDER BY (sp6) DESC LIMIT 0 , 20");
   $top = "var list=new Array(\n";
   $i = 0;
   $z = '';

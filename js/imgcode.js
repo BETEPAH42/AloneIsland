@@ -1,4 +1,4 @@
-﻿var codename = 'image_protect';
+var codename = 'image_protect';
 var sn = 0;
 
 function imgcode(hashcode)

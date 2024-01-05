@@ -1,4 +1,4 @@
-﻿<center>
+<center>
 	<font color=blue size=4><b><i>Лесопилка</i></b></font>
 </center>
 <center>

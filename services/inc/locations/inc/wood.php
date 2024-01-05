@@ -1,4 +1,4 @@
-﻿<?
+<?
 $p = '';
 $txt = '';
 $ins = sql::q1("SELECT * FROM wp WHERE uidp=" . $pers["uid"] . " and weared=1 and p_type=3 and durability>0");

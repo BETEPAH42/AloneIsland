@@ -1,4 +1,4 @@
-﻿document.write('<div style="position:fixed; left:-2px; top:-2px; z-index: 6; width:0px; height:0px; visibility:visible;" id="zcenter" class=inv></div><div style="position:fixed; left:0px; top:0px; z-index: 1; width:100%; height:100%; display:none; text-align:center;" id="center2" class=news onclick="wtwt()">&nbsp;</div>');
+document.write('<div style="position:fixed; left:-2px; top:-2px; z-index: 6; width:0px; height:0px; visibility:visible;" id="zcenter" class=inv></div><div style="position:fixed; left:0px; top:0px; z-index: 1; width:100%; height:100%; display:none; text-align:center;" id="center2" class=news onclick="wtwt()">&nbsp;</div>');
 
 var c_showed = 0;
 
@@ -17,7 +17,7 @@ function wtwt(a) {
 }
 
 function fish_edits(fish, n, lvl, den, noch, cena) {
-	$("#zcenter").css({ left: '50%', top: '50%', width: '50%', height: '60%', margin: '25% 0 0 30%' });
+	$("#zcenter").css({ left: '0', top: '-50%', width: '50%', height: '60%', margin: '25% 0 0 30%' });
 	$("#zcenter").hide(10);
 	wt = 'отсутствует';
 	var txt = '';

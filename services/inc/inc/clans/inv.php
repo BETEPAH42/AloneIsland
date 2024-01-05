@@ -1,4 +1,4 @@
-﻿<?
+<?
 $pers["sign"] = $clan["sign"];
 
 $url = '';

@@ -1,4 +1,4 @@
-﻿<?
+<?
 echo '<table border="2" width="100%" cellspacing="0" cellpadding="0">';
 for ($i=0;$i<12;$i++)
 {

@@ -1,4 +1,4 @@
-﻿<?
+<?
 	if($pers["f_turn"]==1)
 	{
 		$bid = sql::q1("SELECT id FROM bots WHERE level=".($pers["level"])." and special=1;")['id'];

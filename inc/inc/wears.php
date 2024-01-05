@@ -1,4 +1,4 @@
-﻿<?
+<?
 if (@$_GET["use"] and $pers["cfight"] > 10 and $pers["chp"]) {
 	$v = SQL::q1("SELECT `id`,`index`,durability FROM `wp` WHERE `id`=" . intval($_GET["use"]) . "");
 	$index = $v["index"];
@@ -101,125 +101,130 @@ $ws3 = 0;
 $ws4 = 0;
 $ws5 = 0;
 $ws6 = 0;
-
-
-$res = "SELECT * FROM `wp` WHERE uidp='" . $pers["uid"] . "' and weared=1;";
+// проверяем подходит ли вещь
+$res = SQL::q("SELECT * FROM `wp` WHERE uidp='" . $pers["uid"] . "' and weared=1;");
 $j = 0;
 $tt = time();
 $weared_count = 0;
 $UD_ART = 1;
-foreach (SQL::q($res) as $v) {
-	$z = 1;
-
-	if (($v["durability"] < 1 and $v["max_durability"] > 0) or ($v["timeout"] > 0 and $v["timeout"] < $tt)) {
-		remove_weapon($v["id"], $v);
-		$z = 0;
-	}
-	if ($z and $pers["curstate"] <> 4)
-		foreach ($v as $key => $value) {
-			if ($key[0] == 't' and $key <> 'timeout')
-				if ($value > 0 and $pers[substr($key, 1, strlen($key) - 1)] < $value) {
-					$z = 0;
-					remove_weapon($v["id"], $v);
-					break;
-				}
-		}
-
-	if ($z) {
-		$ws1 += $v["s1"];
-		$ws2 += $v["s2"];
-		$ws3 += $v["s3"];
-		$ws4 += $v["s4"];
-		$ws5 += $v["s5"];
-		$ws6 += $v["s6"];
-		$dscr = $v["id"] . '|';
-		if ($v["name"])
-			$dscr .= '<b><i>' . str_replace(' ', '&nbsp;', str_replace('"', '*', $v["name"])) . "</b></i>@";
-		if ($v["tlevel"])
-			$dscr .= '<b class=dark>Уровень: ' . $v["tlevel"] . "</b>@";
-		if ($v["clan_sign"])
-			$dscr .= 'Клан: <img src=images/signs/' . $v["clan_sign"] . '.gif><b>' . $v["clan_name"] . '</b>@';
-		if ($v["price"])
-			$dscr .= '<b>' . $v["price"] . " LN</b>@";
-		if ($v["dprice"])
-			$dscr .= '<b>' . $v["dprice"] . " Бр.</b>@";
-		if ($v["dprice"] > 100)
-			$dscr .= "<font class=green>АРТЕФАКТ</font></i>@";
-		if ($v["kb"])
-			$dscr .= 'Класс брони: <B>' . plus_param($v["kb"]) . "</B>@";
-		if ($v["hp"])
-			$dscr .= 'Жизнь: <B>' . plus_param($v["hp"]) . "</B>@";
-		if ($v["ma"])
-			$dscr .= 'Мана: <B>' . plus_param($v["ma"]) . "</B>@";
-		if ($v["udmax"] + $v["udmin"])
-			$dscr .= 'Удар: <B>' . $v["udmin"] . "-" . $v["udmax"] . "</B>@";
-		if ($v["slots"])
-			$dscr .= 'Слотов: <B>' . $v["slots"] . "</B>@";
-		if ($v["radius"])
-			$dscr .= 'Радиус поражения: <B>' . $v["radius"] . "</B>@";
-
-		$dscr .= 'Долговечность:&nbsp;<B>' . $v["durability"] . "/" . $v["max_durability"] . "</B>@";
-
-		if ($v["type"] == "shlem" and $sh["image"] = $v["image"])
-			$sh["id"] = $dscr;
-		if ($v["type"] == "ojerelie" and $oj["image"] = $v["image"])
-			$oj["id"] = $dscr;
-		if ($v["type"] == "poyas" and $po["image"] = $v["image"])
-			$po["id"] = $dscr;
-		if ($v["type"] == "sapogi" and $sa["image"] = $v["image"])
-			$sa["id"] = $dscr;
-		if ($v["type"] == "naruchi" and $na["image"] = $v["image"])
-			$na["id"] = $dscr;
-		if ($v["type"] == "perchatki" and $pe["image"] = $v["image"])
-			$pe["id"] = $dscr;
-		if ($v["type"] == "bronya" and $br["image"] = $v["image"])
-			$br["id"] = $dscr;
-		if ($v["type"] == "orujie" and $or1["id"] == "0" and $or1["image"] = $v["image"]) {
-			$or1["id"] = $dscr;
-			$or1type = $v["stype"];
-		}
-		if ($v["type"] == "orujie" and $or2["id"] <> "0")
+if (count($res)>0){
+	foreach ($res as $v) {
+		$z = 1;
+		if ($v["durability"] < 1 || ($v["timeout"] > 0 and $v["timeout"] < $tt)) {
+			// file_put_contents("weaponts.txt","inc wears ".count($res)."\n",FILE_APPEND);
+			$z = 0;
 			remove_weapon($v["id"], $v);
-		if ($v["stype"] == 'book') {
-			define("BOOK_ID", $v["id"]);
-			define("BOOK_SLOTS", $v["slots"]);
-			define("BOOK_INDEX", $v["index"]);
+			break;
 		}
-		if ($v["type"] == "orujie" and ($or1["id"] <> $dscr) and $or2["image"] = $v["image"]) {
-			$or2["id"] = $dscr;
-			$or2type = $v["stype"];
-		}
-		if ($v["type"] == "kolco" and $ko1["id"] == "0" and $ko1["image"] = $v["image"] and $_ko1 = true)
-			$ko1["id"] = $dscr;
-		if ($v["type"] == "kolco" and ($ko1["id"] <> $dscr) and $ko2["image"] = $v["image"])
-			$ko2["id"] = $dscr;
-		if ($v["type"] == "kam") {
-			for ($i = $j; $i < $j + 1; $i++)
-				if ($i == 0) {
-					$kam1["id"] = $dscr;
-					$kam1["image"] = $v["image"];
-				} elseif ($i == 1) {
-					$kam2["id"] = $dscr;
-					$kam2["image"] = $v["image"];
-				} elseif ($i == 2) {
-					$kam3["id"] = $dscr;
-					$kam3["image"] = $v["image"];
-				} elseif ($i == 3) {
-					$kam4["id"] = $dscr;
-					$kam4["image"] = $v["image"];
-				}
-			$j++;
-		}
+		// if ($z and $pers["curstate"] <> 4)
+		// 	foreach ($v as $key => $value) {
+		// 		if ($key[0] == 't' and $key <> 'timeout')
+		// 		// переработать условие
+		// 			if ($value > 0 and $pers[substr($key, 1, strlen($key) - 1)] < $value) {
+		// 				$z = 0;
+		// 				file_put_contents("weaponts.txt","inc wears curstate=".$pers["curstate"]." z = ".$z." key=".$key." value=".$value." u persa=".$pers[substr($key, 1, strlen($key) - 1)]." key[0]=".$key[0]."\n",FILE_APPEND);
+		// 				remove_weapon($v["id"], $v);
+		// 				break;
+		// 			}
+		// 	}
 
-		$weared_count++;
+		if ($z) {
+			$ws1 += $v["s1"];
+			$ws2 += $v["s2"];
+			$ws3 += $v["s3"];
+			$ws4 += $v["s4"];
+			$ws5 += $v["s5"];
+			$ws6 += $v["s6"];
+			$dscr = $v["id"] . '|';
+			if ($v["name"])
+				$dscr .= '<b><i>' . str_replace(' ', '&nbsp;', str_replace('"', '*', $v["name"])) . "</b></i>@";
+			if ($v["tlevel"])
+				$dscr .= '<b class=dark>Уровень: ' . $v["tlevel"] . "</b>@";
+			if ($v["clan_sign"])
+				$dscr .= 'Клан: <img src=images/signs/' . $v["clan_sign"] . '.gif><b>' . $v["clan_name"] . '</b>@';
+			if ($v["price"])
+				$dscr .= '<b>' . $v["price"] . " LN</b>@";
+			if ($v["dprice"])
+				$dscr .= '<b>' . $v["dprice"] . " Бр.</b>@";
+			if ($v["dprice"] > 100)
+				$dscr .= "<font class=green>АРТЕФАКТ</font></i>@";
+			if ($v["kb"])
+				$dscr .= 'Класс брони: <B>' . plus_param($v["kb"]) . "</B>@";
+			if ($v["hp"])
+				$dscr .= 'Жизнь: <B>' . plus_param($v["hp"]) . "</B>@";
+			if ($v["ma"])
+				$dscr .= 'Мана: <B>' . plus_param($v["ma"]) . "</B>@";
+			if ($v["udmax"] + $v["udmin"])
+				$dscr .= 'Удар: <B>' . $v["udmin"] . "-" . $v["udmax"] . "</B>@";
+			if ($v["slots"])
+				$dscr .= 'Слотов: <B>' . $v["slots"] . "</B>@";
+			if ($v["radius"])
+				$dscr .= 'Радиус поражения: <B>' . $v["radius"] . "</B>@";
 
-		if ($v['slots'] > 0 and $v['weared'] == 1) {
-			$weared_name = $v["name"];
-			$weared_id = $v["id"];
-			$weared_slots = $v["slots"];
-			$weared_wp = $v;
+			$dscr .= 'Долговечность:&nbsp;<B>' . $v["durability"] . "/" . $v["max_durability"] . "</B>@";
+
+			if ($v["type"] == "shlem" and $sh["image"] = $v["image"])
+				$sh["id"] = $dscr;
+			if ($v["type"] == "ojerelie" and $oj["image"] = $v["image"])
+				$oj["id"] = $dscr;
+			if ($v["type"] == "poyas" and $po["image"] = $v["image"])
+				$po["id"] = $dscr;
+			if ($v["type"] == "sapogi" and $sa["image"] = $v["image"])
+				$sa["id"] = $dscr;
+			if ($v["type"] == "naruchi" and $na["image"] = $v["image"])
+				$na["id"] = $dscr;
+			if ($v["type"] == "perchatki" and $pe["image"] = $v["image"])
+				$pe["id"] = $dscr;
+			if ($v["type"] == "bronya" and $br["image"] = $v["image"])
+				$br["id"] = $dscr;
+			if ($v["type"] == "orujie" and $or1["id"] == "0" and $or1["image"] = $v["image"]) {
+				$or1["id"] = $dscr;
+				$or1type = $v["stype"];
+			}
+			if ($v["type"] == "orujie" and $or2["id"] <> "0") 
+			{//file_put_contents("/weaponts.txt","inc wears 184\n",FILE_APPEND);
+				remove_weapon($v["id"], $v);}
+			if ($v["stype"] == 'book') {
+				define("BOOK_ID", $v["id"]);
+				define("BOOK_SLOTS", $v["slots"]);
+				define("BOOK_INDEX", $v["index"]);
+			}
+			if ($v["type"] == "orujie" and ($or1["id"] <> $dscr) and $or2["image"] = $v["image"]) {
+				$or2["id"] = $dscr;
+				$or2type = $v["stype"];
+			}
+			if ($v["type"] == "kolco" and $ko1["id"] == "0" and $ko1["image"] = $v["image"] and $_ko1 = true)
+				$ko1["id"] = $dscr;
+			if ($v["type"] == "kolco" and ($ko1["id"] <> $dscr) and $ko2["image"] = $v["image"])
+				$ko2["id"] = $dscr;
+			if ($v["type"] == "kam") {
+				for ($i = $j; $i < $j + 1; $i++)
+					if ($i == 0) {
+						$kam1["id"] = $dscr;
+						$kam1["image"] = $v["image"];
+					} elseif ($i == 1) {
+						$kam2["id"] = $dscr;
+						$kam2["image"] = $v["image"];
+					} elseif ($i == 2) {
+						$kam3["id"] = $dscr;
+						$kam3["image"] = $v["image"];
+					} elseif ($i == 3) {
+						$kam4["id"] = $dscr;
+						$kam4["image"] = $v["image"];
+					}
+				$j++;
+			}
+
+			$weared_count++;
+
+			if ($v['slots'] > 0 and $v['weared'] == 1) {
+				$weared_name = $v["name"];
+				$weared_id = $v["id"];
+				$weared_slots = $v["slots"];
+				$weared_wp = $v;
+			}
+			//if ($v["dprice"]>100) $UD_ART += $v["dprice"]/5000;
 		}
-		//if ($v["dprice"]>100) $UD_ART += $v["dprice"]/5000;
 	}
 }
 
@@ -254,6 +259,7 @@ if (@$_GET["rune_join"]) {
 	if ($weared_slots) {
 		$rune = sql::q1("SELECT * FROM wp WHERE id=" . intval($_GET["rune_join"]) . "");
 		if ($pers["sp5"] > $rune["tsp5"]) {
+			//file_put_contents("/weaponts.txt","inc wears 260\n",FILE_APPEND);
 			remove_weapon($weared_id, $weared_wp);
 			$sk = explode("_", $rune["index"]);
 

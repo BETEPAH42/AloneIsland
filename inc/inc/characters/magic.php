@@ -1,4 +1,4 @@
-﻿<table border="0" width="435" cellspacing="1" class=inv>
+<table border="0" width="435" cellspacing="1" class=inv>
 	<tr>
 		<td width="155" class=um>Религия</td>
 		<td><img src="images/ma.png" width=<?= round(200*$pers["light_necr"]/1000);?> height=8><img src="images/no.png" width=<?= round(200-200*$pers["light_necr"]/1000);?> height=8></td>

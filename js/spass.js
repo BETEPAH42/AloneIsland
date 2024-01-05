@@ -1,4 +1,4 @@
-﻿function code(user,pass)
+function code(user,pass)
 {
 	document.write('<br><img src="images/logo.gif" width=180><div class=inv id=code_img><form name="code" onsubmit="sbmt_img();" method=post><input type=hidden name=user value="'+user+'"><input type=hidden name=passnmd value="'+pass+'"><input class=login type=text name="spass" id="spass" value="" DISABLED><br><input class=login type=button onclick="sbmt_img()" value="OK" style="cursor:pointer"></form></div>');
 	show_numbers();

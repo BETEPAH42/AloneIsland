@@ -1,4 +1,4 @@
-﻿<?
+<?php
 echo "<center>ПРоверка мельницы!!</center>";
 $n = 0;
 $q_skin1 = SQL::q("SELECT `id_in_w` FROM `wp` WHERE user='" . $pers['user'] . "'");
@@ -67,22 +67,20 @@ if ($n >= 2 and $n <= 4) $d = 'шкуры';
 					say_to_chat("s", 'Вы больше не сможете брать задания у старого мельника!', "1", $pers["user"], $pers["location"], date("H:i:s"));
 				}
 
-
 				########### Окончание квеста по крысам
 				if ($_GET['say_mel'] == 'quest_mel_end') {
 
 					echo " - Вознаграждние.!";
-					sql::q("UPDATE users SET quest2='2' WHERE uid=" . $pers["uid"]);
+					sql::q1("UPDATE users SET quest2='2' WHERE uid=" . $pers["uid"]);
 					say_to_chat("s", 'Квест <b>&laquo;Спасение урожая&raquo;</b> начался!', "1", $pers["user"], $pers["location"], date("H:i:s"));
 					say_to_chat("s", 'За прохождение квеста <b>&laquo;Спасение урожая&raquo;</b> вы получаете <b>25 000 опыта</b>, <b>1 000 LM</b>, <b>10 Бр.&laquo;Неподписанный клановый бланк&raquo; в количестве 2 шт.</b> !', "1", $pers["user"], $pers["location"], date("H:i:s"));
-					SQL::q("UPDATE users SET quest1 = 2, exp=exp+25000, money=money+1000, dmoney=dmoney+10 where user='" . $pers["user"] . "'");
+					SQL::q1("UPDATE users SET quest1 = 2, exp=exp+25000, money=money+1000, dmoney=dmoney+10 where user='" . $pers["user"] . "'");
 
 					insert_wp(15638, $pers["uid"]);
 					insert_wp(15638, $pers["uid"]);
 
-					SQL::q("DELETE FROM wp WHERE user='" . $pers["user"] . "' AND id_in_w='res..skin14' LIMIT 10");
+					SQL::q1("DELETE FROM wp WHERE user='" . $pers["user"] . "' AND id_in_w='res..skin14' LIMIT 10");
 				}
-
 				echo "<Center><a href='main.php?say=melnica'><b>Возврат</b></a></Center>";
 			}
 			?>

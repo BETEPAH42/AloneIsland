@@ -1,4 +1,4 @@
-﻿<?
+<?
 $lt = date("d.m.Y H:i");
 if ($zay["vsname"]<>""){
 	begin_fight($zay["name"],$zay["vsname"],"Групповой бой на арене",$zay["travm"],$zay["timeout"],$zay["oruj"]);

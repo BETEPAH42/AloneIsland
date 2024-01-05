@@ -1,4 +1,4 @@
-﻿<?
+<?
 echo "<table width=10%><tr><td><a class=bga href=main.php?go=administration>Назад в меню</a></td></tr></table>";
 include("inc/balance.php");
 

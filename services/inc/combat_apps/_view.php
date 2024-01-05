@@ -1,4 +1,4 @@
-﻿<?
+<?
 #View all apps::
 $allapps = sql::q("SELECT * FROM app_for_fight WHERE type=" . $cat . "");
 $s = '';

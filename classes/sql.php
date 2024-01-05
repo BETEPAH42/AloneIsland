@@ -5,8 +5,9 @@ class SQL
     /** Init and connect */
     private static function init()
     {
+       // var_dump(['mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';charset=utf8', DB_USER, DB_PASS]);
         $dbConnection = null;
-        if (in_array($_SERVER['SERVER_NAME'], ['localhost', 'ry.alef.im'])) {
+        if (in_array($_SERVER['SERVER_NAME'], ['localhost'])) {
             ini_set('display_errors', 'On');
             error_reporting(E_ALL & ~E_NOTICE);
         } else {
@@ -21,7 +22,7 @@ class SQL
                 include $_SERVER['DOCUMENT_ROOT'] . '/db.cfg.php';
                 $dbConnection = new PDO('mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';charset=utf8', DB_USER, DB_PASS);
             } else {
-                $dbConnection = new PDO('mysql:dbname=aloneisland;host=localhost;charset=utf8', 'LaravelUser', 'Bb359722');
+                $dbConnection = new PDO('mysql:dbname=dev;host=mysql;charset=utf8', 'dev', 'dev');
             }
         }
 
@@ -46,11 +47,11 @@ class SQL
             return $result;
         } catch (Exception $e) {
             if (in_array($_SERVER['SERVER_NAME'], ['aloneisland.test', 'localhost'])) {
-                // echo '<pre>';
+                echo '<pre>';
 
-                // echo $sql;
-                // echo "\n\n\n------- \n\n\n";
-                // print_r($params);
+                echo $sql;
+                echo "\n\n\n------- \n\n\n";
+                print_r($params);
                 die();
             } else {
                 // echo '<pre>';
@@ -64,6 +65,7 @@ class SQL
 
     public static function q1($sql, $params = [])
     {
+        // file_put_contents("sql.txt",  "Q1:".$sql."\n",FILE_APPEND);
         $dbConnection = self::init();
 
         try {
@@ -74,12 +76,12 @@ class SQL
             return $result;
         } catch (Exception $e) {
             if (in_array($_SERVER['SERVER_NAME'], ['aloneisland.test', 'localhost'])) {
-                // echo '<pre>';
-                // print_r($e);
-                // echo "\n\n\n------- \n\n\n";
-                // echo $sql;
-                // echo "\n\n\n------- \n\n\n";
-                // print_r($params);
+                echo '<pre>';
+                print_r($e);
+                echo "\n\n\n------- \n\n\n";
+                echo $sql;
+                echo "\n\n\n------- \n\n\n";
+                print_r($params);
                 die();
             } else {
                 // echo '<pre>';
@@ -108,12 +110,12 @@ class SQL
                 return;
             }
             if (in_array($_SERVER['SERVER_NAME'], ['aloneisland.test', 'localhost'])) {
-                // echo '<pre>';
-                // print_r($e);
-                // echo "\n\n\n------- \n\n\n";
-                // echo $sql;
-                // echo "\n\n\n------- \n\n\n";
-                // print_r($params);
+                echo '<pre>';
+                print_r($e);
+                echo "\n\n\n------- \n\n\n";
+                echo $sql;
+                echo "\n\n\n------- \n\n\n";
+                print_r($params);
                 die();
             } else {
                 die("Qi - Произошла ошибка в SQL-запросе. Обратитесь к Вашему менеджеру.<br /> <a href='engine/exit.php'>Выход</a>");

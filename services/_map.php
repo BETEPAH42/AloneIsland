@@ -1,4 +1,4 @@
-﻿<LINK href=../main.css rel=STYLESHEET type=text/css>
+<LINK href=../main.css rel=STYLESHEET type=text/css>
 <script type="text/javascript" src="../js/nature_hidden.js?1"></script>
 
 <body>

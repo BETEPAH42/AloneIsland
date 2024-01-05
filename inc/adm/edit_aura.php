@@ -1,4 +1,4 @@
-﻿<?
+<?
 
 $params = explode("@", $_POST["params"]);
 foreach ($params as $z) {

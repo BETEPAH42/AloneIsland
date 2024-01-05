@@ -1,4 +1,4 @@
-﻿<?
+<?
 include("./inc/locations/quest/quests.php");
 $t1 = sql::q1("SELECT * FROM quest WHERE id = " . TOUR3 . "");
 if (empty($_GET["show_t3"]) and !$t1["finished"]) // Турнир 1 15-99 10x10

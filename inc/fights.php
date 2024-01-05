@@ -1,4 +1,4 @@
-﻿<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="96"><img border="0" src="images/design/borders/b1/lt.gif" width="96" height="114"></td>
 		<td background="images/design/borders/b1/tbg.gif" align="center" width=100%>

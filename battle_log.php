@@ -1,4 +1,4 @@
-﻿<?
+<?php
 error_reporting(0);
 include("configs/config.php");
 include("inc/functions.php");
@@ -6,7 +6,7 @@ $bid = intval($_GET["id"]);
 $page = intval($_GET["page"]);
 $results = intval($_GET["results"]);
 define("C_LIST", 12);
-$pages = sql::q1("SELECT COUNT(*) as count FROM fight_log WHERE cfight=" . $bid . " ");
+$pages = SQL::q1("SELECT COUNT(*) as count FROM fight_log WHERE cfight=" . $bid . " ");
 $limits = $page['count'] * C_LIST;
 if (!$results) {
 	$res = "SELECT * FROM fight_log WHERE cfight=" . $bid . " ORDER BY turn ASC LIMIT " . $limits . "," . C_LIST . ";";

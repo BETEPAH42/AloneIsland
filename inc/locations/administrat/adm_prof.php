@@ -1,4 +1,4 @@
-﻿<center><font class=but4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i><b>Отдел профессий</b></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></center><br>
+<center><font class=but4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i><b>Отдел профессий</b></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></center><br>
 <center><table width=80% border=1>
 <tr><td colspan=2 align=center> <font class=but3 onclick="location='main.php?adm_prof=prof&les=1'" style='cursor:pointer'>Всё о лесорубстве</font> | <font class=but3 onclick="location='main.php?adm_prof=prof&riba=1'" style='cursor:pointer'>Всё о рыболовстве</font> | <font class=but3 onclick="location='main.php?adm_prof=prof&shahta=1'" style='cursor:pointer'>Всё о шахтёрстве</font> | <font class=but3 onclick="location='main.php?adm_prof=prof&profi=1'" style='cursor:pointer'>Остальные профессии</font></td></tr>
 <tr>
