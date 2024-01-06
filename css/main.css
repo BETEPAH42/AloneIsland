@@ -65,7 +65,6 @@ body {
 	background-size: cover;
 	padding: 0px;
 	background-color: transparent;
-	/*height: 993px;*/
 	height: 100%;
 }
 
@@ -76,6 +75,7 @@ table
 	font-family: Verdana, Arial, Tahoma;
 	color: #222222;
 }
+
 td
 {
 	border-style: none;
@@ -91,6 +91,7 @@ a {
 	text-decoration: underline;
 	font-size: 11px;
 }
+
 a:hover {
 	font-family: Verdana, Arial, Tahoma;
 	color: #000099;
@@ -98,6 +99,7 @@ a:hover {
 	text-decoration: none;
 	font-size: 11px;
 }
+
 a.Bold {
 	font-family: Verdana, Arial, Tahoma;
 	color: #000000;
@@ -106,6 +108,7 @@ a.Bold {
 	font-size: 13px;
 	font-weight: bold;
 }
+
 a.Bold:hover {
 	font-family: Verdana, Arial, Tahoma;
 	color: #800000;
@@ -113,6 +116,7 @@ a.Bold:hover {
 	font-size: 13px;
 	font-weight: bold;
 }
+
 a.Button{
 	display: block;
 	background-color: #FFFFFF;
@@ -252,7 +256,7 @@ a.gBut:hover{
 .title_main {
 	background-image: url('../images/DS/title_bg.jpg');
 	background-position: center top;
-	height: 64px;
+	height: 60px;
 	z-index: 6;
 	margin: auto;
 	position: absolute;
@@ -260,7 +264,6 @@ a.gBut:hover{
 	left: 0;
 	right: 0;
 	background-size: contain;
-	/*height: 90px;*/
 	text-align: center;
 	cursor:pointer;
 }
@@ -271,7 +274,7 @@ a.gBut:hover{
 	z-index: 6;
 	margin: auto;
 	position: absolute;
-	top: -8px;
+	top: -16px;
 	left: 0;
 	right: 0;
 	background-size: contain;
@@ -280,7 +283,7 @@ a.gBut:hover{
 }
 .menu_main {
 	z-index: 6;
-	top: 3.2%;
+	top: 24px;
 	margin: auto;
 	position: absolute;
 	left: 0;

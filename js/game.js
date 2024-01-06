@@ -448,10 +448,10 @@ function view_frames(a) {
 	dw('<table height=100% width=100%><tr><td align=center valign=center id=TIME style="color:#FFFFFF;cursor:pointer;" onclick="top.frames[\'main_top\'].location=\'main.php\'" title="Часы показывают серверное время(Россия>Москва), при нажатии обновит игровое окно.">Загрузка...</td></tr></table>');
 	dw('</div>');
 
-	dw('<div id=title class="title_main" style="width: ' + (DWidth - 36) + 'px;"></div>');
-	dw('<div id=logo class="logo_main" style="width: ' + (DWidth - 36) + 'px;" onclick="main_top_update();"><img border="0" src="images/DS/logo.png" width="924" height="92"></div>');
-	dw('<div id=logo_down style="position: absolute; width: 206px; height: 29px; z-index: 1; left: -1000px; top: 72px"><img border="0" src="images/DS/logo_down.png" width="206" height="29"  onclick="main_top_update();"></div>');
-	dw('<div id=title_buttons class="menu_main" style="width: ' + (DWidth - 36) + 'px;"></div>');
+	//dw('<div id=title class="title_main" style="width: ' + (DWidth - 36) + 'px;"></div>');
+	//dw('<div id=logo class="logo_main" style="width: ' + (DWidth - 36) + 'px;" onclick="main_top_update();"><img border="0" src="images/DS/logo.png" width="924" height="92"></div>');
+	// dw('<div id=logo_down style="position: absolute; width: 206px; height: 29px; z-index: 1; left: -1000px; top: 72px"><img border="0" src="images/DS/logo_down.png" width="206" height="29"  onclick="main_top_update();"></div>');
+	//dw('<div id=title_buttons class="menu_main" style="width: ' + (DWidth - 36) + 'px;"></div>');
 
 	dw('<table border="0" cellspacing="0" cellpadding="0" style="width:' + DWidth + 'px; height:100%;">');
 	dw('<tr>');
@@ -459,6 +459,17 @@ function view_frames(a) {
 	dw('<table border="0" height=100% width=' + DWidth + ' style="width:' + DWidth + 'px;height:100%" cellspacing="0" cellpadding="0" id=maintbl>');
 	dw('<tr>');
 	dw('<td height="18" colspan="3" background="images/DS/top_border.gif"></td>');
+	dw('</tr>');
+	dw('<tr>');
+	dw('<td width="18" background="images/DS/left_border.gif" style="width:18px;"></td>');
+	dw('<td height="60px">');
+	dw('<div id=title class="title_main" style="width: ' + (DWidth - 36) + 'px;"></div>');
+	dw('<div id=logo class="logo_main" style="display:none;width: ' + (DWidth - 36) + 'px;" onclick="main_top_update();"><img border="0" src="images/DS/logo.png" width="924" height="92"></div>');
+	dw('<div id=logo_down style="position: absolute; width: 206px; height: 29px; z-index: 1; left: -1000px; top: 72px;display:none;"><img border="0" src="images/DS/logo_down.png" width="206" height="29"  onclick="main_top_update();"></div>');
+	dw('<div id=title_buttons class="menu_main" style="width: ' + (DWidth - 36) + 'px;"></div>');
+	dw('</td>');
+	dw('<div id=logo_down style="position: absolute; width: 206px; height: 29px; z-index: 1; left: -1000px; top: 72px"><img border="0" src="images/DS/logo_down.png" width="206" height="29"  onclick="main_top_update();"></div>');
+	dw('<td width="18" background="images/DS/right_border.gif" style="width:18px;"></td>');
 	dw('</tr>');
 	dw('<tr>');
 	dw('<td width="18" background="images/DS/left_border.gif" style="width:18px;"></td>');
@@ -617,19 +628,19 @@ function show_clock() {
 
 function hide_logo() {
 	if (!logo_showed) return;
-	jQuery("#title").css("display", "none");
-	jQuery("#title_buttons").css("display", "none");
-	jQuery("#logo").css("display", "none");
-	jQuery("#logo_down").css("display", "none");
+	// jQuery("#title").css("display", "none");
+	// jQuery("#title_buttons").css("display", "none");
+	// jQuery("#logo").css("display", "none");
+	// jQuery("#logo_down").css("display", "none");
 	logo_showed = 0;
 }
 
 function show_logo() {
 	if (logo_showed) return;
-	jQuery("#title").css("display", "block");
-	jQuery("#title_buttons").css("display", "block");
-	jQuery("#logo").css("display", "block");
-	jQuery("#logo_down").css("display", "block");
+	// jQuery("#title").css("display", "block");
+	// jQuery("#title_buttons").css("display", "block");
+	// jQuery("#logo").css("display", "block");
+	// jQuery("#logo_down").css("display", "block");
 	logo_showed = 1;
 }
 

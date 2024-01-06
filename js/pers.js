@@ -110,8 +110,8 @@ function show_pers_new(sh, shd, oj, ojd, or1, or1d, po, pod, z1, z1d, z2, z2d, z
 	var pers_text = prvte + '<font class=Luser>' + nick + '</font> <font class=Llvl>[' + level + ']</font>' + dil + ' - <font class=Lgreen title=Усталость>' + parseInt(tire) + '%</font>';
 
 	if (!InFight) {
-		d.write('<div style="position: absolute; width:39; height:369; top:67px; left:192px; z-index:2;"><img src="images/DS/left_column.png"></div>');
-		d.write('<div style="position: absolute; width:39; height:369; top:67px; left:458px; z-index:2;"><img src="images/DS/right_column.png"></div>');
+		d.write('<div style="position: absolute; width:39; height:369; left:192px; z-index:2;"><img src="images/DS/left_column.png"></div>');
+		d.write('<div style="position: absolute; width:39; height:369; left:458px; z-index:2;"><img src="images/DS/right_column.png"></div>');
 	}
 
 	d.write('<table width=220 border="0" cellspacing="0" cellpadding="0"><tr><td align=center background="images/DS/blackbg.jpg" height=39>');

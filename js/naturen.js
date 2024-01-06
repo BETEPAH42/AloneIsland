@@ -72,7 +72,7 @@ function ready_nature(a1, a2, a3, a4, a5, a6, _day) {
 	document.getElementById("d2").innerHTML = sbox2(top.frames['updater'].document.getElementById("d2").innerHTML
 		+ top.frames['updater'].document.getElementById("error").innerHTML, 1);
 	if (map_load) {
-		var column = '<div style="position: absolute; width:39; height:337; top:67px; left:80px; z-index:2;background-image: url(\'images/DS/left_column.png\');"></div><div style="position: absolute; width:39; height:337; top:67px; left:640px; z-index:2;background-image: url(\'images/DS/right_column.png\');"></div>';
+		var column = '<div style="position: absolute; width:39; height:337; left:80px; z-index:2;background-image: url(\'images/DS/left_column.png\');"></div><div style="position: absolute; width:39; height:337; left:640px; z-index:2;background-image: url(\'images/DS/right_column.png\');"></div>';
 		column = '';
 		document.getElementById("map").innerHTML = `${column}<div id=mapl style='width: 720px;height: 390px;display: block;overflow: hidden;'></div>`;
 		map_load = 0;
