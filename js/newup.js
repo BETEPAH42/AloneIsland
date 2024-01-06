@@ -129,7 +129,7 @@ function show_head(curstate, fourthname, code, apps, trvm, help) {
 		$buttons += ('<tr>');
 		$buttons += ('<td align="center" width="190"><img border="0" ' + pers + '></td>');
 		$buttons += ('<td align="center" width="169"><img border="0" ' + inv + '></td>');
-		$buttons += ('<td align="center" width="' + (top.DWidth - 730) + '">&nbsp;</td>');
+		$buttons += ('<td align="center" width="' + (top.DWidth - 730) + '" onclick="main_top_update();"></td>');
 		$buttons += ('<td align="center" width="123"><img border="0" ' + back + '></td>');
 		$buttons += ('<td align="center" width="185"><img border="0" ' + fourth + '></td>');
 		$buttons += ('</tr>');

@@ -17,7 +17,7 @@
 	if ($sale["uidwho"] != $pers["uid"]) die("Hacking Attempt");
 	$persto = sql::q1("SELECT * FROM `users` WHERE `uid`=" . intval($sale["uidp"]) . "");
 	if (intval($sale["idw"])) {
-		$vesh =  sql::q1("SELECT * FROM wp WHERE id=" . intval($sale["idw"]));
+		$vesh =  SQL::q1("SELECT * FROM wp WHERE id=" . intval($sale["idw"]));
 		echo "<center><div style='width:80%' class=weapons_box>";
 		include('inc/inc/weapon.php');
 		echo "</div></center>";
@@ -29,7 +29,7 @@
 		echo "</p>";
 	} else //НАСТАВНИЧЕСТВО
 	{
-		$cnt = sql::q1("SELECT COUNT(*) as count FROM users WHERE instructor = " . $persto["uid"]);
+		$cnt = SQL::q1("SELECT COUNT(*) as count FROM users WHERE instructor = " . $persto["uid"]);
 		if ($cnt['count'])
 			echo "<script>top.FuncyOff();</script>";
 		else

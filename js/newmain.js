@@ -14,6 +14,7 @@ function co1() {  d.write("<a href='http://www.liveinternet.ru/click' "+ "target
 
 function index(terror)
 {
+	console.log(terror);
 	var sw = s.width;
 	if(sw<800) sw = 800;
 	if(sw>1280) sw = 1280;

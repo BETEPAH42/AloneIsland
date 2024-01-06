@@ -414,13 +414,15 @@ function main_top_update() {
 
 function view_frames(a) {
 	DWidth = document.body.clientWidth - 12;
-	if (DWidth < 960) DWidth = 960;
-	if (DWidth > 1200) DWidth = 1200;
+	if (DWidth <= 1200) DWidth = 960;
+	if (DWidth > 1200 && DWidth <= 1600) DWidth = 1200;
+	if (DWidth > 1600) DWidth = 1600;
 	var bg = 'god.jpg';
-	if (a)
+	if (a) {
 		bg = 'god' + rand(2, 3) + '.jpg';
+	}
 
-	dw(`<center style="background-image: url('images/DS/${bg}');width:100%;height:100%;background-position:bottom center;" onload="load(10);">`);
+	dw(`<center style="background: url('images/DS/${bg}') no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;width:100%;height:100%;background-position:bottom center;" onload="load(10);">`);
 	dw('<div id=frames>');
 	dw('<div id=tl style="position: absolute; width: 52px; height: 57px; z-index: 2; left: -1000px; top: 0px"><img border="0" src="images/DS/tl_corner.png" width="52" height="57"></div>');
 	dw('<div id=tr style="position: absolute; width: 52px; height: 57px; z-index: 2; left: -1000px; top: 0px"><img border="0" src="images/DS/tr_corner.png" width="52" height="57"></div>');
@@ -446,10 +448,10 @@ function view_frames(a) {
 	dw('<table height=100% width=100%><tr><td align=center valign=center id=TIME style="color:#FFFFFF;cursor:pointer;" onclick="top.frames[\'main_top\'].location=\'main.php\'" title="Часы показывают серверное время(Россия>Москва), при нажатии обновит игровое окно.">Загрузка...</td></tr></table>');
 	dw('</div>');
 
-	dw('<div id=title style="background-image: url(\'images/DS/title_bg.jpg\'); background-positin: center top; position: absolute; width: ' + (DWidth - 36) + 'px; height: 50px; z-index: 1; left: 58px; top: 18px"></div>');
-	dw('<div id=logo style="background-image: url(\'images/DS/logo_bg.gif\'); background-position: bottom; background-repeat:repeat-x; position: absolute; width: ' + (DWidth - 36) + 'px; height: 90px; z-index: 1; left: 58px; top: -20px; text-align: center; cursor:pointer;" onclick="main_top_update();"><img border="0" src="images/DS/logo.png" width="924" height="92"></div>');
+	dw('<div id=title class="title_main" style="width: ' + (DWidth - 36) + 'px;"></div>');
+	dw('<div id=logo class="logo_main" style="width: ' + (DWidth - 36) + 'px;" onclick="main_top_update();"><img border="0" src="images/DS/logo.png" width="924" height="92"></div>');
 	dw('<div id=logo_down style="position: absolute; width: 206px; height: 29px; z-index: 1; left: -1000px; top: 72px"><img border="0" src="images/DS/logo_down.png" width="206" height="29"  onclick="main_top_update();"></div>');
-	dw('<div id=title_buttons style="position: absolute; width: ' + (DWidth - 36) + 'pxpx; height: 42px; z-index: 1; left: 58px; top: 18px"></div>');
+	dw('<div id=title_buttons class="menu_main" style="width: ' + (DWidth - 36) + 'px;"></div>');
 
 	dw('<table border="0" cellspacing="0" cellpadding="0" style="width:' + DWidth + 'px; height:100%;">');
 	dw('<tr>');

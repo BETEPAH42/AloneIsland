@@ -40,6 +40,7 @@ jQuery('#legend2').slideDown(300);
 
 function index(error,z,time)
 {
+	console.log(error);
 GLOB_ERROR = error;
 swc = s.width-50;
 sw = s.width/2 - 50;

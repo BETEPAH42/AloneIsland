@@ -10,6 +10,7 @@ use ClassPerson\User;
 // include ('inc/sendmail.php');
 
 $world = SQL::q1("SELECT weather,weatherchange FROM world");
+
 if ($world["weatherchange"] < tme()) {
 	say_to_chat("#W", "#W", 0, '', '*');
 }
@@ -104,8 +105,8 @@ echo "<!DOCTYPE html><html><head><title>Одинокие земли[" . $pers["u
 <meta content='text/html; charset=utf-8' Http-Equiv=Content-type>
 <link rel='favicon' href='images/icon.ico'>
 <link rel='shortcut icon' href='images/pict.png'>
-<link href='main.css' rel=stylesheet type=text/css></head>
-<body scroll=no style='overflow:hidden;'>
+<link href='css/main.css' rel=stylesheet type=text/css></head>
+<body scroll='no'>
 <script src='js/cookie.js'></script>
 <script SRC='js/jquery.js'></script>
 <script src='js/game.js?2'></script>

@@ -22,7 +22,14 @@ class SQL
                 include $_SERVER['DOCUMENT_ROOT'] . '/db.cfg.php';
                 $dbConnection = new PDO('mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';charset=utf8', DB_USER, DB_PASS);
             } else {
-                $dbConnection = new PDO('mysql:dbname=dev;host=mysql;charset=utf8', 'dev', 'dev');
+                try{
+                    $dbConnection = new PDO('mysql:dbname=dev;host=mysql;charset=utf8', 'dev', 'dev');
+                } catch (Exception $e) {
+                    echo "<pre>";
+                    print_r($e);
+                    echo "</pre>";
+                }
+
             }
         }
 
@@ -48,7 +55,8 @@ class SQL
         } catch (Exception $e) {
             if (in_array($_SERVER['SERVER_NAME'], ['aloneisland.test', 'localhost'])) {
                 echo '<pre>';
-
+                print_r($e);
+                echo "\n\n\n------- \n\n\n";
                 echo $sql;
                 echo "\n\n\n------- \n\n\n";
                 print_r($params);
