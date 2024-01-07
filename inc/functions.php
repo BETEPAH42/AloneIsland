@@ -17,6 +17,20 @@ function tme()
 	global $GLOBAL_TIME;
 	return $GLOBAL_TIME;
 }
+
+function pre($data) {
+	echo "<pre>";
+	var_dump($data);
+	echo "</pre>";
+}
+
+function dd($data) {
+	echo "<pre>";
+	var_dump($data);
+	echo "</pre>";
+	die('dd');
+}
+
 function filter($v)
 {
 	return str_replace("'", "", str_replace("\\", "", htmlspecialchars($v)));

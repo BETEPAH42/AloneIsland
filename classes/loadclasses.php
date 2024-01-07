@@ -13,3 +13,4 @@ require_once "users/PersonSkills.php";
 require_once "users/PersonAbilities.php";
 require_once "users/PersonException.php";
 require_once "users/UserException.php";
+require_once "services/menus.php";
