@@ -2,6 +2,7 @@
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
+include 'classes/autoload.php';
 require_once "classes/loadclasses.php";
 include_once 'inc/functions.php';
 include_once 'inc/connect.php';
