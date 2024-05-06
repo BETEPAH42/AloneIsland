@@ -876,7 +876,6 @@ function hp_ma_up($chealth, $health, $cmana, $mana, $shp, $sma, $lastom, $tire =
 
 function catch_user($uid, $passwd = '', $check = 0)
 {
-
 	if (!$passwd)
 		$passwd = filter($passwd);
 	if (!$check)

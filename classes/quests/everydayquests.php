@@ -1,7 +1,7 @@
 <?php
-namespace ClassQuests;
+namespace Quests;
 
-use ClassQuests\Quests;
+use Quests\Quests;
 
 class EveryDayQuests extends Quests
 {

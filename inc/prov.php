@@ -1,5 +1,5 @@
 <?php
-include_once '../classes/sql.php';
+include $_SERVER['DOCUMENT_ROOT'].'/classes/autoload.php';
 function make_seed()
 {
 	list($usec, $sec) = explode(' ', microtime());

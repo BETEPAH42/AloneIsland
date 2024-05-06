@@ -1,10 +1,10 @@
 <?php 
 
-namespace ClassPerson;
+namespace Users;
 
 use SQL;
-use ClassWeapons\WeaponUser;
-use PersonException;
+use Weapons\WeaponUser;
+use Exceptions\PersonException;
 
 class Person 
 {
@@ -116,6 +116,7 @@ class Person
 
     public static function GetIdByLoginPass($login, $password) 
     {
+     
         try {
             $user = SQL::q1("SELECT uid FROM users WHERE `user`='" . addslashes($login) . "' and `pass`='" . ($password) . "';");
             return $user['uid'];

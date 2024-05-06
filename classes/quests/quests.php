@@ -1,6 +1,6 @@
 <?php
 
-namespace ClassQuests;
+namespace Quests;
 
 use SQL;
 

@@ -2,11 +2,10 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-require_once 'classes/loadclasses.php';
+include_once 'classes/autoload.php';
 include_once 'inc/functions.php';
 
-use ClassPerson\Person;
-use ClassPerson\User;
+use Users\Person;
 // include ('inc/sendmail.php');
 
 $world = SQL::q1("SELECT weather,weatherchange FROM world");

@@ -1,6 +1,6 @@
 <?php 
 
-namespace ClassWeapons;
+namespace Weapons;
 
 use SQL;
 

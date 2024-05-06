@@ -1,6 +1,6 @@
 <?php
 
-namespace ClassPerson;
+namespace Users;
 
 use Exception;
 use SQL;

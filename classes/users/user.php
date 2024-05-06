@@ -1,10 +1,10 @@
 <?php
 
-namespace ClassPerson;
+namespace Users;
 
 use SQL;
-use UserException;
-use ClassPerson\Person;
+use Exceptions\UserException;
+use Users\Person;
 
 class User
 {

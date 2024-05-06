@@ -1,12 +1,18 @@
 <?php
-
-echo '<div style="width: 20%;"><a class=bga href=main.php?go=administration>Назад в меню</a></div>';
-
-// use ClassPerson\User;
-// use UserException;
-// use ClassWeapons\Weapon;
-// use ClassPerson\Person;
-use ClassMenus\Menus;
+include_once 'back_button.php';
+?>
+<div id="admin_menu"></div>
+<script>
+    $.ajax({
+    method:'POST',
+    url: "/ajax/admin_menu.php",
+    data: { name: "John", location: "Boston" }
+    }).done(function($data) {
+        $("#admin_menu").html($data);
+        // console.log($data)
+    });
+</script>
+<?php
 try {
 //    SQL::q1('CREATE TABLE menus 
 //         (
@@ -17,8 +23,15 @@ try {
 //             active BOOLEAN DEFAULT(FALSE) NOT NULL
 //         );');
 // SQL::q1('INSERT INTO menus SET name="Тестовая", type="admin", url="main.php?go=test", active=true;');
+// $test = new Menus();
+// $array = [
+//     'name'=> 'test',
+//     'url'=>'url',
+// ];
+// $test->add($array);
+//    dd($test->add($array));
+// $tt = new Services\Menu();
 
-   dd(new Menus());
 }
 catch (Exception $e)
 {

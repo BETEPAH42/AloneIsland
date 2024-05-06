@@ -1,9 +1,9 @@
 <?php 
 
-namespace ClassWeapons;
+namespace Weapons;
 
 use SQL;
-use ClassWeapons\Weapons;
+use Weapons\Weapons;
 
 class Weapon extends Weapons 
 {
