@@ -1,7 +1,7 @@
 <?php
 namespace Services;
 
-use SQL\SQLSQL;
+use SQL;
 
 class Menu 
 {

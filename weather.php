@@ -7,6 +7,10 @@ include_once 'classes/autoload.php';
 include_once "configs/config.php";
 include_once 'inc/functions.php';
 
+use Worlds\World;
+
+$worlds = World::getInstance();
+
 function Play($a, $b)
 {
 	if (date("H") > 21 or date("H") < 7)
@@ -14,7 +18,7 @@ function Play($a, $b)
 	else
 		echo "<script>top.Play" . $a . "('" . $b . "');</script>";
 }
-$weather = SQL::q1("SELECT weather,weatherchange FROM world");
+$weather = SQL::q1("SELECT weather, weatherchange FROM world");
 $ww = SQL::q1("SELECT * FROM weather WHERE id=" . $weather["weather"] . "");
 
 if (date("m") > 11 or date("m") < 3) {
@@ -38,7 +42,7 @@ if (date("m") > 11 or date("m") < 3) {
 	$changes = tp(mktime(0, 0, 0, 12, 1, date("Y")) - time());
 }
 $changew  = 'НЕИЗВЕСТНО';
-if ($weather['weatherchange'] > time())
+if ($worlds->weatherchange > time())
 	$changew = tp($weather['weatherchange'] - time());
 else {
 	$ww = SQL::q1("SELECT * FROM weather WHERE season=5 or season=" . $season_id . " ORDER BY RAND()");
@@ -86,8 +90,8 @@ else {
 	*/
 if (date("H") > 21 or date("H") < 7) $ww["id"] += 10;
 ?>
-<META HTTP-EQUIV="Page-Enter" CONTENT="BlendTrans(Duration=0.5)">
-<LINK href="css/main.css" rel=STYLESHEET type=text/css>
+<meta HTTP-EQUIV="Page-Enter" CONTENT="BlendTrans(Duration=0.5)">
+<link href="css/main.css" rel=STYLESHEET type="text/css">
 
 <body style="background-color:transparent;">
 	<center>
