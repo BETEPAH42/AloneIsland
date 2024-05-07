@@ -20,7 +20,7 @@
         <div id=scrollitem style="display:block;"></div>
     </div>
     <?php
-    require_once 'classes/sql.php';
+    require_once 'classes/autoload.php';
     include_once 'inc/functions.php';
     $images = "images";
     $pers = catch_user(intval($_COOKIE["uid"]));

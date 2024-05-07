@@ -1,6 +1,10 @@
 <?php
-// include_once "configs/config.php";
-require_once 'classes/sql.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include_once 'classes/autoload.php';
+include_once "configs/config.php";
 include_once 'inc/functions.php';
 
 function Play($a, $b)

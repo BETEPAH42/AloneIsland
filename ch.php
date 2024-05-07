@@ -4,7 +4,7 @@ header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");
 // header("Content-type: text/html; charset=utf-8");
 $opt = explode("|", $_COOKIE["options"]);
-require_once 'classes/loadclasses.php';
+require_once 'classes/autoload.php';
 include_once 'inc/functions.php';
 
 if (@$_GET["sort"]) {

@@ -4,7 +4,7 @@ if (@$_GET["do_w"]) {
 	include("watchers.php");
 	exit;
 }
-require_once 'classes/sql.php';
+require_once 'classes/autoload.php';
 include_once 'inc/functions.php';
 $UNAME = '';
 

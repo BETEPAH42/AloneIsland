@@ -1,5 +1,5 @@
 <?php
-include_once './classes/sql.php';
+include_once './classes/autoload.php';
 function set_vars($vars, $uid)
 {
     if (!$uid) {

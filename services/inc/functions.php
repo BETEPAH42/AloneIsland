@@ -1,5 +1,5 @@
 <?php
-include_once 'classes/sql.php';
+include_once 'classes/autoload.php';
 
 $sql_queries_counter = 0;
 $sql_queries_timer = 0;

@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-require_once 'classes/sql.php';
+require_once 'classes/autoload.php';
 include_once "inc/functions.php";
 $you = catch_user(intval($_COOKIE["uid"]), $_COOKIE["hashcode"], 1);
 if (!$you["priveleged"])

@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-include_once "classes/sql.php";
+include_once "classes/autoload.php";
 include_once "inc/functions.php";
 $pers = SQL::q1("SELECT sign FROM users WHERE uid=" . intval($_COOKIE["uid"]) . "");
 ?>

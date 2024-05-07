@@ -1,7 +1,7 @@
 <?php
 header("Content-type: application/json; charset=utf-8");
 
-require_once 'classes/sql.php';
+require_once 'classes/autoload.php';
 include_once 'inc/functions.php';
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method === "GET") {

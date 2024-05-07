@@ -8,9 +8,11 @@
 <body topmargin="15" leftmargin="15" rightmargin="15" bottommargin="15" class=fightlong style="overflow:hidden;">
 
 <?php
+require_once 'classes/autoload.php';
+include_once 'inc/functions.php';
 
-use ClassPerson\Person;
-use ClassQuests\EveryDayQuests;
+use Users\Person;
+use Quests\EveryDayQuests;
 
 function ykind_stat($i) {
 		if ($i > 5) return "Настроен враждебно";
@@ -19,8 +21,6 @@ function ykind_stat($i) {
 		elseif ($i > 0) return "Недолюбливает вас";
 		elseif ($i == 0) return "Относится к вам нейтрально.";
 	}
-	require_once 'classes/loadclasses.php';
-	include_once 'inc/functions.php';
 
 	error_reporting(0);
 
