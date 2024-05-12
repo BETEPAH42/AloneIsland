@@ -2,7 +2,7 @@
 
 namespace DataBases;
 
-class SQL
+class Sql
 {
     /** Init and connect */
     private static function init()

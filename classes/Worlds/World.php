@@ -3,11 +3,14 @@ namespace Worlds;
 
 use SQL;
 use Worlds\Weather;
+use Worlds\Seasons;
 
 class World 
 {
-    public $weather, $weatherchange;
-    public $weatherData;
+    public $weather;
+    public $weatherchange;
+    public Weather $weatherData;
+    public Seasons $seasonData;
     protected static $_instance = null;
 
     private function __construct() 
@@ -15,6 +18,7 @@ class World
         $data = SQL::q1("SELECT * FROM world");
         $this->weather = $data['weather'];
         $this->weatherchange = $data['weatherchange'];
+        $this->seasonData = new Seasons();
         $this->getWeather();
         return $this;
     }
@@ -24,6 +28,13 @@ class World
             self::$_instance = new self;  
         }
         return self::$_instance;
+    }
+
+    public function setWeatherChange($data)
+    {
+        print_r($data,true);
+        $this->weatherchange = $data;
+        return $this;
     }
 
     private function __clone() {

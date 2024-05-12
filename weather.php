@@ -4,54 +4,29 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include_once 'classes/autoload.php';
-include_once "configs/config.php";
+// include_once "configs/config.php";
 include_once 'inc/functions.php';
 
 use Worlds\World;
-
 $worlds = World::getInstance();
+$weather = $worlds->weatherData;
+$season = $worlds->seasonData;
 
-function Play($a, $b)
-{
-	if (date("H") > 21 or date("H") < 7)
-		echo "<script>top.Play" . $a . "('" . $b . "',1);</script>";
-	else
-		echo "<script>top.Play" . $a . "('" . $b . "');</script>";
-}
-$weather = SQL::q1("SELECT weather, weatherchange FROM world");
-$ww = SQL::q1("SELECT * FROM weather WHERE id=" . $weather["weather"] . "");
-
-if (date("m") > 11 or date("m") < 3) {
-	$season_name = "Зима";
-	$season_id = 1;
-	if (date("m") == 12)
-		$changes = tp(mktime(0, 0, 0, 3, 1, date("Y") + 1) - time());
-	else
-		$changes = tp(mktime(0, 0, 0, 3, 1, date("Y")) - time());
-} elseif (date("m") > 2 and date("m") < 6) {
-	$season_name = "Весна";
-	$season_id = 2;
-	$changes = tp(mktime(0, 0, 0, 6, 1, date("Y")) - time());
-} elseif (date("m") > 5 and date("m") < 9) {
-	$season_name = "Лето";
-	$season_id = 3;
-	$changes = tp(mktime(0, 0, 0, 9, 1, date("Y")) - time());
-} elseif (date("m") > 8 and date("m") < 12) {
-	$season_name = "Осень";
-	$season_id = 4;
-	$changes = tp(mktime(0, 0, 0, 12, 1, date("Y")) - time());
-}
 $changew  = 'НЕИЗВЕСТНО';
-if ($worlds->weatherchange > time())
-	$changew = tp($weather['weatherchange'] - time());
-else {
-	$ww = SQL::q1("SELECT * FROM weather WHERE season=5 or season=" . $season_id . " ORDER BY RAND()");
-	$weather['weatherchange'] = time() + rand(1, 3) * $ww["time"];
-	$changew = tp($weather['weatherchange'] - time());
-	SQL::q("UPDATE world SET weather = " . $ww["id"] . ", weatherchange = " . $weather["weatherchange"] . "");
+if ($worlds->weatherchange > time()) {
+	$changew = tp($worlds->weatherchange - time());
+} else {
+
+	$weather->newWeather();
+	// $ww = SQL::q1("SELECT * FROM weather WHERE season=5 or season=" . $season_id . " ORDER BY RAND()");
+	$worlds->setWeatherChange(time() + rand(1, 3) * $weather->getWeather()["time"]);
+	$changew = tp($worlds->weatherchange - time());
+	SQL::q("UPDATE world SET weather = " . $weather->getWeather()["id"] . ", weatherchange = " . $worlds->weatherchange . "");
 	say_to_chat("a", "Произошла смена погоды.", 0, '', '*');
 	SQL::q("UPDATE nature SET fish_population=fish_population+fish_population*0.5+" . rand(0, 100) . " WHERE fishing>0 and fish_population<600");
 }
+
+$changes =  tp( $season->season['nextSeason'] - time())
 /*
 	$w = $weather["weather"];
 	if ($w == 1)
@@ -88,8 +63,9 @@ else {
 	}
 	
 	*/
-if (date("H") > 21 or date("H") < 7) $ww["id"] += 10;
+// if (date("H") > 21 or date("H") < 7) $ww["id"] += 10;
 ?>
+
 <meta HTTP-EQUIV="Page-Enter" CONTENT="BlendTrans(Duration=0.5)">
 <link href="css/main.css" rel=STYLESHEET type="text/css">
 
@@ -105,8 +81,8 @@ if (date("H") > 21 or date("H") < 7) $ww["id"] += 10;
 			</tr>
 			<tr>
 				<td align="center" class="bnick" height="21">&nbsp;</td>
-				<td align="center" class="dark" height="21"><b class=user><?= $ww["name"]; ?></b>[<?= $changew; ?>]<br>
-					<img border="0" src="images/weather/seasons/<?= $season_id; ?>.gif" width="100" height="100"><img border="0" src="images/weather/<?= $ww["id"]; ?>.gif" width="100" height="100"><br><?= str_replace(';', '<br>', $ww["describe"]); ?>
+				<td align="center" class="dark" height="21"><b class=user><?= $weather->getWeather()["name"]; ?></b>[<?= $changew; ?>]<br>
+					<img border="0" src="images/weather/seasons/<?= $season->season["id"]; ?>.gif" width="100" height="100"><img border="0" src="images/weather/<?= $season->season["id"]; ?>.gif" width="100" height="100"><br><?= str_replace(';', '<br>', $season->season["describe"]); ?>
 				</td>
 				<td align="center" class="bnick" height="21">&nbsp;</td>
 			</tr>
@@ -117,7 +93,7 @@ if (date("H") > 21 or date("H") < 7) $ww["id"] += 10;
 			</tr>
 			<tr>
 				<td align="center" class="bnick" valign="top"></td>
-				<td align="center" class="about"><b class=user><?= $season_name; ?></b>[<?= $changes ?>]<br>
+				<td align="center" class="about"><b class=user><?= $season->season["name"]; ?></b>[<?= $changes ?>]<br>
 				</td>
 				<td align="center" class="bnick" valign="top"></td>
 			</tr>
