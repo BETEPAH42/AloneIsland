@@ -3,10 +3,13 @@ namespace Worlds;
 
 use SQL;
 use DateTime;
+use Worlds\Weather;
 
 class Seasons 
 {
     public $season;
+    public Weather $weather;
+    public $weatherchange;
     protected static array $nameSeason = [
         [
             "id" => 1,
@@ -29,10 +32,24 @@ class Seasons
             "numberMonth" => [9,10,11]
         ]
     ];
+    protected static $_instance = null;
 
     public function __construct() 
     {
         $this->season = self::getSeason();
+        $this->getWeather();
+    }
+
+    public function getWeather()
+    {
+        // $this->weather = Weather::getInstance();
+    } 
+
+    public static function getInstance() {
+        if (self::$_instance === null) {
+            self::$_instance = new self;  
+        }
+        return self::$_instance;
     }
 
     protected static function getSeason()

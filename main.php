@@ -139,6 +139,7 @@ if ($pers["curstate"] == 32) include_once('inc/adm/clans.php');
 if ($pers["curstate"] == 33) include_once('inc/adm/fish.php');
 if ($pers["curstate"] == 34) include_once('inc/adm/gheralbism.php');
 if ($pers["curstate"] == 35) include_once('inc/adm/test.php');
+if ($pers["curstate"] == 36) include_once('inc/adm/test2.php');
 
 $t = time() + intval(microtime() * 1000) / 1000 - $timer;
 /*

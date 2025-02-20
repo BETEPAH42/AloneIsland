@@ -5,13 +5,25 @@ use SQL;
 
 class Weather 
 {
-    protected $weather;
-    public function __construct($idWeather)
+    public $weather;
+    protected $weatherChange;
+    protected static $_instance = null;
+
+    private function __construct($idWeather)
     {
         $data = SQL::q1("SELECT * FROM weather WHERE id=" .$idWeather . "");
         $this->weather = $data;
         return $this;
     }  
+
+    public static function getInstance() {
+        // var_dump((World::getInstance())->getWeatherId());
+        // die();
+        if (self::$_instance === null) {
+            self::$_instance = new self((World::getInstance())->getWeatherId());  
+        }
+        return self::$_instance;
+    }
 
     public function newWeather()
     {

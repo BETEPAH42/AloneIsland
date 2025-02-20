@@ -7,7 +7,7 @@ use Worlds\Seasons;
 
 class World 
 {
-    public $weather;
+    private $weather;
     public $weatherchange;
     public Weather $weatherData;
     public Seasons $seasonData;
@@ -43,10 +43,15 @@ class World
     private function __wakeup() {
     } 
    
-    protected function getWeather()
+    public function getWeather()
     {
-        $weather = new Weather($this->weather);
-        $this->weatherData = $weather;
+        // $weather = Weather::getInstance();
+        // $this->weatherData = $weather;
+    }
+
+    public function getWeatherId()
+    {
+       return $this->weather;
     }
 
 }
