@@ -31,10 +31,10 @@ if ($opt[2] == "z") $_GET["sort"] = 'z';
 		SQL::q("INSERT INTO `ignor` ( `uid` , `nick` ) VALUES (" . $pers["uid"] . ", '" . trim(str_replace("'", "", $_GET["ignore"])) . "');");
 	}
 	if (@$_GET["ignore_unset"]) {
-		sql::q("DELETE FROM ignor WHERE uid=" . $pers["uid"] . " and nick='" . trim(str_replace("'", "", $_GET["ignore_unset"])) . "'");
+		SQL::q("DELETE FROM ignor WHERE uid=" . $pers["uid"] . " and nick='" . trim(str_replace("'", "", $_GET["ignore_unset"])) . "'");
 	}
 	if (@$_GET["no_tip"]) {
-		sql::q($resDB, "INSERT INTO `no_tips` ( `uid` , `tip_id` ) VALUES (" . $pers["uid"] . ", " . intval($_GET["no_tip"]) . ");");
+		SQL::q($resDB, "INSERT INTO `no_tips` ( `uid` , `tip_id` ) VALUES (" . $pers["uid"] . ", " . intval($_GET["no_tip"]) . ");");
 	}
 	$t = time();
 	$t1 = time() - 360 + microtime();

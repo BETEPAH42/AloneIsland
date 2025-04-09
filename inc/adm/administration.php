@@ -1,7 +1,7 @@
 <?php
 use Services\Menus;
 
-$menu = new Menus();
+//$menu = new Menus();
 
 $_max = SQL::q1("SELECT max_online,time_max_online FROM `configs` LIMIT 0,1");
 $max = $_max["max_online"];

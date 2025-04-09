@@ -62,10 +62,10 @@ class SQL
                 print_r($params);
                 die();
             } else {
-                // echo '<pre>';
-                // print_r($e);
-                // echo "\n\n\n------- \n\n\n";
-                // echo $sql;
+                 echo '<pre>';
+                 print_r($e);
+                 echo "\n\n\n------- \n\n\n";
+                 echo $sql;
                 die("Q - Произошла ошибка в SQL-запросе. Обратитесь к Вашему менеджеру. <br /> <a href='engine/exit.php'>Выход</a>");
             }
         }
@@ -92,11 +92,11 @@ class SQL
                 print_r($params);
                 die();
             } else {
-                // echo '<pre>';
-                // print_r($e);
-                // echo "\n\n\n------- \n\n\n";
-                // echo $sql;
-                // echo "\n\n\n------- \n\n\n";
+                 echo '<pre>';
+                 print_r($e);
+                 echo "\n\n\n------- \n\n\n";
+                 echo $sql;
+                 echo "\n\n\n------- \n\n\n";
                 die("Q1 - Произошла ошибка в SQL-запросе. Обратитесь к Вашему менеджеру.<br /> <a href='engine/exit.php'>Выход</a>");
             }
         }

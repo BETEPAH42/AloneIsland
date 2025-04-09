@@ -45,8 +45,7 @@ class World
    
     public function getWeather()
     {
-        // $weather = Weather::getInstance();
-        // $this->weatherData = $weather;
+         $this->weatherData = Weather::getInstance();
     }
 
     public function getWeatherId()

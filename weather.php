@@ -9,7 +9,8 @@ include_once 'inc/functions.php';
 
 use Worlds\World;
 $worlds = World::getInstance();
-$weather = $worlds->weatherData;
+$weather = \Worlds\Weather::getInstance();
+//$weather = $worlds->weatherData;
 $season = $worlds->seasonData;
 
 $changew  = 'НЕИЗВЕСТНО';

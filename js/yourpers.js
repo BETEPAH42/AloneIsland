@@ -97,7 +97,7 @@ function build_pers(sh, shd, oj, ojd, or1, or1d, po, pod, z1, z1d, z2, z2d, z3, 
 	TEXT = '';
 	TEXT += ('<div id=aurasc class=aurasc style="background-image: url(\'images/bg.png\'); text-align:center;"></div>' + down_white_table('100%', 'aura_down', 0) + '</td><td width=10 style="background-image: url(\'images/DS/main_bg.png\');"></td>');
 
-	TEXT += ('<td align="left" valign="top" height=100% style="background-image: url(\'images/DS/main_green_column_right.png\'); background-position: left top; background-repeat: no-repeat;"><div style="background-image: url(\'images/bg.png\');height:100%;"><div style="overflow-y: auto; height: 460px;" id=weapons>');
+	TEXT += ('<td align="left" valign="top" height=100% style="background-image: url(\'images/DS/main_green_column_right.png\'); background-position: left top; background-repeat: no-repeat;"><div style="background-image: url(\'images/bg.png\');height:100%;"><div style="overflow-y: auto; height: 460px; margin-left: 10px;" id=weapons>');
 	if (inv != 1 && inv != 2) {
 		var helpimg = '';
 		if (help == 0) helpimg = '<img src="images/design/warningred.gif" width=10/>';

@@ -2,6 +2,7 @@
 namespace Worlds;
 
 use SQL;
+use Worlds\World;
 
 class Weather 
 {
@@ -20,7 +21,8 @@ class Weather
         // var_dump((World::getInstance())->getWeatherId());
         // die();
         if (self::$_instance === null) {
-            self::$_instance = new self((World::getInstance())->getWeatherId());  
+            $weather = SQL::q1("SELECT weather FROM world LIMIT 1");
+            self::$_instance = new self($weather['weather']);
         }
         return self::$_instance;
     }
